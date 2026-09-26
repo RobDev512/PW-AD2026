@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Estructura base </title>
+    </head>
+
+    <body>
+        <nav> 
+            <a href="#Listas"> Ir a Listas </a>    
+            <a href="#Tabla"> Ir a tabla </a>    
+            <a href="#Formulario"> Ir a Formulario </a>    
+            <a href="https://www.google.com" target="_blank"> Ir a Google </a>    
+        </nav>
+        
+        <header>
+            <h1> Encabezado H1 </h1>
+            <h2> Encabezado H2 </h2>
+            <h3> Encabezado H3 </h3>
+            <h4> Encabezado H4 </h4>
+            <h5> Encabezado H5 </h5>
+            <h6> Encabezado H6 </h6>
+        </header>
+
+        <main>
+            <section> 
+                <h3> Texto </h3>
+                <p> Este es un texto utilizado para la materia de <br> <b> Programación Web</b> en el periodo de <em> agosto diciembre 2026 </em>  </p>    
+            </section>
+            <section> 
+                <h3> imágen </h3> 
+                <img width="200" src="../foto.jpg">   
+            </section>
+
+            <hr>
+            <section>
+                <h3 id="Listas"> Listas </h3>
+                <ol>
+                    <li> Elementoo Ordenado </li>
+                    <li> Elementoo Ordenado </li>
+                    <li> Elementoo Ordenado </li>
+                </ol>
+                <ul>
+                    <li> Elemento No Ordenado </li>
+                    <li> Elemento No Ordenado </li>
+                    <li> Elemento No Ordenado </li>
+                </ul>
+            </section>
+
+            <hr>
+            <section>
+                <h3 id="Tabla"> Tabla </h3>
+                <table border="1" >
+                    <tr> <th colspan="3" bgcolor="#0DCE13"> Estudiantes </th> </tr>
+                    <tr> 
+                        <th> Nombre </th> 
+                        <th> Escuela </th>
+                        <th> Carrera </th>
+                    </tr>
+                    <tr> 
+                        <td> Roberto </td> 
+                        <td> ITTepic </td>
+                        <td> ISC </td>
+                    </tr>
+                    <tr> 
+                        <td> Carlos </td> 
+                        <td> ITTepic </td>
+                        <td> ISC </td>
+                    </tr>
+                </table>
+            </section>
+
+            <hr>
+            <section>
+                <h3 id="Formulario"> Formulario </h3>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend > Mi primer formulario </legend>
+
+                        <label> Texto </label>
+                        <input type="text">
+                        <br><br>
+
+                        <label> Password </label>
+                        <input type="password">
+                        <br><br>
+
+                        <label> Numero </label>
+                        <input type="number">
+                        <br><br>
+
+                        <label> Fecha </label>
+                        <input type="date">
+                        <br><br>
+
+                        <label> Hora </label>
+                        <input type="time">
+                        <br><br>
+
+                        <label> Color </label>
+                        <input type="color">
+                        <br><br>
+
+                        <label> Checkbox </label>
+                        <input type="checkbox">
+                        <br><br>
+
+                        <label> Radio </label><br>
+                        <label> Opcion1 </label>
+                        <input type="radio" value="" name="radio">
+                        <label> Opcion2 </label>
+                        <input type="radio" value="" name="radio">
+                        <br><br>
+
+                        <label> Select </label>
+                        <select>
+                            <option> Opcion 1 </option>
+                            <option> Opcion 2 </option>
+                            <option> Opcion 3 </option>
+                        </select>
+                        <br><br>
+
+                        <label> Textarea </label>
+                        <textarea rows="5" cols="30"> </textarea>
+                        <br><br>
+
+                        <label> Archivo </label>
+                        <input type="file">
+                        <br><br>
+
+                        <input type="submit" value="Enviar Formulario">
+                        <br><br>
+                        <input type="reset" value="Limpiar Formulario">
+                    </fieldset>
+                </form>
+            </section>
+            <hr>
+        </main>
+
+        <footer>
+            <p> Derechos reservados ITTepic 2026 </p>
+        </footer>
+        
+    </body>
+</html>
