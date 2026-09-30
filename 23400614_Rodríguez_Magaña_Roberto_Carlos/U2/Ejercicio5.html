@@ -1,0 +1,176 @@
+<!DOCTYPE html> <!-- Indica que el documento utiliza HTML5 -->
+<html lang="es"> <!-- Inicio del documento HTML y establece el idioma en español -->
+    <head> <!-- Inicio de la sección de metadatos -->
+        <meta charset="UTF-8"> <!-- Permite utilizar caracteres especiales como á, é, í, ó, ú y ñ -->
+        <title> Ejercicio 5 </title> <!-- Título mostrado en la pestaña del navegador -->
+    </head> <!-- Fin de la sección head -->
+
+    <body> <!-- Inicio del contenido visible -->
+        <header> <!-- Encabezado principal de la página -->
+            <h1> CineMundo: Tienda de Películas </h1> <!-- Título principal -->
+            <p> Tu rincón favorito para comprar películas clásicas y de estreno en formato físico y digital. </p> <!-- Descripción de la tienda -->
+        </header> <!-- Fin del encabezado -->
+
+        <nav> <!-- Menú de navegación -->
+            <ul> <!-- Lista de enlaces internos -->
+                <li> <a href="#pelicula-del-mes"> Película del mes </a> </li>
+                <li> <a href="#clasificacion-generos"> Clasificación y Géneros </a> </li>
+                <li> <a href="#catalogo-precios"> Catálogo y Precios </a> </li>
+                <li> <a href="#solicitud-pedido"> Solicitud de Pedido o Reserva </a> </li>
+                <li> <a href="#atencion-cliente"> Atención al Cliente </a> </li>
+            </ul>
+            <hr color="black"> <!-- Línea divisoria -->
+        </nav> <!-- Fin del menú de navegación -->
+
+        <main> <!-- Inicio del contenido principal -->
+            <!-- Sección de la película destacada -->
+            <section id="pelicula-del-mes">
+                <h2> Película del Mes </h2>
+                <img src="Michael.jpg" alt="Película del Mes" width="300" height="450"> <!-- Imagen de la película -->
+
+                <h3> Michael Jackson: El Rey del Pop </h3>
+                <p> Explora la vida y carrera del icónico artista Michael Jackson, conocido como el Rey del Pop, a través de esta fascinante película que celebra su legado musical y su impacto en la cultura pop mundial. </p>
+                <p> Puedes ver más detalles y reseñas en <a href="https://www.imdb.com/title/tt1234567/" target="_blank"> IMDb </a>. </p> <!-- Enlace externo -->
+
+                <hr color="black">
+            </section> <!-- Fin de película del mes -->
+
+            <!-- Sección de clasificación y géneros -->
+            <section id="clasificacion-generos">
+                <h2> Clasificación y Géneros </h2>
+                <h3> Géneros disponibles </h3>
+                <ul>
+                    <li> Ciencia Ficción </li>
+                    <li> Animación familiar </li>
+                    <li> Suspenso y Misterio </li>
+                    <li> Comedia clásica </li>
+                </ul>
+
+                <h3> Las 3 más vendidas de la semana </h3>
+                <ol>
+                    <li> El misterio de la Mansión (Edición Especial) </li>
+                    <li> Aventura Espacial </li>
+                    <li> Risas en la Gran Ciudad </li>
+                </ol>
+
+                <h3> Formatos físicos disponibles </h3>
+                <ul>
+                    <li> Blu-ray 4K Ultra HD </li>
+                    <li> DVD estándar </li>
+                </ul>
+
+                <h3> Nota importante </h3>
+                <p> <em> * Todos los discos cuentan con garantía por defectos de fábrica. </em> </p>
+                <hr color="black">
+            </section> <!-- Fin de clasificación y géneros -->
+
+            <!-- Sección del catálogo -->
+            <section id="catalogo-precios">
+                <h2> Catálogo y Precios </h2>
+                <table border="1"> <!-- Tabla de películas -->
+                    <tr>
+                        <th> Título </th>
+                        <th> Género </th>
+                        <th> Año </th>
+                        <th> Formato </th>
+                        <th> Precio (USD) </th>
+                    </tr>
+                    <tr>
+                        <td> Aventura Espacial </td>
+                        <td> Ciencia Ficción </td>
+                        <td> 2024 </td>
+                        <td> Blu-ray 4K </td>
+                        <td> $25.00 </td>
+                    </tr>
+                    <tr>
+                        <td> El misterio de la Mansión </td>
+                        <td> Suspenso </td>
+                        <td> 2023 </td>
+                        <td> DVD </td>
+                        <td> $15.00 </td>
+                    </tr>
+                    <tr>
+                        <td> Risas en la Gran Ciudad </td>
+                        <td> Comedia </td>
+                        <td> 2022 </td>
+                        <td> Blu-ray </td>
+                        <td> $18.50 </td>
+                    </tr>
+                </table>
+                <hr color="black">
+            </section> <!-- Fin del catálogo -->
+
+            <!-- Sección del formulario -->
+            <section id="solicitud-pedido">
+                <h2> Solicitud de Pedido o Reserva </h2>
+                <p> Completa el formulario para reservar tu película favorita. </p>
+
+                <form action="#" method="post"> <!-- Inicio del formulario -->
+                    <fieldset> <!-- Grupo de datos personales -->
+                        <legend> Datos personales </legend>
+                        <br>
+                        <label for="nombre"> Nombre completo </label> <br>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Gómez">
+                        <br><br>
+                        <label for="correo"> Correo electrónico </label> <br>
+                        <input type="email" id="correo" name="correo" placeholder="correo@ejemplo.com">
+                        <br>
+                    </fieldset>
+
+                    <br>
+
+                    <fieldset> <!-- Grupo de datos de compra -->
+                        <legend> Detalles de la compra </legend>
+                        <br>
+                        <label for="pelicula"> Selecciona la película </label> <br>
+                        <select id="pelicula" name="pelicula">
+                            <option value="aventura_espacial"> Aventura Espacial </option>
+                            <option value="misterio_mansion"> El misterio de la Mansión </option>
+                            <option value="risas_gran_ciudad"> Risas en la Gran Ciudad </option>
+                        </select>
+
+                        <br><br>
+                        <label> Formato de entrega: </label> <br><br>
+                        <input type="radio" id="fisico" name="formato_entrega" value="fisico">
+                        <label for="fisico"> Disco físico (Envío a domicilio) </label> <br>
+                        <input type="radio" id="digital" name="formato_entrega" value="digital">
+                        <label for="digital"> Copia digital (Descarga directa) </label>
+
+                        <br><br>
+                        <label> Opciones adicionales: </label> <br><br>
+                        <input type="checkbox" id="envoltura" name="envoltura">
+                        <label for="envoltura"> Incluir envoltura para regalo </label> <br>
+                        <input type="checkbox" id="folleto" name="folleto">
+                        <label for="folleto"> Solicitar folleto con ficha técnica </label>
+
+                        <br><br>
+                        <label for="comentarios"> Comentarios o indicaciones de entrega: </label> <br>
+                        <textarea id="comentarios" name="comentarios" rows="4" cols="40" placeholder="Escribe aquí cualquier indicación especial..."></textarea>
+                        <br><br>
+                    </fieldset>
+
+                    <br><br>
+                    <input type="submit" value="Enviar Formulario"> <!-- Botón para enviar -->
+                    <input type="reset" value="Limpiar Formulario"> <!-- Botón para limpiar -->
+                </form> <!-- Fin del formulario -->
+
+                <hr color="black">
+            </section> <!-- Fin de solicitud de pedido -->
+
+            <!-- Sección de atención al cliente -->
+            <section id="atencion-cliente">
+                <h2> Atención al Cliente </h2>
+                <p> ¿Tienes dudas o buscas una película descatalogada? Escríbenos a <a href="mailto:soporte@cinemundo.ejemplo.com" target="_blank"> soporte@cinemundo.ejemplo.com </a> </p>
+                <p> <b> CineMundo S.A. © 2026 - Todos los derechos reservados. </b> </p>
+                <hr color="black">
+            </section> <!-- Fin de atención al cliente -->
+        </main> <!-- Fin del contenido principal -->
+
+        <footer> <!-- Inicio del pie de página -->
+            <p>
+                <b> Roberto Carlos Rodríguez Magaña - 23400614 </b><br>
+                <b> Programación Web - Unidad 2: Ejercicio 5 </b>
+            </p>
+        </footer> <!-- Fin del pie de página -->
+    </body> <!-- Fin del cuerpo -->
+</html> <!-- Fin del documento HTML -->
