@@ -4,9 +4,7 @@
 
 **Completado**
 
-El cierre se refiere al desarrollo técnico principal del Hub.
-
-No depende de que la materia haya terminado.
+El cierre se refiere al desarrollo técnico principal del Hub y no depende de que la materia haya terminado.
 
 ---
 
@@ -14,13 +12,7 @@ No depende de que la materia haya terminado.
 
 El roadmap documentó mejoras del Hub como sistema.
 
-Por lo tanto, agregar posteriormente archivos de U3, U4 o U5 no constituye una nueva fase técnica.
-
-Esas acciones corresponden a:
-
-- actualización de contenido;
-- mantenimiento;
-- registro académico.
+Agregar posteriormente archivos de U3, U4 o U5 corresponde a actualización de contenido, mantenimiento y registro académico.
 
 ---
 
@@ -36,22 +28,27 @@ Esas acciones corresponden a:
 - [x] historial interactivo;
 - [x] explorador de trabajos;
 - [x] navegación avanzada;
-- [x] favoritos;
-- [x] destacados;
+- [x] favoritos y destacados;
 - [x] actividad reciente;
 - [x] estadísticas;
-- [x] build de producción;
-- [x] ofuscación opcional;
-- [x] responsive;
-- [x] media pantalla;
-- [x] pestañas verticales;
+- [x] responsive y media pantalla;
 - [x] panel de personalización;
 - [x] perfil Minimal predeterminado;
 - [x] navbar dinámica;
-- [x] colores de acento;
-- [x] densidad;
+- [x] colores de acento y densidad;
 - [x] iconos SVG;
-- [x] animaciones y efectos configurables.
+- [x] animaciones y efectos configurables;
+- [x] integración con el repositorio GitHub.
+
+---
+
+# Arquitectura de publicación actual
+
+El Hub utiliza directamente los archivos versionados del repositorio.
+
+No necesita mantener una segunda copia en `publicacion/`.
+
+El sistema de build protegido desarrollado durante la Fase 14 queda registrado como parte de la evolución histórica, pero ya no forma parte del flujo normal del portafolio.
 
 ---
 
@@ -59,16 +56,14 @@ Esas acciones corresponden a:
 
 Cuando se realice una actividad nueva:
 
-1. guardar el archivo en su unidad;
+1. guardar el archivo con un nombre descriptivo en su unidad;
 2. agregarlo a `data/unidades.json`;
 3. actualizar `HISTORIAL.md` cuando corresponda;
 4. cambiar el estado de la unidad cuando avance el curso;
-5. regenerar el build protegido solo cuando se necesite.
+5. hacer commit y push.
 
 ---
 
 # Fases
 
 **15 / 15 completadas.**
-
-No es necesario crear nuevas fases salvo que en el futuro se decida ampliar el Hub con un objetivo técnico completamente nuevo.
