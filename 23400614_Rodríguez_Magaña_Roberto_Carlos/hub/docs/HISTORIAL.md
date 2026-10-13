@@ -274,25 +274,6 @@ Se completó la preparación técnica de la Fase 14.
 
 Se verificó la generación de una versión protegida de producción, el funcionamiento mediante servidor local, la conservación de recursos, la navegación, el diseño responsivo y la adaptación a media pantalla con pestañas verticales.
 
-La publicación real permanece pendiente por decisión académica.
-
----
-
-### Preparación del cierre final
-
-**Tipo:** Planificación  
-**Estado:** En espera  
-**Unidad:** U3  
-**Fecha:** 2026-10-13  
-**Precisión:** Día  
-**Fuente:** Registro del Hub
-
-Se preparó la Fase 15 mediante `CIERRE.md`.
-
-La fase no se considera iniciada como cierre definitivo porque la materia continúa en la Unidad 3 y todavía faltan U4 y U5.
-
-El Hub continuará actualizándose conforme se realicen nuevas actividades.
-
 ---
 
 ### Personalización, iconos y animaciones
@@ -310,8 +291,6 @@ El usuario puede elegir qué secciones visualizar, utilizar perfiles rápidos, c
 
 También se incorporó iconografía SVG propia en la navegación y microanimaciones de entrada respetando `prefers-reduced-motion`.
 
-La mejora no agrega una nueva fase al roadmap.
-
 ---
 
 ### Perfil Minimal predeterminado y navegación sincronizada
@@ -325,9 +304,7 @@ La mejora no agrega una nueva fase al roadmap.
 
 La configuración inicial del Hub cambió al perfil Minimal para ofrecer una vista de portafolio más directa a nuevos visitantes.
 
-También se sincronizó la visibilidad de las secciones con los submenús del navbar. Al ocultar Historial, Roadmap, Estadísticas, Actividad reciente, Trabajos, Unidades u otras secciones con acceso de navegación, sus enlaces correspondientes desaparecen dinámicamente.
-
-La mejora no agrega una nueva fase al roadmap.
+También se sincronizó la visibilidad de las secciones con los submenús del navbar.
 
 ---
 
@@ -357,8 +334,34 @@ Con este cambio, las 15 fases quedan completadas.
 **Precisión:** Exacta  
 **Fuente:** GitHub
 
-Se decidió incorporar el Hub al repositorio académico `RobDev512/PW-AD2026`.
+Se incorporó el Hub al repositorio académico `RobDev512/PW-AD2026`.
 
-El código fuente se registra dentro de la carpeta del estudiante. La carpeta generada `publicacion/` y `node_modules/` permanecen fuera del control de versiones.
+---
 
-El Hub continuará actualizándose conforme se agreguen actividades reales de U3, U4 y U5.
+### Ejercicio 1 - Modelo de caja CSS
+
+**Tipo:** Actividad  
+**Estado:** Completado  
+**Unidad:** U3  
+**FechaHora:** 2026-10-13T19:08:22Z  
+**Precisión:** Exacta  
+**Fuente:** GitHub
+
+Se agregó el primer ejercicio de U3 para practicar dimensiones, `padding`, `border` y `margin` mediante una caja demostrativa.
+
+El archivo quedó organizado como `U3/Ejercicio1CSS.html` y registrado en `data/unidades.json`.
+
+---
+
+### Simplificación de publicación del Hub
+
+**Tipo:** Mejora  
+**Estado:** Completado  
+**Unidad:** U3  
+**FechaHora:** 2026-10-13T12:20:00-07:00  
+**Precisión:** Exacta  
+**Fuente:** GitHub
+
+Se retiró la carpeta de publicación como parte del flujo normal.
+
+El Hub utiliza directamente los archivos versionados del repositorio, evitando mantener una segunda copia del sitio. Las herramientas de build de la Fase 14 permanecen documentadas únicamente como parte de la evolución histórica.
