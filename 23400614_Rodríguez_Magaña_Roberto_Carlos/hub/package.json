@@ -1,0 +1,18 @@
+{
+    "name": "programacion-web-hub",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Herramientas locales de compilación para el portafolio académico de Programación Web.",
+    "type": "module",
+    "scripts": {
+        "build": "node build.mjs",
+        "build:protegido": "node build.mjs --obfuscate",
+        "preview": "serve ../publicacion -l 4173"
+    },
+    "devDependencies": {
+        "esbuild": "latest",
+        "html-minifier-terser": "latest",
+        "javascript-obfuscator": "latest",
+        "serve": "latest"
+    }
+}

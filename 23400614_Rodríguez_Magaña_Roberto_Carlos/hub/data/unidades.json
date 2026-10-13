@@ -1,0 +1,118 @@
+{
+  "materia": "Programación Web",
+  "unidadActual": 3,
+  "unidades": [
+    {
+      "numero": 1,
+      "titulo": "Introducción a las Aplicaciones Web",
+      "descripcion": "Fundamentos de aplicaciones web, arquitectura, tecnologías para el desarrollo web y uso de Git y GitHub para el control de versiones.",
+      "estado": "completada",
+      "temas": [
+        "Evolución de las aplicaciones web",
+        "Arquitectura de las aplicaciones web",
+        "Tecnologías para el desarrollo web",
+        "Planificación de aplicaciones web",
+        "Git y GitHub"
+      ],
+      "trabajos": [
+        {
+          "nombre": "Perfil personal",
+          "ruta": "../Perfil.md",
+          "tipo": "markdown",
+          "descripcion": "Documento de presentación personal creado durante las primeras prácticas con Git."
+        },
+        {
+          "nombre": "Comandos de Git",
+          "ruta": "../Comandos_Git.md",
+          "tipo": "markdown",
+          "descripcion": "Registro de comandos utilizados durante las prácticas de Git y GitHub."
+        },
+        {
+          "nombre": "Catálogo de Películas",
+          "ruta": "../U1/catalogo-peliculas/README.md",
+          "tipo": "markdown",
+          "descripcion": "Práctica de organización de archivos, ramas y control de versiones."
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "titulo": "HTML y CSS",
+      "descripcion": "Construcción de páginas web utilizando HTML, elementos semánticos, formularios, buenas prácticas y fundamentos de CSS.",
+      "estado": "completada",
+      "temas": [
+        "Estructura global de un documento Web",
+        "Texto, vínculos y listas",
+        "Tablas e imágenes",
+        "Formularios",
+        "Elementos semánticos",
+        "Buenas prácticas",
+        "Lenguajes de presentación",
+        "CSS"
+      ],
+      "trabajos": [
+        {
+          "nombre": "Ejercicio 1 - Receta Pan Francés",
+          "ruta": "../U2/Ejercicio1.html",
+          "tipo": "html",
+          "descripcion": "Página HTML para presentar una receta utilizando estructura, listas, imágenes y elementos semánticos."
+        },
+        {
+          "nombre": "Ejercicio 2 - Tears for Fears",
+          "ruta": "../U2/Ejercicio2.html",
+          "tipo": "html",
+          "descripcion": "Página dedicada al grupo Tears for Fears utilizando imágenes, enlaces, listas y organización semántica."
+        },
+        {
+          "nombre": "Ejercicio 5 - CineMundo",
+          "ruta": "../U2/Ejercicio5.html",
+          "tipo": "html",
+          "descripcion": "Sitio de una tienda de películas con navegación interna, tablas, formularios y elementos semánticos."
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "Programación del lado del cliente",
+      "descripcion": "Desarrollo de aplicaciones web dinámicas mediante programación ejecutada en el cliente y utilización de frameworks.",
+      "estado": "actual",
+      "temas": [
+        "Introducción al lenguaje",
+        "Manejo de Frameworks",
+        "Estructuras de Control",
+        "Manipulación de objetos"
+      ],
+      "trabajos": []
+    },
+    {
+      "numero": 4,
+      "titulo": "Programación del lado del servidor",
+      "descripcion": "Desarrollo de aplicaciones web dinámicas mediante programación del lado del servidor y conectividad con orígenes de datos.",
+      "estado": "pendiente",
+      "temas": [
+        "Introducción al lenguaje",
+        "Estructuras de Control",
+        "Tratamiento de Formularios",
+        "Manejo de objetos del servidor",
+        "Creación de clases",
+        "Acceso a datos"
+      ],
+      "trabajos": []
+    },
+    {
+      "numero": 5,
+      "titulo": "Cómputo en la nube y servicios",
+      "descripcion": "Uso de servicios y tecnologías de cómputo en la nube para lograr la interconectividad entre aplicaciones.",
+      "estado": "pendiente",
+      "temas": [
+        "Conceptos generales",
+        "Tipos de Servicios en la nube",
+        "Patrones de diseño",
+        "Estándares en servicios",
+        "Plataformas tecnológicas",
+        "Seguridad e interoperabilidad"
+      ],
+      "trabajos": []
+    }
+  ]
+}
