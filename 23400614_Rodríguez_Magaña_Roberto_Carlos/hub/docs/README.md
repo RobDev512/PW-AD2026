@@ -13,9 +13,9 @@ Hub académico para reunir, organizar y visualizar los trabajos realizados duran
 
 # Estado del Hub
 
-El desarrollo técnico principal del Hub quedó cerrado con **15 fases completadas**.
+El desarrollo técnico principal quedó cerrado con **15 fases completadas**.
 
-Esto no significa que la materia haya terminado. A partir de este punto, las nuevas actividades de U3, U4 y U5 se incorporarán como **contenido académico y mantenimiento normal**, no como nuevas fases de desarrollo del Hub.
+A partir de ahora, nuevas actividades de U3, U4 y U5 se incorporan como contenido académico y mantenimiento normal.
 
 Actualmente:
 
@@ -29,13 +29,13 @@ Actualmente:
 
 # Vista predeterminada
 
-El Hub abre en el perfil **Minimal** para presentar primero lo esencial del portafolio:
+El Hub abre en el perfil **Minimal** para presentar primero lo esencial:
 
 - identidad académica;
 - unidades;
 - trabajos.
 
-Desde el botón de configuración se pueden activar las herramientas complementarias.
+Desde Configuración se pueden activar las herramientas complementarias.
 
 ---
 
@@ -45,42 +45,32 @@ El Hub incluye:
 
 - carga dinámica de unidades mediante JSON;
 - progreso del curso;
-- tarjetas de trabajos;
-- vistas previas;
-- explorador general;
-- búsqueda y filtros;
+- tarjetas y vistas previas de trabajos;
+- explorador general con búsqueda y filtros;
 - favoritos mediante `localStorage`;
-- soporte para trabajos destacados;
+- soporte para destacados;
 - actividad reciente;
 - estadísticas académicas;
 - historial interactivo;
 - roadmap visual;
 - visor Markdown;
-- navegación agrupada;
-- navegación activa y offset;
-- adaptación responsive;
+- navegación agrupada y dinámica;
+- diseño responsive;
 - soporte para media pantalla y pestañas verticales;
-- scrollbar personalizada;
 - iconos SVG;
 - animaciones suaves;
 - panel de personalización;
 - perfiles de visualización;
 - colores de acento;
-- densidad visual;
-- ocultado dinámico de secciones y accesos del navbar;
-- build de producción;
-- minificación;
-- ofuscación JavaScript opcional.
+- densidad visual.
 
 ---
 
-# Arquitectura
+# Arquitectura actual
 
 ```text
 hub/
 ├── index.html
-├── package.json
-├── build.mjs
 ├── css/
 │   ├── estilos.css
 │   ├── navegacion.css
@@ -96,7 +86,6 @@ hub/
 │   ├── README.md
 │   ├── HISTORIAL.md
 │   ├── ROADMAP.md
-│   ├── PUBLICACION.md
 │   └── CIERRE.md
 └── js/
     ├── hub.js
@@ -111,125 +100,67 @@ hub/
 
 ---
 
+# Fuente única: repositorio GitHub
+
+El Hub utiliza directamente los archivos versionados del repositorio.
+
+`data/unidades.json`, los documentos Markdown y los trabajos de cada unidad forman parte de la misma estructura del repositorio.
+
+No se mantiene una segunda copia del sitio en `publicacion/`.
+
+Cuando el repositorio se sirve mediante GitHub Pages, los `fetch()` relativos del Hub leen los mismos archivos que están publicados en GitHub.
+
+---
+
 # Fuentes de datos
 
 ## `data/unidades.json`
 
-Fuente principal del estado académico actual.
-
-Contiene:
-
-- unidades;
-- temas;
-- estados;
-- trabajos;
-- rutas;
-- tipos;
-- descripciones.
+Contiene unidades, temas, estados, trabajos, rutas, tipos y descripciones.
 
 ## `docs/HISTORIAL.md`
 
-Registra hechos que ya ocurrieron.
-
-Es utilizado por:
-
-- Historial;
-- Actividad reciente;
-- Estadísticas.
+Registra hechos que ya ocurrieron y alimenta Historial, Actividad reciente y parte de las estadísticas.
 
 ## `docs/ROADMAP.md`
 
 Documenta las 15 fases de evolución técnica del Hub.
 
-Las 15 fases están cerradas.
-
----
-
-# Personalización
-
-La configuración se guarda localmente mediante:
-
-```text
-pw-hub-configuracion-v2
-```
-
-El usuario puede:
-
-- elegir qué secciones visualizar;
-- cambiar entre perfiles Completo, Académico y Minimal;
-- cambiar el color de acento;
-- elegir densidad visual;
-- activar o desactivar animaciones;
-- activar o desactivar efectos hover;
-- restablecer la configuración.
-
-Cuando una sección se desactiva, sus accesos correspondientes también desaparecen dinámicamente del navbar.
-
 ---
 
 # Flujo para nuevas actividades
 
-A partir del cierre técnico del Hub, una nueva actividad normalmente solo requiere:
+Una nueva actividad normalmente requiere:
 
-1. guardar el archivo en su unidad correspondiente;
-2. agregar el trabajo a `data/unidades.json`;
+1. guardar el archivo con un nombre descriptivo en su unidad;
+2. agregarlo a `data/unidades.json`;
 3. registrar un evento en `docs/HISTORIAL.md` cuando sea relevante;
-4. volver a generar la versión protegida si se desea actualizar `publicacion/`.
+4. hacer commit y push.
 
-No es necesario crear nuevas fases del roadmap.
+No es necesario duplicar archivos ni regenerar una carpeta de publicación.
 
 ---
 
 # Desarrollo local
 
-Debido al uso de `fetch()`, se recomienda ejecutar el Hub con **Live Server**, **Live Preview** o un servidor HTTP local.
-
----
-
-# Build de producción
-
-Primera instalación:
-
-```bash
-npm install
-```
-
-Build normal:
-
-```bash
-npm run build
-```
-
-Build protegido:
-
-```bash
-npm run build:protegido
-```
-
-Vista previa:
-
-```bash
-npm run preview
-```
-
-La versión protegida dificulta la lectura casual del JavaScript, pero no puede convertir código frontend en código secreto.
+Debido al uso de `fetch()`, se recomienda ejecutar el Hub con **Live Server**, **Live Preview** o cualquier servidor HTTP local.
 
 ---
 
 # Repositorio
 
-El Hub forma parte del repositorio académico:
+El Hub forma parte de:
 
 `RobDev512/PW-AD2026`
 
-dentro de la carpeta del estudiante:
+Ruta:
 
 `23400614_Rodríguez_Magaña_Roberto_Carlos/hub/`
+
+La carpeta del estudiante incluye un `index.html` que redirige al Hub para facilitar su acceso cuando el repositorio se sirva mediante GitHub Pages.
 
 ---
 
 # Nota académica
 
 El Hub funciona como portafolio complementario, índice y registro visual de Programación Web.
-
-Las nuevas actividades del curso continuarán incorporándose conforme avancen U3, U4 y U5.
