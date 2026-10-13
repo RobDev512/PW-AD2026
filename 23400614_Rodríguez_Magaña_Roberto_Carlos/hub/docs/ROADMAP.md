@@ -181,18 +181,15 @@ Calcular información académica automáticamente a partir de las fuentes existe
 
 ## Objetivo
 
-Preparar una versión de producción separada del código fuente.
+Probar una estrategia de producción separada del código fuente.
 
-## Implementado
+## Trabajo realizado
 
-- `package.json`;
-- `build.mjs`;
-- minificación;
-- ausencia de source maps;
-- ofuscación opcional;
-- build protegido;
-- servidor local de vista previa;
-- adaptación responsive comprobada.
+Durante esta fase se implementaron y probaron minificación, ausencia de source maps, ofuscación opcional y una copia separada de producción.
+
+Posteriormente se simplificó la arquitectura: el Hub pasó a utilizar directamente los archivos versionados del repositorio y la carpeta `publicacion/` dejó de formar parte del flujo actual.
+
+La Fase 14 permanece registrada porque documenta una etapa real de la evolución técnica, aunque sus herramientas de build ya no sean necesarias.
 
 ---
 
@@ -220,7 +217,7 @@ Cerrar la evolución técnica principal del Hub y dejar una experiencia configur
 - respeto por `prefers-reduced-motion`;
 - revisión del comportamiento responsive;
 - documentación final del funcionamiento;
-- publicación del código fuente del Hub en el repositorio académico.
+- integración del Hub con el repositorio académico.
 
 ## Resultado
 
