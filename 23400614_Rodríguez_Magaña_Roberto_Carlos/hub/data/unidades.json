@@ -82,7 +82,14 @@
         "Estructuras de Control",
         "Manipulación de objetos"
       ],
-      "trabajos": []
+      "trabajos": [
+        {
+          "nombre": "Ejercicio 1 - Modelo de caja CSS",
+          "ruta": "../U3/Ejercicio1CSS.html",
+          "tipo": "html",
+          "descripcion": "Ejercicio de CSS para practicar dimensiones, padding, border y margin mediante una caja demostrativa."
+        }
+      ]
     },
     {
       "numero": 4,
