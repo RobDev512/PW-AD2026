@@ -2,11 +2,13 @@
 
 ## Estado general
 
-**15 de 15 fases completadas.**
+**15 de 16 fases completadas.**
 
 El roadmap representa la evolución **técnica del Hub**, no el avance de las cinco unidades de la materia.
 
-A partir de este cierre, agregar tareas, actividades o proyectos de U3, U4 y U5 se considera mantenimiento y actualización de contenido, no una nueva fase del Hub.
+Las fases 1 a 15 documentan la construcción y cierre técnico original del Hub. Posteriormente se decidió abrir una **última Fase 16** para realizar un refinamiento final de identidad visual y experiencia de contenidos.
+
+Agregar tareas, actividades o proyectos de U3, U4 y U5 continúa considerándose mantenimiento y actualización de contenido, salvo cuando un cambio forme parte explícita de la Fase 16.
 
 ---
 
@@ -221,9 +223,9 @@ Cerrar la evolución técnica principal del Hub y dejar una experiencia configur
 
 ## Resultado
 
-El Hub queda técnicamente cerrado.
+La Fase 15 cerró correctamente el desarrollo técnico principal del Hub en ese momento.
 
-Las próximas modificaciones estarán ligadas principalmente al contenido real de Programación Web:
+Las modificaciones posteriores ligadas únicamente al contenido real de Programación Web continúan siendo mantenimiento normal:
 
 - nuevas actividades;
 - tareas;
@@ -231,12 +233,49 @@ Las próximas modificaciones estarán ligadas principalmente al contenido real d
 - proyectos;
 - cambios de estado de U3, U4 y U5.
 
-Estas actualizaciones no requieren nuevas fases.
+Posteriormente se decidió abrir una última fase de refinamiento visual y funcional sin invalidar el cierre histórico de esta fase.
 
 ---
 
-# Estado final del roadmap
+# Fase 16 - Identidad visual y experiencia de contenidos
 
-**Completado: 15 / 15**
+**Estado:** Pendiente
 
-El roadmap podrá seguir consultándose como historial de la evolución del Hub.
+## Objetivo
+
+Realizar una última etapa de refinamiento visual y funcional del Hub, reforzando su identidad propia y mejorando la forma en que se presentan los contenidos académicos.
+
+## Pendiente
+
+- diseñar un logo propio para el Hub;
+- crear un favicon basado en la nueva identidad visual;
+- incorporar un banner o hero principal;
+- mejorar la presentación visual del encabezado;
+- reforzar el diseño de tarjetas, botones, estados e indicadores;
+- revisar colores, sombras, espaciados y detalles visuales;
+- mantener compatibilidad con los perfiles de personalización existentes;
+- mejorar la presentación de trabajos destacados;
+- renderizar correctamente los archivos Markdown dentro del Hub;
+- evitar que los archivos `.md` de la Unidad 1 se abran como texto plano;
+- integrar `Perfil.md`, `Comandos_Git.md` y demás documentos Markdown en el visor del Hub;
+- aplicar estilos propios a títulos, listas, tablas, código, citas y enlaces renderizados desde Markdown;
+- revisar la experiencia responsive después de los cambios visuales;
+- realizar una revisión final de navegación y coherencia visual.
+
+## Resultado esperado
+
+El Hub contará con una identidad visual más reconocible y una experiencia de navegación más cuidada.
+
+Los documentos Markdown podrán consultarse directamente dentro de la interfaz del portafolio con formato HTML, sin necesidad de abrir los archivos como texto plano.
+
+Esta será la última fase de desarrollo estructural del Hub. Después de completarla, las modificaciones posteriores corresponderán únicamente al mantenimiento y a la incorporación de nuevas actividades de Programación Web.
+
+---
+
+# Estado actual del roadmap
+
+**Completado: 15 / 16**
+
+La Fase 16 corresponde al último refinamiento visual y funcional del Hub.
+
+Una vez completada, el roadmap quedará definitivamente cerrado.

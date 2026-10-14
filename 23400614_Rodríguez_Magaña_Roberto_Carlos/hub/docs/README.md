@@ -13,9 +13,15 @@ Hub académico para reunir, organizar y visualizar los trabajos realizados duran
 
 # Estado del Hub
 
-El desarrollo técnico principal quedó cerrado con **15 fases completadas**.
+El desarrollo técnico principal quedó cerrado originalmente con **15 fases completadas**.
 
-A partir de ahora, nuevas actividades de U3, U4 y U5 se incorporan como contenido académico y mantenimiento normal.
+Posteriormente se abrió una **última Fase 16** para realizar un refinamiento final de identidad visual y experiencia de contenidos.
+
+Estado actual del roadmap:
+
+**15 de 16 fases completadas.**
+
+La incorporación normal de nuevas actividades de U3, U4 y U5 continúa considerándose contenido académico y mantenimiento.
 
 Actualmente:
 
@@ -53,7 +59,7 @@ El Hub incluye:
 - estadísticas académicas;
 - historial interactivo;
 - roadmap visual;
-- visor Markdown;
+- visor Markdown para la documentación del Hub;
 - navegación agrupada y dinámica;
 - diseño responsive;
 - soporte para media pantalla y pestañas verticales;
@@ -63,6 +69,8 @@ El Hub incluye:
 - perfiles de visualización;
 - colores de acento;
 - densidad visual.
+
+La Fase 16 ampliará la experiencia visual e integrará correctamente los archivos Markdown de las actividades para evitar que se abran como texto plano.
 
 ---
 
@@ -108,7 +116,7 @@ El Hub utiliza directamente los archivos versionados del repositorio.
 
 No se mantiene una segunda copia del sitio en `publicacion/`.
 
-Cuando el repositorio se sirve mediante GitHub Pages, los `fetch()` relativos del Hub leen los mismos archivos que están publicados en GitHub.
+Cuando el repositorio se sirve mediante GitHub Pages, los `fetch()` relativos del Hub leen los archivos publicados por GitHub Pages a partir del repositorio.
 
 ---
 
@@ -124,7 +132,24 @@ Registra hechos que ya ocurrieron y alimenta Historial, Actividad reciente y par
 
 ## `docs/ROADMAP.md`
 
-Documenta las 15 fases de evolución técnica del Hub.
+Documenta las **16 fases** de evolución técnica del Hub.
+
+Actualmente las primeras 15 están completadas y la Fase 16 se encuentra pendiente.
+
+---
+
+# Fase 16
+
+La última fase contempla principalmente:
+
+- logo propio del Hub;
+- favicon;
+- banner o hero principal;
+- mejoras de identidad visual;
+- refinamiento de tarjetas, botones e indicadores;
+- renderizado interno de archivos Markdown de actividades;
+- estilos específicos para contenido Markdown;
+- revisión responsive y de coherencia visual.
 
 ---
 
@@ -153,11 +178,13 @@ El Hub forma parte de:
 
 `RobDev512/PW-AD2026`
 
-Ruta:
+Ruta del Hub:
 
 `23400614_Rodríguez_Magaña_Roberto_Carlos/hub/`
 
-La carpeta del estudiante incluye un `index.html` que redirige al Hub para facilitar su acceso cuando el repositorio se sirva mediante GitHub Pages.
+El acceso publicado mediante GitHub Pages utiliza directamente la ruta `/hub/`.
+
+La carpeta del estudiante ya no utiliza un `index.html` adicional de redirección fuera del Hub.
 
 ---
 

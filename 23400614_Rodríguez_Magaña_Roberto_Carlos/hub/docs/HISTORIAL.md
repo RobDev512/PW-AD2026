@@ -365,3 +365,20 @@ El archivo quedó organizado como `U3/Ejercicio1CSS.html` y registrado en `data/
 Se retiró la carpeta de publicación como parte del flujo normal.
 
 El Hub utiliza directamente los archivos versionados del repositorio, evitando mantener una segunda copia del sitio. Las herramientas de build de la Fase 14 permanecen documentadas únicamente como parte de la evolución histórica.
+
+---
+
+### Apertura de la Fase 16
+
+**Tipo:** Hito  
+**Estado:** Actual  
+**Unidad:** U3  
+**FechaHora:** 2026-10-13T23:26:00-07:00  
+**Precisión:** Exacta  
+**Fuente:** Registro del Hub
+
+Después del cierre técnico original de la Fase 15, se decidió abrir una última Fase 16 denominada **Identidad visual y experiencia de contenidos**.
+
+La fase contempla el diseño de un logo y favicon propios, la incorporación de un banner o hero principal, mejoras visuales generales y el renderizado interno de archivos Markdown de actividades para evitar que se abran como texto plano.
+
+La Fase 15 permanece registrada como un cierre histórico válido; la Fase 16 funciona como una última extensión deliberada antes del cierre definitivo del roadmap.
