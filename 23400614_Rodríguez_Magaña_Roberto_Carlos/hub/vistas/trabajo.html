@@ -4,7 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="dark">
-    <title>Trabajo - Programación Web</title>
+    <meta name="theme-color" content="#070d12">
+    <title>Trabajo - PW Hub</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="../assets/branding/favicon-32.png"
+    >
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="../assets/branding/favicon-16.png"
+    >
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="192x192"
+        href="../assets/branding/favicon-192.png"
+    >
+    <link
+        rel="apple-touch-icon"
+        sizes="192x192"
+        href="../assets/branding/favicon-192.png"
+    >
 
     <script
         src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
@@ -68,6 +93,25 @@
             border-bottom: 1px solid var(--borde);
             background: rgba(7, 13, 18, 0.94);
             backdrop-filter: blur(14px);
+        }
+
+        .barra-identidad {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .barra-logo {
+            flex: 0 0 auto;
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            filter:
+                drop-shadow(
+                    0 8px 16px
+                    rgba(0, 0, 0, 0.28)
+                );
         }
 
         .barra-titulo {
@@ -348,6 +392,15 @@
                 padding: 11px 12px;
             }
 
+            .barra-identidad {
+                gap: 9px;
+            }
+
+            .barra-logo {
+                width: 38px;
+                height: 38px;
+            }
+
             .barra-volver {
                 display: none;
             }
@@ -388,17 +441,26 @@
 
 <body>
     <header class="barra-trabajo">
-        <div class="barra-titulo">
-            <p
-                class="barra-etiqueta"
-                id="tipo-trabajo"
+        <div class="barra-identidad">
+            <img
+                src="../assets/branding/isotipo-pwhub.png"
+                alt=""
+                class="barra-logo"
+                aria-hidden="true"
             >
-                Trabajo
-            </p>
 
-            <h1 id="titulo-trabajo">
-                Cargando trabajo...
-            </h1>
+            <div class="barra-titulo">
+                <p
+                    class="barra-etiqueta"
+                    id="tipo-trabajo"
+                >
+                    Trabajo
+                </p>
+
+                <h1 id="titulo-trabajo">
+                    Cargando trabajo...
+                </h1>
+            </div>
         </div>
 
         <a
@@ -561,7 +623,7 @@
                 );
 
             document.title =
-                `${tituloTrabajo} - Programación Web`;
+                `${tituloTrabajo} - PW Hub`;
 
             configurarControles();
 
