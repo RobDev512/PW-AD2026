@@ -21,8 +21,8 @@ Además de los archivos correspondientes a cada unidad, se desarrolló un **Hub 
 
 | Unidad | Tema | Estado |
 | --- | --- | --- |
-| U1 | Introducción a las Aplicaciones Web | ✅ Completada |
-| U2 | HTML y CSS | ✅ Completada |
+| U1 | Introducción a las Aplicaciones Web | ✓ Completada |
+| U2 | HTML y CSS | ✓ Completada |
 | U3 | Programación del lado del cliente | 🟡 En curso |
 | U4 | Programación del lado del servidor | ⏳ Pendiente |
 | U5 | Cómputo en la nube y servicios | ⏳ Pendiente |
