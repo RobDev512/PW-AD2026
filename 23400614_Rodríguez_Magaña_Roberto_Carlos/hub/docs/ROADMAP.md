@@ -258,6 +258,9 @@ Realizar una última etapa de refinamiento visual y funcional del Hub, reforzand
 - renderizar correctamente los archivos Markdown dentro del Hub;
 - evitar que los archivos `.md` de la Unidad 1 se abran como texto plano;
 - integrar `Perfil.md`, `Comandos_Git.md` y demás documentos Markdown en el visor del Hub;
+- incorporar un visor dual para trabajos con modos **Diseño** y **Código**;
+- utilizar dos controles cuadrados flotantes en la esquina superior derecha de la vista previa, independientes de `Abrir trabajo` y `Cerrar`;
+- mantener un único modo activo a la vez, con estado visual destacado y persistencia del último modo utilizado durante la sesión;
 - aplicar estilos propios a títulos, listas, tablas, código, citas y enlaces renderizados desde Markdown;
 - revisar la experiencia responsive después de los cambios visuales;
 - realizar una revisión final de navegación y coherencia visual.

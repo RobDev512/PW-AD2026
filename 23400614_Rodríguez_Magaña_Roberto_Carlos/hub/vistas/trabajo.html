@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>Trabajo - Programación Web</title>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+        defer
+    ></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --fondo: #070d12;
+            --panel: #0e171f;
+            --borde: #253543;
+            --texto: #f4f7fa;
+            --texto-secundario: #9db0bf;
+            --acento: #35c9f3;
+            --papel: #f6f8fa;
+            --papel-texto: #1d252c;
+        }
+
+        html {
+            min-height: 100%;
+            background: var(--fondo);
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background:
+                radial-gradient(
+                    circle at 15% -10%,
+                    rgba(53, 201, 243, 0.08),
+                    transparent 30%
+                ),
+                var(--fondo);
+            color: var(--texto);
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+        }
+
+        .barra-trabajo {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 18px;
+            min-height: 72px;
+            padding:
+                12px
+                max(18px, calc((100vw - 1180px) / 2));
+            border-bottom: 1px solid var(--borde);
+            background: rgba(7, 13, 18, 0.94);
+            backdrop-filter: blur(14px);
+        }
+
+        .barra-titulo {
+            min-width: 0;
+        }
+
+        .barra-etiqueta {
+            margin: 0 0 3px;
+            color: var(--acento);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .barra-trabajo h1 {
+            overflow: hidden;
+            margin: 0;
+            font-size: clamp(17px, 2.5vw, 22px);
+            line-height: 1.25;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .barra-volver {
+            flex: 0 0 auto;
+            padding: 9px 13px;
+            border:
+                1px solid rgba(53, 201, 243, 0.45);
+            border-radius: 8px;
+            color: var(--acento);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .barra-volver:hover {
+            color: white;
+            border-color: var(--acento);
+            background:
+                rgba(53, 201, 243, 0.09);
+        }
+
+        .contenedor-trabajo {
+            width:
+                min(1180px, calc(100% - 32px));
+            margin: 28px auto 48px;
+        }
+
+        .visor {
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - 130px);
+            border:
+                1px solid rgba(53, 201, 243, 0.33);
+            border-radius: 16px;
+            background: var(--panel);
+            box-shadow:
+                0 22px 70px rgba(0, 0, 0, 0.28);
+        }
+
+        .controles {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+
+        .modo {
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            cursor: pointer;
+            border:
+                1px solid rgba(157, 176, 191, 0.35);
+            border-radius: 9px;
+            color: #b8c7d2;
+            background:
+                rgba(7, 13, 18, 0.94);
+            box-shadow:
+                0 8px 22px rgba(0, 0, 0, 0.24);
+            transition:
+                color 0.18s,
+                border-color 0.18s,
+                background-color 0.18s,
+                transform 0.18s,
+                box-shadow 0.18s;
+        }
+
+        .modo svg {
+            width: 21px;
+            height: 21px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .modo:hover:not(:disabled) {
+            color: white;
+            border-color:
+                rgba(53, 201, 243, 0.65);
+            transform: translateY(-1px);
+        }
+
+        .modo.activo {
+            color: #041d26;
+            border-color: var(--acento);
+            background: var(--acento);
+            box-shadow:
+                0 0 0 3px rgba(53, 201, 243, 0.14),
+                0 8px 22px rgba(0, 0, 0, 0.28);
+        }
+
+        .modo:disabled {
+            cursor: not-allowed;
+            opacity: 0.34;
+        }
+
+        .superficie {
+            min-height: calc(100vh - 130px);
+            background: white;
+        }
+
+        .estado {
+            display: grid;
+            min-height: calc(100vh - 130px);
+            place-items: center;
+            padding: 80px 26px 30px;
+            color: var(--texto-secundario);
+            background: var(--panel);
+            text-align: center;
+        }
+
+        .frame {
+            display: block;
+            width: 100%;
+            height: calc(100vh - 130px);
+            min-height: 560px;
+            border: 0;
+            background: white;
+        }
+
+        .markdown {
+            min-height: calc(100vh - 130px);
+            padding:
+                76px
+                clamp(24px, 5vw, 58px)
+                45px;
+            color: var(--papel-texto);
+            background: var(--papel);
+            line-height: 1.75;
+        }
+
+        .markdown > * {
+            max-width: 920px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .markdown h1,
+        .markdown h2,
+        .markdown h3,
+        .markdown h4 {
+            color: #111820;
+            line-height: 1.28;
+        }
+
+        .markdown h1,
+        .markdown h2 {
+            padding-bottom: 0.35em;
+            border-bottom: 1px solid #e3e8ed;
+        }
+
+        .markdown img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .markdown a {
+            color: #087ca5;
+        }
+
+        .markdown pre {
+            overflow-x: auto;
+            padding: 18px;
+            border-radius: 10px;
+            color: #edf6fb;
+            background: #111820;
+        }
+
+        .markdown code {
+            font-family:
+                Consolas,
+                "Cascadia Code",
+                "Courier New",
+                monospace;
+        }
+
+        .markdown :not(pre) > code {
+            padding: 2px 6px;
+            border-radius: 5px;
+            color: #263640;
+            background: #edf1f4;
+        }
+
+        .markdown blockquote {
+            padding: 10px 18px;
+            border-left:
+                4px solid var(--acento);
+            color: #475762;
+            background: #f4f8fa;
+        }
+
+        .markdown table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .markdown th,
+        .markdown td {
+            padding: 10px 12px;
+            border: 1px solid #d9e1e8;
+            text-align: left;
+        }
+
+        .markdown th {
+            background: #eef4f7;
+        }
+
+        .codigo {
+            min-height: calc(100vh - 130px);
+            margin: 0;
+            padding: 76px 26px 40px;
+            overflow-x: auto;
+            color: #dce8ef;
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(53, 201, 243, 0.025),
+                    transparent 150px
+                ),
+                #0b1219;
+            white-space: pre;
+            tab-size: 4;
+            font-family:
+                Consolas,
+                "Cascadia Code",
+                "Courier New",
+                monospace;
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .imagen {
+            display: grid;
+            min-height: calc(100vh - 130px);
+            place-items: center;
+            padding: 76px 28px 32px;
+            background: var(--papel);
+        }
+
+        .imagen img {
+            max-width: 100%;
+            max-height: calc(100vh - 175px);
+            object-fit: contain;
+        }
+
+        @media (max-width: 650px) {
+            .barra-trabajo {
+                padding: 11px 12px;
+            }
+
+            .barra-volver {
+                display: none;
+            }
+
+            .contenedor-trabajo {
+                width: calc(100% - 16px);
+                margin: 8px auto 18px;
+            }
+
+            .visor {
+                border-radius: 11px;
+            }
+
+            .controles {
+                top: 10px;
+                right: 10px;
+                gap: 6px;
+            }
+
+            .modo {
+                width: 39px;
+                height: 39px;
+            }
+
+            .markdown,
+            .codigo {
+                padding-top: 66px;
+            }
+
+            .codigo {
+                padding-left: 16px;
+                padding-right: 16px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="barra-trabajo">
+        <div class="barra-titulo">
+            <p
+                class="barra-etiqueta"
+                id="tipo-trabajo"
+            >
+                Trabajo
+            </p>
+
+            <h1 id="titulo-trabajo">
+                Cargando trabajo...
+            </h1>
+        </div>
+
+        <a
+            href="../index.html"
+            class="barra-volver"
+            id="volver-hub"
+        >
+            Volver al Hub
+        </a>
+    </header>
+
+    <main class="contenedor-trabajo">
+        <section class="visor">
+            <div
+                class="controles"
+                role="group"
+                aria-label="Modo de visualización"
+            >
+                <button
+                    type="button"
+                    class="modo"
+                    id="modo-diseno"
+                    aria-label="Ver diseño"
+                    title="Ver diseño"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6-9.5-6Z"
+                        ></path>
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="2.7"
+                        ></circle>
+                    </svg>
+                </button>
+
+                <button
+                    type="button"
+                    class="modo"
+                    id="modo-codigo"
+                    aria-label="Ver código"
+                    title="Ver código"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="m8.5 7-5 5 5 5"></path>
+                        <path d="m15.5 7 5 5-5 5"></path>
+                        <path d="m13.5 4-3 16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div
+                class="superficie"
+                id="superficie"
+            >
+                <div class="estado">
+                    Cargando trabajo...
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let rutaTrabajo = "";
+        let tipoTrabajo = "";
+        let tituloTrabajo = "";
+        let fuenteTrabajo = "";
+        let modoActual = "diseno";
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+                configurarVolverHub();
+                iniciarVisor();
+            }
+        );
+
+        function configurarVolverHub() {
+            const volver =
+                document.getElementById(
+                    "volver-hub"
+                );
+
+            if (!volver) {
+                return;
+            }
+
+            volver.addEventListener(
+                "click",
+                (evento) => {
+                    try {
+                        const referencia =
+                            document.referrer
+                                ? new URL(
+                                    document.referrer
+                                )
+                                : null;
+
+                        const mismaAplicacion =
+                            referencia &&
+                            referencia.origin ===
+                                window.location.origin &&
+                            referencia.pathname.includes(
+                                "/hub/"
+                            );
+
+                        if (
+                            mismaAplicacion &&
+                            window.history.length > 1
+                        ) {
+                            evento.preventDefault();
+                            window.history.back();
+                        }
+                    } catch {
+                        // Si no se puede validar la referencia,
+                        // el enlace normal a index.html sigue funcionando.
+                    }
+                }
+            );
+        }
+
+        async function iniciarVisor() {
+            const parametros =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+            rutaTrabajo =
+                parametros.get("archivo") || "";
+
+            tipoTrabajo =
+                normalizarTipo(
+                    parametros.get("tipo") ||
+                    obtenerTipoDesdeRuta(
+                        rutaTrabajo
+                    )
+                );
+
+            tituloTrabajo =
+                parametros.get("titulo") ||
+                "Trabajo";
+
+            document.getElementById(
+                "titulo-trabajo"
+            ).textContent =
+                tituloTrabajo;
+
+            document.getElementById(
+                "tipo-trabajo"
+            ).textContent =
+                formatearTipo(
+                    tipoTrabajo
+                );
+
+            document.title =
+                `${tituloTrabajo} - Programación Web`;
+
+            configurarControles();
+
+            if (!rutaTrabajo) {
+                mostrarError(
+                    "No se indicó un archivo para mostrar."
+                );
+                return;
+            }
+
+            const modos =
+                obtenerModosDisponibles();
+
+            modoActual =
+                modos.diseno
+                    ? "diseno"
+                    : "codigo";
+
+            actualizarControles();
+            await renderizarModo();
+        }
+
+        function configurarControles() {
+            document.getElementById(
+                "modo-diseno"
+            ).addEventListener(
+                "click",
+                async () => {
+                    if (
+                        !obtenerModosDisponibles()
+                            .diseno
+                    ) {
+                        return;
+                    }
+
+                    modoActual = "diseno";
+                    actualizarControles();
+                    await renderizarModo();
+                }
+            );
+
+            document.getElementById(
+                "modo-codigo"
+            ).addEventListener(
+                "click",
+                async () => {
+                    if (
+                        !obtenerModosDisponibles()
+                            .codigo
+                    ) {
+                        return;
+                    }
+
+                    modoActual = "codigo";
+                    actualizarControles();
+                    await renderizarModo();
+                }
+            );
+        }
+
+        function actualizarControles() {
+            const modos =
+                obtenerModosDisponibles();
+
+            [
+                ["diseno", "modo-diseno"],
+                ["codigo", "modo-codigo"]
+            ].forEach(
+                ([modo, id]) => {
+                    const boton =
+                        document.getElementById(
+                            id
+                        );
+
+                    const disponible =
+                        Boolean(modos[modo]);
+
+                    const activo =
+                        disponible &&
+                        modo === modoActual;
+
+                    boton.disabled =
+                        !disponible;
+
+                    boton.classList.toggle(
+                        "activo",
+                        activo
+                    );
+
+                    boton.setAttribute(
+                        "aria-pressed",
+                        activo
+                            ? "true"
+                            : "false"
+                    );
+                }
+            );
+        }
+
+        async function renderizarModo() {
+            const superficie =
+                document.getElementById(
+                    "superficie"
+                );
+
+            superficie.innerHTML = `
+                <div class="estado">
+                    ${
+                        modoActual === "codigo"
+                            ? "Cargando código..."
+                            : "Cargando diseño..."
+                    }
+                </div>
+            `;
+
+            try {
+                if (
+                    modoActual === "codigo"
+                ) {
+                    await renderizarCodigo(
+                        superficie
+                    );
+                } else {
+                    await renderizarDiseno(
+                        superficie
+                    );
+                }
+            } catch (error) {
+                console.error(error);
+
+                mostrarError(
+                    "No fue posible cargar el trabajo. Abre el Hub mediante un servidor local o GitHub Pages."
+                );
+            }
+        }
+
+        async function renderizarDiseno(
+            superficie
+        ) {
+            if (
+                tipoTrabajo === "html" ||
+                tipoTrabajo === "pdf"
+            ) {
+                superficie.innerHTML = `
+                    <iframe
+                        src="${rutaTrabajo}"
+                        class="frame"
+                        title="${escaparHtml(tituloTrabajo)}"
+                    ></iframe>
+                `;
+                return;
+            }
+
+            if (
+                tipoTrabajo === "markdown"
+            ) {
+                const fuente =
+                    await cargarFuente();
+
+                superficie.innerHTML = `
+                    <article class="markdown">
+                        ${
+                            window.marked
+                                ? marked.parse(
+                                    fuente
+                                )
+                                : `<pre>${escaparHtml(fuente)}</pre>`
+                        }
+                    </article>
+                `;
+
+                corregirRutasMarkdown(
+                    superficie,
+                    rutaTrabajo
+                );
+                return;
+            }
+
+            if (esImagen(tipoTrabajo)) {
+                superficie.innerHTML = `
+                    <div class="imagen">
+                        <img
+                            src="${rutaTrabajo}"
+                            alt="${escaparHtml(tituloTrabajo)}"
+                        >
+                    </div>
+                `;
+                return;
+            }
+
+            mostrarError(
+                "Este tipo de archivo no cuenta con una vista de diseño."
+            );
+        }
+
+        async function renderizarCodigo(
+            superficie
+        ) {
+            const fuente =
+                await cargarFuente();
+
+            let contenido = fuente;
+
+            if (
+                tipoTrabajo === "json"
+            ) {
+                try {
+                    contenido =
+                        JSON.stringify(
+                            JSON.parse(fuente),
+                            null,
+                            2
+                        );
+                } catch {
+                    contenido = fuente;
+                }
+            }
+
+            const pre =
+                document.createElement(
+                    "pre"
+                );
+
+            pre.className = "codigo";
+            pre.textContent = contenido;
+
+            superficie.innerHTML = "";
+            superficie.appendChild(pre);
+        }
+
+        async function cargarFuente() {
+            if (fuenteTrabajo) {
+                return fuenteTrabajo;
+            }
+
+            const respuesta =
+                await fetch(rutaTrabajo);
+
+            if (!respuesta.ok) {
+                throw new Error(
+                    "No fue posible cargar el archivo."
+                );
+            }
+
+            fuenteTrabajo =
+                await respuesta.text();
+
+            return fuenteTrabajo;
+        }
+
+        function obtenerModosDisponibles() {
+            if (
+                tipoTrabajo === "pdf" ||
+                esImagen(tipoTrabajo)
+            ) {
+                return {
+                    diseno: true,
+                    codigo: false
+                };
+            }
+
+            if (
+                tipoTrabajo === "html" ||
+                tipoTrabajo === "markdown"
+            ) {
+                return {
+                    diseno: true,
+                    codigo: true
+                };
+            }
+
+            return {
+                diseno: false,
+                codigo: true
+            };
+        }
+
+        function corregirRutasMarkdown(
+            contenedor,
+            rutaDocumento
+        ) {
+            const urlDocumento =
+                new URL(
+                    rutaDocumento,
+                    window.location.href
+                );
+
+            const urlBase =
+                new URL(
+                    ".",
+                    urlDocumento
+                );
+
+            contenedor
+                .querySelectorAll("img")
+                .forEach((imagen) => {
+                    const src =
+                        imagen.getAttribute(
+                            "src"
+                        );
+
+                    if (
+                        src &&
+                        esRutaRelativa(src)
+                    ) {
+                        imagen.src =
+                            new URL(
+                                src,
+                                urlBase
+                            ).href;
+                    }
+                });
+
+            contenedor
+                .querySelectorAll("a")
+                .forEach((enlace) => {
+                    const href =
+                        enlace.getAttribute(
+                            "href"
+                        );
+
+                    if (
+                        href &&
+                        esRutaRelativa(href)
+                    ) {
+                        enlace.href =
+                            new URL(
+                                href,
+                                urlBase
+                            ).href;
+                    }
+
+                    enlace.target =
+                        "_blank";
+
+                    enlace.rel =
+                        "noopener noreferrer";
+                });
+        }
+
+        function mostrarError(mensaje) {
+            document.getElementById(
+                "superficie"
+            ).innerHTML = `
+                <div class="estado">
+                    ${escaparHtml(mensaje)}
+                </div>
+            `;
+        }
+
+        function obtenerTipoDesdeRuta(
+            ruta
+        ) {
+            const extension =
+                String(ruta || "")
+                    .split(".")
+                    .pop()
+                    .toLowerCase();
+
+            return normalizarTipo(
+                extension
+            );
+        }
+
+        function normalizarTipo(tipo) {
+            const valor =
+                String(tipo || "")
+                    .toLowerCase();
+
+            if (valor === "md") {
+                return "markdown";
+            }
+
+            if (valor === "htm") {
+                return "html";
+            }
+
+            if (valor === "txt") {
+                return "texto";
+            }
+
+            return valor || "archivo";
+        }
+
+        function formatearTipo(tipo) {
+            const mapa = {
+                html: "HTML",
+                markdown: "Markdown",
+                pdf: "PDF",
+                texto: "Texto",
+                css: "CSS",
+                js: "JavaScript",
+                json: "JSON"
+            };
+
+            return (
+                mapa[tipo] ||
+                "Trabajo"
+            );
+        }
+
+        function esImagen(tipo) {
+            return [
+                "png",
+                "jpg",
+                "jpeg",
+                "gif",
+                "webp",
+                "svg"
+            ].includes(tipo);
+        }
+
+        function esRutaRelativa(ruta) {
+            return !(
+                ruta.startsWith("http://") ||
+                ruta.startsWith("https://") ||
+                ruta.startsWith("#") ||
+                ruta.startsWith("mailto:") ||
+                ruta.startsWith("data:")
+            );
+        }
+
+        function escaparHtml(texto) {
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.textContent =
+                String(texto ?? "");
+
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
