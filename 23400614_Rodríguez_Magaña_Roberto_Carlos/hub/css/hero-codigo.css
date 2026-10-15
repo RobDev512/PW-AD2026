@@ -1,6 +1,15 @@
 /* =========================================================
    PW HUB - HERO GENERADO COMPLETAMENTE CON HTML + CSS
-   No utiliza una imagen de fondo.
+
+   Fase 16:
+   - composición creada con código, sin imagen de fondo;
+   - identidad PW Hub + TecNM + ITT integrada;
+   - altura reducida y proporciones equilibradas;
+   - responsive final centralizado en 900, 620 y 420 px;
+   - animaciones compatibles con prefers-reduced-motion.
+
+   Este archivo elimina breakpoints y reglas de prueba
+   anteriores para conservar una sola versión activa.
    ========================================================= */
 
 .encabezado-principal.encabezado-con-hero {
@@ -736,291 +745,6 @@
     }
 }
 
-/* ---------------------------------------------------------
-   RESPONSIVE
-   --------------------------------------------------------- */
-
-@media (max-width: 760px) {
-    .hero-pwhub {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .hero-branding {
-        gap: 18px;
-    }
-
-    .hero-logo-pwhub {
-        height: 66px;
-        max-width: 330px;
-    }
-
-    .hero-logo-tecnm {
-        height: 60px;
-        max-width: 245px;
-    }
-
-    .hero-logo-itt {
-        width: 64px;
-        height: 64px;
-    }
-
-    .hero-contenido {
-        max-width: 720px;
-    }
-
-    .hero-visual {
-        width: min(590px, 100%);
-        min-height: 240px;
-        justify-self: center;
-    }
-
-    .hero-ventana {
-        right: 50%;
-        transform:
-            translate(50%, -52%)
-            rotateY(-4deg)
-            rotateX(1deg);
-    }
-
-    .hero-base {
-        right: 50%;
-        transform:
-            translateX(50%)
-            perspective(500px)
-            rotateX(56deg);
-    }
-}
-
-@media (max-width: 650px) {
-    .encabezado-principal.encabezado-con-hero {
-        padding: 0;
-    }
-
-    .hero-pwhub {
-        min-height: auto;
-        padding: 20px 18px 26px;
-        border-radius: 0 0 22px 22px;
-    }
-
-    .hero-branding {
-        flex-direction: column;
-        align-items: center;
-        gap: 13px;
-        margin-bottom: 2px;
-        padding-bottom: 13px;
-    }
-
-    .hero-marca-pwhub {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .hero-logo-pwhub {
-        width: min(270px, 76vw);
-        height: auto;
-        max-width: 270px;
-    }
-
-    .hero-logos-institucionales {
-        width: auto;
-        max-width: 100%;
-        justify-content: center;
-        gap: 12px;
-        padding: 8px 11px;
-        border-radius: 13px;
-    }
-
-    .hero-logo-tecnm {
-        width: min(205px, 52vw);
-        height: auto;
-        max-height: 56px;
-    }
-
-    .hero-logo-itt {
-        width: 56px;
-        height: 56px;
-    }
-
-    .hero-separador-logos {
-        height: 42px;
-    }
-
-    .hero-pwhub::before {
-        opacity: 0.11;
-        background-size: 30px 30px;
-    }
-
-    .hero-contenido {
-        text-align: center;
-    }
-
-    .hero-etiqueta {
-        justify-content: center;
-    }
-
-    .hero-contenido h1 {
-        margin-left: auto;
-        margin-right: auto;
-        font-size: clamp(39px, 13vw, 55px);
-        letter-spacing: -2px;
-    }
-
-    .hero-descripcion {
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 14px;
-    }
-
-    .hero-datos {
-        justify-content: center;
-        font-size: 11px;
-    }
-
-    .hero-datos p:first-child {
-        justify-content: center;
-    }
-
-    .hero-tecnologias {
-        justify-content: center;
-    }
-
-    .hero-visual {
-        min-height: 205px;
-        margin-top: 4px;
-    }
-
-    .hero-ventana {
-        width: 94%;
-        height: 195px;
-    }
-
-    .hero-ventana-barra {
-        height: 35px;
-    }
-
-    .hero-editor {
-        height: calc(100% - 35px);
-        grid-template-columns: 34px 1fr;
-    }
-
-    .hero-editor-lateral {
-        gap: 12px;
-        padding-top: 15px;
-    }
-
-    .hero-editor-lateral span {
-        width: 10px;
-        height: 10px;
-    }
-
-    .hero-codigo {
-        padding: 20px 12px;
-    }
-
-    .linea {
-        min-height: 20px;
-        font-size: clamp(7px, 2.1vw, 9px);
-    }
-
-    .linea b {
-        width: 21px;
-    }
-
-    .sangria {
-        padding-left: 11px;
-    }
-
-    .hero-cursor {
-        height: 13px;
-        margin-left: 33px;
-    }
-
-    .hero-base {
-        width: 96%;
-    }
-
-    .hero-panel-html {
-        width: 70px;
-        height: 42px;
-        left: -4px;
-        top: 18px;
-        font-size: 10px;
-    }
-
-    .hero-panel-css {
-        width: 63px;
-        height: 44px;
-        right: -4px;
-        top: 34px;
-        font-size: 9px;
-    }
-
-    .hero-panel-js {
-        width: 46px;
-        height: 46px;
-        left: 1%;
-        bottom: 14px;
-        font-size: 11px;
-    }
-}
-
-@media (max-width: 430px) {
-    .hero-branding {
-        gap: 13px;
-    }
-
-    .hero-logo-pwhub {
-        width: min(235px, 78vw);
-    }
-
-    .hero-logo-tecnm {
-        width: min(160px, 48vw);
-        max-height: 44px;
-    }
-
-    .hero-logo-itt {
-        width: 44px;
-        height: 44px;
-    }
-
-    .hero-separador-logos {
-        height: 36px;
-    }
-
-    .hero-visual {
-        min-height: 188px;
-    }
-
-    .hero-ventana {
-        height: 178px;
-    }
-
-    .hero-codigo {
-        padding-top: 16px;
-    }
-
-    .linea {
-        min-height: 18px;
-        font-size: 7px;
-    }
-
-    .hero-panel-html,
-    .hero-panel-css {
-        display: none;
-    }
-}
-
-/* Respeta la configuración de accesibilidad del usuario. */
-@media (prefers-reduced-motion: reduce) {
-    .hero-cursor,
-    .hero-panel-html,
-    .hero-panel-css,
-    .hero-panel-js {
-        animation: none;
-    }
-}
-
 /* =========================================================
    REFINAMIENTO FINAL DEL HERO
    - identidad institucional integrada al tema oscuro;
@@ -1314,7 +1038,7 @@
    Conserva las dos columnas para que el banner no crezca.
    --------------------------------------------------------- */
 
-@media (min-width: 621px) and (max-width: 900px) {
+@media (min-width: 621px) and (max-width: 650px) {
     .hero-pwhub {
         grid-template-columns:
             minmax(0, 1fr)
@@ -1578,6 +1302,277 @@
     .hero-panel-html,
     .hero-panel-css {
         display: none;
+    }
+}
+
+/* ---------------------------------------------------------
+   ACCESIBILIDAD
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-cursor,
+    .hero-panel-html,
+    .hero-panel-css,
+    .hero-panel-js {
+        animation: none;
+    }
+}
+
+/* =========================================================
+   AJUSTE RESPONSIVE - BRANDING ESTRECHO
+   Mantiene el logo horizontal de PW Hub y evita que el
+   encabezado de marcas ocupe demasiado alto.
+   ========================================================= */
+
+@media (max-width: 620px) {
+    .hero-branding {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+
+    .hero-marca-pwhub {
+        width: auto;
+        flex: 1 1 42%;
+        min-width: 0;
+        justify-content: flex-start;
+    }
+
+    .hero-logo-pwhub {
+        width: min(175px, 39vw);
+        max-width: 175px;
+        height: auto;
+    }
+
+    .hero-institucion {
+        flex: 0 1 auto;
+        width: auto;
+        max-width: 54%;
+        gap: 5px;
+        padding: 6px 8px;
+        border-radius: 12px;
+    }
+
+    .hero-logos-institucionales {
+        width: auto;
+        gap: 7px;
+    }
+
+    .hero-logo-tecnm {
+        width: min(115px, 27vw);
+        max-width: 115px;
+        height: auto;
+        max-height: 34px;
+    }
+
+    .hero-logo-itt {
+        width: 36px;
+        height: 36px;
+    }
+
+    .hero-separador-logos {
+        height: 25px;
+    }
+
+    .hero-institucion-texto {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-branding {
+        gap: 7px;
+    }
+
+    .hero-logo-pwhub {
+        width: min(145px, 40vw);
+        max-width: 145px;
+    }
+
+    .hero-institucion {
+        max-width: 55%;
+        padding: 5px 7px;
+    }
+
+    .hero-logo-tecnm {
+        width: min(92px, 26vw);
+        max-width: 92px;
+        max-height: 29px;
+    }
+
+    .hero-logo-itt {
+        width: 31px;
+        height: 31px;
+    }
+
+    .hero-separador-logos {
+        height: 22px;
+    }
+}
+
+/* =========================================================
+   AJUSTE FINO - ALINEACIÓN DEL LOGO PW HUB EN MÓVIL
+   Compensa el espacio transparente interno del PNG para que
+   el logo se perciba alineado con el borde visual del hero.
+   ========================================================= */
+
+@media (max-width: 620px) {
+    .hero-logo-pwhub {
+        margin-left: -10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-logo-pwhub {
+        margin-left: -8px;
+    }
+}
+
+/* =========================================================
+   AJUSTE RESPONSIVE V3
+   - alineación fina del logo PW Hub;
+   - protección contra overflow horizontal accidental.
+   ========================================================= */
+
+/*
+   `clip` evita que decoraciones o transformaciones visuales
+   generen scroll horizontal de página sin crear un nuevo
+   contenedor de scroll como ocurriría con `overflow: hidden`.
+*/
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+.hero-pwhub {
+    max-width: 100%;
+}
+
+@media (max-width: 620px) {
+    /*
+       El PNG horizontal conserva margen transparente interno.
+       Este desplazamiento compensa ese margen óptico y deja
+       la marca más cercana al borde visual del banner.
+    */
+    .hero-logo-pwhub {
+        margin-left: -20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-logo-pwhub {
+        margin-left: -18px;
+    }
+}
+
+/* =========================================================
+   AJUSTE RESPONSIVE V4 - BLOQUE INSTITUCIONAL
+   El espacio señalado estaba dentro del contenedor de
+   TecNM + ITT, no en el logo principal de PW Hub.
+   ========================================================= */
+
+@media (max-width: 620px) {
+    /*
+       Forzamos al bloque institucional a medir únicamente
+       lo que realmente ocupan sus logos.
+
+       `width: fit-content` evita que el contenedor conserve
+       espacio libre antes del logo TecNM cuando la vista
+       se hace estrecha.
+    */
+    .hero-institucion {
+        flex:
+            0 0 auto;
+
+        width:
+            fit-content;
+
+        max-width:
+            none;
+
+        justify-content:
+            flex-start;
+
+        padding-left:
+            7px;
+
+        padding-right:
+            7px;
+    }
+
+    .hero-logos-institucionales {
+        flex:
+            0 0 auto;
+
+        width:
+            fit-content;
+
+        justify-content:
+            flex-start;
+    }
+
+    .hero-logo-tecnm {
+        margin:
+            0;
+
+        transform:
+            none;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-institucion {
+        padding-left:
+            5px;
+
+        padding-right:
+            5px;
+    }
+}
+
+/* =========================================================
+   AJUSTE FINAL - RECORTE ÓPTICO DEL LOGO TECNM
+   ========================================================= */
+
+/*
+   El espacio observado pertenece al PNG oficial de TecNM:
+   contiene margen transparente antes de la parte visible.
+   El margen negativo reduce ese espacio dentro del flex sin
+   desplazar el logo principal de PW Hub.
+*/
+
+@media (max-width: 650px) {
+    .hero-logo-pwhub {
+        margin-left: 0 !important;
+    }
+
+    .hero-institucion,
+    .hero-logos-institucionales {
+        width: fit-content;
+    }
+
+    .hero-logo-tecnm {
+        margin-left: -24px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-logo-tecnm {
+        margin-left: -20px;
+    }
+}
+
+/* =========================================================
+   FASE 16 - TECNM EN ESCRITORIO Y MEDIA PANTALLA
+   El ajuste óptico del PNG se limita a <= 760 px.
+   ========================================================= */
+
+@media (min-width: 651px) {
+    .hero-logo-tecnm {
+        margin-left: 0 !important;
     }
 }
 

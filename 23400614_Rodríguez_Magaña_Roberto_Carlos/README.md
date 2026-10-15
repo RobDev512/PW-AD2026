@@ -130,9 +130,33 @@ Entre los avances de esta fase ya se encuentran:
 - modos Diseño y Código;
 - integración de logo y favicon;
 - familia completa de branding;
-- pruebas y refinamiento de un hero generado por código.
+- roadmap visual jerárquico con conexiones Canvas;
+- hero generado por código, consolidado y con identidad institucional integrada;
+- reducción y equilibrio de la altura del banner;
+- ajuste del roadmap visual para pantallas amplias;
+- compactación del branding del hero en vistas estrechas.
+- corrección del tronco Canvas para mantener ramas continuas;
+- corrección del overflow horizontal causado por el Canvas al redimensionar;
+- protección frente a desplazamiento horizontal accidental de la página.
+- ajuste del contenedor institucional TecNM + ITT en vistas estrechas.
+- compensación del margen transparente interno del logo TecNM;
+- navegación inferior compacta para celular;
+- paneles móviles dinámicos para Curso y Explorar;
+- Configuración flotante independiente de la navbar.
+- comportamiento sticky restaurado en escritorio y media pantalla;
+- navegación dinámica sincronizada con Configuración;
+- corrección del logo TecNM en media pantalla.
+- breakpoint móvil reducido a 650 px para separar correctamente media pantalla de vista angosta;
+- agrupación visual de Explorar y Documentación dentro del panel móvil.
+- navbar horizontal compactada en media pantalla para conservar una sola fila.
+- panel móvil corregido para respetar perfiles y secciones ocultas desde Configuración.
+- separación correcta entre Roadmap visual y `ROADMAP.md` renderizado en Documentación.
+- refinamiento final de tarjetas, botones, estados e indicadores;
+- mejora visual de trabajos destacados;
+- revisión final de sombras, espaciados y coherencia visual;
+- safe-area móvil, foco visible y soporte para movimiento reducido.
 
-Quedan pendientes principalmente ajustes de navegación móvil, configuración flotante y la revisión responsive final.
+La Fase 16 fue completada y validada. El roadmap estructural del PW Hub queda cerrado en 16 / 16 fases; los cambios posteriores corresponden a mantenimiento y actualización de contenidos académicos.
 
 ---
 

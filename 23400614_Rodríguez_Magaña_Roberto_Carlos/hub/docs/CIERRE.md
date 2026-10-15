@@ -64,18 +64,50 @@ La Fase 16 es una excepción deliberada: se añadió como última etapa estructu
 - [x] incorporar modos Diseño y Código;
 - [x] abrir trabajos en la misma pestaña;
 - [x] conservar navegación de regreso al Hub cuando el historial del navegador lo permite.
+- [x] convertir el roadmap en una estructura visual jerárquica;
+- [x] dibujar sus conexiones mediante Canvas;
+- [x] consolidar el hero generado mediante HTML y CSS;
+- [x] integrar visualmente PW Hub, TecNM e ITT dentro del hero;
+- [x] reducir y equilibrar la altura del banner;
+- [x] compactar el roadmap visual en pantallas amplias;
+- [x] compactar el branding del hero en vistas estrechas;
+- [x] corregir conexiones Canvas que podían quedar visualmente separadas;
+- [x] corregir el crecimiento horizontal del Canvas al redimensionar;
+- [x] impedir overflow horizontal accidental del documento;
+- [x] ajustar el contenedor TecNM + ITT al contenido real en vista estrecha;
+- [x] compensar el margen transparente del logo TecNM en vista estrecha;
+- [x] sacar Configuración de la navbar y convertirla en control flotante;
+- [x] implementar una barra inferior compacta para móvil;
+- [x] convertir Curso y Explorar en paneles móviles dinámicos;
+- [x] mantener acceso a Documentación desde Explorar en móvil;
+- [x] restaurar sticky de navbar en escritorio y media pantalla;
+- [x] sincronizar navbar con los cambios realizados desde Configuración;
+- [x] limitar el ajuste óptico de TecNM a vistas angostas;
+- [x] reducir el breakpoint de navegación móvil a 650 px;
+- [x] separar visualmente Explorar y Documentación dentro del panel móvil;
+- [x] mantener Inicio, Curso, Explorar, Documentación y GitHub en una sola fila en media pantalla;
+- [x] hacer que el panel móvil respete las secciones ocultas por Configuración y los perfiles;
+- [x] separar la vista visual del Roadmap de su renderizado Markdown en Documentación;
+- [x] mantener compatibilidad con perfiles Minimal, Académico y Completo;
+- [x] reforzar tarjetas, botones, estados e indicadores;
+- [x] mejorar la jerarquía visual de los trabajos destacados;
+- [x] revisar colores, sombras y espaciados;
+- [x] completar la revisión responsive funcional;
+- [x] completar la revisión de navegación y coherencia visual;
+- [x] incorporar safe-area móvil, foco visible y movimiento reducido;
 
 ---
 
-# Trabajo actual de la Fase 16
+# Cierre de la Fase 16
 
-- [ ] finalizar el hero principal generado mediante HTML y CSS;
-- [ ] cerrar el refinamiento de los logos integrados dentro del hero;
-- [ ] validar proporciones y altura del banner en distintos tamaños de pantalla.
+- [x] validar el paquete final en escritorio;
+- [x] validar el paquete final en media pantalla;
+- [x] validar el paquete final en ventana angosta;
+- [x] validar el paquete final en celular;
+- [x] cerrar el roadmap estructural en 16 / 16 fases.
 
-El hero ya fue desarrollado y probado localmente, pero permanece marcado como trabajo actual hasta completar su revisión responsive.
+La Fase 16 queda **Completada**. No existen tareas estructurales abiertas. El Hub entra en etapa de mantenimiento y actualización de contenidos académicos.
 
----
 
 # Pendientes para el cierre definitivo
 

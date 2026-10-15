@@ -1340,12 +1340,25 @@ function dibujarConectoresRoadmap(
     const rectMapa =
         mapa.getBoundingClientRect();
 
+    /*
+       El ancho del canvas debe seguir el ancho VISIBLE del mapa.
+
+       Antes se utilizaba mapa.scrollWidth. Como el propio canvas es
+       un hijo absoluto del mapa, después de ciertos cambios de tamaño
+       podía terminar participando en el cálculo del scrollWidth y
+       alimentar un crecimiento horizontal acumulativo.
+
+       Resultado anterior:
+       - aparecía espacio vacío a la derecha;
+       - la página permitía scroll horizontal;
+       - el problema podía empeorar al redimensionar varias veces.
+
+       Ahora el canvas usa exclusivamente el ancho real del contenedor.
+       La altura sí puede seguir el contenido vertical del roadmap.
+    */
     const ancho =
         Math.max(
             1,
-            Math.ceil(
-                mapa.scrollWidth
-            ),
             Math.ceil(
                 rectMapa.width
             )
@@ -1847,11 +1860,6 @@ function dibujarTroncoLateralCanvas(
     const primerHijo =
         hijos[0];
 
-    const ultimoHijo =
-        hijos[
-            hijos.length - 1
-        ];
-
     const haciaDerecha =
         primerHijo.cx >=
         padre.cx;
@@ -1872,6 +1880,35 @@ function dibujarTroncoLateralCanvas(
             finX
         ) / 2;
 
+    /*
+       El tronco debe cubrir TODAS las ramas, incluso cuando
+       una categoría queda visualmente por encima del centro
+       de la tarjeta padre.
+
+       Antes el tronco comenzaba en padre.cy y solo bajaba
+       hasta el último hijo. Si el primer hijo estaba arriba
+       de padre.cy, su derivación horizontal quedaba flotando.
+    */
+    const centrosY = [
+        padre.cy,
+        ...hijos.map(
+            hijo => hijo.cy
+        )
+    ];
+
+    const inicioTroncoY =
+        Math.min(
+            ...centrosY
+        );
+
+    const finTroncoY =
+        Math.max(
+            ...centrosY
+        );
+
+    /*
+       Conexión padre -> tronco.
+    */
     dibujarLineaCanvas(
         contexto,
         [
@@ -1882,16 +1919,34 @@ function dibujarTroncoLateralCanvas(
             {
                 x: troncoX,
                 y: padre.cy
-            },
-            {
-                x: troncoX,
-                y: ultimoHijo.cy
             }
         ],
         color,
         grosor
     );
 
+    /*
+       Un único tronco vertical cubre el rango completo.
+    */
+    dibujarLineaCanvas(
+        contexto,
+        [
+            {
+                x: troncoX,
+                y: inicioTroncoY
+            },
+            {
+                x: troncoX,
+                y: finTroncoY
+            }
+        ],
+        color,
+        grosor
+    );
+
+    /*
+       Todas las ramas nacen del mismo tronco continuo.
+    */
     hijos.forEach(hijo => {
         dibujarLineaCanvas(
             contexto,

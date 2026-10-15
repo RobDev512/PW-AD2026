@@ -1,354 +1,951 @@
 /* =========================================================
    NAVEGACIÓN AGRUPADA DEL HUB
-   =========================================================
- */
+   ========================================================= */
 
 .navegacion-hub {
-    position: sticky;
-    top: 0;
-    z-index: 1500;
-    padding: 15px 24px;
-    border-bottom: 1px solid rgba(37, 53, 67, 0.78);
-    background-color: rgba(7, 13, 18, 0.94);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    padding:
+        15px 24px;
 }
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
 
 .navegacion-interior {
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     flex-wrap: nowrap;
+
     width: 100%;
+
     gap: 14px;
 }
+
+
+/* =========================================================
+   BOTONES DE PRIMER NIVEL
+   ========================================================= */
 
 .navegacion-hub .navegacion-interior > a,
 .nav-desplegable-boton {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
     min-height: 54px;
-    padding: 13px 22px;
-    border: 1px solid transparent;
+
+    padding:
+        13px 22px;
+
+    border:
+        1px solid transparent;
+
     border-radius: 10px;
+
     color: #d6e0ea;
-    background-color: transparent;
+
+    background-color:
+        transparent;
+
     text-decoration: none;
+
     font-family: inherit;
+
     font-size: 17px;
     font-weight: 700;
+
     white-space: nowrap;
+
     cursor: pointer;
-    transition: color 0.2s,
+
+    transition:
+        color 0.2s,
         background-color 0.2s,
         border-color 0.2s,
         transform 0.2s,
         box-shadow 0.2s;
 }
 
+
 .navegacion-hub .navegacion-interior > a:hover,
 .nav-desplegable-boton:hover,
 .nav-desplegable.abierto .nav-desplegable-boton {
     color: white;
-    background-color: rgba(54, 197, 240, 0.09);
-    border-color: rgba(54, 197, 240, 0.42);
-    transform: translateY(-2px);
-    box-shadow: 0 7px 18px rgba(54, 197, 240, 0.07);
+
+    background-color:
+        rgba(54, 197, 240, 0.09);
+
+    border-color:
+        rgba(54, 197, 240, 0.42);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(54, 197, 240, 0.07);
 }
+
+
+/* =========================================================
+   ESTADO ACTIVO SEGÚN SCROLL
+   ========================================================= */
 
 .navegacion-hub .nav-activo {
     color: white !important;
-    border-color: rgba(54, 197, 240, 0.48) !important;
-    background-color: rgba(54, 197, 240, 0.10) !important;
-    box-shadow: inset 0 -2px 0 var(--azul-claro);
+
+    border-color:
+        rgba(54, 197, 240, 0.48) !important;
+
+    background-color:
+        rgba(54, 197, 240, 0.10) !important;
+
+    box-shadow:
+        inset 0 -2px 0
+        var(--azul-claro);
 }
+
 
 .nav-desplegable-menu .nav-subactivo {
     color: white;
-    border-color: rgba(54, 197, 240, 0.30);
-    background-color: rgba(54, 197, 240, 0.09);
+
+    border-color:
+        rgba(54, 197, 240, 0.30);
+
+    background-color:
+        rgba(54, 197, 240, 0.09);
 }
+
 
 .nav-desplegable-menu .nav-subactivo span {
     color: white;
-    border-color: rgba(54, 197, 240, 0.58);
-    background-color: rgba(54, 197, 240, 0.16);
+
+    border-color:
+        rgba(54, 197, 240, 0.58);
+
+    background-color:
+        rgba(54, 197, 240, 0.16);
 }
+
+
+/* =========================================================
+   CONTENEDOR DESPLEGABLE
+   ========================================================= */
 
 .nav-desplegable {
     position: relative;
 }
 
+
 .nav-desplegable-boton {
     gap: 10px;
 }
 
+
 .nav-flecha {
     display: inline-block;
-    color: var(--azul-claro);
+
+    color:
+        var(--azul-claro);
+
     font-size: 15px;
-    transition: transform 0.2s;
+
+    transition:
+        transform 0.2s;
 }
 
+
 .nav-desplegable.abierto .nav-flecha {
-    transform: rotate(180deg);
+    transform:
+        rotate(180deg);
 }
+
+
+/* =========================================================
+   MENÚ DESPLEGABLE
+   ========================================================= */
 
 .nav-desplegable-menu {
     position: absolute;
-    top: calc(100% + 11px);
+
+    top:
+        calc(100% + 11px);
+
     left: 50%;
-    z-index: 1600;
+
+    z-index: 1100;
+
     width: 410px;
+
     overflow: hidden;
+
     padding: 10px;
-    border: 1px solid var(--borde);
+
+    border:
+        1px solid var(--borde);
+
     border-radius: 14px;
-    background-color: rgba(15, 22, 30, 0.99);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.38);
-    backdrop-filter: blur(14px);
-    transform: translateX(-50%);
+
+    background-color:
+        rgba(15, 22, 30, 0.99);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.38);
+
+    backdrop-filter:
+        blur(14px);
+
+    transform:
+        translateX(-50%);
 }
+
 
 .nav-menu-compacto {
     width: 350px;
 }
 
+
 .nav-desplegable-menu[hidden] {
     display: none !important;
 }
 
+
+/* =========================================================
+   ELEMENTOS INTERNOS DEL MENÚ
+   ========================================================= */
+
 .nav-desplegable-menu a,
 .nav-menu-accion {
     display: grid;
-    grid-template-columns: 44px 1fr;
+
+    grid-template-columns:
+        44px 1fr;
+
     align-items: center;
+
     gap: 12px;
+
     width: 100%;
+
     min-height: 60px;
-    padding: 12px 13px;
-    border: 1px solid transparent;
+
+    padding:
+        12px 13px;
+
+    border:
+        1px solid transparent;
+
     border-radius: 9px;
-    color: #cbd6df;
-    background-color: transparent;
+
+    color:
+        #cbd6df;
+
+    background-color:
+        transparent;
+
     text-align: left;
+
     text-decoration: none;
+
     font-family: inherit;
+
     font-size: 15px;
     font-weight: 500;
+
     line-height: 1.45;
+
     cursor: pointer;
-    transition: color 0.2s,
+
+    transition:
+        color 0.2s,
         background-color 0.2s,
         border-color 0.2s;
 }
 
+
 .nav-desplegable-menu a span,
 .nav-menu-accion span {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
+
     width: 38px;
     height: 38px;
-    border: 1px solid rgba(54, 197, 240, 0.3);
+
+    border:
+        1px solid
+        rgba(54, 197, 240, 0.3);
+
     border-radius: 50%;
-    color: var(--azul-claro);
-    background-color: rgba(54, 197, 240, 0.05);
+
+    color:
+        var(--azul-claro);
+
+    background-color:
+        rgba(54, 197, 240, 0.05);
+
     font-size: 10px;
     font-weight: bold;
+
     letter-spacing: 0.5px;
 }
+
 
 .nav-desplegable-menu a:hover,
 .nav-desplegable-menu a:focus-visible,
 .nav-menu-accion:hover,
 .nav-menu-accion:focus-visible {
     color: white;
-    border-color: rgba(54, 197, 240, 0.3);
-    background-color: rgba(54, 197, 240, 0.08);
+
+    border-color:
+        rgba(54, 197, 240, 0.3);
+
+    background-color:
+        rgba(54, 197, 240, 0.08);
+
     outline: none;
 }
 
+
+/* =========================================================
+   SEPARADOR
+   ========================================================= */
+
 .nav-separador {
     height: 1px;
-    margin: 7px 9px;
-    background-color: var(--borde);
+
+    margin:
+        7px 9px;
+
+    background-color:
+        var(--borde);
 }
 
+
+/* =========================================================
+   GITHUB
+   ========================================================= */
+
 .navegacion-hub .nav-github {
-    color: var(--azul-suave);
+    color:
+        var(--azul-suave);
 }
+
+
+/* =========================================================
+   SCROLLBAR PERSONALIZADA
+   ========================================================= */
+
+/* Firefox */
 
 html {
     scrollbar-width: thin;
-    scrollbar-color: var(--azul-claro) #090e13;
+
+    scrollbar-color:
+        var(--azul-claro)
+        #090e13;
+
     scrollbar-gutter: stable;
 }
+
+
+/* Chrome, Edge y Safari */
 
 ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
 }
 
+
 ::-webkit-scrollbar-track {
-    background: #090e13;
+    background:
+        #090e13;
 }
+
 
 ::-webkit-scrollbar-thumb {
     min-height: 60px;
-    border: 3px solid #090e13;
+
+    border:
+        3px solid #090e13;
+
     border-radius: 20px;
-    background: linear-gradient(
+
+    background:
+        linear-gradient(
             180deg,
             var(--azul-claro),
             var(--azul)
         );
 }
 
+
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(
+    background:
+        linear-gradient(
             180deg,
             var(--azul-suave),
             var(--azul-claro)
         );
 }
 
+
 ::-webkit-scrollbar-corner {
-    background: #090e13;
+    background:
+        #090e13;
 }
 
-@media (max-width: 1100px) and (min-width: 561px) {
-    .navegacion-hub {
-        padding: 10px 12px;
-    }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
     .navegacion-interior {
-        justify-content: space-between;
-        flex-wrap: nowrap;
-        gap: 4px;
+        flex-wrap: wrap;
     }
+
+
     .navegacion-hub .navegacion-interior > a,
     .nav-desplegable-boton {
-        min-height: 46px;
-        padding: 9px 11px;
-        font-size: 14px;
-    }
-    .nav-desplegable-boton {
-        gap: 7px;
-    }
-    .nav-flecha {
-        font-size: 12px;
-    }
-    .nav-desplegable-menu {
-        width: min(360px, calc(100vw - 28px));
-        max-height: calc(100vh - 105px);
-        overflow-y: auto;
-    }
-    .nav-menu-compacto {
-        width: min(325px, calc(100vw - 28px));
-    }
-    #menu-curso {
-        left: 0;
-        transform: none;
-    }
-    #menu-documentacion {
-        right: 0;
-        left: auto;
-        transform: none;
-    }
-    .nav-desplegable-menu a,
-    .nav-menu-accion {
-        min-height: 54px;
-        grid-template-columns: 40px 1fr;
-        gap: 10px;
-        padding: 10px 11px;
-        font-size: 13.5px;
-    }
-    .nav-desplegable-menu a span,
-    .nav-menu-accion span {
-        width: 34px;
-        height: 34px;
+        min-height: 50px;
+
+        padding:
+            11px 18px;
+
+        font-size: 16px;
     }
 }
 
-@media (max-width: 560px) {
+
+@media (max-width: 650px) {
     .navegacion-hub {
-        padding: 10px 12px;
+        position: static;
+
+        padding:
+            12px;
     }
+
+
     .navegacion-interior {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 7px;
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 8px;
     }
+
+
     .navegacion-hub .navegacion-interior > a,
     .nav-desplegable,
     .nav-desplegable-boton {
         width: 100%;
     }
-    .navegacion-hub .navegacion-interior > a,
-    .nav-desplegable-boton {
-        min-height: 46px;
-        padding: 9px 10px;
-        font-size: 14px;
-    }
-    .navegacion-hub .nav-github {
-        grid-column: 1 / -1;
-    }
+
+
     .nav-desplegable {
         position: static;
     }
+
+
+    .nav-desplegable-menu,
+    .nav-menu-compacto {
+        position: static;
+
+        grid-column:
+            1 / -1;
+
+        width: 100%;
+
+        margin-top: 8px;
+
+        transform: none;
+    }
+
+
+    .nav-desplegable-menu a,
+    .nav-menu-accion {
+        min-height: 56px;
+
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 430px) {
+    .navegacion-interior {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .navegacion-hub .navegacion-interior > a,
+    .nav-desplegable-boton {
+        min-height: 52px;
+
+        font-size: 16px;
+    }
+}
+
+/* =========================================================
+   FASE 16 - NAVEGACIÓN MÓVIL COMPACTA
+   ========================================================= */
+
+.nav-solo-movil {
+    display: none !important;
+}
+
+.nav-movil-capa {
+    display: none;
+}
+
+@media (max-width: 650px) {
+    body {
+        padding-bottom: 92px;
+    }
+
+    .navegacion-hub {
+        position: fixed;
+        top: auto;
+        right: 10px;
+        bottom: 10px;
+        left: 10px;
+        z-index: 2500;
+
+        padding: 7px;
+
+        border: 1px solid
+            rgba(53, 201, 243, 0.25);
+
+        border-radius: 18px;
+
+        background:
+            rgba(7, 13, 18, 0.94);
+
+        box-shadow:
+            0 16px 42px
+            rgba(0, 0, 0, 0.42);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+    }
+
+    .navegacion-interior {
+        display: grid;
+
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+
+        gap: 5px;
+    }
+
+    /*
+       En móvil Documentación forma parte del panel Explorar,
+       por lo que no ocupa un quinto botón principal.
+    */
+    .nav-documentacion {
+        display: none !important;
+    }
+
+    .navegacion-hub
+    .navegacion-interior
+    > a,
+    .nav-desplegable,
+    .nav-desplegable-boton {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .navegacion-hub
+    .navegacion-interior
+    > a,
+    .nav-desplegable-boton {
+        position: relative;
+
+        min-height: 58px;
+
+        padding: 7px 4px;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 3px;
+
+        border-radius: 12px;
+
+        font-size: 10px;
+        line-height: 1.05;
+
+        text-align: center;
+    }
+
+    .navegacion-hub
+    .icono-nav {
+        width: 21px;
+        height: 21px;
+    }
+
+    .navegacion-hub
+    .nav-flecha {
+        position: absolute;
+
+        top: 7px;
+        right: 7px;
+
+        font-size: 9px;
+    }
+
+    .nav-desplegable {
+        position: static;
+    }
+
+    /*
+       Menús Curso / Explorar:
+       panel inferior independiente del flujo de la página.
+    */
     .nav-desplegable-menu,
     .nav-menu-compacto,
     #menu-curso,
-    #menu-documentacion {
-        position: absolute;
-        top: calc(100% + 7px);
-        right: 12px;
-        left: 12px;
+    #menu-explorar {
+        position: fixed;
+
+        top: auto;
+        right: 10px;
+        bottom: 88px;
+        left: 10px;
+
+        z-index: 2600;
+
         width: auto;
-        max-height: min(62vh, 430px);
+        max-height:
+            min(
+                62dvh,
+                520px
+            );
+
         margin: 0;
+
+        overflow-x: hidden;
         overflow-y: auto;
+
+        padding: 10px;
+
+        border-radius: 18px;
+
         transform: none;
+
+        box-shadow:
+            0 20px 60px
+            rgba(0, 0, 0, 0.52);
     }
+
     .nav-desplegable-menu a,
     .nav-menu-accion {
         min-height: 52px;
-        grid-template-columns: 39px 1fr;
-        gap: 9px;
+
+        grid-template-columns:
+            38px
+            minmax(0, 1fr);
+
+        gap: 10px;
+
         padding: 9px 10px;
+
         font-size: 13px;
     }
+
     .nav-desplegable-menu a span,
     .nav-menu-accion span {
         width: 33px;
         height: 33px;
     }
+
+    #menu-explorar
+    .nav-solo-movil {
+        display: grid !important;
+    }
+
+    #menu-explorar
+    .nav-separador.nav-solo-movil {
+        display: block !important;
+    }
+
+    /*
+       Capa oscura al abrir Curso o Explorar.
+    */
+    .nav-movil-capa {
+        position: fixed;
+        inset: 0;
+
+        z-index: 2400;
+
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        padding: 0;
+        border: 0;
+
+        background:
+            rgba(2, 7, 12, 0.56);
+
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+    }
+
+    .nav-movil-capa[hidden] {
+        display: none !important;
+    }
+
+    body.nav-movil-panel-abierto {
+        overflow: hidden;
+    }
+
+    /*
+       Deja espacio de lectura para la barra fija.
+    */
+    main > section,
+    .unidad-card,
+    .visor-markdown {
+        scroll-margin-top: 20px;
+        scroll-margin-bottom: 110px;
+    }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 390px) {
     .navegacion-hub {
-        position: sticky;
-        top: 0;
+        right: 6px;
+        bottom: 6px;
+        left: 6px;
     }
-    .navegacion-interior {
-        grid-template-columns: 1fr;
-    }
-    .navegacion-hub .nav-github {
-        grid-column: auto;
-    }
-    .navegacion-hub .navegacion-interior > a,
+
+    .navegacion-hub
+    .navegacion-interior
+    > a,
     .nav-desplegable-boton {
-        min-height: 48px;
-        font-size: 15px;
+        min-height: 55px;
+        font-size: 9px;
     }
+
     .nav-desplegable-menu,
     .nav-menu-compacto,
     #menu-curso,
-    #menu-documentacion {
-        position: static;
-        width: 100%;
-        max-height: none;
-        margin-top: 7px;
+    #menu-explorar {
+        right: 6px;
+        bottom: 82px;
+        left: 6px;
     }
 }
+
+/* =========================================================
+   FASE 16 - RESTAURAR NAVEGACIÓN DE ESCRITORIO
+   La barra móvil solo debe modificar vistas <= 760 px.
+   ========================================================= */
+
+@media (min-width: 651px) {
+    .navegacion-hub {
+        position: sticky;
+        top: 0;
+        z-index: 1500;
+
+        border-bottom:
+            1px solid
+            rgba(37, 53, 67, 0.78);
+
+        background-color:
+            rgba(7, 13, 18, 0.94);
+
+        backdrop-filter:
+            blur(14px);
+
+        -webkit-backdrop-filter:
+            blur(14px);
+    }
+
+    /*
+       En escritorio y media pantalla se conserva la
+       navegación horizontal original.
+    */
+    .navegacion-interior {
+        position: relative;
+    }
+}
+
+/* =========================================================
+   TÍTULOS INTERNOS DEL PANEL EXPLORAR EN MÓVIL
+   ========================================================= */
+
+.nav-grupo-titulo {
+    display: none;
+}
+
+@media (max-width: 650px) {
+    #menu-explorar
+    .nav-grupo-titulo.nav-solo-movil {
+        display: flex !important;
+
+        align-items: center;
+        gap: 8px;
+
+        margin: 5px 7px 7px;
+        padding: 3px 4px;
+
+        color: var(--azul-claro);
+
+        font-size: 9px;
+        font-weight: 850;
+        letter-spacing: 1.5px;
+        line-height: 1.2;
+
+        text-transform: uppercase;
+    }
+
+    #menu-explorar
+    .nav-grupo-titulo.nav-solo-movil::before {
+        content: "";
+
+        width: 16px;
+        height: 1px;
+
+        flex: 0 0 auto;
+
+        background:
+            rgba(53, 201, 243, 0.5);
+    }
+
+    #menu-explorar
+    .nav-grupo-titulo[hidden] {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   FASE 16 - NAVBAR DE MEDIA PANTALLA EN UNA SOLA FILA
+   ========================================================= */
+
+/*
+   Entre 651 y 900 px todavía usamos la navegación horizontal.
+   El responsive antiguo permitía `flex-wrap: wrap`, por eso
+   GitHub podía saltar a una segunda fila.
+
+   Aquí compactamos ligeramente botones y espacios, pero
+   conservamos todos los accesos visibles en una sola línea.
+*/
+@media (min-width: 651px) and (max-width: 900px) {
+    .navegacion-hub {
+        padding:
+            12px
+            clamp(
+                10px,
+                2vw,
+                18px
+            );
+    }
+
+    .navegacion-interior {
+        flex-wrap:
+            nowrap !important;
+
+        gap:
+            clamp(
+                3px,
+                0.8vw,
+                8px
+            );
+    }
+
+    .navegacion-hub
+    .navegacion-interior
+    > a,
+    .nav-desplegable-boton {
+        min-height:
+            48px;
+
+        padding:
+            9px
+            clamp(
+                8px,
+                1.3vw,
+                13px
+            );
+
+        font-size:
+            clamp(
+                12px,
+                1.55vw,
+                15px
+            );
+
+        flex:
+            0 1 auto;
+    }
+
+    .nav-desplegable-boton {
+        gap:
+            6px;
+    }
+
+    .navegacion-hub
+    .icono-nav {
+        width:
+            17px;
+
+        height:
+            17px;
+    }
+
+    .nav-flecha {
+        font-size:
+            11px;
+    }
+}
+
+/* =========================================================
+   FASE 16 - RESPETAR [hidden] EN EL PANEL MÓVIL
+   ========================================================= */
+
+/*
+   El selector móvil que muestra `.nav-solo-movil` usa
+   `display: grid !important`.
+
+   Eso podía imponerse sobre el atributo `[hidden]` que
+   personalizacion.js/navegacion.js agregan al ocultar
+   Documentación en el perfil Minimal.
+
+   Estas reglas tienen mayor especificidad y garantizan que
+   cualquier opción marcada como hidden permanezca oculta.
+*/
+@media (max-width: 650px) {
+    #menu-explorar
+    .nav-solo-movil[hidden],
+    #menu-explorar
+    .nav-menu-accion[hidden],
+    #menu-explorar
+    a[hidden],
+    #menu-explorar
+    .nav-separador[hidden],
+    #menu-explorar
+    .nav-grupo-titulo[hidden] {
+        display:
+            none !important;
+    }
+}
+

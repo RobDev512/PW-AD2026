@@ -38,6 +38,7 @@
         <link rel="stylesheet" href="css/historial.css">
         <link rel="stylesheet" href="css/roadmap.css">
         <link rel="stylesheet" href="css/personalizacion.css">
+        <link rel="stylesheet" href="css/refinamiento-final.css">
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
         <script src="js/hub.js" defer></script>
         <script src="js/navegacion.js" defer></script>
@@ -66,7 +67,7 @@
                     <picture class="hero-marca-pwhub">
                         <source
                             media="(max-width: 650px)"
-                            srcset="assets/branding/logo-pwhub-compacto.png"
+                            srcset="assets/branding/logo-pwhub-horizontal.png"
                         >
                         <img
                             src="assets/branding/logo-pwhub-horizontal.png"
@@ -225,14 +226,68 @@
                 <div class="nav-desplegable">
                     <button type="button" class="nav-desplegable-boton" aria-expanded="false" aria-controls="menu-explorar">Explorar<span class="nav-flecha" aria-hidden="true">▾</span></button>
                     <div class="nav-desplegable-menu nav-menu-compacto" id="menu-explorar" hidden>
+                        <p
+                            class="nav-grupo-titulo nav-solo-movil"
+                            data-nav-grupo="explorar"
+                        >
+                            Explorar
+                        </p>
+
                         <a href="#actividad"><span>AR</span>Actividad reciente</a>
                         <a href="#trabajos"><span>TR</span>Todos los trabajos</a>
                         <a href="#estadisticas"><span>ES</span>Estadísticas</a>
                         <a href="#historial"><span>HI</span>Historial</a>
                         <a href="#roadmap"><span>RM</span>Roadmap</a>
+
+                        <div
+                            class="nav-separador nav-solo-movil"
+                            aria-hidden="true"
+                        ></div>
+
+                        <p
+                            class="nav-grupo-titulo nav-solo-movil"
+                            data-nav-grupo="documentacion"
+                        >
+                            Documentación
+                        </p>
+
+                        <a
+                            href="#documentacion"
+                            class="nav-solo-movil"
+                        >
+                            <span>DC</span>
+                            Centro de documentación
+                        </a>
+
+                        <button
+                            type="button"
+                            class="nav-menu-accion nav-solo-movil"
+                            data-nav-doc="README.md"
+                        >
+                            <span>RD</span>
+                            README
+                        </button>
+
+                        <button
+                            type="button"
+                            class="nav-menu-accion nav-solo-movil"
+                            data-nav-doc="HISTORIAL.md"
+                        >
+                            <span>HI</span>
+                            Historial Markdown
+                        </button>
+
+                        <button
+                            type="button"
+                            class="nav-menu-accion nav-solo-movil"
+                            data-nav-doc="ROADMAP.md"
+                        >
+                            <span>RM</span>
+                            Roadmap Markdown
+                        </button>
                     </div>
                 </div>
-                <div class="nav-desplegable">
+                <div class="nav-desplegable nav-documentacion">
                     <button type="button" class="nav-desplegable-boton" aria-expanded="false" aria-controls="menu-documentacion">Documentación<span class="nav-flecha" aria-hidden="true">▾</span></button>
                     <div class="nav-desplegable-menu nav-menu-compacto" id="menu-documentacion" hidden>
                         <a href="#documentacion"><span>DC</span>Centro de documentación</a>
@@ -242,12 +297,27 @@
                         <button type="button" class="nav-menu-accion" data-nav-doc="ROADMAP.md"><span>RM</span>Roadmap completo</button>
                     </div>
                 </div>
-                <button type="button" class="nav-configuracion" id="abrir-personalizacion" aria-label="Personalizar Hub" aria-controls="panel-personalizacion" aria-expanded="false" title="Personalizar Hub"><span class="nav-configuracion-icono" aria-hidden="true"></span></button>
                 <a href="https://github.com/RobDev512/PW-AD2026" target="_blank" rel="noopener noreferrer" class="nav-github">
                     GitHub
                 </a>
             </div>
         </nav>
+
+        <button
+            type="button"
+            class="nav-configuracion configuracion-flotante"
+            id="abrir-personalizacion"
+            aria-label="Personalizar Hub"
+            aria-controls="panel-personalizacion"
+            aria-expanded="false"
+            title="Personalizar Hub"
+        >
+            <span
+                class="nav-configuracion-icono"
+                aria-hidden="true"
+            ></span>
+        </button>
+
         <main>
             <section class="seccion-progreso" id="progreso">
                 <div class="titulo-seccion">
@@ -588,7 +658,7 @@
                         <p>Fuente principal de las fases y mejoras planeadas para el portafolio.</p>
                         <div class="acciones-documento">
                             <a class="boton-documento enlace-boton" href="#roadmap">Ver visual</a>
-                            <button class="boton-documento" type="button" data-doc="ROADMAP.md">Ver mapa completo</button>
+                            <button class="boton-documento" type="button" data-doc="ROADMAP.md">Ver Markdown</button>
                         </div>
                     </article>
                 </div>

@@ -1344,3 +1344,43 @@
     }
 }
 
+/* =========================================================
+   AJUSTE RESPONSIVE - PANTALLAS AMPLIAS
+   Evita que el mapa se estire demasiado en monitores anchos.
+   ========================================================= */
+
+@media (min-width: 1280px) {
+    .roadmap-mapa,
+    .roadmap-mapa-documento {
+        width: min(1180px, 100%);
+        margin-inline: auto;
+    }
+
+    .roadmap-mapa-nodo {
+        grid-template-columns:
+            minmax(300px, 360px)
+            64px
+            minmax(0, 1fr);
+    }
+
+    .roadmap-mapa-documento
+    .roadmap-mapa-nodo {
+        grid-template-columns:
+            minmax(270px, 330px)
+            64px
+            minmax(0, 1fr);
+    }
+
+    .roadmap-ramas {
+        padding-left: 22px;
+    }
+
+    .roadmap-rama {
+        grid-template-columns:
+            minmax(150px, 175px)
+            minmax(0, 1fr);
+        gap: 16px;
+        margin-left: 12px;
+    }
+}
+

@@ -447,38 +447,34 @@ async function cargarDocumentoHub(nombre) {
             await respuesta.text();
 
         titulo.textContent =
-            nombre === "ROADMAP.md"
-                ? "Roadmap visual"
-                : nombre.replace(".md", "");
-
-        if (
-            nombre === "ROADMAP.md" &&
-            typeof window.renderizarRoadmapDocumento === "function"
-        ) {
-            contenido.innerHTML = "";
-            contenido.classList.add(
-                "contenido-roadmap-visual"
+            nombre.replace(
+                ".md",
+                ""
             );
 
-            await window.renderizarRoadmapDocumento(
-                contenido
-            );
-        }
-        else {
-            contenido.classList.remove(
-                "contenido-roadmap-visual"
-            );
+        /*
+           El visor de Documentación siempre muestra el
+           archivo Markdown renderizado.
 
-            contenido.innerHTML =
-                window.marked
-                    ? marked.parse(markdown)
-                    : `<pre>${escaparHtmlHub(markdown)}</pre>`;
+           El roadmap visual ya tiene su propia sección
+           interactiva en #roadmap, por lo que ROADMAP.md
+           no debe convertirse nuevamente en diagrama aquí.
+        */
+        contenido.classList.remove(
+            "contenido-roadmap-visual"
+        );
 
-            corregirRutasMarkdownHub(
-                contenido,
-                `docs/${nombre}`
-            );
-        }
+        contenido.innerHTML =
+            window.marked
+                ? marked.parse(
+                    markdown
+                )
+                : `<pre>${escaparHtmlHub(markdown)}</pre>`;
+
+        corregirRutasMarkdownHub(
+            contenido,
+            `docs/${nombre}`
+        );
 
         cerrar.hidden = false;
 

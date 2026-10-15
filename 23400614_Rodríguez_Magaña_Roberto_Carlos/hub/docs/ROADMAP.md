@@ -2,7 +2,7 @@
 
 ## Estado general
 
-**15 de 16 fases completadas. Fase 16 en progreso.**
+**16 de 16 fases completadas. Roadmap estructural cerrado.**
 
 El roadmap representa la evolución **técnica del Hub**, no el avance de las cinco unidades de la materia.
 
@@ -239,7 +239,7 @@ Posteriormente se decidió abrir una última fase de refinamiento visual y funci
 
 # Fase 16 - Identidad visual y experiencia de contenidos
 
-**Estado:** En progreso
+**Estado:** Completada
 
 ## Objetivo
 
@@ -263,30 +263,56 @@ Realizar una última etapa de refinamiento visual y funcional del Hub, reforzand
 - [x] aplicar estilos propios a títulos, listas, tablas, código, citas y enlaces Markdown;
 - [x] abrir los trabajos en la misma pestaña;
 - [x] conservar el regreso al Hub mediante el historial del navegador cuando es posible.
+- [x] convertir el roadmap de fases en un mapa visual jerárquico;
+- [x] representar categorías y tareas como ramas y subramas;
+- [x] dibujar las conexiones del roadmap mediante Canvas para mantener líneas continuas y adaptables;
+- [x] consolidar el hero principal generado con HTML y CSS;
+- [x] terminar la integración visual de los logos de PW Hub, TecNM e Instituto Tecnológico de Tepic dentro del hero;
+- [x] reducir y equilibrar la altura del banner;
+- [x] limitar el ancho del roadmap visual en pantallas amplias para evitar separaciones excesivas entre fases y ramas;
+- [x] compactar el branding del hero en vistas estrechas y mantener el logo horizontal de PW Hub;
+- [x] corregir el tronco Canvas del roadmap para que conecte también categorías situadas por encima del centro de la tarjeta de fase;
+- [x] corregir el cálculo de ancho del Canvas para evitar crecimiento horizontal acumulativo al redimensionar la ventana;
+- [x] impedir que decoraciones visuales generen scroll horizontal de página;
+- [x] corregir el ancho del contenedor institucional en vista estrecha para eliminar el espacio libre antes del logo TecNM;
+- [x] compensar el margen transparente interno del PNG oficial de TecNM en vistas estrechas;
+- [x] sacar el botón de Configuración de la navbar;
+- [x] convertir Configuración en un botón flotante y siempre accesible;
+- [x] rediseñar la navegación para celular;
+- [x] implementar una barra móvil fija y compacta con Inicio, Curso, Explorar y GitHub;
+- [x] convertir Curso y Explorar en paneles inferiores dinámicos para móvil;
+- [x] integrar los accesos de Documentación dentro de Explorar en móvil;
+- [x] evitar que la navegación móvil ocupe gran parte de la altura de la pantalla;
+- [x] restaurar la navegación sticky original en escritorio y media pantalla;
+- [x] mantener el rediseño de barra inferior limitado exclusivamente a vistas angostas y móviles;
+- [x] sincronizar dinámicamente la barra con las secciones activadas o desactivadas desde Configuración;
+- [x] restaurar la posición normal del logo TecNM en media pantalla y limitar su compensación óptica a vistas angostas;
+- [x] ajustar el breakpoint de navegación móvil a 650 px para considerar el viewport real con barra lateral del navegador, zoom y escala del sistema;
+- [x] mantener escritorio y media pantalla con la navegación horizontal sticky;
+- [x] agregar títulos internos `Explorar` y `Documentación` dentro del panel móvil combinado;
+- [x] mantener la navbar horizontal de media pantalla en una sola fila, compactando botones y espacios sin ocultar accesos;
+- [x] corregir el panel móvil para que respete las opciones ocultas por Configuración y el perfil Minimal, incluyendo Documentación;
+- [x] separar correctamente las dos vistas del Roadmap: `Ver visual` mantiene el diagrama interactivo y `Ver Markdown` renderiza `ROADMAP.md` dentro del visor de Documentación;
 
-## En desarrollo
+- [x] mantener compatibilidad con los perfiles de personalización existentes;
+- [x] reforzar el diseño de tarjetas, botones, estados e indicadores;
+- [x] mejorar la presentación de trabajos destacados;
+- [x] revisar colores, sombras, espaciados y detalles visuales restantes;
+- [x] realizar una revisión responsive completa;
+- [x] realizar una revisión final de navegación y coherencia visual.
 
-- [ ] consolidar el hero principal generado con HTML y CSS;
-- [ ] terminar la integración visual de los logos de PW Hub, TecNM e Instituto Tecnológico de Tepic dentro del hero;
-- [ ] terminar de reducir y equilibrar la altura del banner;
-- [ ] validar el hero en escritorio, media pantalla y móvil.
+## Validación final
 
-El hero no depende de una imagen de fondo. Su ilustración tecnológica, paneles, rejilla, resplandores, código y animaciones se generan mediante HTML y CSS.
+- [x] validar el refinamiento final en escritorio;
+- [x] validar el refinamiento final en media pantalla;
+- [x] validar el refinamiento final en ventana angosta;
+- [x] validar el refinamiento final en celular.
+
+La validación final confirmó el funcionamiento del hero, roadmap Canvas, navegación sticky, barra móvil, paneles dinámicos, Configuración flotante, perfiles de personalización y visor de Documentación.
 
 ## Pendiente
 
-- [ ] sacar el botón de Configuración de la navbar;
-- [ ] convertir Configuración en un botón fijo y siempre accesible;
-- [ ] rediseñar la navbar para celular;
-- [ ] implementar una barra móvil compacta con Inicio, Curso, Explorar y GitHub;
-- [ ] mostrar las opciones internas de Curso y Explorar mediante un panel dinámico apropiado para móvil;
-- [ ] evitar que la navegación móvil ocupe gran parte de la altura de la pantalla;
-- [ ] mantener compatibilidad con los perfiles de personalización existentes;
-- [ ] reforzar el diseño de tarjetas, botones, estados e indicadores;
-- [ ] mejorar la presentación de trabajos destacados;
-- [ ] revisar colores, sombras, espaciados y detalles visuales restantes;
-- [ ] realizar una revisión responsive completa;
-- [ ] realizar una revisión final de navegación y coherencia visual.
+No quedan cambios estructurales o funcionales pendientes. Los cambios posteriores se consideran mantenimiento, correcciones puntuales o incorporación de nuevas actividades académicas.
 
 ## Resultado esperado
 
@@ -298,8 +324,8 @@ Esta será la última fase de desarrollo estructural del Hub. Después de comple
 
 # Estado actual del roadmap
 
-**Completado: 15 / 16**
+**Completado: 16 / 16**
 
-**Fase actual: 16 - En progreso**
+**Fase actual: Ninguna - Desarrollo estructural completado**
 
-Una vez completada la revisión responsive, la navegación móvil, el control flotante de Configuración y los últimos refinamientos visuales, el roadmap podrá quedar definitivamente cerrado.
+La Fase 16 fue validada y marcada como **Completada**. El roadmap estructural queda cerrado en **16 / 16 fases**. A partir de este punto, el Hub entra en etapa de mantenimiento y actualización de contenidos académicos.

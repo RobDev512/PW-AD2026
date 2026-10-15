@@ -182,13 +182,32 @@ Actualmente las primeras 15 están completadas y la Fase 16 se encuentra en prog
 - visor completo de trabajos;
 - modos Diseño y Código;
 - estilos para contenido Markdown;
-- apertura de trabajos en la misma pestaña.
-
-## En desarrollo
-
-- hero principal generado completamente con HTML y CSS;
+- apertura de trabajos en la misma pestaña;
+- roadmap visual jerárquico con ramas y subramas;
+- conexiones dinámicas del roadmap mediante Canvas;
+- hero principal consolidado y generado completamente con HTML y CSS;
 - integración visual de los logos de PW Hub, TecNM e Instituto Tecnológico de Tepic dentro del hero;
-- reducción de la altura y refinamiento responsive del banner.
+- reducción y equilibrio de la altura del banner.
+- ajuste del roadmap para pantallas amplias;
+- branding del hero más compacto en vistas estrechas.
+- troncos Canvas continuos incluso cuando las categorías quedan por encima del centro de la fase;
+- Canvas limitado al ancho visible del roadmap para evitar overflow horizontal al redimensionar;
+- protección global frente a overflow horizontal provocado por elementos decorativos;
+- contenedor institucional TecNM + ITT ajustado al contenido real en vistas estrechas.
+- compensación del margen transparente interno del logo TecNM;
+- barra móvil fija con Inicio, Curso, Explorar y GitHub;
+- paneles móviles dinámicos para Curso y Explorar;
+- Documentación integrada dentro de Explorar en móvil;
+- Configuración flotante fuera de la navbar.
+- navbar sticky restaurada en escritorio y media pantalla;
+- navegación sincronizada dinámicamente con las secciones visibles de Configuración;
+- compensación óptica de TecNM limitada a vistas angostas.
+
+## Estado de la Fase 16
+
+**Completada.**
+
+La Fase 16 fue validada en escritorio, media pantalla, ventana angosta y celular. El Hub queda en etapa de mantenimiento: nuevas modificaciones deberán corresponder a correcciones puntuales o a la incorporación de contenidos académicos.
 
 ## Pendiente
 
