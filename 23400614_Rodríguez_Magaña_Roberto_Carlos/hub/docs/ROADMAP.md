@@ -329,3 +329,62 @@ Esta será la última fase de desarrollo estructural del Hub. Después de comple
 **Fase actual: Ninguna - Desarrollo estructural completado**
 
 La Fase 16 fue validada y marcada como **Completada**. El roadmap estructural queda cerrado en **16 / 16 fases**. A partir de este punto, el Hub entra en etapa de mantenimiento y actualización de contenidos académicos.
+
+---
+
+# Mejoras posteriores al cierre
+
+## Personalización visual avanzada
+
+**Estado:** Implementada
+
+Después del cierre estructural en **16 / 16 fases**, PW Hub recibió una ampliación de mantenimiento visual sin reabrir la Fase 16.
+
+### Implementado
+
+- [x] mantener el color de acento como ajuste independiente;
+- [x] añadir cinco variantes de tema oscuro: PW Dark, Obsidiana, Azul profundo, Grafito y OLED;
+- [x] añadir cuatro estilos visuales: Normal, Liquid Glass, Minimal y Neon Tech;
+- [x] añadir tres niveles de movimiento: Ninguno, Sutil y Dinámico;
+- [x] conservar el control independiente de efectos al pasar el cursor;
+- [x] añadir previsualizaciones visuales dentro de Configuración;
+- [x] migrar automáticamente preferencias guardadas desde `pw-hub-configuracion-v2` y `pw-hub-configuracion-v1`;
+- [x] guardar la nueva configuración en `pw-hub-configuracion-v3`;
+- [x] respetar `prefers-reduced-motion` incluso cuando se selecciona el modo Dinámico.
+- [x] refinar Liquid Glass con bordes especulares, mayor blur, saturación y profundidad inspirados en el vidrio líquido de iOS;
+- [x] añadir microanimaciones dinámicas adicionales para títulos, progreso actual y botones de documentación;
+- [x] corregir la regresión visual causada por animaciones que interferían con `position`, `overflow` y `transform` estructurales;
+- [x] aumentar blur y contraste de los menús Liquid Glass sin modificar su geometría;
+- [x] ampliar el modo Dinámico únicamente con animaciones seguras sobre contenido, filtros, sombras y elementos internos;
+
+Esta mejora pertenece a la etapa de **mantenimiento y evolución visual** posterior al cierre del roadmap estructural.
+
+- [x] ajustar el modo Liquid Glass hacia un efecto más cercano al estilo iPhone;
+- [x] aumentar el blur real en menús desplegables;
+- [x] reducir ligeramente el blur del resto de superficies glass para ganar nitidez;
+
+- [x] resolver el aislamiento de backdrop causado por el blur de la navbar padre;
+- [x] hacer visible el blur real de los menús desplegables usando material más translúcido;
+- [x] reducir el blur general de tarjetas y paneles para acercar Liquid Glass al acabado de iPhone;
+
+- [x] equilibrar transparencia y blur del Liquid Glass para evitar superficies demasiado transparentes;
+- [x] reducir ligeramente el blur de los menús sin perder desenfoque;
+- [x] aumentar la solidez visual de tarjetas, paneles y Configuración;
+
+- [x] consolidar `apariencia-avanzada.css` y retirar los parches acumulados V2-V7;
+- [x] dejar una única implementación de Liquid Glass con valores claros de opacidad y blur;
+- [x] conservar temas, estilos, animaciones y preferencias existentes sin cambiar la estructura del Hub;
+
+- [x] restaurar el aspecto Liquid Glass V2 para tarjetas, paneles, Configuración y superficies generales;
+- [x] limitar el nuevo refinamiento únicamente a los menús desplegables;
+- [x] aplicar blur moderado y visible en Curso / Explorar / Documentación sin volverlos excesivamente transparentes;
+
+- [x] restaurar el blur visual de la navbar Liquid Glass tal como se veía en V2;
+- [x] conservar los bordes especulares tipo iPhone de V2;
+- [x] mover técnicamente el blur de la navbar a una capa visual interna para permitir blur independiente en los dropdowns;
+- [x] mantener el resto de tarjetas, paneles y Configuración exactamente con la apariencia V2;
+
+- [x] añadir 15 variantes adicionales de tema oscuro;
+- [x] alcanzar 20 temas oscuros configurables en total;
+- [x] conservar el color de acento como ajuste independiente;
+- [x] mantener compatibilidad con Normal, Liquid Glass, Minimal y Neon Tech;

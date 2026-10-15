@@ -1462,3 +1462,565 @@ body[data-efectos="off"]
     }
 }
 
+/* =========================================================
+   MANTENIMIENTO - APARIENCIA AVANZADA
+   ========================================================= */
+
+.personalizacion-opciones-visuales {
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(
+                0,
+                1fr
+            )
+        );
+
+    gap:
+        8px;
+}
+
+
+.personalizacion-opcion-visual {
+    min-width:
+        0;
+
+    padding:
+        8px;
+
+    cursor:
+        pointer;
+
+    border:
+        1px solid
+        var(--borde);
+
+    border-radius:
+        11px;
+
+    color:
+        var(--texto-secundario);
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.012
+        );
+
+    text-align:
+        left;
+
+    font-family:
+        inherit;
+
+    transition:
+        color 0.2s,
+        border-color 0.2s,
+        background-color 0.2s,
+        transform 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.personalizacion-opcion-visual:hover {
+    color:
+        var(--texto);
+
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.42
+        );
+
+    transform:
+        translateY(-1px);
+}
+
+
+.personalizacion-opcion-visual.activo {
+    color:
+        var(--texto);
+
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.72
+        );
+
+    background:
+        rgba(
+            var(--acento-rgb),
+            0.065
+        );
+
+    box-shadow:
+        0 0 0 2px
+        rgba(
+            var(--acento-rgb),
+            0.07
+        );
+}
+
+
+.personalizacion-opcion-visual strong,
+.personalizacion-opcion-visual small {
+    display:
+        block;
+}
+
+
+.personalizacion-opcion-visual strong {
+    margin-top:
+        7px;
+
+    font-size:
+        10px;
+}
+
+
+.personalizacion-opcion-visual small {
+    margin-top:
+        2px;
+
+    color:
+        var(--texto-secundario);
+
+    font-size:
+        8px;
+}
+
+
+.opcion-visual-preview {
+    position:
+        relative;
+
+    display:
+        block;
+
+    width:
+        100%;
+    height:
+        46px;
+
+    overflow:
+        hidden;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    border-radius:
+        7px;
+}
+
+
+.preview-tema i {
+    position:
+        absolute;
+
+    display:
+        block;
+
+    border-radius:
+        4px;
+}
+
+
+.preview-tema i:nth-child(1) {
+    inset:
+        7px
+        7px
+        auto
+        7px;
+
+    height:
+        7px;
+}
+
+
+.preview-tema i:nth-child(2) {
+    left:
+        7px;
+    bottom:
+        7px;
+
+    width:
+        42%;
+    height:
+        21px;
+}
+
+
+.preview-tema i:nth-child(3) {
+    right:
+        7px;
+    bottom:
+        7px;
+
+    width:
+        40%;
+    height:
+        21px;
+}
+
+
+.preview-tema-pw {
+    background:
+        #070d12;
+}
+
+.preview-tema-pw i {
+    background:
+        #111a23;
+}
+
+
+.preview-tema-obsidiana {
+    background:
+        #020305;
+}
+
+.preview-tema-obsidiana i {
+    background:
+        #0b0e12;
+}
+
+
+.preview-tema-azul {
+    background:
+        #04101a;
+}
+
+.preview-tema-azul i {
+    background:
+        #0b202e;
+}
+
+
+.preview-tema-grafito {
+    background:
+        #0b0d10;
+}
+
+.preview-tema-grafito i {
+    background:
+        #171b21;
+}
+
+
+.preview-tema-oled {
+    background:
+        #000;
+}
+
+.preview-tema-oled i {
+    background:
+        #090909;
+
+    border:
+        1px solid
+        #282828;
+}
+
+
+.preview-estilo {
+    display:
+        grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    padding:
+        7px;
+
+    background:
+        #071018;
+}
+
+
+.preview-estilo b {
+    display:
+        block;
+
+    height:
+        31px;
+
+    border:
+        1px solid
+        rgba(
+            var(--acento-rgb),
+            0.18
+        );
+
+    border-radius:
+        6px;
+
+    background:
+        #111a23;
+}
+
+
+.preview-estilo-liquid {
+    background:
+        linear-gradient(
+            135deg,
+            #07151f,
+            #102a37
+        );
+}
+
+
+.preview-estilo-liquid b {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.20
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+}
+
+
+.preview-estilo-minimal {
+    background:
+        #0b1014;
+}
+
+
+.preview-estilo-minimal b {
+    border-radius:
+        2px;
+
+    background:
+        #141a20;
+
+    box-shadow:
+        none;
+}
+
+
+.preview-estilo-neon {
+    background:
+        #02070b;
+}
+
+
+.preview-estilo-neon b {
+    border-color:
+        var(--azul-claro);
+
+    background:
+        rgba(
+            var(--acento-rgb),
+            0.07
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(
+            var(--acento-rgb),
+            0.30
+        );
+}
+
+
+.personalizacion-movimiento {
+    margin-bottom:
+        8px;
+}
+
+
+.personalizacion-efectos-extra {
+    padding-top:
+        4px;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+}
+
+
+@media (max-width: 420px) {
+    .personalizacion-opciones-visuales {
+        grid-template-columns:
+            1fr;
+    }
+}
+
+/* =========================================================
+   PREVIEWS - 15 TEMAS OSCUROS ADICIONALES
+   ========================================================= */
+
+.preview-tema-carbono {
+    background: #050607;
+}
+
+.preview-tema-carbono i {
+    background: #111417;
+}
+
+
+.preview-tema-medianoche {
+    background: #030814;
+}
+
+.preview-tema-medianoche i {
+    background: #0c1929;
+}
+
+
+.preview-tema-indigo {
+    background: #080719;
+}
+
+.preview-tema-indigo i {
+    background: #181433;
+}
+
+
+.preview-tema-pizarra {
+    background: #0b1014;
+}
+
+.preview-tema-pizarra i {
+    background: #19232c;
+}
+
+
+.preview-tema-bosque {
+    background: #04100d;
+}
+
+.preview-tema-bosque i {
+    background: #0e261e;
+}
+
+
+.preview-tema-esmeralda {
+    background: #03100e;
+}
+
+.preview-tema-esmeralda i {
+    background: #0a2821;
+}
+
+
+.preview-tema-vino {
+    background: #120609;
+}
+
+.preview-tema-vino i {
+    background: #29121a;
+}
+
+
+.preview-tema-ciruela {
+    background: #100711;
+}
+
+.preview-tema-ciruela i {
+    background: #26122b;
+}
+
+
+.preview-tema-cobre {
+    background: #100a07;
+}
+
+.preview-tema-cobre i {
+    background: #281b14;
+}
+
+
+.preview-tema-ambar {
+    background: #100c04;
+}
+
+.preview-tema-ambar i {
+    background: #281e0c;
+}
+
+
+.preview-tema-acero {
+    background: #090d10;
+}
+
+.preview-tema-acero i {
+    background: #182129;
+}
+
+
+.preview-tema-tormenta {
+    background: #080c13;
+}
+
+.preview-tema-tormenta i {
+    background: #182335;
+}
+
+
+.preview-tema-eclipse {
+    background: #07060b;
+}
+
+.preview-tema-eclipse i {
+    background: #17121f;
+}
+
+
+.preview-tema-terminal {
+    background: #020806;
+}
+
+.preview-tema-terminal i {
+    background: #0a1d16;
+}
+
+
+.preview-tema-cobalto {
+    background: #030b18;
+}
+
+.preview-tema-cobalto i {
+    background: #0a2040;
+}
+

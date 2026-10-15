@@ -730,3 +730,188 @@ Con esta validación el roadmap estructural del Hub queda cerrado en **16 de 16 
 
 A partir de este punto los cambios se consideran mantenimiento, correcciones puntuales o incorporación de nuevas actividades y contenidos de Programación Web.
 
+---
+
+### Personalización visual avanzada posterior al cierre
+
+**Tipo:** Mejora de mantenimiento  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Evolución visual posterior al roadmap 16 / 16
+
+Se amplió el sistema de Configuración de PW Hub sin reabrir la Fase 16.
+
+La apariencia ahora se divide en controles independientes para tema oscuro, estilo visual, color de acento, densidad y movimiento.
+
+Se incorporaron los temas **PW Dark**, **Obsidiana**, **Azul profundo**, **Grafito** y **OLED**, junto con los estilos **Normal**, **Liquid Glass**, **Minimal** y **Neon Tech**.
+
+El movimiento puede configurarse como **Ninguno**, **Sutil** o **Dinámico**. El modo Dinámico añade microanimaciones adicionales, mientras que `prefers-reduced-motion` conserva prioridad por accesibilidad.
+
+La clave de almacenamiento local pasó a `pw-hub-configuracion-v3`. Las preferencias existentes de las versiones v2 y v1 se migran automáticamente para conservar acento, densidad, perfiles, secciones y efectos previamente elegidos.
+
+---
+
+### Refinamiento Liquid Glass y animaciones dinámicas
+
+**Tipo:** Mejora de mantenimiento  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Evolución visual posterior al roadmap 16 / 16
+
+El estilo Liquid Glass fue refinado para acercarse más al lenguaje visual del vidrio líquido moderno de iOS.
+
+Se reforzaron los bordes especulares mediante luces interiores superiores y laterales, mayor desenfoque de fondo, saturación, profundidad y esquinas más suaves. El tratamiento se aplicó a tarjetas, paneles, navegación, menús, Configuración flotante y elementos destacados.
+
+También se amplió el modo de movimiento Dinámico con microanimaciones adicionales en el acento de los títulos, el progreso de la unidad actual y los botones de documentación, manteniendo prioridad para `prefers-reduced-motion`.
+
+---
+
+### Reparación de Liquid Glass y animaciones seguras V4
+
+**Tipo:** Corrección de mantenimiento  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Validación visual local
+
+La versión anterior de los refinamientos de Liquid Glass alteró propiedades estructurales de componentes sensibles de navegación, específicamente `position`, `overflow` y `transform`.
+
+Esto afectó la barra sticky, el botón flotante de Configuración y la alineación de menús desplegables.
+
+La corrección V4 vuelve a la base estable anterior y aplica únicamente cambios visuales seguros. Los menús reciben mayor blur, opacidad y contraste sin modificar su posicionamiento ni sus transformaciones originales.
+
+El modo Dinámico conserva y amplía las microanimaciones mediante opacidad, filtros, sombras y animaciones de elementos internos. Los componentes que dependen de `transform` para su geometría ya no reciben animaciones estructurales.
+
+También se añadieron animaciones seguras en chips del hero, estados actuales, progreso, títulos, botones de documentación y trabajos destacados.
+
+---
+
+### Ajuste fino de Liquid Glass V5
+
+**Tipo:** Refinamiento visual  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Validación visual local
+
+Se refinó el estilo Liquid Glass para equilibrar mejor el efecto de vidrio translúcido.
+
+Los menús desplegables ahora usan un blur más alto y una transparencia calibrada para que el fondo realmente se perciba desenfocado, en lugar de verse solamente opaco.
+
+Al mismo tiempo, el resto de superficies glass (panel de Configuración, botón flotante y controles secundarios) reducen ligeramente su blur para lograr una apariencia más cercana al estilo visual de iPhone: menos “lechoso”, más definido y con mejor lectura del contenido.
+
+---
+
+### Liquid Glass V6: blur real en menús
+
+**Tipo:** Corrección y refinamiento visual  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Diagnóstico de composición CSS y validación visual local
+
+Se identificó que el problema no era únicamente la intensidad del desenfoque. La navbar padre también utilizaba `backdrop-filter`, creando una capa de composición que reducía el efecto perceptible del blur aplicado a los menús hijos.
+
+La V6 conserva el aspecto de vidrio de la navbar mediante transparencia, borde y reflejo, pero elimina su blur directo para permitir que los menús desplegables desenfoquen el contenido real situado detrás.
+
+Los dropdowns usan ahora un material menos opaco y un blur considerablemente mayor, mientras que las tarjetas, paneles y Configuración reducen su desenfoque para lograr un acabado más definido y cercano al Liquid Glass de iPhone.
+
+---
+
+### Liquid Glass V7: equilibrio de transparencia y blur
+
+**Tipo:** Refinamiento visual  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Validación visual local
+
+La versión anterior conseguía un blur visible en los menús, pero el material general resultaba demasiado transparente.
+
+La V7 aumenta la opacidad del material glass en navegación, dropdowns, tarjetas, paneles y Configuración. El menú conserva un desenfoque claramente visible, pero reduce ligeramente su blur para evitar un efecto excesivamente difuso.
+
+El resto de superficies utiliza blur más moderado y fondos más sólidos, buscando un equilibrio más cercano a Liquid Glass de iPhone: vidrio perceptible, bordes especulares y profundidad, sin perder legibilidad ni convertir el contenido en una superficie transparente.
+
+---
+
+### Consolidación definitiva de Liquid Glass V8
+
+**Tipo:** Corrección técnica y refinamiento visual  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Revisión directa del proyecto completo enviado por Robert
+
+La revisión del proyecto real mostró que `apariencia-avanzada.css` había acumulado en cascada las variantes V2, V4, V5, V6 y V7. Varias de ellas repetían los mismos selectores de Liquid Glass con distintos valores de fondo, blur y sombra.
+
+Aunque CSS aplica la última regla compatible, esta acumulación hacía difícil predecir el resultado visual y provocaba que algunos ajustes fueran casi imperceptibles.
+
+La V8 elimina los parches anteriores y deja una sola implementación consolidada. Los menús utilizan un material sólido con blur moderado y visible, mientras que tarjetas y paneles conservan menos desenfoque y mayor opacidad.
+
+También se mantienen los temas oscuros, los estilos Normal / Minimal / Neon Tech, el color de acento independiente y las animaciones del modo Dinámico.
+
+---
+
+### Liquid Glass V9: restauración visual con blur solo en menús
+
+**Tipo:** Corrección visual  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Retroalimentación visual de Robert
+
+Tras probar la versión consolidada, se decidió restaurar el aspecto de Liquid Glass que tenía la versión V2 para todas las superficies generales del Hub.
+
+Tarjetas, paneles, Configuración, botón flotante, bordes, sombras y materiales vuelven al acabado V2.
+
+La única modificación nueva se concentra en los menús desplegables de navegación. Para que su `backdrop-filter` sea perceptible, la navbar padre deja de aplicar blur directo, aunque conserva visualmente su material mediante fondo, borde y sombras.
+
+Los dropdowns utilizan ahora un blur moderado de 18 px en escritorio y 16 px en móvil, junto con un fondo suficientemente sólido para evitar una apariencia excesivamente transparente.
+
+---
+
+### Liquid Glass V10: restauración real de navbar y superficies V2
+
+**Tipo:** Corrección visual  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Revisión de las versiones históricas del estilo
+
+Se corrigió una interpretación incorrecta de la restauración anterior.
+
+La intención era recuperar el Liquid Glass V2 completo, incluyendo el blur visible de la navbar y sus bordes especulares tipo iPhone. La V10 vuelve a utilizar exactamente esa base visual en tarjetas, paneles, Configuración, navegación y demás superficies.
+
+Para conservar simultáneamente el blur de los dropdowns, la navbar aplica ahora su desenfoque de 30 px mediante una capa `::before`. Visualmente conserva el mismo acabado V2, pero técnicamente evita que el filtro del elemento padre interfiera con el blur de los menús hijos.
+
+Los dropdowns mantienen un ajuste separado y más sólido, con blur moderado de 18 px en escritorio y 16 px en móvil.
+
+---
+
+### Expansión final a 20 temas oscuros
+
+**Tipo:** Mejora final de mantenimiento  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Cierre visual del PW Hub
+
+Se añadieron quince variantes nuevas al selector de tema oscuro, alcanzando un total de veinte temas configurables.
+
+Las nuevas variantes son **Carbono**, **Medianoche**, **Índigo**, **Pizarra**, **Bosque nocturno**, **Esmeralda negra**, **Vino oscuro**, **Ciruela**, **Cobre nocturno**, **Ámbar oscuro**, **Acero**, **Tormenta**, **Eclipse**, **Terminal** y **Cobalto**.
+
+Cada tema modifica únicamente la base oscura de la interfaz. El color de acento sigue siendo independiente, por lo que cualquier tema puede combinarse con los colores de acento existentes y con los estilos Normal, Liquid Glass, Minimal o Neon Tech.
+
+Esta ampliación se considera el último añadido visual planificado antes del cierre definitivo del mantenimiento de apariencia.

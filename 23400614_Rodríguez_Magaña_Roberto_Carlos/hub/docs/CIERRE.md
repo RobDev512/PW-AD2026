@@ -159,3 +159,86 @@ Después de completar la Fase 16, este flujo volverá a representar el mantenimi
 La Fase 16 será la última fase de desarrollo estructural.
 
 Al finalizar la navegación móvil, el control flotante de Configuración, la revisión responsive y los últimos refinamientos visuales, este documento podrá volver a marcar el Hub como **cerrado definitivamente**.
+
+# Mantenimiento posterior al cierre
+
+- [x] añadir variantes de tema oscuro;
+- [x] añadir estilos visuales configurables;
+- [x] ampliar los niveles de movimiento;
+- [x] conservar compatibilidad con preferencias anteriores;
+- [x] mantener la Fase 16 cerrada en 16 / 16.
+
+Estas mejoras no modifican el estado del roadmap estructural. PW Hub permanece en etapa de mantenimiento y actualización de contenidos.
+
+## Liquid Glass V2
+
+- [x] reforzar bordes especulares y profundidad del vidrio;
+- [x] mejorar blur y saturación;
+- [x] suavizar esquinas;
+- [x] ampliar microanimaciones del modo Dinámico;
+- [x] conservar compatibilidad móvil y movimiento reducido.
+
+## Apariencia avanzada V4 reparada
+
+- [x] restaurar la base estable anterior;
+- [x] evitar cambios de `position`, `overflow` y `transform` estructurales;
+- [x] aumentar blur y legibilidad en menús Liquid Glass;
+- [x] ampliar microanimaciones sin afectar navegación ni paneles;
+- [x] conservar `prefers-reduced-motion`.
+
+## Liquid Glass V5 ajustado
+
+- [x] reforzar blur en menús desplegables;
+- [x] reducir un poco el blur del panel lateral y superficies menores;
+- [x] acercar el acabado general a un estilo tipo iPhone;
+- [x] mantener intacta la geometría y el comportamiento sticky.
+
+## Liquid Glass V6
+
+- [x] corregir la composición de backdrop entre navbar y dropdowns;
+- [x] aumentar el blur efectivo de Curso / Explorar / Documentación;
+- [x] reducir el blur general de otras superficies;
+- [x] conservar geometría, sticky y navegación móvil.
+
+## Liquid Glass V7
+
+- [x] aumentar la opacidad general del material glass;
+- [x] reducir ligeramente el blur de dropdowns;
+- [x] hacer más sólidas tarjetas y paneles;
+- [x] mantener bordes especulares y profundidad;
+- [x] conservar estabilidad estructural.
+
+## Liquid Glass V8 consolidado
+
+- [x] retirar parches Liquid Glass V2-V7;
+- [x] consolidar el estilo en una sola definición;
+- [x] mantener menús con opacidad alta y blur moderado;
+- [x] reducir el blur de superficies generales;
+- [x] conservar navegación y geometría estables.
+
+## Liquid Glass V9
+
+- [x] restaurar tarjetas y paneles al aspecto V2;
+- [x] restaurar Configuración y botón flotante al aspecto V2;
+- [x] conservar únicamente el ajuste de blur en dropdowns;
+- [x] evitar transparencia excesiva en menús.
+
+## Liquid Glass V10
+
+- [x] restaurar el blur de la navbar;
+- [x] restaurar bordes especulares tipo iPhone;
+- [x] conservar apariencia V2 en el resto del Hub;
+- [x] mantener blur independiente de dropdowns;
+- [x] no alterar geometría ni comportamiento sticky.
+
+## Cierre final de apariencia
+
+- [x] conservar los 5 temas oscuros originales;
+- [x] añadir 15 temas oscuros nuevos;
+- [x] completar 20 variantes de tema;
+- [x] conservar los cuatro estilos visuales;
+- [x] conservar tres niveles de movimiento;
+- [x] mantener Liquid Glass V10 como versión final validada;
+- [x] cerrar la etapa de ampliación visual.
+
+A partir de este punto, el sistema de apariencia se considera finalizado y entra únicamente en mantenimiento correctivo.

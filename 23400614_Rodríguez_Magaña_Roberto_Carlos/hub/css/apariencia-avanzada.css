@@ -1,0 +1,1686 @@
+/* =========================================================
+   PW HUB - APARIENCIA AVANZADA
+   Mejora posterior al cierre de la Fase 16
+   ========================================================= */
+
+/* =========================================================
+   TEMAS OSCUROS
+   El color de acento sigue siendo independiente.
+   ========================================================= */
+
+html[data-tema="pw-dark"] {
+    --fondo:
+        #070d12;
+
+    --fondo-secundario:
+        #0b1219;
+
+    --panel:
+        #111a23;
+
+    --panel-suave:
+        #0d151d;
+
+    --borde:
+        #253543;
+
+    --texto:
+        #f4f7fa;
+
+    --texto-secundario:
+        #9db0bf;
+}
+
+
+html[data-tema="obsidiana"] {
+    --fondo:
+        #020305;
+
+    --fondo-secundario:
+        #06080b;
+
+    --panel:
+        #0b0e12;
+
+    --panel-suave:
+        #080b0f;
+
+    --borde:
+        #202832;
+
+    --texto:
+        #f7f9fb;
+
+    --texto-secundario:
+        #a3adb8;
+}
+
+
+html[data-tema="azul-profundo"] {
+    --fondo:
+        #04101a;
+
+    --fondo-secundario:
+        #071722;
+
+    --panel:
+        #0b202e;
+
+    --panel-suave:
+        #091a26;
+
+    --borde:
+        #23455a;
+
+    --texto:
+        #eef8ff;
+
+    --texto-secundario:
+        #9eb9c8;
+}
+
+
+html[data-tema="grafito"] {
+    --fondo:
+        #0b0d10;
+
+    --fondo-secundario:
+        #111419;
+
+    --panel:
+        #171b21;
+
+    --panel-suave:
+        #13171c;
+
+    --borde:
+        #323842;
+
+    --texto:
+        #f2f4f7;
+
+    --texto-secundario:
+        #a9b0ba;
+}
+
+
+html[data-tema="oled"] {
+    --fondo:
+        #000;
+
+    --fondo-secundario:
+        #030303;
+
+    --panel:
+        #070707;
+
+    --panel-suave:
+        #040404;
+
+    --borde:
+        #242424;
+
+    --texto:
+        #fff;
+
+    --texto-secundario:
+        #aaa;
+}
+
+
+html[data-tema="carbono"] {
+    --fondo: #050607;
+    --fondo-secundario: #0a0c0e;
+    --panel: #111417;
+    --panel-suave: #0d1012;
+    --borde: #2a3036;
+    --texto: #f4f6f8;
+    --texto-secundario: #9ca6ae;
+}
+
+
+html[data-tema="medianoche"] {
+    --fondo: #030814;
+    --fondo-secundario: #07101e;
+    --panel: #0c1929;
+    --panel-suave: #091321;
+    --borde: #253b55;
+    --texto: #f1f7ff;
+    --texto-secundario: #9eb2c8;
+}
+
+
+html[data-tema="indigo"] {
+    --fondo: #080719;
+    --fondo-secundario: #100e25;
+    --panel: #181433;
+    --panel-suave: #120f2a;
+    --borde: #39325d;
+    --texto: #f7f4ff;
+    --texto-secundario: #b0a9ca;
+}
+
+
+html[data-tema="pizarra"] {
+    --fondo: #0b1014;
+    --fondo-secundario: #111820;
+    --panel: #19232c;
+    --panel-suave: #141c24;
+    --borde: #354553;
+    --texto: #f2f6f8;
+    --texto-secundario: #a5b3bd;
+}
+
+
+html[data-tema="bosque-nocturno"] {
+    --fondo: #04100d;
+    --fondo-secundario: #081914;
+    --panel: #0e261e;
+    --panel-suave: #0a1e18;
+    --borde: #285044;
+    --texto: #f1fbf7;
+    --texto-secundario: #9fbcb0;
+}
+
+
+html[data-tema="esmeralda-negra"] {
+    --fondo: #03100e;
+    --fondo-secundario: #061a16;
+    --panel: #0a2821;
+    --panel-suave: #071f1a;
+    --borde: #235649;
+    --texto: #effcf7;
+    --texto-secundario: #98bdb0;
+}
+
+
+html[data-tema="vino-oscuro"] {
+    --fondo: #120609;
+    --fondo-secundario: #1b0b10;
+    --panel: #29121a;
+    --panel-suave: #211017;
+    --borde: #56303c;
+    --texto: #fff4f6;
+    --texto-secundario: #c5a5ad;
+}
+
+
+html[data-tema="ciruela"] {
+    --fondo: #100711;
+    --fondo-secundario: #190c1c;
+    --panel: #26122b;
+    --panel-suave: #1f0f23;
+    --borde: #51305a;
+    --texto: #fff4ff;
+    --texto-secundario: #c3a7c8;
+}
+
+
+html[data-tema="cobre-nocturno"] {
+    --fondo: #100a07;
+    --fondo-secundario: #19110d;
+    --panel: #281b14;
+    --panel-suave: #211611;
+    --borde: #564034;
+    --texto: #fff8f3;
+    --texto-secundario: #c2ad9e;
+}
+
+
+html[data-tema="ambar-oscuro"] {
+    --fondo: #100c04;
+    --fondo-secundario: #191307;
+    --panel: #281e0c;
+    --panel-suave: #21190a;
+    --borde: #554629;
+    --texto: #fff9e9;
+    --texto-secundario: #c6b690;
+}
+
+
+html[data-tema="acero"] {
+    --fondo: #090d10;
+    --fondo-secundario: #10161b;
+    --panel: #182129;
+    --panel-suave: #131b21;
+    --borde: #374752;
+    --texto: #f2f6f8;
+    --texto-secundario: #a7b2ba;
+}
+
+
+html[data-tema="tormenta"] {
+    --fondo: #080c13;
+    --fondo-secundario: #101723;
+    --panel: #182335;
+    --panel-suave: #131c2b;
+    --borde: #384a63;
+    --texto: #f2f6ff;
+    --texto-secundario: #a8b5c8;
+}
+
+
+html[data-tema="eclipse"] {
+    --fondo: #07060b;
+    --fondo-secundario: #0e0b14;
+    --panel: #17121f;
+    --panel-suave: #120e19;
+    --borde: #382d49;
+    --texto: #f8f4ff;
+    --texto-secundario: #b0a6bc;
+}
+
+
+html[data-tema="terminal"] {
+    --fondo: #020806;
+    --fondo-secundario: #05110d;
+    --panel: #0a1d16;
+    --panel-suave: #071710;
+    --borde: #23533f;
+    --texto: #effff8;
+    --texto-secundario: #94b8a9;
+}
+
+
+html[data-tema="cobalto"] {
+    --fondo: #030b18;
+    --fondo-secundario: #06142a;
+    --panel: #0a2040;
+    --panel-suave: #081a35;
+    --borde: #2a4e78;
+    --texto: #f0f7ff;
+    --texto-secundario: #9db6d0;
+}
+
+
+html[data-tema="obsidiana"] body,
+html[data-tema="oled"] body {
+    background:
+        radial-gradient(
+            circle at 16% -10%,
+            rgba(
+                var(--acento-rgb),
+                0.045
+            ),
+            transparent 30%
+        ),
+        var(--fondo);
+}
+
+
+html[data-tema="azul-profundo"] body {
+    background:
+        radial-gradient(
+            circle at 14% -8%,
+            rgba(
+                var(--acento-rgb),
+                0.075
+            ),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(
+                21,
+                80,
+                112,
+                0.16
+            ),
+            transparent 30%
+        ),
+        var(--fondo);
+}
+
+
+html[data-tema="grafito"] body {
+    background:
+        radial-gradient(
+            circle at 20% -8%,
+            rgba(
+                var(--acento-rgb),
+                0.04
+            ),
+            transparent 30%
+        ),
+        var(--fondo);
+}
+
+
+/* =========================================================
+   SELECTOR COMÚN DE SUPERFICIES
+   ========================================================= */
+
+html[data-estilo]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .visor-markdown,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .trabajos-visor,
+    .historial-resumen,
+    .historial-estadistica,
+    .historial-filtro,
+    .roadmap-resumen,
+    .roadmap-estadistica,
+    .roadmap-filtro,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        backdrop-filter 0.25s ease,
+        transform 0.20s ease;
+}
+
+
+/* =========================================================
+   ESTILO NORMAL
+   Conserva PW Hub tal como quedó al cerrar Fase 16.
+   ========================================================= */
+
+html[data-estilo="normal"] {
+    --estilo-radio:
+        var(--radio);
+}
+
+
+/* =========================================================
+   LIQUID GLASS
+   ========================================================= */
+
+html[data-estilo="liquid"] body {
+    background:
+        radial-gradient(
+            circle at 8% 5%,
+            rgba(
+                var(--acento-rgb),
+                0.12
+            ),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 93% 12%,
+            rgba(
+                92,
+                118,
+                255,
+                0.08
+            ),
+            transparent 31%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(
+                var(--acento-rgb),
+                0.055
+            ),
+            transparent 34%
+        ),
+        var(--fondo);
+}
+
+
+html[data-estilo="liquid"]
+:is(
+    .navegacion-hub,
+    .panel-personalizacion,
+    .trabajos-visor.trabajos-visor-modal,
+    .visor-markdown,
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .historial-resumen,
+    .historial-estadistica,
+    .roadmap-resumen,
+    .roadmap-estadistica,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        ) !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.085
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.025
+            )
+        ) !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        ),
+        0 18px 45px
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        );
+
+    backdrop-filter:
+        blur(20px)
+        saturate(135%);
+
+    -webkit-backdrop-filter:
+        blur(20px)
+        saturate(135%);
+}
+
+
+html[data-estilo="liquid"]
+:is(
+    .configuracion-flotante,
+    .nav-desplegable-menu
+) {
+    backdrop-filter:
+        blur(22px)
+        saturate(145%);
+
+    -webkit-backdrop-filter:
+        blur(22px)
+        saturate(145%);
+}
+
+
+html[data-estilo="liquid"]
+:is(
+    .unidad-card.actual,
+    .trabajo-es-destacado
+) {
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        ),
+        0 0 0 1px
+        rgba(
+            var(--acento-rgb),
+            0.15
+        ),
+        0 22px 52px
+        rgba(
+            0,
+            0,
+            0,
+            0.22
+        );
+}
+
+
+/* =========================================================
+   MINIMAL
+   ========================================================= */
+
+html[data-estilo="minimal"] body {
+    background:
+        var(--fondo);
+}
+
+
+html[data-estilo="minimal"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .visor-markdown,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .historial-resumen,
+    .historial-estadistica,
+    .roadmap-resumen,
+    .roadmap-estadistica,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    border-radius:
+        7px !important;
+
+    background:
+        var(--panel) !important;
+
+    box-shadow:
+        none !important;
+}
+
+
+html[data-estilo="minimal"]
+:is(
+    .tarjeta-documento::before,
+    .actividad-tarjeta::before,
+    .titulo-seccion::after
+) {
+    opacity:
+        0 !important;
+}
+
+
+html[data-estilo="minimal"]
+:is(
+    .navegacion-hub,
+    .panel-personalizacion,
+    .configuracion-flotante
+) {
+    box-shadow:
+        none !important;
+
+    backdrop-filter:
+        none !important;
+
+    -webkit-backdrop-filter:
+        none !important;
+}
+
+
+html[data-estilo="minimal"]
+:is(
+    .trabajo-es-destacado,
+    .unidad-card.actual,
+    .progreso-unidad.actual
+) {
+    box-shadow:
+        none !important;
+}
+
+
+/* =========================================================
+   NEON TECH
+   ========================================================= */
+
+html[data-estilo="neon"] body {
+    background:
+        linear-gradient(
+            rgba(
+                var(--acento-rgb),
+                0.025
+            ) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(
+                var(--acento-rgb),
+                0.025
+            ) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(
+                var(--acento-rgb),
+                0.10
+            ),
+            transparent 32%
+        ),
+        var(--fondo);
+
+    background-size:
+        32px 32px,
+        32px 32px,
+        auto,
+        auto;
+}
+
+
+html[data-estilo="neon"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .historial-resumen,
+    .historial-estadistica,
+    .roadmap-resumen,
+    .roadmap-estadistica,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.28
+        ) !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            var(--acento-rgb),
+            0.10
+        ),
+        0 0 22px
+        rgba(
+            var(--acento-rgb),
+            0.045
+        );
+}
+
+
+html[data-estilo="neon"]
+:is(
+    .unidad-card.actual,
+    .trabajo-es-destacado,
+    .configuracion-flotante
+) {
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.62
+        ) !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            var(--acento-rgb),
+            0.18
+        ),
+        0 0 26px
+        rgba(
+            var(--acento-rgb),
+            0.16
+        );
+}
+
+
+html[data-estilo="neon"]
+:is(
+    .titulo-seccion h2,
+    .encabezado-portafolio h1
+) {
+    text-shadow:
+        0 0 28px
+        rgba(
+            var(--acento-rgb),
+            0.10
+        );
+}
+
+
+/* =========================================================
+   MOVIMIENTO
+   ========================================================= */
+
+html[data-movimiento="ninguno"] *,
+html[data-movimiento="ninguno"] *::before,
+html[data-movimiento="ninguno"] *::after {
+    animation:
+        none !important;
+
+    transition-duration:
+        0.001ms !important;
+
+    scroll-behavior:
+        auto !important;
+}
+
+
+html[data-movimiento="sutil"]
+body[data-animaciones="on"]
+.hub-reveal {
+    transform:
+        translateY(
+            18px
+        );
+}
+
+
+html[data-movimiento="dinamico"]
+body[data-animaciones="on"]
+.hub-reveal {
+    transform:
+        translateY(
+            26px
+        )
+        scale(
+            0.988
+        );
+
+    transition:
+        opacity 0.70s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.2,
+            1
+        ),
+        transform 0.70s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.2,
+            1
+        );
+}
+
+
+html[data-movimiento="dinamico"]
+body[data-animaciones="on"]
+.hub-reveal.hub-visible {
+    transform:
+        translateY(
+            0
+        )
+        scale(
+            1
+        );
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+    html[data-movimiento="dinamico"]
+    .configuracion-flotante {
+        animation:
+            pw-pulso-config
+            5.5s
+            ease-in-out
+            infinite;
+    }
+
+
+    html[data-movimiento="dinamico"]
+    .trabajo-es-destacado {
+        animation:
+            pw-respiro-destacado
+            6s
+            ease-in-out
+            infinite;
+    }
+
+
+    html[data-movimiento="dinamico"]
+    .hero-resplandor {
+        animation-duration:
+            8s !important;
+    }
+
+
+    html[data-movimiento="dinamico"]
+    .hero-grid {
+        animation:
+            pw-grid-vivo
+            14s
+            linear
+            infinite;
+    }
+
+
+    html[data-movimiento="dinamico"]
+    body[data-efectos="on"]
+    :is(
+        .tarjeta-documento,
+        .trabajo-explorador,
+        .actividad-tarjeta,
+        .estadistica-principal
+    ):hover {
+        transform:
+            translateY(-5px)
+            scale(1.008);
+    }
+}
+
+
+@keyframes pw-pulso-config {
+    0%,
+    100% {
+        box-shadow:
+            0 14px 34px
+            rgba(
+                0,
+                0,
+                0,
+                0.36
+            ),
+            0 0 24px
+            rgba(
+                var(--acento-rgb),
+                0.09
+            );
+    }
+
+    50% {
+        box-shadow:
+            0 18px 42px
+            rgba(
+                0,
+                0,
+                0,
+                0.40
+            ),
+            0 0 34px
+            rgba(
+                var(--acento-rgb),
+                0.17
+            );
+    }
+}
+
+
+@keyframes pw-respiro-destacado {
+    0%,
+    100% {
+        filter:
+            brightness(
+                1
+            );
+    }
+
+    50% {
+        filter:
+            brightness(
+                1.045
+            );
+    }
+}
+
+
+@keyframes pw-grid-vivo {
+    from {
+        background-position:
+            0 0;
+    }
+
+    to {
+        background-position:
+            32px 32px;
+    }
+}
+
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO DEL SISTEMA
+   Siempre tiene prioridad sobre el modo Dinámico.
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html[data-movimiento="dinamico"] *,
+    html[data-movimiento="dinamico"] *::before,
+    html[data-movimiento="dinamico"] *::after {
+        animation:
+            none !important;
+
+        transition-duration:
+            0.001ms !important;
+    }
+}
+
+/* =========================================================
+   LIQUID GLASS V2 - BORDES ESPECULARES TIPO iOS
+   ========================================================= */
+
+html[data-estilo="liquid"] {
+    --liquid-radio-grande:
+        22px;
+
+    --liquid-radio-medio:
+        18px;
+
+    --liquid-borde:
+        rgba(
+            255,
+            255,
+            255,
+            0.17
+        );
+
+    --liquid-brillo:
+        rgba(
+            255,
+            255,
+            255,
+            0.30
+        );
+
+    --liquid-brillo-suave:
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+}
+
+
+html[data-estilo="liquid"]
+:is(
+    .unidad-card,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .trabajos-visor,
+    .visor-markdown,
+    .historial-resumen,
+    .roadmap-resumen,
+    .roadmap-nodo-principal
+) {
+    border-radius:
+        var(--liquid-radio-grande)
+        !important;
+
+    border:
+        1px solid
+        var(--liquid-borde)
+        !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.12
+            ) 0%,
+            rgba(
+                255,
+                255,
+                255,
+                0.055
+            ) 24%,
+            rgba(
+                var(--acento-rgb),
+                0.025
+            ) 62%,
+            rgba(
+                255,
+                255,
+                255,
+                0.025
+            ) 100%
+        )
+        !important;
+
+    box-shadow:
+        inset 0 1px 0
+        var(--liquid-brillo),
+        inset 1px 0 0
+        rgba(
+            255,
+            255,
+            255,
+            0.09
+        ),
+        inset -1px 0 0
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        ),
+        inset 0 -1px 0
+        rgba(
+            0,
+            0,
+            0,
+            0.22
+        ),
+        0 18px 44px
+        rgba(
+            0,
+            0,
+            0,
+            0.22
+        )
+        !important;
+
+    backdrop-filter:
+        blur(28px)
+        saturate(165%)
+        contrast(105%);
+
+    -webkit-backdrop-filter:
+        blur(28px)
+        saturate(165%)
+        contrast(105%);
+}
+
+
+html[data-estilo="liquid"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-temas,
+    .unidad-trabajo,
+    .estadistica-principal,
+    .historial-estadistica,
+    .roadmap-estadistica,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    border-radius:
+        var(--liquid-radio-medio)
+        !important;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.145
+        )
+        !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.095
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.025
+            ) 72%
+        )
+        !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.22
+        ),
+        inset 1px 0 0
+        rgba(
+            255,
+            255,
+            255,
+            0.065
+        ),
+        inset 0 -1px 0
+        rgba(
+            0,
+            0,
+            0,
+            0.16
+        ),
+        0 12px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.16
+        )
+        !important;
+
+    backdrop-filter:
+        blur(22px)
+        saturate(150%);
+
+    -webkit-backdrop-filter:
+        blur(22px)
+        saturate(150%);
+}
+
+
+html[data-estilo="liquid"]
+:is(
+    .navegacion-hub,
+    .panel-personalizacion,
+    .nav-desplegable-menu,
+    .configuracion-flotante
+) {
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        )
+        !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.115
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.035
+            )
+        )
+        !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.28
+        ),
+        inset 1px 0 0
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        ),
+        inset 0 -1px 0
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        ),
+        0 18px 46px
+        rgba(
+            0,
+            0,
+            0,
+            0.28
+        )
+        !important;
+
+    backdrop-filter:
+        blur(30px)
+        saturate(175%);
+
+    -webkit-backdrop-filter:
+        blur(30px)
+        saturate(175%);
+}
+
+
+html[data-estilo="liquid"]
+:is(
+    .unidad-card.actual,
+    .trabajo-es-destacado,
+    .progreso-unidad.actual
+) {
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.34
+        )
+        !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.32
+        ),
+        inset 1px 0 0
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        ),
+        inset 0 -1px 0
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        ),
+        0 0 0 1px
+        rgba(
+            var(--acento-rgb),
+            0.08
+        ),
+        0 22px 54px
+        rgba(
+            0,
+            0,
+            0,
+            0.24
+        )
+        !important;
+}
+
+
+/*
+   En pantallas táctiles reducimos un poco el blur para
+   conservar fluidez sin perder la apariencia de vidrio.
+*/
+@media (max-width: 650px) {
+    html[data-estilo="liquid"]
+    :is(
+        .unidad-card,
+        .tarjeta-documento,
+        .actividad-tarjeta,
+        .estadisticas-panel,
+        .trabajo-explorador,
+        .trabajos-panel,
+        .visor-markdown,
+        .panel-personalizacion
+    ) {
+        backdrop-filter:
+            blur(22px)
+            saturate(155%);
+
+        -webkit-backdrop-filter:
+            blur(22px)
+            saturate(155%);
+    }
+}
+
+
+/* =========================================================
+   MOVIMIENTO DINÁMICO V2
+   Microanimaciones adicionales.
+   ========================================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+    html[data-movimiento="dinamico"]
+    body[data-animaciones="on"]
+    .titulo-seccion::after {
+        transform-origin:
+            left center;
+
+        animation:
+            pw-linea-acento
+            4.8s
+            ease-in-out
+            infinite;
+    }
+
+
+    html[data-movimiento="dinamico"]
+    body[data-animaciones="on"]
+    .progreso-unidad.actual
+    .progreso-circulo {
+        animation:
+            pw-pulso-progreso
+            4.2s
+            ease-in-out
+            infinite;
+    }
+
+
+    html[data-movimiento="dinamico"]
+    body[data-animaciones="on"]
+    .boton-documento {
+        background-size:
+            180%
+            180%;
+
+        animation:
+            pw-brillo-boton
+            7s
+            ease
+            infinite;
+    }
+}
+
+
+@keyframes pw-linea-acento {
+    0%,
+    100% {
+        transform:
+            scaleX(0.72);
+
+        opacity:
+            0.62;
+    }
+
+    50% {
+        transform:
+            scaleX(1);
+
+        opacity:
+            1;
+    }
+}
+
+
+@keyframes pw-pulso-progreso {
+    0%,
+    100% {
+        box-shadow:
+            0 0 0 0
+            rgba(
+                var(--acento-rgb),
+                0
+            );
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 7px
+            rgba(
+                var(--acento-rgb),
+                0.065
+            );
+    }
+}
+
+
+@keyframes pw-brillo-boton {
+    0%,
+    100% {
+        background-position:
+            0%
+            50%;
+    }
+
+    50% {
+        background-position:
+            100%
+            50%;
+    }
+}
+
+/* =========================================================
+   LIQUID GLASS V10 - RESTAURACIÓN REAL
+   ========================================================= */
+
+/*
+   RESTAURACIÓN DE LA NAVBAR
+
+   Visualmente recupera el acabado V2:
+   - blur 30px;
+   - saturación 175%;
+   - bordes especulares;
+   - reflejo superior;
+   - mismo gradiente de vidrio.
+
+   La única diferencia es interna:
+   el backdrop-filter vive en ::before en lugar del elemento
+   padre. Esto permite que los dropdowns hijos puedan tener
+   su propio blur sin perder el efecto de la navbar.
+*/
+html[data-estilo="liquid"]
+.navegacion-hub {
+    background:
+        transparent
+        !important;
+
+    backdrop-filter:
+        none
+        !important;
+
+    -webkit-backdrop-filter:
+        none
+        !important;
+}
+
+
+html[data-estilo="liquid"]
+.navegacion-hub::before {
+    content:
+        "";
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        0;
+
+    pointer-events:
+        none;
+
+    border-radius:
+        inherit;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.115
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.035
+            )
+        );
+
+    backdrop-filter:
+        blur(30px)
+        saturate(175%);
+
+    -webkit-backdrop-filter:
+        blur(30px)
+        saturate(175%);
+}
+
+
+/*
+   El contenido de navegación queda por encima de la capa
+   de vidrio. No cambia su geometría.
+*/
+html[data-estilo="liquid"]
+.navegacion-hub
+.navegacion-interior {
+    position:
+        relative;
+
+    z-index:
+        1;
+}
+
+
+/* =========================================================
+   DROPDOWNS - AJUSTE INDEPENDIENTE
+   ========================================================= */
+
+/*
+   Se dejan más sólidos que el vidrio general, con blur
+   moderado. El contenido posterior se percibe desenfocado,
+   pero el menú no se vuelve transparente.
+*/
+html[data-estilo="liquid"]
+.nav-desplegable-menu {
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        )
+        !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                13,
+                27,
+                40,
+                0.80
+            ),
+            rgba(
+                7,
+                17,
+                28,
+                0.85
+            )
+        )
+        !important;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.26
+        ),
+        inset 1px 0 0
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        ),
+        inset 0 -1px 0
+        rgba(
+            0,
+            0,
+            0,
+            0.16
+        ),
+        0 20px 52px
+        rgba(
+            0,
+            0,
+            0,
+            0.36
+        )
+        !important;
+
+    backdrop-filter:
+        blur(18px)
+        saturate(150%)
+        contrast(104%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(150%)
+        contrast(104%);
+}
+
+
+html[data-estilo="liquid"]
+.nav-desplegable-menu
+:is(
+    a,
+    .nav-menu-accion
+) {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.012
+        );
+}
+
+
+html[data-estilo="liquid"]
+.nav-desplegable-menu
+:is(
+    a:hover,
+    a:focus-visible,
+    .nav-menu-accion:hover,
+    .nav-menu-accion:focus-visible
+) {
+    background:
+        rgba(
+            var(--acento-rgb),
+            0.09
+        )
+        !important;
+}
+
+
+/*
+   Móvil: mismo concepto, apenas menos blur.
+*/
+@media (max-width: 650px) {
+    html[data-estilo="liquid"]
+    .nav-desplegable-menu {
+        background:
+            linear-gradient(
+                145deg,
+                rgba(
+                    13,
+                    27,
+                    40,
+                    0.83
+                ),
+                rgba(
+                    7,
+                    17,
+                    28,
+                    0.88
+                )
+            )
+            !important;
+
+        backdrop-filter:
+            blur(16px)
+            saturate(145%)
+            contrast(103%);
+
+        -webkit-backdrop-filter:
+            blur(16px)
+            saturate(145%)
+            contrast(103%);
+    }
+}
+

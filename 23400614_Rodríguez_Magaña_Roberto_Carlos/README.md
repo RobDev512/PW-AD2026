@@ -221,3 +221,45 @@ https://robdev512.github.io/PW-AD2026/23400614_Rodr%C3%ADguez_Maga%C3%B1a_Robert
 **Roberto Carlos Rodríguez Magaña**  
 Ingeniería en Sistemas Computacionales  
 Instituto Tecnológico de Tepic
+
+## Personalización avanzada
+
+Después de completar el roadmap estructural en **16 / 16 fases**, PW Hub incorporó una mejora de mantenimiento visual con temas oscuros alternativos, estilos Normal / Liquid Glass / Minimal / Neon Tech y niveles de movimiento configurables.
+
+La configuración sigue siendo local al navegador y conserva compatibilidad con preferencias guardadas anteriormente.
+
+### Liquid Glass V2
+
+El modo Liquid Glass incorpora un tratamiento más profundo de borde, reflejo y transparencia inspirado en interfaces de vidrio líquido modernas, junto con nuevas microanimaciones opcionales en el modo Dinámico.
+
+### Apariencia avanzada V4 reparada
+
+Se corrigieron regresiones de navegación provocadas por animaciones estructurales. Liquid Glass mantiene ahora mayor blur y contraste en menús sin modificar su geometría, y las animaciones Dinámicas se limitan a propiedades visuales seguras.
+
+### Liquid Glass V5 ajustado
+
+Se calibró el efecto Liquid Glass: más blur real en menús desplegables y menos blur en otras superficies para obtener un acabado más cercano al estilo tipo iPhone, sin romper la navegación ni la estructura.
+
+### Liquid Glass V6
+
+El sistema Liquid Glass separa ahora correctamente el material de la navbar y el blur de sus menús desplegables. Esto permite un desenfoque visible en los dropdowns y un acabado más nítido en el resto del Hub.
+
+### Liquid Glass V7
+
+El modo Liquid Glass fue equilibrado para conservar blur visible en menús sin hacer transparentes las superficies. Tarjetas, navegación y paneles utilizan ahora materiales más sólidos y definidos.
+
+### Liquid Glass V8 consolidado
+
+Se limpió la hoja de apariencia avanzada para eliminar reglas Liquid Glass duplicadas y dejar una única implementación estable. Esto hace que los cambios de material, opacidad y blur sean realmente predecibles.
+
+### Liquid Glass V9
+
+El aspecto general de Liquid Glass volvió a la versión V2. Solo los menús de navegación conservan un ajuste nuevo de blur para distinguirse mejor del contenido posterior sin volverse demasiado transparentes.
+
+### Liquid Glass V10
+
+La navbar vuelve a utilizar el blur y los bordes especulares del Liquid Glass V2. El efecto se implementa mediante una capa interna para conservar simultáneamente el blur independiente de los menús desplegables.
+
+### 20 temas oscuros
+
+La personalización final de PW Hub ofrece 20 temas oscuros combinables con los colores de acento, cuatro estilos visuales y tres niveles de movimiento. Con esta ampliación se cierra la etapa planificada de personalización visual.

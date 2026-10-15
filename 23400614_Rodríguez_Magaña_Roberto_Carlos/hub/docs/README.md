@@ -285,3 +285,60 @@ La carpeta del estudiante ya no utiliza un `index.html` adicional de redirecció
 # Nota académica
 
 El Hub funciona como portafolio complementario, índice y registro visual de Programación Web.
+
+## Personalización visual avanzada
+
+Como mejora de mantenimiento posterior al cierre de la Fase 16, Configuración permite combinar de forma independiente:
+
+- tema oscuro: PW Dark, Obsidiana, Azul profundo, Grafito u OLED;
+- estilo visual: Normal, Liquid Glass, Minimal o Neon Tech;
+- color de acento;
+- densidad;
+- movimiento: Ninguno, Sutil o Dinámico;
+- efectos al pasar el cursor.
+
+Las preferencias anteriores se migran automáticamente y continúan guardándose únicamente en el navegador del usuario.
+
+### Liquid Glass V2
+
+El estilo Liquid Glass utiliza bordes especulares, transparencias multicapa, desenfoque de fondo y esquinas más suaves para lograr una apariencia más cercana al vidrio líquido moderno de iOS.
+
+El modo Dinámico también añade microanimaciones en títulos, progreso y algunos controles, siempre respetando la preferencia del sistema para reducir movimiento.
+
+### Apariencia avanzada V4 reparada
+
+La versión V4 conserva la base estable de Liquid Glass V2 y aumenta la legibilidad de menús mediante blur, opacidad y contraste sin alterar `position`, `overflow` o `transform` de la navegación.
+
+El modo Dinámico usa animaciones seguras sobre filtros, sombras, opacidad y elementos internos para evitar interferencias con la geometría del Hub.
+
+### Liquid Glass V5 ajustado
+
+Los menús desplegables del Hub ahora aplican un blur más notorio y un acabado de vidrio más claro. El resto de superficies glass reducen ligeramente su desenfoque para conservar profundidad sin perder definición visual.
+
+### Liquid Glass V6
+
+La composición del vidrio fue corregida para que el blur de los menús desplegables sea realmente visible. La navbar deja de aplicar blur como elemento padre y conserva su apariencia mediante material semitransparente, mientras los dropdowns utilizan un blur más fuerte.
+
+El resto de tarjetas y paneles reduce ligeramente el desenfoque para mantener una apariencia más nítida.
+
+### Liquid Glass V7
+
+Se equilibró el material del modo Liquid Glass: los menús siguen desenfocando el contenido posterior, pero con menos blur y mayor opacidad. Las tarjetas y paneles son ahora más sólidos, manteniendo reflejos y profundidad sin verse transparentes.
+
+### Liquid Glass V8 consolidado
+
+`apariencia-avanzada.css` fue limpiado para retirar las versiones Liquid Glass acumuladas. Ahora existe una sola definición del estilo, con menús sólidos y blur moderado, tarjetas más definidas y una cascada CSS mucho más predecible.
+
+### Liquid Glass V9
+
+Se restauró el acabado Liquid Glass V2 en prácticamente todo el Hub. El refinamiento posterior se limita a los menús desplegables, que utilizan blur moderado y un material sólido para mejorar la separación respecto al contenido de fondo.
+
+### Liquid Glass V10
+
+Se restauró de forma real el acabado V2, incluyendo el blur visible de la navbar y los bordes especulares tipo iPhone. El blur de la navegación se aplica mediante una capa visual interna para permitir que los dropdowns mantengan un desenfoque independiente.
+
+### Veinte temas oscuros
+
+PW Hub dispone ahora de 20 variantes de tema oscuro. Las quince incorporaciones finales son Carbono, Medianoche, Índigo, Pizarra, Bosque nocturno, Esmeralda negra, Vino oscuro, Ciruela, Cobre nocturno, Ámbar oscuro, Acero, Tormenta, Eclipse, Terminal y Cobalto.
+
+Los temas pueden combinarse libremente con el color de acento, el estilo visual y el nivel de movimiento.
