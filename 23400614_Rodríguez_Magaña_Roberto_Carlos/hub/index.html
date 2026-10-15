@@ -30,6 +30,7 @@
             href="assets/branding/favicon-192.png"
         >
         <link rel="stylesheet" href="css/estilos.css">
+        <link rel="stylesheet" href="css/hero-codigo.css">
         <link rel="stylesheet" href="css/navegacion.css">
         <link rel="stylesheet" href="css/actividad.css">
         <link rel="stylesheet" href="css/estadisticas.css">
@@ -48,48 +49,163 @@
         <script src="js/personalizacion.js" defer></script>
     </head>
     <body id="inicio">
-        <header class="encabezado-principal">
-            <div class="logos-institucionales">
-                <img
-                    src="https://www.tepic.tecnm.mx/images/Logo%20TecNM.png"
-                    alt="Logo del Tecnológico Nacional de México"
-                    class="logo-tecnm"
-                >
-                <img
-                    src="https://www.tepic.tecnm.mx/images/escudo_itt_200x200.png"
-                    alt="Logo del Instituto Tecnológico de Tepic"
-                    class="logo-itt"
-                >
-            </div>
-
-            <div class="identidad-portafolio">
-                <picture class="marca-pwhub">
-                    <source
-                        media="(max-width: 650px)"
-                        srcset="assets/branding/logo-pwhub-compacto.png"
-                    >
-                    <img
-                        src="assets/branding/logo-pwhub-horizontal.png"
-                        alt="PW Hub - Portafolio Web"
-                        class="logo-pwhub-header"
-                    >
-                </picture>
-
-                <div class="encabezado-portafolio">
-                    <p class="tipo-sitio">Portafolio académico</p>
-                    <h1>Programación Web</h1>
-                    <p class="descripcion-principal">
-                        Repositorio visual de actividades, ejercicios y avances realizados durante la materia.
-                    </p>
-                    <p class="datos-estudiante">
-                        <b>Roberto Carlos Rodríguez Magaña - 23400614</b>
-                    </p>
-                    <p>Ingeniería en Sistemas Computacionales</p>
-                    <p class="aclaracion-portafolio">
-                        Este sitio funciona únicamente como portafolio e índice de los trabajos realizados durante el curso.
-                    </p>
+        <header class="encabezado-principal encabezado-con-hero">
+            <section class="hero-pwhub" aria-labelledby="titulo-hero">
+                <div class="hero-fondo" aria-hidden="true">
+                    <span class="hero-resplandor hero-resplandor-uno"></span>
+                    <span class="hero-resplandor hero-resplandor-dos"></span>
+                    <span class="hero-orbita hero-orbita-uno"></span>
+                    <span class="hero-orbita hero-orbita-dos"></span>
+                    <span class="hero-particula hero-particula-uno"></span>
+                    <span class="hero-particula hero-particula-dos"></span>
+                    <span class="hero-particula hero-particula-tres"></span>
+                    <span class="hero-particula hero-particula-cuatro"></span>
                 </div>
-            </div>
+
+                <div class="hero-branding">
+                    <picture class="hero-marca-pwhub">
+                        <source
+                            media="(max-width: 650px)"
+                            srcset="assets/branding/logo-pwhub-compacto.png"
+                        >
+                        <img
+                            src="assets/branding/logo-pwhub-horizontal.png"
+                            alt="PW Hub - Portafolio Web"
+                            class="hero-logo-pwhub"
+                        >
+                    </picture>
+
+                    <div class="hero-institucion">
+                        <div class="hero-logos-institucionales">
+                            <img
+                                src="https://www.tepic.tecnm.mx/images/Logo%20TecNM.png"
+                                alt="Tecnológico Nacional de México"
+                                class="hero-logo-tecnm"
+                            >
+
+                            <span
+                                class="hero-separador-logos"
+                                aria-hidden="true"
+                            ></span>
+
+                            <img
+                                src="https://www.tepic.tecnm.mx/images/escudo_itt_200x200.png"
+                                alt="Instituto Tecnológico de Tepic"
+                                class="hero-logo-itt"
+                            >
+                        </div>
+
+                        <span class="hero-institucion-texto">
+                            Instituto Tecnológico de Tepic
+                        </span>
+                    </div>
+                </div>
+
+                <div class="hero-contenido">
+                    <p class="hero-etiqueta">
+                        <span class="hero-etiqueta-icono" aria-hidden="true">&lt;/&gt;</span>
+                        PW Hub · Portafolio Web
+                    </p>
+
+                    <h1 id="titulo-hero">
+                        Programación
+                        <span>Web</span>
+                    </h1>
+
+                    <p class="hero-descripcion">
+                        Repositorio visual de actividades, ejercicios y avances
+                        realizados durante la materia.
+                    </p>
+
+                    <div class="hero-datos">
+                        <p>
+                            <strong>Roberto Carlos Rodríguez Magaña</strong>
+                            <span>23400614</span>
+                        </p>
+                        <p>Ingeniería en Sistemas Computacionales</p>
+                    </div>
+
+                    <div class="hero-tecnologias" aria-label="Tecnologías del portafolio">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>GitHub</span>
+                    </div>
+                </div>
+
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="hero-panel-flotante hero-panel-html">
+                        <span>&lt;html&gt;</span>
+                    </div>
+
+                    <div class="hero-panel-flotante hero-panel-css">
+                        <span>{ css }</span>
+                    </div>
+
+                    <div class="hero-panel-flotante hero-panel-js">
+                        <span>JS</span>
+                    </div>
+
+                    <div class="hero-ventana">
+                        <div class="hero-ventana-barra">
+                            <div class="hero-puntos">
+                                <i></i>
+                                <i></i>
+                                <i></i>
+                            </div>
+                            <span>pw-hub.dev</span>
+                        </div>
+
+                        <div class="hero-editor">
+                            <div class="hero-editor-lateral">
+                                <span class="activo"></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                            <div class="hero-codigo">
+                                <div class="linea linea-1">
+                                    <b>01</b>
+                                    <span class="codigo-azul">&lt;main</span>
+                                    <span class="codigo-claro"> class=</span>
+                                    <span class="codigo-verde">"pw-hub"</span>
+                                    <span class="codigo-azul">&gt;</span>
+                                </div>
+                                <div class="linea linea-2">
+                                    <b>02</b>
+                                    <span class="codigo-morado">const</span>
+                                    <span class="codigo-claro"> portfolio = </span>
+                                    <span class="codigo-cian">{</span>
+                                </div>
+                                <div class="linea linea-3">
+                                    <b>03</b>
+                                    <span class="codigo-claro sangria">materia:</span>
+                                    <span class="codigo-verde"> "Programación Web"</span>
+                                    <span class="codigo-claro">,</span>
+                                </div>
+                                <div class="linea linea-4">
+                                    <b>04</b>
+                                    <span class="codigo-claro sangria">estado:</span>
+                                    <span class="codigo-verde"> "En desarrollo"</span>
+                                </div>
+                                <div class="linea linea-5">
+                                    <b>05</b>
+                                    <span class="codigo-cian">};</span>
+                                </div>
+                                <div class="linea linea-6">
+                                    <b>06</b>
+                                    <span class="codigo-azul">&lt;/main&gt;</span>
+                                </div>
+
+                                <div class="hero-cursor"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-base"></div>
+                </div>
+            </section>
         </header>
         <nav class="navegacion-principal navegacion-hub" aria-label="Navegación principal">
             <div class="navegacion-interior">
@@ -123,7 +239,7 @@
                         <div class="nav-separador" aria-hidden="true"></div>
                         <button type="button" class="nav-menu-accion" data-nav-doc="README.md"><span>RD</span>README</button>
                         <button type="button" class="nav-menu-accion" data-nav-doc="HISTORIAL.md"><span>HI</span>Historial Markdown</button>
-                        <button type="button" class="nav-menu-accion" data-nav-doc="ROADMAP.md"><span>RM</span>Roadmap Markdown</button>
+                        <button type="button" class="nav-menu-accion" data-nav-doc="ROADMAP.md"><span>RM</span>Roadmap completo</button>
                     </div>
                 </div>
                 <button type="button" class="nav-configuracion" id="abrir-personalizacion" aria-label="Personalizar Hub" aria-controls="panel-personalizacion" aria-expanded="false" title="Personalizar Hub"><span class="nav-configuracion-icono" aria-hidden="true"></span></button>
@@ -397,7 +513,7 @@
                 <div class="titulo-seccion">
                     <p class="subtitulo-seccion">Evolución del Hub</p>
                     <h2>Roadmap del portafolio</h2>
-                    <p>Visualización dinámica de las fases planeadas para la evolución del Hub académico.</p>
+                    <p>Mapa dinámico de la evolución técnica del Hub, con fases, ramas, avances y pendientes.</p>
                 </div>
                 <div class="roadmap-resumen">
                     <article class="roadmap-estadistica">
@@ -435,7 +551,7 @@
                         <button type="button" class="roadmap-filtro" data-roadmap-filtro="futura">Visión futura</button>
                     </div>
                     <div class="roadmap-vistas">
-                        <button type="button" class="roadmap-vista activo" data-roadmap-vista="tarjetas">Tarjetas</button>
+                        <button type="button" class="roadmap-vista activo" data-roadmap-vista="mapa">Mapa visual</button>
                         <button type="button" class="roadmap-vista" data-roadmap-vista="timeline">Línea de tiempo</button>
                     </div>
                 </div>
@@ -472,7 +588,7 @@
                         <p>Fuente principal de las fases y mejoras planeadas para el portafolio.</p>
                         <div class="acciones-documento">
                             <a class="boton-documento enlace-boton" href="#roadmap">Ver visual</a>
-                            <button class="boton-documento" type="button" data-doc="ROADMAP.md">Ver Markdown</button>
+                            <button class="boton-documento" type="button" data-doc="ROADMAP.md">Ver mapa completo</button>
                         </div>
                     </article>
                 </div>

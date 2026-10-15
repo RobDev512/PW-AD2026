@@ -1,35 +1,60 @@
 let datosHub = null;
-document.addEventListener("DOMContentLoaded", iniciarHub);
+
+document.addEventListener(
+    "DOMContentLoaded",
+    iniciarHub
+);
+
 async function iniciarHub() {
     try {
-        const respuesta = await fetch("data/unidades.json");
+        const respuesta = await fetch(
+            "data/unidades.json"
+        );
+
         if (!respuesta.ok) {
-            throw new Error("No fue posible cargar unidades.json");
+            throw new Error(
+                "No fue posible cargar unidades.json"
+            );
         }
+
         datosHub = await respuesta.json();
+
         renderizarProgresoHub(datosHub);
         renderizarResumenHub(datosHub);
         renderizarUnidadesHub(datosHub);
         configurarDocumentacionHub();
-    }
-    catch (error) {
+    } catch (error) {
         console.error(error);
-        const unidades = document.getElementById("contenedor-unidades");
+
+        const unidades = document.getElementById(
+            "contenedor-unidades"
+        );
+
         if (unidades) {
-            unidades.innerHTML = "<p class=\"error-carga\">No fue posible cargar las unidades del Hub.</p>";
+            unidades.innerHTML =
+                '<p class="error-carga">No fue posible cargar las unidades del Hub.</p>';
         }
     }
 }
+
 function renderizarProgresoHub(datos) {
-    const contenedor = document.getElementById("linea-progreso");
+    const contenedor = document.getElementById(
+        "linea-progreso"
+    );
+
     if (!contenedor) {
         return;
     }
+
     contenedor.innerHTML = "";
-    datos.unidades.forEach(unidad => {
+
+    datos.unidades.forEach((unidad) => {
         const tarjeta = document.createElement("a");
+
         tarjeta.href = `#unidad${unidad.numero}`;
-        tarjeta.className = `progreso-unidad ${unidad.estado}`;
+        tarjeta.className =
+            `progreso-unidad ${unidad.estado}`;
+
         tarjeta.innerHTML = `
             <span class="progreso-circulo">
                 U${unidad.numero}
@@ -37,27 +62,70 @@ function renderizarProgresoHub(datos) {
 
             <p>${unidad.titulo}</p>
         `;
+
         contenedor.appendChild(tarjeta);
     });
 }
+
 function renderizarResumenHub(datos) {
-    const totalTrabajos = datos.unidades.reduce((total, unidad) => total + (unidad.trabajos ? unidad.trabajos.length : 0), 0);
-    const unidadesConTrabajos = datos.unidades.filter(unidad => (unidad.trabajos || []).length > 0).length;
-    const actual = datos.unidades.find(unidad => unidad.estado === "actual");
-    asignarTextoHub("total-trabajos", totalTrabajos);
-    asignarTextoHub("total-unidades", unidadesConTrabajos);
-    asignarTextoHub("unidad-actual-resumen", actual ? `U${actual.numero}` : "-");
+    const totalTrabajos = datos.unidades.reduce(
+        (total, unidad) =>
+            total +
+            (unidad.trabajos
+                ? unidad.trabajos.length
+                : 0),
+        0
+    );
+
+    const unidadesConTrabajos =
+        datos.unidades.filter(
+            (unidad) =>
+                (unidad.trabajos || []).length > 0
+        ).length;
+
+    const actual = datos.unidades.find(
+        (unidad) =>
+            unidad.estado === "actual"
+    );
+
+    asignarTextoHub(
+        "total-trabajos",
+        totalTrabajos
+    );
+
+    asignarTextoHub(
+        "total-unidades",
+        unidadesConTrabajos
+    );
+
+    asignarTextoHub(
+        "unidad-actual-resumen",
+        actual
+            ? `U${actual.numero}`
+            : "-"
+    );
 }
+
 function renderizarUnidadesHub(datos) {
-    const contenedor = document.getElementById("contenedor-unidades");
+    const contenedor = document.getElementById(
+        "contenedor-unidades"
+    );
+
     if (!contenedor) {
         return;
     }
+
     contenedor.innerHTML = "";
-    datos.unidades.forEach(unidad => {
-        const articulo = document.createElement("article");
+
+    datos.unidades.forEach((unidad) => {
+        const articulo = document.createElement(
+            "article"
+        );
+
         articulo.id = `unidad${unidad.numero}`;
-        articulo.className = `unidad-card ${unidad.estado}`;
+        articulo.className =
+            `unidad-card ${unidad.estado}`;
+
         articulo.innerHTML = `
             <div class="unidad-cabecera">
                 <div>
@@ -82,7 +150,12 @@ function renderizarUnidadesHub(datos) {
                     <h4>Temas de la unidad</h4>
 
                     <ul>
-                        ${unidad.temas.map(tema => `<li>${tema}</li>`).join("")}
+                        ${unidad.temas
+                            .map(
+                                (tema) =>
+                                    `<li>${tema}</li>`
+                            )
+                            .join("")}
                     </ul>
                 </aside>
 
@@ -93,33 +166,55 @@ function renderizarUnidadesHub(datos) {
                         class="unidad-trabajos-grid"
                         data-unidad-trabajos="${unidad.numero}"
                     >
-                        ${unidad.trabajos.length ? "" : `
+                        ${
+                            unidad.trabajos.length
+                                ? ""
+                                : `
                                     <p class="unidad-sin-trabajos">
-                                        ${unidad.estado === "actual" ? "Los trabajos de esta unidad se agregar\u00E1n conforme sean realizados." : "Esta unidad todav\u00EDa no cuenta con trabajos registrados."}
+                                        ${
+                                            unidad.estado === "actual"
+                                                ? "Los trabajos de esta unidad se agregarán conforme sean realizados."
+                                                : "Esta unidad todavía no cuenta con trabajos registrados."
+                                        }
                                     </p>
-                                `}
+                                `
+                        }
                     </div>
                 </div>
             </div>
         `;
+
         contenedor.appendChild(articulo);
         renderizarTrabajosUnidadHub(unidad);
     });
 }
+
 function renderizarTrabajosUnidadHub(unidad) {
-    const contenedor = document.querySelector(`[data-unidad-trabajos="${unidad.numero}"]`);
-    if (!contenedor || unidad.trabajos.length === 0) {
+    const contenedor = document.querySelector(
+        `[data-unidad-trabajos="${unidad.numero}"]`
+    );
+
+    if (
+        !contenedor ||
+        unidad.trabajos.length === 0
+    ) {
         return;
     }
-    unidad.trabajos.forEach(trabajo => {
-        const tarjeta = document.createElement("article");
+
+    unidad.trabajos.forEach((trabajo) => {
+        const tarjeta = document.createElement(
+            "article"
+        );
+
         const trabajoCompleto = {
             ...trabajo,
             unidad: unidad.numero,
             unidadTitulo: unidad.titulo,
             unidadEstado: unidad.estado
         };
+
         tarjeta.className = "unidad-trabajo";
+
         tarjeta.innerHTML = `
             <div class="unidad-trabajo-preview">
                 ${crearPreviewMiniHub(trabajo)}
@@ -152,32 +247,70 @@ function renderizarTrabajosUnidadHub(unidad) {
                 </div>
             </div>
         `;
+
         contenedor.appendChild(tarjeta);
-        const botonVistaPrevia = tarjeta.querySelector("[data-unidad-vista-previa]");
+
+        const botonVistaPrevia = tarjeta.querySelector(
+            "[data-unidad-vista-previa]"
+        );
+
         if (botonVistaPrevia) {
-            botonVistaPrevia.addEventListener("click", () => {
-                if (typeof window.mostrarVistaPreviaTrabajoHub === "function") {
-                    window.mostrarVistaPreviaTrabajoHub(trabajoCompleto);
+            botonVistaPrevia.addEventListener(
+                "click",
+                () => {
+                    if (
+                        typeof window
+                            .mostrarVistaPreviaTrabajoHub ===
+                        "function"
+                    ) {
+                        window
+                            .mostrarVistaPreviaTrabajoHub(
+                                trabajoCompleto
+                            );
+                    }
                 }
-            });
+            );
         }
-        if (String(trabajo.tipo).toLowerCase() === "markdown") {
-            cargarMiniMarkdownHub(tarjeta, trabajo);
+
+        if (
+            String(trabajo.tipo).toLowerCase() ===
+            "markdown"
+        ) {
+            cargarMiniMarkdownHub(
+                tarjeta,
+                trabajo
+            );
+
         }
     });
 }
+
 function generarRutaVisorTrabajoHub(trabajo) {
-    const rutaAbsoluta = new URL(trabajo.ruta || "", window.location.href).href;
+    const rutaAbsoluta = new URL(
+        trabajo.ruta || "",
+        window.location.href
+    ).href;
+
     const parametros = new URLSearchParams({
         archivo: rutaAbsoluta,
-        tipo: String(trabajo.tipo || "archivo").toLowerCase(),
+        tipo: String(
+            trabajo.tipo || "archivo"
+        ).toLowerCase(),
         titulo: trabajo.nombre || "Trabajo"
     });
+
     return `vistas/trabajo.html?${parametros.toString()}`;
 }
+
 function crearPreviewMiniHub(trabajo) {
-    const tipo = String(trabajo.tipo || "").toLowerCase();
-    if (tipo === "html" || tipo === "pdf") {
+    const tipo = String(
+        trabajo.tipo || ""
+    ).toLowerCase();
+
+    if (
+        tipo === "html" ||
+        tipo === "pdf"
+    ) {
         return `
             <iframe
                 src="${trabajo.ruta}"
@@ -186,6 +319,7 @@ function crearPreviewMiniHub(trabajo) {
             ></iframe>
         `;
     }
+
     if (tipo === "markdown") {
         return `
             <div class="preview-markdown-mini">
@@ -193,62 +327,161 @@ function crearPreviewMiniHub(trabajo) {
             </div>
         `;
     }
+
     return `
         <div class="preview-markdown-mini">
             Vista previa no disponible.
         </div>
     `;
 }
-async function cargarMiniMarkdownHub(tarjeta, trabajo) {
-    const contenedor = tarjeta.querySelector(".preview-markdown-mini");
+
+async function cargarMiniMarkdownHub(
+    tarjeta,
+    trabajo
+) {
+    const contenedor = tarjeta.querySelector(
+        ".preview-markdown-mini"
+    );
+
     if (!contenedor) {
         return;
     }
+
     try {
-        const respuesta = await fetch(trabajo.ruta);
+        const respuesta = await fetch(
+            trabajo.ruta
+        );
+
         if (!respuesta.ok) {
             throw new Error();
         }
+
         const markdown = await respuesta.text();
+
         if (window.marked) {
-            contenedor.innerHTML = marked.parse(markdown);
-            corregirRutasMarkdownHub(contenedor, trabajo.ruta);
+            contenedor.innerHTML =
+                marked.parse(markdown);
+
+            corregirRutasMarkdownHub(
+                contenedor,
+                trabajo.ruta
+            );
+        } else {
+            contenedor.textContent =
+                markdown.slice(0, 900);
         }
-        else {
-            contenedor.textContent = markdown.slice(0, 900);
-        }
-    }
-    catch {
-        contenedor.textContent = "No fue posible generar la vista previa.";
+    } catch {
+        contenedor.textContent =
+            "No fue posible generar la vista previa.";
     }
 }
+
 function configurarDocumentacionHub() {
-    const botones = document.querySelectorAll(".boton-documento[data-doc]");
-    const cerrar = document.getElementById("cerrar-documento");
-    botones.forEach(boton => boton.addEventListener("click", () => cargarDocumentoHub(boton.dataset.doc)));
+    const botones = document.querySelectorAll(
+        ".boton-documento[data-doc]"
+    );
+
+    const cerrar = document.getElementById(
+        "cerrar-documento"
+    );
+
+    botones.forEach((boton) =>
+        boton.addEventListener(
+            "click",
+            () =>
+                cargarDocumentoHub(
+                    boton.dataset.doc
+                )
+        )
+    );
+
     if (cerrar) {
-        cerrar.addEventListener("click", cerrarDocumentoHub);
+        cerrar.addEventListener(
+            "click",
+            cerrarDocumentoHub
+        );
     }
 }
+
 async function cargarDocumentoHub(nombre) {
-    const titulo = document.getElementById("titulo-documento");
-    const contenido = document.getElementById("contenido-markdown");
-    const cerrar = document.getElementById("cerrar-documento");
-    const visor = document.getElementById("visor-markdown");
-    if (!titulo || !contenido || !cerrar || !visor) {
+    const titulo = document.getElementById(
+        "titulo-documento"
+    );
+
+    const contenido = document.getElementById(
+        "contenido-markdown"
+    );
+
+    const cerrar = document.getElementById(
+        "cerrar-documento"
+    );
+
+    const visor = document.getElementById(
+        "visor-markdown"
+    );
+
+    if (
+        !titulo ||
+        !contenido ||
+        !cerrar ||
+        !visor
+    ) {
         return;
     }
-    contenido.innerHTML = "<p class=\"mensaje-visor\">Cargando documento...</p>";
+
+    contenido.innerHTML =
+        '<p class="mensaje-visor">Cargando documento...</p>';
+
     try {
-        const respuesta = await fetch(`docs/${nombre}`);
+        const respuesta = await fetch(
+            `docs/${nombre}`
+        );
+
         if (!respuesta.ok) {
-            throw new Error("Documento no disponible");
+            throw new Error(
+                "Documento no disponible"
+            );
         }
-        const markdown = await respuesta.text();
-        titulo.textContent = nombre.replace(".md", "");
-        contenido.innerHTML = window.marked ? marked.parse(markdown) : `<pre>${escaparHtmlHub(markdown)}</pre>`;
-        corregirRutasMarkdownHub(contenido, `docs/${nombre}`);
+
+        const markdown =
+            await respuesta.text();
+
+        titulo.textContent =
+            nombre === "ROADMAP.md"
+                ? "Roadmap visual"
+                : nombre.replace(".md", "");
+
+        if (
+            nombre === "ROADMAP.md" &&
+            typeof window.renderizarRoadmapDocumento === "function"
+        ) {
+            contenido.innerHTML = "";
+            contenido.classList.add(
+                "contenido-roadmap-visual"
+            );
+
+            await window.renderizarRoadmapDocumento(
+                contenido
+            );
+        }
+        else {
+            contenido.classList.remove(
+                "contenido-roadmap-visual"
+            );
+
+            contenido.innerHTML =
+                window.marked
+                    ? marked.parse(markdown)
+                    : `<pre>${escaparHtmlHub(markdown)}</pre>`;
+
+            corregirRutasMarkdownHub(
+                contenido,
+                `docs/${nombre}`
+            );
+        }
+
         cerrar.hidden = false;
+
         visor.scrollIntoView({
             behavior: "smooth",
             block: "start"
@@ -256,6 +489,11 @@ async function cargarDocumentoHub(nombre) {
     }
     catch (error) {
         console.error(error);
+
+        contenido.classList.remove(
+            "contenido-roadmap-visual"
+        );
+
         contenido.innerHTML = `
             <p class="error-carga">
                 No fue posible cargar ${nombre}.
@@ -263,38 +501,90 @@ async function cargarDocumentoHub(nombre) {
         `;
     }
 }
+
 function cerrarDocumentoHub() {
-    const titulo = document.getElementById("titulo-documento");
-    const contenido = document.getElementById("contenido-markdown");
-    const cerrar = document.getElementById("cerrar-documento");
+    const titulo = document.getElementById(
+        "titulo-documento"
+    );
+
+    const contenido = document.getElementById(
+        "contenido-markdown"
+    );
+
+    const cerrar = document.getElementById(
+        "cerrar-documento"
+    );
+
     if (titulo) {
-        titulo.textContent = "Documentaci\u00F3n del Hub";
+        titulo.textContent =
+            "Documentación del Hub";
     }
+
     if (contenido) {
-        contenido.innerHTML = "<p class=\"mensaje-visor\">Selecciona README, Historial o Roadmap para visualizarlo aqu\u00ED.</p>";
+        contenido.classList.remove(
+            "contenido-roadmap-visual"
+        );
+
+        contenido.innerHTML =
+            '<p class="mensaje-visor">Selecciona README, Historial o Roadmap para visualizarlo aquí.</p>';
     }
+
     if (cerrar) {
         cerrar.hidden = true;
     }
 }
-function corregirRutasMarkdownHub(contenedor, rutaDocumento) {
-    const ultimaBarra = rutaDocumento.lastIndexOf("/");
-    const carpetaBase = ultimaBarra >= 0 ? rutaDocumento.slice(0, ultimaBarra + 1) : "";
-    contenedor.querySelectorAll("img, a").forEach(elemento => {
-        const atributo = elemento.tagName === "IMG" ? "src" : "href";
-        const valor = elemento.getAttribute(atributo);
-        if (!valor || !esRutaRelativaHub(valor)) {
-            return;
-        }
-        elemento.setAttribute(atributo, carpetaBase + valor);
-    });
+
+function corregirRutasMarkdownHub(
+    contenedor,
+    rutaDocumento
+) {
+    const ultimaBarra =
+        rutaDocumento.lastIndexOf("/");
+
+    const carpetaBase =
+        ultimaBarra >= 0
+            ? rutaDocumento.slice(
+                0,
+                ultimaBarra + 1
+            )
+            : "";
+
+    contenedor
+        .querySelectorAll("img, a")
+        .forEach((elemento) => {
+            const atributo =
+                elemento.tagName === "IMG"
+                    ? "src"
+                    : "href";
+
+            const valor =
+                elemento.getAttribute(
+                    atributo
+                );
+
+            if (
+                !valor ||
+                !esRutaRelativaHub(valor)
+            ) {
+                return;
+            }
+
+            elemento.setAttribute(
+                atributo,
+                carpetaBase + valor
+            );
+        });
 }
+
 function asignarTextoHub(id, valor) {
-    const elemento = document.getElementById(id);
+    const elemento =
+        document.getElementById(id);
+
     if (elemento) {
         elemento.textContent = valor;
     }
 }
+
 function formatearEstadoUnidadHub(estado) {
     return {
         completada: "Completada",
@@ -302,8 +592,12 @@ function formatearEstadoUnidadHub(estado) {
         pendiente: "Pendiente"
     }[estado] || estado;
 }
+
 function formatearTipoHub(tipo) {
-    const valor = String(tipo || "archivo").toLowerCase();
+    const valor = String(
+        tipo || "archivo"
+    ).toLowerCase();
+
     const mapa = {
         html: "HTML",
         markdown: "Markdown",
@@ -312,13 +606,31 @@ function formatearTipoHub(tipo) {
         texto: "Texto",
         txt: "Texto"
     };
-    return (mapa[valor] || (valor.charAt(0).toUpperCase() + valor.slice(1)));
+
+    return (
+        mapa[valor] ||
+        (
+            valor.charAt(0).toUpperCase() +
+            valor.slice(1)
+        )
+    );
 }
+
 function esRutaRelativaHub(ruta) {
-    return !(ruta.startsWith("http://") || ruta.startsWith("https://") || ruta.startsWith("#") || ruta.startsWith("mailto:") || ruta.startsWith("data:"));
+    return !(
+        ruta.startsWith("http://") ||
+        ruta.startsWith("https://") ||
+        ruta.startsWith("#") ||
+        ruta.startsWith("mailto:") ||
+        ruta.startsWith("data:")
+    );
 }
+
 function escaparHtmlHub(texto) {
-    const div = document.createElement("div");
+    const div =
+        document.createElement("div");
+
     div.textContent = texto;
+
     return div.innerHTML;
 }

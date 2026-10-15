@@ -382,3 +382,79 @@ Después del cierre técnico original de la Fase 15, se decidió abrir una últi
 La fase contempla el diseño de un logo y favicon propios, la incorporación de un banner o hero principal, mejoras visuales generales y el renderizado interno de archivos Markdown de actividades para evitar que se abran como texto plano.
 
 La Fase 15 permanece registrada como un cierre histórico válido; la Fase 16 funciona como una última extensión deliberada antes del cierre definitivo del roadmap.
+
+---
+
+### Reorganización estructural y visor unificado de trabajos
+
+**Tipo:** Mejora  
+**Estado:** Completado  
+**Unidad:** U3  
+**FechaHora:** 2026-10-14T23:04:36Z  
+**Precisión:** Exacta  
+**Fuente:** GitHub
+
+Se reorganizó y formateó el código del Hub para mantener una estructura más clara y legible.
+
+El visor completo pasó a `hub/vistas/trabajo.html`, se consolidó la apertura de trabajos en la misma pestaña y se mantuvo el regreso al Hub mediante el historial del navegador cuando es posible.
+
+También quedaron disponibles los modos **Diseño** y **Código** para los trabajos compatibles y el renderizado interno de documentos Markdown.
+
+**Commit:** `052d78a` - `Ordenar estructura y codigo del Hub`.
+
+---
+
+### Integración de identidad visual de PW Hub
+
+**Tipo:** Hito  
+**Estado:** Completado  
+**Unidad:** U3  
+**FechaHora:** 2026-10-14T23:34:22Z  
+**Precisión:** Exacta  
+**Fuente:** GitHub
+
+Se incorporó una identidad propia para el portafolio mediante una familia completa de recursos de PW Hub.
+
+Se agregaron logo maestro, versiones optimizadas, logo horizontal, logo compacto, isotipo principal, variantes alternativas y favicon en 16, 32, 192 y 512 píxeles.
+
+El favicon se integró en el Hub y en el visor completo de trabajos. La identidad también comenzó a utilizarse dentro del encabezado y del visor.
+
+**Commit:** `4046cfb` - `Integrar identidad visual de PW Hub`.
+
+---
+
+### Hero generado completamente con código
+
+**Tipo:** Mejora  
+**Estado:** Actual  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Registro del Hub
+
+Se desarrolló y probó localmente un hero principal generado completamente mediante HTML y CSS, sin utilizar una imagen de fondo.
+
+La composición incluye rejilla tecnológica, resplandores, órbitas, paneles flotantes, una representación de editor de código y animaciones suaves.
+
+Durante las pruebas se integraron dentro del propio banner los logos de PW Hub, Tecnológico Nacional de México e Instituto Tecnológico de Tepic.
+
+El hero continúa en refinamiento antes de considerarse terminado.
+
+---
+
+### Revisión de navegación móvil y Configuración
+
+**Tipo:** Decisión técnica  
+**Estado:** Actual  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Registro del Hub
+
+Durante la revisión en un dispositivo móvil se detectó que la navbar actual ocupa demasiado espacio vertical al apilar sus controles.
+
+Se decidió retirar el botón de Configuración de la navbar y mantenerlo como un control fijo y siempre accesible dentro de la interfaz.
+
+También se acordó rediseñar la navegación móvil mediante una barra compacta y opciones dinámicas para Curso y Explorar.
+
+La implementación queda registrada como trabajo pendiente de la Fase 16 en `ROADMAP.md`.

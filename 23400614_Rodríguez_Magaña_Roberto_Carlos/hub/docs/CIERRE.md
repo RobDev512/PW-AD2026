@@ -8,6 +8,8 @@ El cierre original se refiere al desarrollo técnico principal completado durant
 
 Posteriormente se decidió abrir una última Fase 16 para realizar un refinamiento final de identidad visual y experiencia de contenidos.
 
+La Fase 16 se encuentra actualmente **en progreso**.
+
 ---
 
 # Criterio
@@ -16,7 +18,7 @@ El roadmap documenta mejoras del Hub como sistema.
 
 Agregar posteriormente archivos de U3, U4 o U5 corresponde normalmente a actualización de contenido, mantenimiento y registro académico.
 
-La Fase 16 es una excepción deliberada: se añadió como última etapa estructural para mejorar la presentación visual del Hub y el manejo de documentos Markdown.
+La Fase 16 es una excepción deliberada: se añadió como última etapa estructural para mejorar la presentación visual del Hub, el manejo de contenidos y la experiencia responsive.
 
 ---
 
@@ -46,17 +48,46 @@ La Fase 16 es una excepción deliberada: se añadió como última etapa estructu
 
 ---
 
-# Pendientes de la Fase 16
+# Avances de la Fase 16
 
-- [ ] diseñar un logo propio para el Hub;
-- [ ] crear un favicon;
-- [ ] incorporar un banner o hero principal;
-- [ ] reforzar la identidad visual;
-- [ ] mejorar tarjetas, botones, estados e indicadores;
-- [ ] renderizar archivos Markdown de actividades dentro del Hub;
-- [ ] evitar la apertura de `.md` de U1 como texto plano;
-- [ ] estilizar correctamente el contenido Markdown renderizado;
-- [ ] revisar el comportamiento responsive tras los cambios;
+- [x] diseñar una familia de logo propia para PW Hub;
+- [x] crear logo horizontal y compacto;
+- [x] crear isotipo principal y variantes;
+- [x] crear favicon en múltiples tamaños;
+- [x] integrar favicon en el Hub;
+- [x] integrar branding en el visor de trabajos;
+- [x] reorganizar y formatear el código;
+- [x] mover el visor completo a `vistas/trabajo.html`;
+- [x] renderizar archivos Markdown de actividades dentro del Hub;
+- [x] evitar la dependencia de abrir `.md` compatibles como texto plano;
+- [x] estilizar el contenido Markdown renderizado;
+- [x] incorporar modos Diseño y Código;
+- [x] abrir trabajos en la misma pestaña;
+- [x] conservar navegación de regreso al Hub cuando el historial del navegador lo permite.
+
+---
+
+# Trabajo actual de la Fase 16
+
+- [ ] finalizar el hero principal generado mediante HTML y CSS;
+- [ ] cerrar el refinamiento de los logos integrados dentro del hero;
+- [ ] validar proporciones y altura del banner en distintos tamaños de pantalla.
+
+El hero ya fue desarrollado y probado localmente, pero permanece marcado como trabajo actual hasta completar su revisión responsive.
+
+---
+
+# Pendientes para el cierre definitivo
+
+- [ ] retirar Configuración de la navbar;
+- [ ] convertir Configuración en un control flotante y siempre visible;
+- [ ] rediseñar la navbar para celular;
+- [ ] incorporar una barra de navegación móvil compacta;
+- [ ] mostrar Curso y Explorar mediante una interacción dinámica apropiada para móvil;
+- [ ] evitar que la navegación móvil ocupe gran parte de la pantalla;
+- [ ] reforzar tarjetas, botones, estados e indicadores;
+- [ ] revisar la presentación de trabajos destacados;
+- [ ] realizar una revisión responsive completa;
 - [ ] realizar la revisión visual y funcional final.
 
 ---
@@ -91,6 +122,8 @@ Después de completar la Fase 16, este flujo volverá a representar el mantenimi
 
 **15 / 16 completadas.**
 
+**Fase 16: En progreso.**
+
 La Fase 16 será la última fase de desarrollo estructural.
 
-Al finalizarla, este documento podrá volver a marcar el Hub como **cerrado definitivamente**.
+Al finalizar la navegación móvil, el control flotante de Configuración, la revisión responsive y los últimos refinamientos visuales, este documento podrá volver a marcar el Hub como **cerrado definitivamente**.

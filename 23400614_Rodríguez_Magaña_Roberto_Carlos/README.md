@@ -37,11 +37,14 @@ Además de los archivos correspondientes a cada unidad, se desarrolló un **Hub 
 ├── U2/
 ├── U3/
 ├── hub/
-│   ├── index.html
+│   ├── assets/
+│   │   └── branding/
 │   ├── css/
 │   ├── data/
 │   ├── docs/
-│   └── js/
+│   ├── js/
+│   ├── vistas/
+│   └── index.html
 ├── Comandos_Git.md
 ├── Perfil.md
 ├── foto.jpg
@@ -60,6 +63,7 @@ Entre sus funciones se encuentran:
 
 - visualización de las cinco unidades;
 - registro de trabajos realizados;
+- progreso del curso;
 - vistas previas de actividades;
 - búsqueda y filtrado de trabajos;
 - favoritos;
@@ -68,6 +72,11 @@ Entre sus funciones se encuentran:
 - historial del portafolio;
 - roadmap del desarrollo del Hub;
 - personalización de la interfaz;
+- perfiles de visualización;
+- renderizado interno de documentos Markdown;
+- visor completo de trabajos con modos **Diseño** y **Código**;
+- identidad propia mediante logo e isotipo de PW Hub;
+- favicon propio;
 - diseño adaptable a diferentes tamaños de pantalla.
 
 La información académica se administra principalmente mediante:
@@ -81,6 +90,49 @@ mientras que el historial y la documentación se encuentran en:
 ```text
 hub/docs/
 ```
+
+---
+
+## Identidad visual de PW Hub
+
+Durante la Fase 16 se creó una familia propia de recursos visuales para el portafolio.
+
+Los archivos se encuentran en:
+
+```text
+hub/assets/branding/
+```
+
+La familia incluye:
+
+- logo maestro;
+- versiones optimizadas del logo;
+- logo horizontal;
+- logo compacto;
+- isotipo principal y alternativas;
+- favicon en 16, 32, 192 y 512 píxeles.
+
+También se encuentra en desarrollo un **hero generado completamente con HTML y CSS**, sin depender de una imagen de fondo.
+
+---
+
+## Estado técnico del Hub
+
+El desarrollo técnico principal fue cerrado originalmente con 15 fases.
+
+Posteriormente se abrió una **Fase 16 - Identidad visual y experiencia de contenidos**, actualmente **en progreso**.
+
+Entre los avances de esta fase ya se encuentran:
+
+- reorganización de la estructura y formato del código;
+- visor completo de trabajos en `hub/vistas/trabajo.html`;
+- renderizado interno de Markdown;
+- modos Diseño y Código;
+- integración de logo y favicon;
+- familia completa de branding;
+- pruebas y refinamiento de un hero generado por código.
+
+Quedan pendientes principalmente ajustes de navegación móvil, configuración flotante y la revisión responsive final.
 
 ---
 

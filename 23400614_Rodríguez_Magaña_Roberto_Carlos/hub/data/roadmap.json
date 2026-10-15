@@ -1,0 +1,42 @@
+{
+    "version": 1,
+    "fuente": "docs/ROADMAP.md",
+    "vistaPredeterminada": "mapa",
+    "expandirEstados": [
+        "desarrollo"
+    ],
+    "ramas": {
+        "Objetivo": {
+            "tipo": "objetivo",
+            "etiqueta": "Objetivo"
+        },
+        "Implementado": {
+            "tipo": "completada",
+            "etiqueta": "Implementado"
+        },
+        "Trabajo realizado": {
+            "tipo": "completada",
+            "etiqueta": "Trabajo realizado"
+        },
+        "Resultado": {
+            "tipo": "completada",
+            "etiqueta": "Resultado"
+        },
+        "Fuente": {
+            "tipo": "neutral",
+            "etiqueta": "Fuente"
+        },
+        "En desarrollo": {
+            "tipo": "desarrollo",
+            "etiqueta": "En desarrollo"
+        },
+        "Pendiente": {
+            "tipo": "planeada",
+            "etiqueta": "Pendiente"
+        },
+        "Resultado esperado": {
+            "tipo": "futura",
+            "etiqueta": "Resultado esperado"
+        }
+    }
+}

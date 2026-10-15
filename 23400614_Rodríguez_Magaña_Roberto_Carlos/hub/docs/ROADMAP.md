@@ -2,7 +2,7 @@
 
 ## Estado general
 
-**15 de 16 fases completadas.**
+**15 de 16 fases completadas. Fase 16 en progreso.**
 
 El roadmap representa la evolución **técnica del Hub**, no el avance de las cinco unidades de la materia.
 
@@ -239,37 +239,58 @@ Posteriormente se decidió abrir una última fase de refinamiento visual y funci
 
 # Fase 16 - Identidad visual y experiencia de contenidos
 
-**Estado:** Pendiente
+**Estado:** En progreso
 
 ## Objetivo
 
 Realizar una última etapa de refinamiento visual y funcional del Hub, reforzando su identidad propia y mejorando la forma en que se presentan los contenidos académicos.
 
+## Implementado
+
+- [x] diseñar una familia de logo propia para PW Hub;
+- [x] crear versiones horizontal, compacta e isotipo;
+- [x] conservar variantes alternativas del isotipo;
+- [x] crear favicon en 16, 32, 192 y 512 píxeles;
+- [x] integrar favicon en el Hub principal;
+- [x] integrar favicon e isotipo en el visor de trabajos;
+- [x] reorganizar y formatear el código del Hub;
+- [x] mover el visor completo a `vistas/trabajo.html`;
+- [x] renderizar documentos Markdown dentro de la interfaz;
+- [x] evitar que los documentos Markdown compatibles dependan de abrirse como texto plano;
+- [x] integrar `Perfil.md`, `Comandos_Git.md` y otros trabajos Markdown mediante el visor;
+- [x] incorporar modos **Diseño** y **Código** en la vista completa;
+- [x] mantener un solo modo activo;
+- [x] aplicar estilos propios a títulos, listas, tablas, código, citas y enlaces Markdown;
+- [x] abrir los trabajos en la misma pestaña;
+- [x] conservar el regreso al Hub mediante el historial del navegador cuando es posible.
+
+## En desarrollo
+
+- [ ] consolidar el hero principal generado con HTML y CSS;
+- [ ] terminar la integración visual de los logos de PW Hub, TecNM e Instituto Tecnológico de Tepic dentro del hero;
+- [ ] terminar de reducir y equilibrar la altura del banner;
+- [ ] validar el hero en escritorio, media pantalla y móvil.
+
+El hero no depende de una imagen de fondo. Su ilustración tecnológica, paneles, rejilla, resplandores, código y animaciones se generan mediante HTML y CSS.
+
 ## Pendiente
 
-- diseñar un logo propio para el Hub;
-- crear un favicon basado en la nueva identidad visual;
-- incorporar un banner o hero principal;
-- mejorar la presentación visual del encabezado;
-- reforzar el diseño de tarjetas, botones, estados e indicadores;
-- revisar colores, sombras, espaciados y detalles visuales;
-- mantener compatibilidad con los perfiles de personalización existentes;
-- mejorar la presentación de trabajos destacados;
-- renderizar correctamente los archivos Markdown dentro del Hub;
-- evitar que los archivos `.md` de la Unidad 1 se abran como texto plano;
-- integrar `Perfil.md`, `Comandos_Git.md` y demás documentos Markdown en el visor del Hub;
-- incorporar un visor dual para trabajos con modos **Diseño** y **Código**;
-- utilizar dos controles cuadrados flotantes en la esquina superior derecha de la vista previa, independientes de `Abrir trabajo` y `Cerrar`;
-- mantener un único modo activo a la vez, con estado visual destacado y persistencia del último modo utilizado durante la sesión;
-- aplicar estilos propios a títulos, listas, tablas, código, citas y enlaces renderizados desde Markdown;
-- revisar la experiencia responsive después de los cambios visuales;
-- realizar una revisión final de navegación y coherencia visual.
+- [ ] sacar el botón de Configuración de la navbar;
+- [ ] convertir Configuración en un botón fijo y siempre accesible;
+- [ ] rediseñar la navbar para celular;
+- [ ] implementar una barra móvil compacta con Inicio, Curso, Explorar y GitHub;
+- [ ] mostrar las opciones internas de Curso y Explorar mediante un panel dinámico apropiado para móvil;
+- [ ] evitar que la navegación móvil ocupe gran parte de la altura de la pantalla;
+- [ ] mantener compatibilidad con los perfiles de personalización existentes;
+- [ ] reforzar el diseño de tarjetas, botones, estados e indicadores;
+- [ ] mejorar la presentación de trabajos destacados;
+- [ ] revisar colores, sombras, espaciados y detalles visuales restantes;
+- [ ] realizar una revisión responsive completa;
+- [ ] realizar una revisión final de navegación y coherencia visual.
 
 ## Resultado esperado
 
-El Hub contará con una identidad visual más reconocible y una experiencia de navegación más cuidada.
-
-Los documentos Markdown podrán consultarse directamente dentro de la interfaz del portafolio con formato HTML, sin necesidad de abrir los archivos como texto plano.
+El Hub contará con una identidad visual reconocible, una navegación clara en escritorio y móvil y una experiencia de consulta consistente para archivos HTML, Markdown y otros trabajos compatibles.
 
 Esta será la última fase de desarrollo estructural del Hub. Después de completarla, las modificaciones posteriores corresponderán únicamente al mantenimiento y a la incorporación de nuevas actividades de Programación Web.
 
@@ -279,6 +300,6 @@ Esta será la última fase de desarrollo estructural del Hub. Después de comple
 
 **Completado: 15 / 16**
 
-La Fase 16 corresponde al último refinamiento visual y funcional del Hub.
+**Fase actual: 16 - En progreso**
 
-Una vez completada, el roadmap quedará definitivamente cerrado.
+Una vez completada la revisión responsive, la navegación móvil, el control flotante de Configuración y los últimos refinamientos visuales, el roadmap podrá quedar definitivamente cerrado.
