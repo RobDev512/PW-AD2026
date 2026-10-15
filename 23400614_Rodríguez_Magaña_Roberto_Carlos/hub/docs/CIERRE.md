@@ -242,3 +242,15 @@ Estas mejoras no modifican el estado del roadmap estructural. PW Hub permanece e
 - [x] cerrar la etapa de ampliación visual.
 
 A partir de este punto, el sistema de apariencia se considera finalizado y entra únicamente en mantenimiento correctivo.
+
+## Cierre de sincronización y modo offline
+
+- [x] U3 muestra Flexbox y CSS Grid como parte del catálogo base;
+- [x] los nuevos trabajos compatibles pueden detectarse desde GitHub;
+- [x] `unidades.json` sigue funcionando como fallback local;
+- [x] el último catálogo sincronizado queda disponible sin conexión;
+- [x] el Service Worker cachea el Hub y archivos del portafolio;
+- [x] no se añadió instalación ni `manifest.webmanifest`;
+- [x] el diseño y la apariencia avanzada permanecen sin cambios.
+
+Con esta mejora el Hub queda preparado para crecer con futuras entregas sin requerir registrar manualmente cada archivo nuevo antes de que sea visible.

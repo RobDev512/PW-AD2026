@@ -388,3 +388,15 @@ Esta mejora pertenece a la etapa de **mantenimiento y evolución visual** poster
 - [x] alcanzar 20 temas oscuros configurables en total;
 - [x] conservar el color de acento como ajuste independiente;
 - [x] mantener compatibilidad con Normal, Liquid Glass, Minimal y Neon Tech;
+
+### Mejoras posteriores al cierre: sincronización y resiliencia
+
+- [x] sincronización automática de trabajos desde GitHub;
+- [x] detección de nuevos HTML, PDF y Markdown dentro de U1-U5;
+- [x] mantener `unidades.json` como catálogo base y capa de metadatos;
+- [x] registrar Flexbox y CSS Grid en el fallback local de U3;
+- [x] guardar el último catálogo detectado para funcionamiento sin conexión;
+- [x] añadir Service Worker sin convertir el Hub en aplicación instalable;
+- [x] cachear el Hub y los archivos académicos visitables para uso offline posterior.
+
+El roadmap estructural permanece cerrado en **16/16**. Estas tareas corresponden únicamente a mantenimiento posterior al cierre.

@@ -915,3 +915,23 @@ Las nuevas variantes son **Carbono**, **Medianoche**, **Índigo**, **Pizarra**, 
 Cada tema modifica únicamente la base oscura de la interfaz. El color de acento sigue siendo independiente, por lo que cualquier tema puede combinarse con los colores de acento existentes y con los estilos Normal, Liquid Glass, Minimal o Neon Tech.
 
 Esta ampliación se considera el último añadido visual planificado antes del cierre definitivo del mantenimiento de apariencia.
+
+---
+
+### Sincronización automática y modo offline
+
+**Tipo:** Mantenimiento funcional posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día
+
+El Hub dejó de depender exclusivamente de la lista manual de trabajos de `data/unidades.json`.
+
+Al cargar con conexión, `js/sincronizacion.js` consulta el árbol público de la rama `main` de GitHub y detecta automáticamente archivos HTML, PDF y Markdown dentro de `U1` a `U5`. Los registros existentes en `unidades.json` mantienen prioridad para conservar nombres y descripciones cuidadas; los archivos nuevos se agregan automáticamente al final de su unidad.
+
+La consulta se limita a una vez por minuto por navegador para reducir solicitudes innecesarias a la API pública de GitHub. El último resultado se conserva en `localStorage` y sirve como respaldo si GitHub no está disponible.
+
+También se añadió `service-worker.js` en la raíz del portafolio. El Service Worker no instala una PWA: únicamente guarda una copia del Hub y de los archivos académicos para que, después de una visita con conexión, el portafolio pueda seguir consultándose sin internet.
+
+Como fallback local, U3 registra explícitamente `flex.html` y `grid.html`.

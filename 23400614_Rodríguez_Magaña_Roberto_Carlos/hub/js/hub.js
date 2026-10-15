@@ -17,7 +17,18 @@ async function iniciarHub() {
             );
         }
 
-        datosHub = await respuesta.json();
+        const datosBase =
+            await respuesta.json();
+
+        datosHub =
+            typeof window
+                .sincronizarTrabajosGitHub ===
+                "function"
+                ? await window
+                    .sincronizarTrabajosGitHub(
+                        datosBase
+                    )
+                : datosBase;
 
         renderizarProgresoHub(datosHub);
         renderizarResumenHub(datosHub);

@@ -263,3 +263,9 @@ La navbar vuelve a utilizar el blur y los bordes especulares del Liquid Glass V2
 ### 20 temas oscuros
 
 La personalización final de PW Hub ofrece 20 temas oscuros combinables con los colores de acento, cuatro estilos visuales y tres niveles de movimiento. Con esta ampliación se cierra la etapa planificada de personalización visual.
+
+### Sincronización automática y respaldo offline
+
+PW Hub complementa su catálogo local con una lectura automática del contenido publicado en las carpetas `U1` a `U5` del repositorio. Los trabajos nuevos compatibles pueden aparecer en el Hub sin tener que agregarlos manualmente a la interfaz.
+
+Además, un Service Worker conserva una copia de los recursos esenciales y de los archivos académicos detectados. Después de al menos una visita con conexión, el portafolio puede seguir consultándose sin internet desde el mismo navegador.

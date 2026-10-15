@@ -88,6 +88,18 @@
                     "ruta": "../U3/Ejercicio1CSS.html",
                     "tipo": "html",
                     "descripcion": "Ejercicio de CSS para practicar dimensiones, padding, border y margin mediante una caja demostrativa."
+                },
+                {
+                    "nombre": "Ejemplo Flexbox",
+                    "ruta": "../U3/flex.html",
+                    "tipo": "html",
+                    "descripcion": "Ejemplo de una barra de navegación construida con Flexbox, alineación y separación de elementos."
+                },
+                {
+                    "nombre": "Ejemplo CSS Grid",
+                    "ruta": "../U3/grid.html",
+                    "tipo": "html",
+                    "descripcion": "Ejemplo de distribución de seis elementos mediante una cuadrícula de tres columnas con CSS Grid."
                 }
             ]
         },

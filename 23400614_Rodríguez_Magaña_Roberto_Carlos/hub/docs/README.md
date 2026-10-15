@@ -342,3 +342,11 @@ Se restauró de forma real el acabado V2, incluyendo el blur visible de la navba
 PW Hub dispone ahora de 20 variantes de tema oscuro. Las quince incorporaciones finales son Carbono, Medianoche, Índigo, Pizarra, Bosque nocturno, Esmeralda negra, Vino oscuro, Ciruela, Cobre nocturno, Ámbar oscuro, Acero, Tormenta, Eclipse, Terminal y Cobalto.
 
 Los temas pueden combinarse libremente con el color de acento, el estilo visual y el nivel de movimiento.
+
+### Sincronización de trabajos
+
+El catálogo visual del Hub se construye a partir de `data/unidades.json` y se complementa automáticamente con el contenido real de las carpetas `U1` a `U5` publicado en GitHub.
+
+Los trabajos registrados manualmente conservan sus nombres y descripciones. Cuando aparece un nuevo HTML, PDF o Markdown compatible, el Hub lo incorpora sin exigir editar inmediatamente `unidades.json`.
+
+La última detección se guarda en el navegador y el Service Worker mantiene una copia offline del portafolio. El modo sin conexión es una función de respaldo y no convierte PW Hub en una aplicación instalable.
