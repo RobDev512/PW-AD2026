@@ -298,3 +298,10 @@ Con este ajuste, la interfaz de personalización vuelve a considerarse cerrada s
 - [x] actualizar Service Worker a versión 5.
 
 Con este bloque se considera terminado el soporte offline planificado para PW Hub.
+
+## Corrección final del hero móvil
+
+- [x] mostrar HTML y CSS flotantes en `<= 420px`;
+- [x] conservar JS y el editor existente;
+- [x] no alterar ninguna otra vista;
+- [x] actualizar la caché offline a versión 6.

@@ -1011,3 +1011,19 @@ Esto evita sustituir innecesariamente contenido que sí fue visitado previamente
 También se añadió un indicador flotante temporal. Cuando el navegador pierde internet muestra **Sin conexión · usando contenido guardado**. Al recuperar la red cambia brevemente a **Conexión recuperada** y habilita una nueva sincronización con GitHub para la próxima carga.
 
 No se añadió `manifest.webmanifest`, instalación ni comportamiento de aplicación.
+
+---
+
+### Restauración de HTML y CSS flotantes en móvil
+
+**Tipo:** Corrección visual puntual posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día
+
+Los paneles flotantes **HTML** y **CSS** del hero estaban ocultos por una regla responsive en pantallas de hasta 420 px.
+
+La corrección se realiza mediante `hero-movil-fix.css`, un override aislado que únicamente vuelve a mostrar esos dos paneles y ajusta su tamaño y posición dentro de la ilustración. No modifica ninguna otra parte del Hub.
+
+La caché offline avanza a `pw-hub-offline-v6` para propagar el nuevo CSS.

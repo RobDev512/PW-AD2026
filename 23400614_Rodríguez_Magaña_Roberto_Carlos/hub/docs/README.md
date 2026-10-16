@@ -378,3 +378,7 @@ PW Hub incluye una página offline propia para los casos en los que una navegaci
 Los recursos y trabajos visitados anteriormente siguen abriéndose directamente desde la caché. La página de error solo actúa como último fallback.
 
 El Hub también muestra un pequeño indicador únicamente cuando la conexión se pierde o acaba de recuperarse.
+
+### Paneles flotantes del hero en móvil
+
+En pantallas de hasta 420 px el hero conserva ahora los paneles flotantes **HTML**, **CSS** y **JS**. La corrección está aislada en un archivo responsive específico y no altera otros tamaños de pantalla.

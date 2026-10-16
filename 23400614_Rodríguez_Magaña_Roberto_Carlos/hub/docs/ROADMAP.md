@@ -435,3 +435,10 @@ El roadmap estructural permanece cerrado en **16/16**.
 - [x] actualizar la caché del Service Worker a `pw-hub-offline-v5`.
 
 El roadmap estructural permanece cerrado en **16/16**.
+
+- [x] restaurar los paneles flotantes **HTML** y **CSS** únicamente en móvil (`<= 420px`);
+- [x] aplicar la corrección mediante un override aislado del hero;
+- [x] conservar sin cambios escritorio, tablet, branding, editor y navegación;
+- [x] renovar la caché offline a `pw-hub-offline-v6`.
+
+El roadmap estructural continúa cerrado en **16/16**.

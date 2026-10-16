@@ -293,3 +293,7 @@ Liquid Glass V12 añade, de forma progresiva, una refracción ligera mediante SV
 Después de una visita con internet, PW Hub puede reutilizar los recursos y trabajos almacenados por el navegador. Si se solicita una página que todavía no existe en la caché y no hay conexión, se muestra una página offline propia en lugar de un error genérico del navegador.
 
 El sitio continúa siendo un portafolio web convencional y no incluye funciones de instalación.
+
+### Ajuste puntual del hero móvil
+
+La versión móvil del hero vuelve a mostrar los paneles flotantes **HTML** y **CSS** junto al panel **JS**. El ajuste está aislado a pantallas de hasta 420 px y no modifica escritorio, tablet ni otras secciones del Hub.

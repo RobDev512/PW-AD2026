@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v5";
+    "pw-hub-offline-v6";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;
@@ -40,6 +40,7 @@ const ARCHIVOS_SHELL = [
     "hub/css/estadisticas.css",
     "hub/css/estilos.css",
     "hub/css/hero-codigo.css",
+    "hub/css/hero-movil-fix.css",
     "hub/css/historial.css",
     "hub/css/navegacion.css",
     "hub/css/personalizacion.css",

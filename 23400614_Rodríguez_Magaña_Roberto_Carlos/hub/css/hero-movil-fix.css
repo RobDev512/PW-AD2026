@@ -1,0 +1,56 @@
+/* =========================================================
+   PW HUB - AJUSTE PUNTUAL DEL HERO EN MÓVIL
+   ========================================================= */
+
+/*
+   El CSS principal del hero oculta los paneles flotantes
+   HTML y CSS en pantallas de hasta 420 px.
+
+   Este archivo SOLO revierte esa ocultación en ese rango y
+   ajusta sus dimensiones/posición para que entren alrededor
+   del editor sin modificar el resto del Hub.
+*/
+
+@media (max-width: 420px) {
+    .hero-panel-html,
+    .hero-panel-css {
+        display:
+            grid;
+    }
+
+    .hero-panel-html {
+        width:
+            60px;
+        height:
+            36px;
+
+        left:
+            2px;
+        top:
+            16px;
+
+        border-radius:
+            10px;
+
+        font-size:
+            8px;
+    }
+
+    .hero-panel-css {
+        width:
+            54px;
+        height:
+            38px;
+
+        right:
+            1px;
+        top:
+            29px;
+
+        border-radius:
+            10px;
+
+        font-size:
+            8px;
+    }
+}
