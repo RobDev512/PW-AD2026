@@ -1027,3 +1027,28 @@ Los paneles flotantes **HTML** y **CSS** del hero estaban ocultos por una regla 
 La corrección se realiza mediante `hero-movil-fix.css`, un override aislado que únicamente vuelve a mostrar esos dos paneles y ajusta su tamaño y posición dentro de la ilustración. No modifica ninguna otra parte del Hub.
 
 La caché offline avanza a `pw-hub-offline-v6` para propagar el nuevo CSS.
+
+---
+
+### Corrección directa del hero con invalidación de caché
+
+**Tipo:** Corrección visual puntual posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día
+
+El hueco superior coincidía con el relleno interno del propio hero:
+en escritorio el refinamiento final conservaba entre 16 y 24 px,
+mientras que en móvil utilizaba 18 px.
+
+La corrección se realizó directamente en `hero-codigo.css`, eliminando
+ese `padding-top` en ambos rangos.
+
+Como las pruebas anteriores podían seguir mostrando una copia almacenada
+por el Service Worker, `index.html` carga ahora
+`hero-codigo.css?v=18`. Al tratarse de una URL diferente, el navegador
+no puede reutilizar la entrada antigua del caché para ese archivo.
+
+No se modifican body, header, viewport, safe areas, navegación ni otros
+componentes.

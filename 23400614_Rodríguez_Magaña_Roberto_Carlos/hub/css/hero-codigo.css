@@ -760,7 +760,7 @@
     column-gap: clamp(18px, 2.5vw, 34px);
     row-gap: 12px;
 
-    padding-top: clamp(16px, 2.2vw, 24px);
+    padding-top: 0;
     padding-bottom: clamp(20px, 2.5vw, 28px);
 }
 
@@ -1153,7 +1153,7 @@
         grid-template-columns: 1fr;
         gap: 15px;
         padding:
-            18px
+            0
             18px
             24px;
     }

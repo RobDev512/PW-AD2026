@@ -442,3 +442,11 @@ El roadmap estructural permanece cerrado en **16/16**.
 - [x] renovar la caché offline a `pw-hub-offline-v6`.
 
 El roadmap estructural continúa cerrado en **16/16**.
+
+- [x] corregir el `padding-top` directamente en `hero-codigo.css`;
+- [x] eliminar el relleno superior de escritorio y móvil sin desplazar contenedores;
+- [x] forzar una URL nueva `hero-codigo.css?v=18` para evitar CSS antiguo del Service Worker;
+- [x] conservar el ajuste móvil de los paneles HTML y CSS;
+- [x] renovar la caché offline a `pw-hub-offline-v10`.
+
+El roadmap estructural permanece cerrado en **16/16**.

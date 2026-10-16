@@ -382,3 +382,10 @@ El Hub también muestra un pequeño indicador únicamente cuando la conexión se
 ### Paneles flotantes del hero en móvil
 
 En pantallas de hasta 420 px el hero conserva ahora los paneles flotantes **HTML**, **CSS** y **JS**. La corrección está aislada en un archivo responsive específico y no altera otros tamaños de pantalla.
+
+### Hero sin relleno superior
+
+El espacio previo al branding fue retirado directamente desde
+`hero-codigo.css`. El archivo usa una URL versionada para asegurar que
+la corrección sustituya cualquier copia anterior almacenada por el modo
+offline.

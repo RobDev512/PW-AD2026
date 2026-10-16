@@ -305,3 +305,11 @@ Con este bloque se considera terminado el soporte offline planificado para PW Hu
 - [x] conservar JS y el editor existente;
 - [x] no alterar ninguna otra vista;
 - [x] actualizar la caché offline a versión 6.
+
+## Corrección directa del hero y caché
+
+- [x] eliminar `padding-top` del hero en escritorio;
+- [x] eliminar `padding-top` del hero en móvil;
+- [x] invalidar específicamente la caché del CSS del hero;
+- [x] conservar el resto del Hub sin cambios;
+- [x] actualizar el Service Worker a versión 10.

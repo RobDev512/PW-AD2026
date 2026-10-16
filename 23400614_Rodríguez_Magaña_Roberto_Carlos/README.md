@@ -297,3 +297,9 @@ El sitio continúa siendo un portafolio web convencional y no incluye funciones 
 ### Ajuste puntual del hero móvil
 
 La versión móvil del hero vuelve a mostrar los paneles flotantes **HTML** y **CSS** junto al panel **JS**. El ajuste está aislado a pantallas de hasta 420 px y no modifica escritorio, tablet ni otras secciones del Hub.
+
+### Invalidación de caché del hero
+
+La corrección del espacio superior del banner se aplicó directamente en
+su hoja de estilos original y se añadió versionado a la URL del CSS para
+evitar que el Service Worker sirva una versión anterior.
