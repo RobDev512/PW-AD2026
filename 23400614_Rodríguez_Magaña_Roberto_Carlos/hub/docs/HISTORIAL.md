@@ -597,7 +597,6 @@ También se corrigió específicamente el espacio antes del logo TecNM compensan
 El bloque queda pendiente de validación desde un dispositivo móvil real antes de marcar la revisión responsive como cerrada.
 
 ---
-
 ### Corrección de regresiones de navegación responsive
 
 **Tipo:** Corrección  
@@ -1078,3 +1077,53 @@ Se añadió el estado visible para movimiento sutil con
 `translateY(0)` y una transición equivalente a la del modo dinámico.
 También se versionó la URL de `apariencia-avanzada.css` para evitar
 reutilizar una copia anterior almacenada.
+
+---
+
+### Alineación óptica del bloque institucional del hero
+
+**Tipo:** Corrección visual puntual posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Revisión directa de la versión actual en GitHub
+
+El bloque institucional se encontraba matemáticamente centrado dentro de
+`.hero-branding`, pero su caja es ligeramente más alta que la marca PW Hub.
+Por esa diferencia de altura, el borde superior de TecNM + ITT quedaba unos
+píxeles por encima aunque ambos elementos usaran `align-items: center`.
+
+Se añadió un desplazamiento visual de **4 px hacia abajo** exclusivamente a
+`.hero-institucion` mediante posicionamiento relativo. No se modificaron el
+logo PW Hub, `.hero-branding`, la altura del hero, su padding general, la
+navegación ni los paneles HTML/CSS/JS.
+
+La caché offline avanza a `pw-hub-offline-v12` para distribuir el ajuste sin
+conservar la copia anterior de `hero-movil-fix.css`.
+
+---
+
+### Catálogo automático global y reorganización de la vista offline
+
+**Tipo:** Mantenimiento funcional y estructural posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** General  
+**Fecha:** 2026-10-15  
+**Precisión:** Día  
+**Fuente:** Revisión de la versión actual del Hub y su sincronización con GitHub
+
+Se detectó que las tarjetas de Unidades ya recibían trabajos sincronizados con
+GitHub, mientras que **Todos los trabajos** y **Estadísticas** volvían a leer
+`data/unidades.json` por separado. Esto podía producir listados y conteos
+diferentes después de subir, renombrar o retirar un archivo del repositorio.
+
+`sincronizacion.js` ahora comparte un único catálogo por carga: intercepta solo
+las solicitudes GET dirigidas a `data/unidades.json`, construye el resultado
+fusionado una vez y devuelve copias de ese mismo catálogo a las distintas
+secciones. La consulta al árbol de GitHub continúa usando la lógica existente,
+el snapshot local y el límite temporal ya definidos.
+
+También se trasladó la página de contingencia de `hub/offline.html` a
+`hub/vistas/offline.html`. Sus rutas relativas se corrigieron y el Service
+Worker avanza a `pw-hub-offline-v13`.

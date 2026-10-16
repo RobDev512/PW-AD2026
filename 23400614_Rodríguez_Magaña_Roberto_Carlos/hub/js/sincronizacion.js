@@ -11,7 +11,8 @@
     2. detecta trabajos nuevos dentro de U1, U2, U3, U4 y U5;
     3. conserva nombres/descripciones manuales de unidades.json;
     4. agrega automáticamente los archivos nuevos;
-    5. guarda el último catálogo detectado como respaldo local.
+    5. guarda el último catálogo detectado como respaldo local;
+    6. comparte ese mismo catálogo con todas las secciones del Hub.
 
     Sin conexión:
     - usa unidades.json;
@@ -50,12 +51,41 @@ const PW_HUB_ARCHIVOS_IGNORADOS =
         "base.html"
     ]);
 
+/*
+   Catálogo compartido.
+
+   Varias secciones del Hub consultan data/unidades.json por
+   separado. Interceptamos únicamente esa petición y devolvemos
+   una copia del mismo catálogo ya fusionado con GitHub.
+
+   Así Unidades, resumen, Todos los trabajos, Estadísticas y
+   cualquier consumidor futuro de unidades.json ven exactamente
+   los mismos trabajos sin tener que duplicar lógica.
+*/
+const PW_HUB_FETCH_ORIGINAL =
+    window.fetch.bind(window);
+
+const PW_HUB_URL_CATALOGO =
+    new URL(
+        "data/unidades.json",
+        window.location.href
+    );
+
+let promesaCatalogoHubSincronizado =
+    null;
+
 
 window.sincronizarTrabajosGitHub =
     sincronizarTrabajosGitHub;
 
+window.obtenerDatosHubSincronizados =
+    obtenerDatosHubSincronizados;
+
 window.forzarSincronizacionTrabajosHub =
     () => {
+        promesaCatalogoHubSincronizado =
+            null;
+
         try {
             localStorage.removeItem(
                 PW_HUB_SYNC.claveUltimaConsulta
@@ -66,12 +96,143 @@ window.forzarSincronizacionTrabajosHub =
     };
 
 
+window.fetch =
+    async (
+        entrada,
+        opciones
+    ) => {
+        if (
+            !esSolicitudCatalogoHub(
+                entrada,
+                opciones
+            )
+        ) {
+            return PW_HUB_FETCH_ORIGINAL(
+                entrada,
+                opciones
+            );
+        }
+
+        const datos =
+            await obtenerDatosHubSincronizados();
+
+        return new Response(
+            JSON.stringify(datos),
+            {
+                status:
+                    200,
+
+                headers: {
+                    "Content-Type":
+                        "application/json; charset=utf-8",
+
+                    "Cache-Control":
+                        "no-store",
+
+                    "X-PW-Hub-Catalogo":
+                        "sincronizado"
+                }
+            }
+        );
+    };
+
+
 document.addEventListener(
     "DOMContentLoaded",
     () => {
         registrarModoOfflineHub();
     }
 );
+
+
+async function obtenerDatosHubSincronizados() {
+    if (!promesaCatalogoHubSincronizado) {
+        promesaCatalogoHubSincronizado =
+            cargarDatosHubSincronizados()
+                .catch(
+                    (error) => {
+                        promesaCatalogoHubSincronizado =
+                            null;
+
+                        throw error;
+                    }
+                );
+    }
+
+    const datos =
+        await promesaCatalogoHubSincronizado;
+
+    return clonarDatosHub(
+        datos
+    );
+}
+
+
+async function cargarDatosHubSincronizados() {
+    const respuesta =
+        await PW_HUB_FETCH_ORIGINAL(
+            PW_HUB_URL_CATALOGO.href,
+            {
+                cache:
+                    "no-cache"
+            }
+        );
+
+    if (!respuesta.ok) {
+        throw new Error(
+            "No fue posible cargar unidades.json"
+        );
+    }
+
+    const datosBase =
+        await respuesta.json();
+
+    return sincronizarTrabajosGitHub(
+        datosBase
+    );
+}
+
+
+function esSolicitudCatalogoHub(
+    entrada,
+    opciones
+) {
+    try {
+        const metodo =
+            String(
+                opciones?.method ||
+                (
+                    entrada instanceof Request
+                        ? entrada.method
+                        : "GET"
+                )
+            ).toUpperCase();
+
+        if (metodo !== "GET") {
+            return false;
+        }
+
+        const valor =
+            entrada instanceof Request
+                ? entrada.url
+                : entrada;
+
+        const url =
+            new URL(
+                String(valor),
+                window.location.href
+            );
+
+        return (
+            url.origin ===
+                PW_HUB_URL_CATALOGO.origin &&
+            url.pathname ===
+                PW_HUB_URL_CATALOGO.pathname
+        );
+    } catch {
+        return false;
+    }
+}
 
 
 async function sincronizarTrabajosGitHub(

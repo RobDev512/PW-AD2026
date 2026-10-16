@@ -1,12 +1,38 @@
 /* =========================================================
-   PW HUB - AJUSTE PUNTUAL DEL HERO EN MÓVIL
+   PW HUB - AJUSTES PUNTUALES DEL HERO
    ========================================================= */
+
+/*
+   Ajuste óptico posterior al cierre de la Fase 16.
+
+   El bloque institucional es ligeramente más alto que la
+   marca PW Hub. Como ambos elementos se centran dentro de
+   .hero-branding, su borde superior queda visualmente unos
+   píxeles más arriba.
+
+   Este desplazamiento afecta SOLO al bloque TecNM + ITT y no
+   modifica el flujo, la altura del hero ni la marca PW Hub.
+*/
+.hero-institucion {
+    position:
+        relative;
+
+    top:
+        4px;
+}
+
+@media (min-width: 651px) {
+    .hero-logo-pwhub {
+        position: relative;
+        top: 7px;
+    }
+}
 
 /*
    El CSS principal del hero oculta los paneles flotantes
    HTML y CSS en pantallas de hasta 420 px.
 
-   Este archivo SOLO revierte esa ocultación en ese rango y
+   Este bloque SOLO revierte esa ocultación en ese rango y
    ajusta sus dimensiones/posición para que entren alrededor
    del editor sin modificar el resto del Hub.
 */

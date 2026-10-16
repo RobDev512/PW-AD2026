@@ -19,7 +19,7 @@ Posteriormente se abrió una **Fase 16** para realizar un refinamiento final de 
 
 Estado actual del roadmap:
 
-**15 de 16 fases completadas. Fase 16 en progreso.**
+**16 de 16 fases completadas. Roadmap estructural cerrado.**
 
 La incorporación normal de nuevas actividades de U3, U4 y U5 continúa considerándose contenido académico y mantenimiento.
 
@@ -163,7 +163,7 @@ Registra hechos que ya ocurrieron y alimenta Historial, Actividad reciente y par
 
 Documenta las **16 fases** de evolución técnica del Hub.
 
-Actualmente las primeras 15 están completadas y la Fase 16 se encuentra en progreso.
+Actualmente las **16 fases están completadas** y los cambios posteriores corresponden a mantenimiento o contenido académico.
 
 ---
 
@@ -396,3 +396,31 @@ El modo **Sutil** conserva ahora su animación de entrada, pero los
 elementos marcados como visibles regresan correctamente a su posición
 natural. Esto elimina el desplazamiento permanente de 18 px que afectaba
 al encabezado principal.
+
+### Alineación óptica de los logos institucionales
+
+El contenedor `.hero-institucion` se desplaza visualmente **4 px hacia abajo**
+para compensar la diferencia de altura respecto al logo PW Hub. El ajuste no
+modifica el flujo de `.hero-branding`, no altera el logo principal y funciona
+tanto en escritorio como en vistas estrechas.
+
+La Fase 16 permanece oficialmente cerrada en **16 / 16**. Este cambio se
+registra únicamente como mantenimiento posterior al cierre.
+
+### Catálogo sincronizado para todo el Hub
+
+`sincronizacion.js` mantiene una sola promesa de catálogo durante cada carga.
+La primera lectura de `data/unidades.json` obtiene el catálogo base, lo fusiona
+con GitHub y las siguientes lecturas reciben copias del mismo resultado.
+
+De esta forma, Unidades, resumen, Todos los trabajos, Estadísticas y futuros
+consumidores de `unidades.json` muestran el mismo conjunto de trabajos sin
+replicar lógica de sincronización. El JSON local se conserva para títulos,
+descripciones, destacados y demás metadatos manuales, mientras GitHub aporta
+automáticamente los archivos nuevos detectados en U1-U5.
+
+La página offline se organiza ahora en `hub/vistas/offline.html`; la raíz de
+`hub/` conserva únicamente `index.html` como documento HTML principal.
+
+La Fase 16 permanece oficialmente cerrada en **16 / 16**. Este ajuste es
+mantenimiento posterior al cierre.

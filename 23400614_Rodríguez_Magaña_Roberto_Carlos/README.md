@@ -120,7 +120,7 @@ También se encuentra en desarrollo un **hero generado completamente con HTML y 
 
 El desarrollo técnico principal fue cerrado originalmente con 15 fases.
 
-Posteriormente se abrió una **Fase 16 - Identidad visual y experiencia de contenidos**, actualmente **en progreso**.
+Posteriormente se completó la **Fase 16 - Identidad visual y experiencia de contenidos**. El roadmap estructural permanece cerrado en **16 / 16**.
 
 Entre los avances de esta fase ya se encuentran:
 
@@ -310,3 +310,31 @@ El espacio superior del Hub provenía del modo de movimiento Sutil:
 `.hub-reveal` aplicaba un desplazamiento vertical de 18 px sin restaurarlo
 cuando el elemento se volvía visible. El estado visible ahora vuelve a
 `translateY(0)` correctamente.
+
+### Alineación óptica del bloque institucional
+
+Como mantenimiento posterior al cierre de la Fase 16, el bloque que contiene
+los logos de **TecNM + Instituto Tecnológico de Tepic** se desplaza visualmente
+**4 px hacia abajo**. El ajuste se aplica únicamente a `.hero-institucion`;
+no mueve el logo PW Hub, `.hero-branding`, el hero ni el resto de la interfaz.
+
+La caché offline se actualiza a **v12** para distribuir esta corrección sin
+reutilizar la versión anterior del CSS.
+
+### Catálogo automático global de trabajos y organización de vistas
+
+PW Hub comparte ahora un único catálogo sincronizado durante cada carga. La
+fuente base sigue siendo `hub/data/unidades.json`, pero
+`hub/js/sincronizacion.js` intercepta únicamente las lecturas de ese catálogo,
+lo fusiona una sola vez con los trabajos publicados en GitHub y entrega copias
+del mismo resultado al resto del Hub.
+
+Con esto, **Unidades**, el resumen, **Todos los trabajos** y **Estadísticas**
+consultan el mismo conjunto de trabajos. Subir, renombrar o retirar un archivo
+compatible dentro de U1-U5 deja de requerir registrar la misma ruta en varias
+secciones. `unidades.json` continúa sirviendo para nombres, descripciones,
+destacados y otros metadatos personalizados.
+
+La página de contingencia se trasladó de `hub/offline.html` a
+`hub/vistas/offline.html`, dejando `hub/index.html` como el único HTML
+situado directamente en la raíz del Hub. La caché offline avanza a **v13**.

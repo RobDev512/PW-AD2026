@@ -459,3 +459,28 @@ El roadmap estructural permanece cerrado en **16/16**.
 - [x] renovar la caché offline a `pw-hub-offline-v11`.
 
 El roadmap estructural permanece cerrado en **16/16**.
+
+### Alineación óptica del bloque institucional del hero
+
+- [x] identificar `.hero-institucion` como el contenedor visual de TecNM + ITT;
+- [x] desplazar únicamente ese contenedor 4 px hacia abajo;
+- [x] mantener inmóviles el logo PW Hub, `.hero-branding` y el hero completo;
+- [x] conservar la misma corrección en escritorio y celular;
+- [x] renovar la caché offline a `pw-hub-offline-v12`.
+
+El roadmap estructural permanece cerrado en **16/16**. Esta corrección es
+mantenimiento posterior al cierre y no constituye una Fase 17.
+
+### Catálogo automático global y reorganización de vistas
+
+- [x] conservar `unidades.json` como catálogo base y fuente de metadatos;
+- [x] compartir un único catálogo sincronizado durante cada carga;
+- [x] evitar consultas duplicadas a GitHub para las distintas secciones;
+- [x] alimentar Unidades, resumen, Todos los trabajos y Estadísticas con el mismo catálogo;
+- [x] mantener compatibilidad con el respaldo local cuando no existe conexión;
+- [x] trasladar `hub/offline.html` a `hub/vistas/offline.html`;
+- [x] conservar `hub/index.html` como único HTML directamente en la raíz del Hub;
+- [x] renovar la caché offline a `pw-hub-offline-v13`.
+
+El roadmap estructural permanece cerrado en **16/16**. Este bloque corresponde
+a mantenimiento posterior al cierre y no crea una Fase 17.

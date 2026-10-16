@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v11";
+    "pw-hub-offline-v13";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;
@@ -31,7 +31,7 @@ const URL_MARKED =
 const ARCHIVOS_SHELL = [
     "hub/",
     "hub/index.html",
-    "hub/offline.html",
+    "hub/vistas/offline.html",
 
     "hub/css/actividad.css",
     "hub/css/apariencia-avanzada.css?v=19",
@@ -359,7 +359,7 @@ async function redPrimeroHub(
             */
             const offline =
                 new URL(
-                    "hub/offline.html",
+                    "hub/vistas/offline.html",
                     self.registration.scope
                 );
 

@@ -2,13 +2,13 @@
 
 ## Estado
 
-**Cierre técnico original completado. Cierre definitivo pendiente de la Fase 16.**
+**Cierre técnico definitivo completado. Fase 16 cerrada en 16 / 16.**
 
 El cierre original se refiere al desarrollo técnico principal completado durante la Fase 15 y no depende de que la materia haya terminado.
 
 Posteriormente se decidió abrir una última Fase 16 para realizar un refinamiento final de identidad visual y experiencia de contenidos.
 
-La Fase 16 se encuentra actualmente **en progreso**.
+La Fase 16 se encuentra **Completada** y el Hub está en etapa de mantenimiento.
 
 ---
 
@@ -109,18 +109,18 @@ La Fase 16 es una excepción deliberada: se añadió como última etapa estructu
 La Fase 16 queda **Completada**. No existen tareas estructurales abiertas. El Hub entra en etapa de mantenimiento y actualización de contenidos académicos.
 
 
-# Pendientes para el cierre definitivo
+# Validaciones del cierre definitivo
 
-- [ ] retirar Configuración de la navbar;
-- [ ] convertir Configuración en un control flotante y siempre visible;
-- [ ] rediseñar la navbar para celular;
-- [ ] incorporar una barra de navegación móvil compacta;
-- [ ] mostrar Curso y Explorar mediante una interacción dinámica apropiada para móvil;
-- [ ] evitar que la navegación móvil ocupe gran parte de la pantalla;
-- [ ] reforzar tarjetas, botones, estados e indicadores;
-- [ ] revisar la presentación de trabajos destacados;
-- [ ] realizar una revisión responsive completa;
-- [ ] realizar la revisión visual y funcional final.
+- [x] retirar Configuración de la navbar;
+- [x] convertir Configuración en un control flotante y siempre visible;
+- [x] rediseñar la navbar para celular;
+- [x] incorporar una barra de navegación móvil compacta;
+- [x] mostrar Curso y Explorar mediante una interacción dinámica apropiada para móvil;
+- [x] evitar que la navegación móvil ocupe gran parte de la pantalla;
+- [x] reforzar tarjetas, botones, estados e indicadores;
+- [x] revisar la presentación de trabajos destacados;
+- [x] realizar una revisión responsive completa;
+- [x] realizar la revisión visual y funcional final.
 
 ---
 
@@ -152,13 +152,11 @@ Después de completar la Fase 16, este flujo volverá a representar el mantenimi
 
 # Fases
 
-**15 / 16 completadas.**
+**16 / 16 completadas.**
 
-**Fase 16: En progreso.**
+**Fase 16: Completada.**
 
-La Fase 16 será la última fase de desarrollo estructural.
-
-Al finalizar la navegación móvil, el control flotante de Configuración, la revisión responsive y los últimos refinamientos visuales, este documento podrá volver a marcar el Hub como **cerrado definitivamente**.
+La Fase 16 fue la última fase de desarrollo estructural. El Hub permanece **cerrado definitivamente** en cuanto a fases y continúa únicamente con mantenimiento y contenido académico.
 
 # Mantenimiento posterior al cierre
 
@@ -321,3 +319,27 @@ Con este bloque se considera terminado el soporte offline planificado para PW Hu
 - [x] conservar la animación sutil;
 - [x] evitar cambios en la geometría del hero;
 - [x] actualizar la caché offline a versión 11.
+
+## Alineación óptica del bloque institucional
+
+- [x] mover únicamente `.hero-institucion` 4 px hacia abajo;
+- [x] no mover el logo PW Hub ni `.hero-branding`;
+- [x] no modificar padding general, safe-area, viewport ni geometría del hero;
+- [x] conservar el ajuste de paneles HTML/CSS en móvil;
+- [x] actualizar la caché offline a versión 12.
+
+La Fase 16 continúa cerrada en **16 / 16**. Este bloque corresponde a
+mantenimiento posterior al cierre.
+
+## Catálogo global sincronizado y organización de vistas
+
+- [x] unificar el catálogo consumido por las secciones de trabajos;
+- [x] evitar que Todos los trabajos y Estadísticas dependan de una copia distinta del catálogo;
+- [x] mantener `unidades.json` como fuente de metadatos y respaldo local;
+- [x] reutilizar una sola sincronización efectiva con GitHub por carga;
+- [x] mover la página offline a `hub/vistas/offline.html`;
+- [x] dejar `hub/index.html` como único HTML directamente en la raíz del Hub;
+- [x] actualizar el Service Worker a versión 13.
+
+La Fase 16 continúa cerrada en **16 / 16**. Este trabajo corresponde a
+mantenimiento posterior al cierre.
