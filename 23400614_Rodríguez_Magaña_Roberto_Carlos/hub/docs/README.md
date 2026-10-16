@@ -356,3 +356,25 @@ La última detección se guarda en el navegador y el Service Worker mantiene una
 La sincronización automática también controla rutas obsoletas. Cuando un trabajo HTML, PDF o Markdown registrado manualmente cambia de nombre o desaparece de GitHub, el Hub deja de mostrar la tarjeta antigua después de sincronizar el árbol actual del repositorio.
 
 Esto evita previews 404 causados por renombres posteriores.
+
+### Apariencia compacta
+
+La personalización reúne ahora **Tema** y **Material** dentro de una sola sección de Apariencia. Las 20 variantes oscuras y los cuatro materiales continúan siendo combinables, pero la configuración ocupa considerablemente menos altura, especialmente en pantallas móviles.
+
+Liquid Glass V11 conserva el aspecto aprobado de V10 y refina el material mediante iluminación direccional del borde, saturación del fondo y menor dependencia de un blur intenso.
+
+### Materiales y paletas compatibles
+
+La sección Apariencia utiliza ahora una relación Material → Paleta. Cada material ofrece únicamente las variantes oscuras que mejor combinan con sus propiedades visuales.
+
+Los ocho materiales son Normal, Liquid Glass, Frosted Glass, Acrílico, Minimal, Neon Tech, Mate y Titanio.
+
+Todos los combobox del Hub comparten además un componente visual propio, evitando los desplegables nativos del navegador y limitando su altura en pantallas pequeñas.
+
+### Página sin conexión
+
+PW Hub incluye una página offline propia para los casos en los que una navegación no pueda resolverse ni desde internet ni desde la caché local.
+
+Los recursos y trabajos visitados anteriormente siguen abriéndose directamente desde la caché. La página de error solo actúa como último fallback.
+
+El Hub también muestra un pequeño indicador únicamente cuando la conexión se pierde o acaba de recuperarse.

@@ -273,3 +273,23 @@ Además, un Service Worker conserva una copia de los recursos esenciales y de lo
 ### Sincronización resistente a renombres
 
 PW Hub ahora contrasta los trabajos registrados con el árbol actual de GitHub. Los HTML, PDF y Markdown que hayan sido renombrados o eliminados dejan de producir tarjetas 404 después de la sincronización.
+
+### Apariencia compacta y Liquid Glass V11
+
+Los controles de tema oscuro y estilo visual se integraron en una sola sección compacta de Apariencia. Se conservan las 20 paletas y los cuatro materiales, pero sin la extensa cuadrícula de tarjetas que ocupaba gran parte del panel de Configuración en celular.
+
+Liquid Glass V11 mantiene la base visual aprobada y mejora el borde especular, la transmisión del color y el equilibrio entre blur y legibilidad.
+
+### Materiales dependientes y Liquid Glass V12
+
+PW Hub ofrece ahora ocho materiales visuales. Al escoger uno, el selector de paleta muestra únicamente las variantes oscuras compatibles con ese acabado.
+
+Los antiguos desplegables nativos fueron sustituidos visualmente por un combobox propio con menú compacto y desplazamiento interno.
+
+Liquid Glass V12 añade, de forma progresiva, una refracción ligera mediante SVG en navegadores compatibles, manteniendo blur, saturación y bordes especulares como fallback.
+
+### Modo sin conexión final
+
+Después de una visita con internet, PW Hub puede reutilizar los recursos y trabajos almacenados por el navegador. Si se solicita una página que todavía no existe en la caché y no hay conexión, se muestra una página offline propia en lugar de un error genérico del navegador.
+
+El sitio continúa siendo un portafolio web convencional y no incluye funciones de instalación.

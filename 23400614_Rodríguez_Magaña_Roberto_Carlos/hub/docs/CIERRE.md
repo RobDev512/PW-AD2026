@@ -261,3 +261,40 @@ Con esta mejora el Hub queda preparado para crecer con futuras entregas sin requ
 - [x] registrar el nuevo `Ejercicio1.html`;
 - [x] evitar tarjetas 404 cuando un trabajo sea renombrado;
 - [x] renovar la caché offline a versión 2.
+
+## Cierre de apariencia compacta
+
+- [x] unificar Tema y Estilo visual bajo Apariencia;
+- [x] mantener 20 temas oscuros;
+- [x] mantener Normal, Liquid Glass, Minimal y Neon Tech;
+- [x] reducir sustancialmente el desplazamiento vertical de Configuración en celular;
+- [x] conservar compatibilidad con configuraciones guardadas anteriores;
+- [x] refinar Liquid Glass sin modificar la estructura del layout;
+- [x] evitar que archivos temporales vuelvan a Git;
+- [x] actualizar caché offline a versión 3.
+
+Con este ajuste, la interfaz de personalización vuelve a considerarse cerrada salvo mantenimiento correctivo.
+
+## Cierre de materiales y combobox
+
+- [x] reemplazar combobox nativos por controles visuales propios;
+- [x] relacionar cada material con paletas compatibles;
+- [x] disponer de 8 materiales visuales;
+- [x] conservar las 20 paletas dentro del sistema;
+- [x] mejorar Liquid Glass sin alterar la geometría;
+- [x] utilizar refracción SVG solo como mejora progresiva;
+- [x] mantener fallback compatible y rendimiento móvil;
+- [x] renovar caché offline a versión 4.
+
+## Cierre del modo sin conexión
+
+- [x] cachear el shell principal;
+- [x] cachear trabajos detectados dentro de U1-U5;
+- [x] conservar el último catálogo sincronizado;
+- [x] soportar renombres sin tarjetas 404;
+- [x] añadir página offline visual;
+- [x] mostrar estado de conexión de manera no invasiva;
+- [x] mantener el sitio no instalable;
+- [x] actualizar Service Worker a versión 5.
+
+Con este bloque se considera terminado el soporte offline planificado para PW Hub.

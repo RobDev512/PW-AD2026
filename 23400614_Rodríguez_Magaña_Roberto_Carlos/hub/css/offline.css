@@ -1,0 +1,222 @@
+/* =========================================================
+   ESTADO DE CONEXIÓN
+   ========================================================= */
+
+.estado-conexion-hub {
+    position:
+        fixed;
+
+    left:
+        50%;
+    bottom:
+        18px;
+
+    z-index:
+        5800;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+    max-width:
+        calc(
+            100vw -
+            32px
+        );
+
+    padding:
+        8px
+        11px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    border-top-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.26
+        );
+
+    border-radius:
+        999px;
+
+    color:
+        var(--texto);
+
+    background:
+        rgba(
+            10,
+            21,
+            30,
+            0.88
+        );
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.11
+        ),
+        0 12px 32px
+        rgba(
+            0,
+            0,
+            0,
+            0.30
+        );
+
+    backdrop-filter:
+        blur(18px)
+        saturate(155%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(155%);
+
+    transform:
+        translate(
+            -50%,
+            14px
+        );
+
+    opacity:
+        0;
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    font-size:
+        9px;
+
+    font-weight:
+        780;
+
+    letter-spacing:
+        0.18px;
+
+    transition:
+        opacity 0.20s ease,
+        transform 0.20s ease,
+        visibility 0.20s;
+}
+
+
+.estado-conexion-hub.visible {
+    transform:
+        translate(
+            -50%,
+            0
+        );
+
+    opacity:
+        1;
+
+    visibility:
+        visible;
+}
+
+
+.estado-conexion-hub i {
+    width:
+        7px;
+    height:
+        7px;
+
+    flex:
+        0 0 auto;
+
+    border-radius:
+        50%;
+
+    background:
+        #f0ad4e;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(
+            240,
+            173,
+            78,
+            0.10
+        );
+}
+
+
+.estado-conexion-hub.recuperada i {
+    background:
+        #45d7a2;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(
+            69,
+            215,
+            162,
+            0.10
+        );
+}
+
+
+html[data-estilo="liquid"]
+.estado-conexion-hub {
+    border-top-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.32
+        );
+
+    border-left-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        );
+
+    background:
+        rgba(
+            10,
+            24,
+            35,
+            0.80
+        );
+
+    backdrop-filter:
+        blur(20px)
+        saturate(175%);
+
+    -webkit-backdrop-filter:
+        blur(20px)
+        saturate(175%);
+}
+
+
+@media (
+    max-width:
+        650px
+) {
+    .estado-conexion-hub {
+        bottom:
+            78px;
+    }
+}

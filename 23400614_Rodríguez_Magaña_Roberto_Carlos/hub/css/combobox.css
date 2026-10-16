@@ -1,0 +1,615 @@
+/* =========================================================
+   PW HUB - COMBOBOX PERSONALIZADO
+   ========================================================= */
+
+.select-nativo-pwhub {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    clip-path: inset(50%) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+
+.pwhub-combobox {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+
+.pwhub-combobox-trigger {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 18px;
+    align-items: center;
+    gap: 9px;
+
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 10px 8px 11px;
+
+    cursor: pointer;
+
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+
+    color: var(--texto);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.035),
+            rgba(255, 255, 255, 0.012)
+        ),
+        var(--panel-suave);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+    font: inherit;
+    text-align: left;
+
+    transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+.pwhub-combobox-trigger:hover {
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.42
+        );
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(
+                var(--acento-rgb),
+                0.055
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.014
+            )
+        ),
+        var(--panel-suave);
+}
+
+
+.pwhub-combobox-trigger:focus-visible,
+.pwhub-combobox.abierto
+.pwhub-combobox-trigger {
+    outline: none;
+
+    border-color:
+        var(--azul-claro);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            var(--acento-rgb),
+            0.11
+        ),
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+}
+
+
+.pwhub-combobox-trigger:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+.pwhub-combobox-valor {
+    min-width: 0;
+    overflow: hidden;
+
+    font-size: 10px;
+    font-weight: 750;
+    line-height: 1.25;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.pwhub-combobox-flecha {
+    display: grid;
+    place-items: center;
+
+    width: 18px;
+    height: 18px;
+
+    color: var(--texto-secundario);
+
+    transition:
+        transform 0.18s ease,
+        color 0.18s ease;
+}
+
+
+.pwhub-combobox-flecha::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+
+    transform:
+        translateY(-2px)
+        rotate(45deg);
+}
+
+
+.pwhub-combobox.abierto
+.pwhub-combobox-flecha {
+    color: var(--azul-claro);
+
+    transform:
+        rotate(180deg);
+}
+
+
+/*
+   El menú se monta directamente en <body> para que no quede
+   recortado por paneles con overflow.
+*/
+.pwhub-combobox-popover {
+    position: fixed;
+    z-index: 6000;
+
+    display: none;
+
+    width: 260px;
+    max-width:
+        calc(100vw - 20px);
+    max-height:
+        min(292px, calc(100vh - 20px));
+
+    padding: 6px;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.10
+        );
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(18, 29, 39, 0.985),
+            rgba(8, 16, 24, 0.99)
+        );
+
+    box-shadow:
+        0 18px 48px
+        rgba(
+            0,
+            0,
+            0,
+            0.42
+        ),
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.055
+        );
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        rgba(
+            var(--acento-rgb),
+            0.58
+        )
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+}
+
+
+.pwhub-combobox-popover.visible {
+    display: grid;
+    gap: 3px;
+}
+
+
+.pwhub-combobox-opcion {
+    display: grid;
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+
+    align-items: center;
+    gap: 9px;
+
+    width: 100%;
+    min-height: 39px;
+    padding: 7px 9px;
+
+    cursor: pointer;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    color: var(--texto);
+    background: transparent;
+
+    font: inherit;
+    text-align: left;
+
+    transition:
+        border-color 0.16s ease,
+        background-color 0.16s ease,
+        transform 0.16s ease;
+}
+
+
+.pwhub-combobox-opcion:hover,
+.pwhub-combobox-opcion:focus-visible {
+    outline: none;
+
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.24
+        );
+
+    background:
+        rgba(
+            var(--acento-rgb),
+            0.075
+        );
+
+    transform:
+        translateX(2px);
+}
+
+
+.pwhub-combobox-opcion[aria-selected="true"] {
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.38
+        );
+
+    background:
+        rgba(
+            var(--acento-rgb),
+            0.11
+        );
+}
+
+
+.pwhub-combobox-opcion[disabled] {
+    cursor: not-allowed;
+    opacity: 0.42;
+}
+
+
+.pwhub-combobox-muestra {
+    width: 12px;
+    height: 12px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.28
+        );
+
+    border-radius: 50%;
+
+    background:
+        var(
+            --pwhub-combobox-color,
+            rgba(
+                var(--acento-rgb),
+                0.70
+            )
+        );
+
+    box-shadow:
+        0 0 0 2px
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+}
+
+
+.pwhub-combobox-opcion:not(
+    [data-tiene-color="true"]
+)
+.pwhub-combobox-muestra {
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                var(--acento-rgb),
+                0.75
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.12
+            )
+        );
+}
+
+
+.pwhub-combobox-texto {
+    min-width: 0;
+}
+
+
+.pwhub-combobox-texto strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: inherit;
+
+    font-size: 10px;
+    line-height: 1.25;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.pwhub-combobox-texto small {
+    display: block;
+
+    margin-top: 2px;
+
+    overflow: hidden;
+
+    color: var(--texto-secundario);
+
+    font-size: 8px;
+    line-height: 1.35;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.pwhub-combobox-check {
+    width: 7px;
+    height: 12px;
+
+    border-right:
+        2px solid
+        var(--azul-claro);
+
+    border-bottom:
+        2px solid
+        var(--azul-claro);
+
+    opacity: 0;
+
+    transform:
+        rotate(45deg)
+        translateY(-1px);
+}
+
+
+.pwhub-combobox-opcion[aria-selected="true"]
+.pwhub-combobox-check {
+    opacity: 1;
+}
+
+
+/* Liquid Glass también alcanza los combobox. */
+
+html[data-estilo="liquid"]
+.pwhub-combobox-trigger {
+    border-top-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.30
+        );
+
+    border-left-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        );
+
+    border-right-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+
+    border-bottom-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        );
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.075
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.024
+            )
+        );
+
+    backdrop-filter:
+        blur(16px)
+        saturate(165%);
+
+    -webkit-backdrop-filter:
+        blur(16px)
+        saturate(165%);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+}
+
+
+html[data-estilo="liquid"]
+.pwhub-combobox-popover {
+    border-top-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.30
+        );
+
+    border-left-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        );
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                13,
+                27,
+                40,
+                0.84
+            ),
+            rgba(
+                7,
+                17,
+                28,
+                0.91
+            )
+        );
+
+    backdrop-filter:
+        blur(18px)
+        saturate(172%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(172%);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.22
+        ),
+        0 22px 58px
+        rgba(
+            0,
+            0,
+            0,
+            0.44
+        );
+}
+
+
+html[data-estilo="minimal"]
+:is(
+    .pwhub-combobox-trigger,
+    .pwhub-combobox-popover
+) {
+    border-radius: 5px;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+
+html[data-estilo="neon"]
+:is(
+    .pwhub-combobox-trigger,
+    .pwhub-combobox-popover
+) {
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.46
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(
+            var(--acento-rgb),
+            0.09
+        );
+}
+
+
+@media (max-width: 650px) {
+    .pwhub-combobox-popover {
+        max-height:
+            min(250px, calc(100vh - 18px));
+
+        border-radius:
+            12px;
+    }
+}

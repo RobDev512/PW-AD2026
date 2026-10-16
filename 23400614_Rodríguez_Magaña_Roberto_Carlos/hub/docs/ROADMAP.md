@@ -405,3 +405,33 @@ El roadmap estructural permanece cerrado en **16/16**. Estas tareas corresponden
 - [x] actualizar U3 de `Ejercicio1CSS.html` a `Ejercicio0CSS.html`;
 - [x] registrar `Ejercicio1.html` como **Receta Pan Francés con CSS**;
 - [x] renovar la versión de caché offline para evitar conservar rutas antiguas.
+
+- [x] fusionar tema oscuro y estilo visual en una sola sección compacta de **Apariencia**;
+- [x] reemplazar las 20 tarjetas de tema por un selector compacto;
+- [x] conservar las 20 variantes y los 4 materiales visuales sin perder combinaciones;
+- [x] refinar Liquid Glass con borde especular direccional y mayor color bleed;
+- [x] reducir ligeramente el blur general sin cambiar la geometría del Hub;
+- [x] excluir `README_CAMBIOS.md` y `README_PRUEBA.md` mediante `.gitignore`;
+- [x] renovar la caché offline a `pw-hub-offline-v3`.
+
+El roadmap estructural continúa cerrado en **16/16**.
+
+- [x] convertir todos los selects del Hub en combobox personalizados;
+- [x] evitar los menús nativos largos y cuadrados del navegador;
+- [x] hacer que el material determine qué paletas oscuras son compatibles;
+- [x] añadir Frosted Glass, Acrílico, Mate y Titanio;
+- [x] conservar Normal, Liquid Glass, Minimal y Neon Tech;
+- [x] refinar Liquid Glass a V12 con refracción SVG progresiva en Chromium/Edge;
+- [x] limitar la refracción costosa a navegación y superficies flotantes;
+- [x] actualizar la caché offline a `pw-hub-offline-v4`.
+
+El roadmap estructural permanece cerrado en **16/16**.
+
+- [x] añadir una página offline explícita y coherente con la identidad visual del Hub;
+- [x] mostrar la página offline solo cuando una navegación no esté disponible ni en red ni en caché;
+- [x] mantener accesibles las páginas previamente cacheadas sin redirecciones innecesarias;
+- [x] añadir un indicador discreto de estado únicamente al perder o recuperar conexión;
+- [x] conservar el portafolio como sitio web normal, sin manifest ni instalación;
+- [x] actualizar la caché del Service Worker a `pw-hub-offline-v5`.
+
+El roadmap estructural permanece cerrado en **16/16**.

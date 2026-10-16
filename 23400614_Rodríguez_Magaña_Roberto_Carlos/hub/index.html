@@ -38,9 +38,13 @@
         <link rel="stylesheet" href="css/historial.css">
         <link rel="stylesheet" href="css/roadmap.css">
         <link rel="stylesheet" href="css/personalizacion.css">
+        <link rel="stylesheet" href="css/combobox.css">
+        <link rel="stylesheet" href="css/offline.css">
         <link rel="stylesheet" href="css/refinamiento-final.css">
         <link rel="stylesheet" href="css/apariencia-avanzada.css">
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+        <script src="js/combobox.js" defer></script>
+        <script src="js/offline.js" defer></script>
         <script src="js/sincronizacion.js" defer></script>
         <script src="js/hub.js" defer></script>
         <script src="js/navegacion.js" defer></script>
@@ -766,193 +770,50 @@
                 </section>
                 <section class="personalizacion-grupo">
                     <div class="personalizacion-grupo-titulo">
-                        <span class="personalizacion-icono" data-icono-config="eye" aria-hidden="true"></span>
-                        <div>
-                            <h3>Tema oscuro</h3>
-                            <p>Cambia la base de color sin alterar tu acento.</p>
-                        </div>
-                    </div>
-                    <div class="personalizacion-opciones-visuales personalizacion-temas" role="group" aria-label="Tema oscuro">
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="pw-dark">
-                            <span class="opcion-visual-preview preview-tema preview-tema-pw" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>PW Dark</strong>
-                            <small>Original</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="obsidiana">
-                            <span class="opcion-visual-preview preview-tema preview-tema-obsidiana" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Obsidiana</strong>
-                            <small>Negro profundo</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="azul-profundo">
-                            <span class="opcion-visual-preview preview-tema preview-tema-azul" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Azul profundo</strong>
-                            <small>Marino</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="grafito">
-                            <span class="opcion-visual-preview preview-tema preview-tema-grafito" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Grafito</strong>
-                            <small>Neutral</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="oled">
-                            <span class="opcion-visual-preview preview-tema preview-tema-oled" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>OLED</strong>
-                            <small>Negro puro</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="carbono">
-                            <span class="opcion-visual-preview preview-tema preview-tema-carbono" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Carbono</strong>
-                            <small>Negro industrial</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="medianoche">
-                            <span class="opcion-visual-preview preview-tema preview-tema-medianoche" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Medianoche</strong>
-                            <small>Azul negro</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="indigo">
-                            <span class="opcion-visual-preview preview-tema preview-tema-indigo" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Índigo</strong>
-                            <small>Azul violeta</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="pizarra">
-                            <span class="opcion-visual-preview preview-tema preview-tema-pizarra" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Pizarra</strong>
-                            <small>Gris azulado</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="bosque-nocturno">
-                            <span class="opcion-visual-preview preview-tema preview-tema-bosque" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Bosque nocturno</strong>
-                            <small>Verde profundo</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="esmeralda-negra">
-                            <span class="opcion-visual-preview preview-tema preview-tema-esmeralda" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Esmeralda negra</strong>
-                            <small>Verde mineral</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="vino-oscuro">
-                            <span class="opcion-visual-preview preview-tema preview-tema-vino" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Vino oscuro</strong>
-                            <small>Borgoña</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="ciruela">
-                            <span class="opcion-visual-preview preview-tema preview-tema-ciruela" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Ciruela</strong>
-                            <small>Púrpura oscuro</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="cobre-nocturno">
-                            <span class="opcion-visual-preview preview-tema preview-tema-cobre" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Cobre nocturno</strong>
-                            <small>Marrón metálico</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="ambar-oscuro">
-                            <span class="opcion-visual-preview preview-tema preview-tema-ambar" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Ámbar oscuro</strong>
-                            <small>Cálido profundo</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="acero">
-                            <span class="opcion-visual-preview preview-tema preview-tema-acero" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Acero</strong>
-                            <small>Metal frío</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="tormenta">
-                            <span class="opcion-visual-preview preview-tema preview-tema-tormenta" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Tormenta</strong>
-                            <small>Azul grisáceo</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="eclipse">
-                            <span class="opcion-visual-preview preview-tema preview-tema-eclipse" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Eclipse</strong>
-                            <small>Negro violeta</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="terminal">
-                            <span class="opcion-visual-preview preview-tema preview-tema-terminal" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Terminal</strong>
-                            <small>Verde hacker</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-tema-hub="cobalto">
-                            <span class="opcion-visual-preview preview-tema preview-tema-cobalto" aria-hidden="true">
-                                <i></i><i></i><i></i>
-                            </span>
-                            <strong>Cobalto</strong>
-                            <small>Azul eléctrico</small>
-                        </button>
-                    </div>
-                </section>
-
-                <section class="personalizacion-grupo">
-                    <div class="personalizacion-grupo-titulo">
                         <span class="personalizacion-icono" data-icono-config="sparkles" aria-hidden="true"></span>
                         <div>
-                            <h3>Estilo visual</h3>
-                            <p>Aplica una personalidad visual sin cambiar el contenido.</p>
+                            <h3>Apariencia</h3>
+                            <p>Combina el tema oscuro y el material visual desde un solo bloque compacto.</p>
                         </div>
                     </div>
-                    <div class="personalizacion-opciones-visuales personalizacion-estilos" role="group" aria-label="Estilo visual">
-                        <button type="button" class="personalizacion-opcion-visual" data-estilo-hub="normal">
-                            <span class="opcion-visual-preview preview-estilo preview-estilo-normal" aria-hidden="true">
-                                <b></b><b></b>
-                            </span>
-                            <strong>Normal</strong>
-                            <small>PW Hub actual</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-estilo-hub="liquid">
-                            <span class="opcion-visual-preview preview-estilo preview-estilo-liquid" aria-hidden="true">
-                                <b></b><b></b>
-                            </span>
-                            <strong>Liquid Glass</strong>
-                            <small>Translúcido</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-estilo-hub="minimal">
-                            <span class="opcion-visual-preview preview-estilo preview-estilo-minimal" aria-hidden="true">
-                                <b></b><b></b>
-                            </span>
-                            <strong>Minimal</strong>
-                            <small>Plano y limpio</small>
-                        </button>
-                        <button type="button" class="personalizacion-opcion-visual" data-estilo-hub="neon">
-                            <span class="opcion-visual-preview preview-estilo preview-estilo-neon" aria-hidden="true">
-                                <b></b><b></b>
-                            </span>
-                            <strong>Neon Tech</strong>
-                            <small>Futurista</small>
-                        </button>
+
+                    <div class="personalizacion-apariencia">
+                        <div class="apariencia-preview-compacta" aria-hidden="true">
+                            <span class="apariencia-preview-barra"></span>
+                            <span class="apariencia-preview-tarjeta apariencia-preview-tarjeta-a"></span>
+                            <span class="apariencia-preview-tarjeta apariencia-preview-tarjeta-b"></span>
+                        </div>
+
+                        <p class="apariencia-resumen" id="apariencia-resumen">
+                            Normal · PW Dark
+                        </p>
+
+                        <div class="apariencia-controles apariencia-controles-dependientes">
+                            <label class="apariencia-campo" for="config-estilo">
+                                <span>Material</span>
+                                <select id="config-estilo" aria-label="Material visual">
+                                    <option value="normal" data-description="Interfaz PW Hub original">Normal</option>
+                                    <option value="liquid" data-description="Vidrio refractivo con borde especular">Liquid Glass</option>
+                                    <option value="frosted" data-description="Vidrio esmerilado suave">Frosted Glass</option>
+                                    <option value="acrylic" data-description="Translucidez tintada tipo acrílico">Acrílico</option>
+                                    <option value="minimal" data-description="Superficies limpias y planas">Minimal</option>
+                                    <option value="neon" data-description="Brillos tecnológicos y contraste">Neon Tech</option>
+                                    <option value="matte" data-description="Paneles sólidos de bajo reflejo">Mate</option>
+                                    <option value="titanium" data-description="Metal oscuro con reflejo frío">Titanio</option>
+                                </select>
+                            </label>
+
+                            <label class="apariencia-campo" for="config-tema">
+                                <span>Paleta compatible</span>
+                                <select id="config-tema" aria-label="Paleta compatible">
+                                    <option value="pw-dark">PW Dark</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <p class="apariencia-ayuda" id="apariencia-ayuda">
+                            Las paletas disponibles cambian según el material seleccionado.
+                        </p>
                     </div>
                 </section>
 
@@ -1023,5 +884,45 @@
             </p>
             <p class="nota-portafolio">Portafolio académico de Programación Web. Este sitio funciona como índice y registro de los trabajos realizados durante el curso.</p>
         </footer>
-    </body>
+    
+    <svg
+        class="filtros-visuales-pwhub"
+        width="0"
+        height="0"
+        aria-hidden="true"
+        focusable="false"
+    >
+        <defs>
+            <filter
+                id="pw-liquid-refract"
+                x="-10%"
+                y="-10%"
+                width="120%"
+                height="120%"
+                color-interpolation-filters="sRGB"
+            >
+                <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.010 0.014"
+                    numOctaves="2"
+                    seed="11"
+                    result="ruido"
+                />
+                <feGaussianBlur
+                    in="ruido"
+                    stdDeviation="1.7"
+                    result="ruido-suave"
+                />
+                <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="ruido-suave"
+                    scale="12"
+                    xChannelSelector="R"
+                    yChannelSelector="G"
+                />
+            </filter>
+        </defs>
+    </svg>
+
+</body>
 </html>

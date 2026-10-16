@@ -57,6 +57,237 @@ const SELECTORES_NAVEGACION = {
     documentacion: ['a[href="#documentacion"]']
 };
 
+const TEMAS_APARIENCIA_HUB = {
+    "pw-dark": {
+        nombre: "PW Dark",
+        color: "#0b1721"
+    },
+    "obsidiana": {
+        nombre: "Obsidiana",
+        color: "#080a0d"
+    },
+    "azul-profundo": {
+        nombre: "Azul profundo",
+        color: "#071a28"
+    },
+    "grafito": {
+        nombre: "Grafito",
+        color: "#15191f"
+    },
+    "oled": {
+        nombre: "OLED",
+        color: "#000000"
+    },
+    "carbono": {
+        nombre: "Carbono",
+        color: "#0b0d0f"
+    },
+    "medianoche": {
+        nombre: "Medianoche",
+        color: "#07101e"
+    },
+    "indigo": {
+        nombre: "Índigo",
+        color: "#100e25"
+    },
+    "pizarra": {
+        nombre: "Pizarra",
+        color: "#111820"
+    },
+    "bosque-nocturno": {
+        nombre: "Bosque nocturno",
+        color: "#081914"
+    },
+    "esmeralda-negra": {
+        nombre: "Esmeralda negra",
+        color: "#061a16"
+    },
+    "vino-oscuro": {
+        nombre: "Vino oscuro",
+        color: "#1b0b10"
+    },
+    "ciruela": {
+        nombre: "Ciruela",
+        color: "#190c1c"
+    },
+    "cobre-nocturno": {
+        nombre: "Cobre nocturno",
+        color: "#19110d"
+    },
+    "ambar-oscuro": {
+        nombre: "Ámbar oscuro",
+        color: "#191307"
+    },
+    "acero": {
+        nombre: "Acero",
+        color: "#10161b"
+    },
+    "tormenta": {
+        nombre: "Tormenta",
+        color: "#101723"
+    },
+    "eclipse": {
+        nombre: "Eclipse",
+        color: "#0e0b14"
+    },
+    "terminal": {
+        nombre: "Terminal",
+        color: "#05110d"
+    },
+    "cobalto": {
+        nombre: "Cobalto",
+        color: "#06142a"
+    }
+};
+
+
+const MATERIALES_APARIENCIA_HUB = {
+    normal: {
+        nombre: "Normal",
+        temaPredeterminado: "pw-dark",
+        temas: [
+            "pw-dark",
+            "obsidiana",
+            "azul-profundo",
+            "grafito",
+            "oled",
+            "carbono",
+            "medianoche",
+            "indigo",
+            "pizarra",
+            "bosque-nocturno",
+            "esmeralda-negra",
+            "vino-oscuro",
+            "ciruela",
+            "cobre-nocturno",
+            "ambar-oscuro",
+            "acero",
+            "tormenta",
+            "eclipse",
+            "terminal",
+            "cobalto"
+        ]
+    },
+
+    liquid: {
+        nombre: "Liquid Glass",
+        temaPredeterminado: "cobalto",
+        temas: [
+            "pw-dark",
+            "obsidiana",
+            "azul-profundo",
+            "grafito",
+            "medianoche",
+            "pizarra",
+            "acero",
+            "tormenta",
+            "eclipse",
+            "cobalto"
+        ]
+    },
+
+    frosted: {
+        nombre: "Frosted Glass",
+        temaPredeterminado: "pizarra",
+        temas: [
+            "pw-dark",
+            "azul-profundo",
+            "grafito",
+            "medianoche",
+            "pizarra",
+            "acero",
+            "tormenta",
+            "cobalto"
+        ]
+    },
+
+    acrylic: {
+        nombre: "Acrílico",
+        temaPredeterminado: "medianoche",
+        temas: [
+            "pw-dark",
+            "obsidiana",
+            "azul-profundo",
+            "medianoche",
+            "indigo",
+            "bosque-nocturno",
+            "esmeralda-negra",
+            "vino-oscuro",
+            "ciruela",
+            "tormenta",
+            "cobalto"
+        ]
+    },
+
+    minimal: {
+        nombre: "Minimal",
+        temaPredeterminado: "grafito",
+        temas: [
+            "pw-dark",
+            "obsidiana",
+            "grafito",
+            "oled",
+            "carbono",
+            "pizarra",
+            "acero",
+            "eclipse"
+        ]
+    },
+
+    neon: {
+        nombre: "Neon Tech",
+        temaPredeterminado: "oled",
+        temas: [
+            "obsidiana",
+            "oled",
+            "carbono",
+            "medianoche",
+            "indigo",
+            "bosque-nocturno",
+            "esmeralda-negra",
+            "ciruela",
+            "eclipse",
+            "terminal",
+            "cobalto"
+        ]
+    },
+
+    matte: {
+        nombre: "Mate",
+        temaPredeterminado: "carbono",
+        temas: [
+            "pw-dark",
+            "obsidiana",
+            "grafito",
+            "oled",
+            "carbono",
+            "pizarra",
+            "bosque-nocturno",
+            "vino-oscuro",
+            "cobre-nocturno",
+            "ambar-oscuro",
+            "acero",
+            "eclipse"
+        ]
+    },
+
+    titanium: {
+        nombre: "Titanio",
+        temaPredeterminado: "acero",
+        temas: [
+            "azul-profundo",
+            "grafito",
+            "carbono",
+            "medianoche",
+            "pizarra",
+            "cobre-nocturno",
+            "acero",
+            "tormenta",
+            "cobalto"
+        ]
+    }
+};
+
 const ICONOS_HUB = {
     settings: `
         <svg
@@ -327,6 +558,10 @@ function migrarAparienciaAnterior(
                 : "sutil";
     }
 
+    normalizarAparienciaCompatibleHub(
+        configuracion
+    );
+
     configuracion.animaciones =
         configuracion.movimiento !==
         "ninguno";
@@ -448,27 +683,43 @@ function configurarPanelPersonalizacion() {
             });
         });
 
-    document
-        .querySelectorAll("[data-tema-hub]")
-        .forEach((boton) => {
-            boton.addEventListener("click", () => {
+    const selectorTema =
+        document.getElementById(
+            "config-tema"
+        );
+
+    if (selectorTema) {
+        selectorTema.addEventListener(
+            "change",
+            () => {
                 configuracionHub.tema =
-                    boton.dataset.temaHub;
+                    selectorTema.value;
 
                 aplicarConfiguracionHub();
-            });
-        });
+            }
+        );
+    }
 
-    document
-        .querySelectorAll("[data-estilo-hub]")
-        .forEach((boton) => {
-            boton.addEventListener("click", () => {
+    const selectorEstilo =
+        document.getElementById(
+            "config-estilo"
+        );
+
+    if (selectorEstilo) {
+        selectorEstilo.addEventListener(
+            "change",
+            () => {
                 configuracionHub.estilo =
-                    boton.dataset.estiloHub;
+                    selectorEstilo.value;
+
+                actualizarTemasCompatiblesHub(
+                    true
+                );
 
                 aplicarConfiguracionHub();
-            });
-        });
+            }
+        );
+    }
 
     document
         .querySelectorAll("[data-movimiento-hub]")
@@ -735,41 +986,31 @@ function sincronizarControlesPersonalizacion() {
                 configuracionHub.secciones[clave] !== false;
         });
 
-    document
-        .querySelectorAll("[data-tema-hub]")
-        .forEach((boton) => {
-            const activo =
-                boton.dataset.temaHub ===
-                configuracionHub.tema;
+    actualizarTemasCompatiblesHub(
+        false
+    );
 
-            boton.classList.toggle(
-                "activo",
-                activo
-            );
+    const selectorTema =
+        document.getElementById(
+            "config-tema"
+        );
 
-            boton.setAttribute(
-                "aria-pressed",
-                String(activo)
-            );
-        });
+    if (selectorTema) {
+        selectorTema.value =
+            configuracionHub.tema;
+    }
 
-    document
-        .querySelectorAll("[data-estilo-hub]")
-        .forEach((boton) => {
-            const activo =
-                boton.dataset.estiloHub ===
-                configuracionHub.estilo;
+    const selectorEstilo =
+        document.getElementById(
+            "config-estilo"
+        );
 
-            boton.classList.toggle(
-                "activo",
-                activo
-            );
+    if (selectorEstilo) {
+        selectorEstilo.value =
+            configuracionHub.estilo;
+    }
 
-            boton.setAttribute(
-                "aria-pressed",
-                String(activo)
-            );
-        });
+    actualizarResumenAparienciaHub();
 
     document
         .querySelectorAll("[data-movimiento-hub]")
@@ -835,7 +1076,177 @@ function sincronizarControlesPersonalizacion() {
     }
 
     actualizarEstadoPerfiles();
+
+    if (
+        typeof window
+            .actualizarComboboxesHub ===
+        "function"
+    ) {
+        window.actualizarComboboxesHub();
+    }
 }
+
+function normalizarAparienciaCompatibleHub(
+    configuracion
+) {
+    if (
+        !MATERIALES_APARIENCIA_HUB[
+            configuracion.estilo
+        ]
+    ) {
+        configuracion.estilo =
+            "normal";
+    }
+
+    const material =
+        MATERIALES_APARIENCIA_HUB[
+            configuracion.estilo
+        ];
+
+    if (
+        !material.temas.includes(
+            configuracion.tema
+        )
+    ) {
+        configuracion.tema =
+            material.temaPredeterminado;
+    }
+}
+
+
+function actualizarTemasCompatiblesHub(
+    cambiarTemaSiHaceFalta = true
+) {
+    const selector =
+        document.getElementById(
+            "config-tema"
+        );
+
+    if (!selector) {
+        return;
+    }
+
+    const material =
+        MATERIALES_APARIENCIA_HUB[
+            configuracionHub.estilo
+        ] ||
+        MATERIALES_APARIENCIA_HUB.normal;
+
+    let tema =
+        configuracionHub.tema;
+
+    if (
+        !material.temas.includes(
+            tema
+        )
+    ) {
+        tema =
+            material.temaPredeterminado;
+
+        if (
+            cambiarTemaSiHaceFalta
+        ) {
+            configuracionHub.tema =
+                tema;
+        }
+    }
+
+    const firma =
+        material.temas.join("|");
+
+    if (
+        selector.dataset
+            .firmaTemas !==
+        firma
+    ) {
+        selector.replaceChildren();
+
+        material.temas.forEach(
+            (claveTema) => {
+                const datosTema =
+                    TEMAS_APARIENCIA_HUB[
+                        claveTema
+                    ];
+
+                if (!datosTema) {
+                    return;
+                }
+
+                const opcion =
+                    document.createElement(
+                        "option"
+                    );
+
+                opcion.value =
+                    claveTema;
+
+                opcion.textContent =
+                    datosTema.nombre;
+
+                opcion.dataset.color =
+                    datosTema.color;
+
+                opcion.dataset.description =
+                    `Compatible con ${material.nombre}`;
+
+                selector.appendChild(
+                    opcion
+                );
+            }
+        );
+
+        selector.dataset.firmaTemas =
+            firma;
+    }
+
+    if (
+        material.temas.includes(
+            configuracionHub.tema
+        )
+    ) {
+        selector.value =
+            configuracionHub.tema;
+    } else {
+        selector.value =
+            material.temaPredeterminado;
+    }
+
+    if (
+        typeof window
+            .actualizarComboboxesHub ===
+        "function"
+    ) {
+        window.actualizarComboboxesHub();
+    }
+}
+
+
+function actualizarResumenAparienciaHub() {
+    const material =
+        MATERIALES_APARIENCIA_HUB[
+            configuracionHub.estilo
+        ];
+
+    const tema =
+        TEMAS_APARIENCIA_HUB[
+            configuracionHub.tema
+        ];
+
+    const resumen =
+        document.getElementById(
+            "apariencia-resumen"
+        );
+
+    if (!resumen) {
+        return;
+    }
+
+    resumen.textContent =
+        `${material?.nombre || configuracionHub.estilo}` +
+        ` · ` +
+        `${tema?.nombre || configuracionHub.tema}`;
+}
+
 
 function actualizarEstadoPerfiles() {
     document

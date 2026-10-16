@@ -953,3 +953,61 @@ El fallback local fue actualizado a **Ejercicio 0 - Modelo de caja CSS** y se re
 Además, la sincronización automática ahora valida las rutas manuales contra el árbol actual de GitHub. Si un HTML, PDF o Markdown registrado deja de existir porque fue renombrado o eliminado, la tarjeta obsoleta se descarta cuando GitHub confirma el nuevo estado del repositorio.
 
 La caché offline avanzó a `pw-hub-offline-v2` para evitar reutilizar referencias antiguas.
+
+---
+
+### Apariencia compacta y Liquid Glass V11
+
+**Tipo:** Refinamiento de mantenimiento posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día
+
+Las antiguas secciones **Tema oscuro** y **Estilo visual** se fusionaron bajo un único bloque denominado **Apariencia**.
+
+Las veinte paletas oscuras se conservan, pero dejan de ocupar una cuadrícula extensa. El tema y el material se seleccionan mediante dos controles compactos dentro del mismo bloque, acompañados por una miniatura que refleja la combinación activa.
+
+Liquid Glass avanza a V11 tomando como referencia visual los materiales de interfaz compartidos para esta revisión. Se conserva la base V10 validada y se realizan ajustes moderados: bordes con iluminación direccional, mayor saturación del contenido posterior, un rim especular gradual cuando el navegador permite máscaras compuestas y algo menos de blur en tarjetas para evitar un aspecto excesivamente esmerilado.
+
+No se alteran propiedades estructurales de posicionamiento, overflow o transform de navegación y paneles.
+
+También se excluyen los archivos temporales `README_CAMBIOS.md` y `README_PRUEBA.md` desde `.gitignore`, y la caché offline se incrementa a la versión 3 para propagar correctamente los nuevos CSS y JavaScript.
+
+---
+
+### Materiales dependientes, combobox y Liquid Glass V12
+
+**Tipo:** Refinamiento visual y de interacción posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día
+
+Los controles `<select>` nativos fueron reemplazados visualmente por un combobox propio de PW Hub. El `select` original permanece en el DOM para conservar compatibilidad con los módulos existentes, mientras el nuevo control ofrece un menú flotante redondeado, altura limitada, desplazamiento interno, navegación por teclado y estilos coherentes con cada material.
+
+La configuración de Apariencia ahora se organiza jerárquicamente. Primero se selecciona un **Material** y después solo se muestran las **Paletas compatibles** con él. Esto evita presentar combinaciones poco coherentes y reduce la longitud de los menús.
+
+Los materiales disponibles pasan a ser Normal, Liquid Glass, Frosted Glass, Acrílico, Minimal, Neon Tech, Mate y Titanio.
+
+Liquid Glass V12 incorpora una mejora progresiva inspirada en técnicas modernas de refracción: el fallback universal continúa usando blur, saturación y borde especular, mientras que Chromium/Edge puede aplicar un filtro SVG con `feTurbulence` y `feDisplacementMap` sobre la navbar y superficies flotantes. La refracción no se aplica a todas las tarjetas para proteger el rendimiento, especialmente en móvil.
+
+---
+
+### Página offline final y estado de conexión
+
+**Tipo:** Mantenimiento funcional posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día
+
+Se completó el modo sin conexión con una página `hub/offline.html` independiente y autocontenida.
+
+El Service Worker continúa priorizando la red para documentos y utilizando la copia cacheada cuando la red falla. La página offline aparece únicamente cuando la navegación solicitada no existe todavía en la caché del navegador.
+
+Esto evita sustituir innecesariamente contenido que sí fue visitado previamente. El usuario puede continuar consultando el Hub y trabajos cacheados de forma normal.
+
+También se añadió un indicador flotante temporal. Cuando el navegador pierde internet muestra **Sin conexión · usando contenido guardado**. Al recuperar la red cambia brevemente a **Conexión recuperada** y habilita una nueva sincronización con GitHub para la próxima carga.
+
+No se añadió `manifest.webmanifest`, instalación ni comportamiento de aplicación.

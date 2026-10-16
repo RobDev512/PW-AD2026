@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="color-scheme"
+        content="dark"
+    >
+
+    <meta
+        name="theme-color"
+        content="#07111a"
+    >
+
+    <title>Sin conexión - PW Hub</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="assets/branding/favicon-32.png"
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --fondo:
+                #061019;
+
+            --panel:
+                rgba(
+                    15,
+                    32,
+                    45,
+                    0.82
+                );
+
+            --panel-secundario:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.035
+                );
+
+            --borde:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.12
+                );
+
+            --texto:
+                #f4f8fb;
+
+            --texto-secundario:
+                #98adbc;
+
+            --acento:
+                #35c9f3;
+
+            --acento-rgb:
+                53, 201, 243;
+        }
+
+        html {
+            min-height:
+                100%;
+
+            background:
+                var(--fondo);
+        }
+
+        body {
+            min-height:
+                100vh;
+
+            margin:
+                0;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            padding:
+                28px;
+
+            overflow-x:
+                hidden;
+
+            color:
+                var(--texto);
+
+            background:
+                radial-gradient(
+                    circle at 15% 0%,
+                    rgba(
+                        var(--acento-rgb),
+                        0.13
+                    ),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 85% 14%,
+                    rgba(
+                        100,
+                        120,
+                        255,
+                        0.07
+                    ),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    180deg,
+                    #081622,
+                    var(--fondo)
+                );
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+        }
+
+        body::before {
+            content:
+                "";
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            pointer-events:
+                none;
+
+            opacity:
+                0.28;
+
+            background-image:
+                linear-gradient(
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.018
+                    ) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.018
+                    ) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                34px
+                34px;
+
+            mask-image:
+                radial-gradient(
+                    circle at center,
+                    black,
+                    transparent 76%
+                );
+        }
+
+        .offline {
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            width:
+                min(
+                    720px,
+                    100%
+                );
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid
+                var(--borde);
+
+            border-top-color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.28
+                );
+
+            border-left-color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.15
+                );
+
+            border-radius:
+                26px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.075
+                    ),
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.025
+                    )
+                ),
+                var(--panel);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.16
+                ),
+                0 28px 80px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.34
+                );
+
+            backdrop-filter:
+                blur(26px)
+                saturate(165%);
+
+            -webkit-backdrop-filter:
+                blur(26px)
+                saturate(165%);
+        }
+
+        .offline::before {
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                280px;
+            height:
+                280px;
+
+            top:
+                -165px;
+            right:
+                -75px;
+
+            pointer-events:
+                none;
+
+            border-radius:
+                50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(
+                        var(--acento-rgb),
+                        0.16
+                    ),
+                    transparent 70%
+                );
+        }
+
+        .offline-cabecera {
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                13px;
+
+            padding:
+                19px
+                22px;
+
+            border-bottom:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.075
+                );
+
+            background:
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.08
+                );
+        }
+
+        .offline-logo {
+            width:
+                42px;
+            height:
+                42px;
+
+            object-fit:
+                contain;
+
+            filter:
+                drop-shadow(
+                    0 10px 20px
+                    rgba(
+                        0,
+                        0,
+                        0,
+                        0.26
+                    )
+                );
+        }
+
+        .offline-marca {
+            min-width:
+                0;
+        }
+
+        .offline-kicker {
+            margin:
+                0 0 2px;
+
+            color:
+                var(--acento);
+
+            font-size:
+                9px;
+
+            font-weight:
+                850;
+
+            letter-spacing:
+                1.5px;
+
+            text-transform:
+                uppercase;
+        }
+
+        .offline-marca strong {
+            display:
+                block;
+
+            overflow:
+                hidden;
+
+            color:
+                var(--texto);
+
+            font-size:
+                15px;
+
+            text-overflow:
+                ellipsis;
+
+            white-space:
+                nowrap;
+        }
+
+        .offline-contenido {
+            padding:
+                clamp(
+                    30px,
+                    7vw,
+                    58px
+                );
+
+            text-align:
+                center;
+        }
+
+        .offline-icono {
+            position:
+                relative;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            width:
+                84px;
+            height:
+                84px;
+
+            margin:
+                0
+                auto
+                25px;
+
+            border:
+                1px solid
+                rgba(
+                    var(--acento-rgb),
+                    0.32
+                );
+
+            border-radius:
+                24px;
+
+            color:
+                var(--acento);
+
+            background:
+                radial-gradient(
+                    circle at 28% 18%,
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        0.14
+                    ),
+                    transparent 40%
+                ),
+                rgba(
+                    var(--acento-rgb),
+                    0.065
+                );
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.18
+                ),
+                0 12px 30px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.18
+                );
+        }
+
+        .offline-icono svg {
+            width:
+                40px;
+            height:
+                40px;
+
+            fill:
+                none;
+
+            stroke:
+                currentColor;
+
+            stroke-width:
+                1.7;
+
+            stroke-linecap:
+                round;
+
+            stroke-linejoin:
+                round;
+        }
+
+        .offline-estado {
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                7px;
+
+            margin-bottom:
+                12px;
+
+            padding:
+                6px
+                10px;
+
+            border:
+                1px solid
+                rgba(
+                    var(--acento-rgb),
+                    0.20
+                );
+
+            border-radius:
+                999px;
+
+            color:
+                var(--texto-secundario);
+
+            background:
+                rgba(
+                    var(--acento-rgb),
+                    0.035
+                );
+
+            font-size:
+                9px;
+
+            font-weight:
+                760;
+
+            letter-spacing:
+                0.25px;
+        }
+
+        .offline-estado i {
+            width:
+                7px;
+            height:
+                7px;
+
+            border-radius:
+                50%;
+
+            background:
+                #f0ad4e;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(
+                    240,
+                    173,
+                    78,
+                    0.10
+                );
+        }
+
+        .offline-estado.en-linea i {
+            background:
+                #45d7a2;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(
+                    69,
+                    215,
+                    162,
+                    0.10
+                );
+        }
+
+        h1 {
+            margin:
+                0 0 13px;
+
+            font-size:
+                clamp(
+                    30px,
+                    7vw,
+                    50px
+                );
+
+            line-height:
+                1.05;
+
+            letter-spacing:
+                -1.6px;
+        }
+
+        .offline-descripcion {
+            width:
+                min(
+                    540px,
+                    100%
+                );
+
+            margin:
+                0
+                auto;
+
+            color:
+                var(--texto-secundario);
+
+            font-size:
+                clamp(
+                    12px,
+                    2.4vw,
+                    15px
+                );
+
+            line-height:
+                1.75;
+        }
+
+        .offline-nota {
+            display:
+                grid;
+
+            grid-template-columns:
+                auto
+                minmax(
+                    0,
+                    1fr
+                );
+
+            gap:
+                10px;
+
+            width:
+                min(
+                    520px,
+                    100%
+                );
+
+            margin:
+                24px
+                auto
+                0;
+
+            padding:
+                12px
+                13px;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.075
+                );
+
+            border-radius:
+                13px;
+
+            color:
+                var(--texto-secundario);
+
+            background:
+                var(--panel-secundario);
+
+            text-align:
+                left;
+
+            font-size:
+                10px;
+
+            line-height:
+                1.55;
+        }
+
+        .offline-nota svg {
+            width:
+                18px;
+            height:
+                18px;
+
+            margin-top:
+                1px;
+
+            fill:
+                none;
+
+            stroke:
+                var(--acento);
+
+            stroke-width:
+                1.8;
+
+            stroke-linecap:
+                round;
+
+            stroke-linejoin:
+                round;
+        }
+
+        .offline-acciones {
+            display:
+                flex;
+
+            justify-content:
+                center;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                9px;
+
+            margin-top:
+                28px;
+        }
+
+        .offline-boton {
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+            justify-content:
+                center;
+
+            min-height:
+                42px;
+
+            padding:
+                9px
+                15px;
+
+            cursor:
+                pointer;
+
+            border:
+                1px solid
+                var(--borde);
+
+            border-radius:
+                11px;
+
+            color:
+                var(--texto);
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.035
+                );
+
+            font:
+                inherit;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            text-decoration:
+                none;
+
+            transition:
+                transform 0.18s ease,
+                border-color 0.18s ease,
+                background-color 0.18s ease,
+                box-shadow 0.18s ease;
+        }
+
+        .offline-boton:hover,
+        .offline-boton:focus-visible {
+            outline:
+                none;
+
+            transform:
+                translateY(-1px);
+
+            border-color:
+                rgba(
+                    var(--acento-rgb),
+                    0.48
+                );
+
+            background:
+                rgba(
+                    var(--acento-rgb),
+                    0.075
+                );
+
+            box-shadow:
+                0 8px 22px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.15
+                );
+        }
+
+        .offline-boton.primario {
+            border-color:
+                rgba(
+                    var(--acento-rgb),
+                    0.50
+                );
+
+            color:
+                #021820;
+
+            background:
+                var(--acento);
+        }
+
+        .offline-boton.primario:hover,
+        .offline-boton.primario:focus-visible {
+            background:
+                #73dcf8;
+
+            box-shadow:
+                0 8px 24px
+                rgba(
+                    var(--acento-rgb),
+                    0.16
+                );
+        }
+
+        .offline-pie {
+            padding:
+                14px
+                20px
+                16px;
+
+            border-top:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.055
+                );
+
+            color:
+                #6f8595;
+
+            background:
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.09
+                );
+
+            font-size:
+                8px;
+
+            text-align:
+                center;
+        }
+
+        @media (
+            max-width:
+                520px
+        ) {
+            body {
+                padding:
+                    12px;
+            }
+
+            .offline {
+                border-radius:
+                    20px;
+            }
+
+            .offline-cabecera {
+                padding:
+                    15px
+                    16px;
+            }
+
+            .offline-logo {
+                width:
+                    36px;
+                height:
+                    36px;
+            }
+
+            .offline-contenido {
+                padding:
+                    28px
+                    18px
+                    30px;
+            }
+
+            .offline-icono {
+                width:
+                    72px;
+                height:
+                    72px;
+
+                border-radius:
+                    20px;
+            }
+
+            .offline-icono svg {
+                width:
+                    34px;
+                height:
+                    34px;
+            }
+
+            .offline-acciones {
+                display:
+                    grid;
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .offline-boton {
+                width:
+                    100%;
+            }
+        }
+
+        @media (
+            prefers-reduced-motion:
+                reduce
+        ) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior:
+                    auto !important;
+
+                transition-duration:
+                    0.01ms !important;
+
+                animation-duration:
+                    0.01ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="offline">
+        <header class="offline-cabecera">
+            <img
+                src="assets/branding/isotipo-pwhub.png"
+                alt=""
+                class="offline-logo"
+                aria-hidden="true"
+            >
+
+            <div class="offline-marca">
+                <p class="offline-kicker">
+                    Programación Web
+                </p>
+
+                <strong>
+                    PW Hub · Portafolio Web
+                </strong>
+            </div>
+        </header>
+
+        <section class="offline-contenido">
+            <div
+                class="offline-icono"
+                aria-hidden="true"
+            >
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 8.7A14.8 14.8 0 0 1 12 5.5c2.6 0 5.1.7 7.2 2"></path>
+                    <path d="M6.3 12a9.7 9.7 0 0 1 5.7-1.8c1.5 0 2.9.3 4.2.9"></path>
+                    <path d="M9.5 15.2a4.4 4.4 0 0 1 2.5-.7c.5 0 1 .1 1.5.2"></path>
+                    <path d="M12 19h.01"></path>
+                    <path d="m4 4 16 16"></path>
+                </svg>
+            </div>
+
+            <div
+                class="offline-estado"
+                id="estado-red"
+            >
+                <i aria-hidden="true"></i>
+                <span>Sin conexión</span>
+            </div>
+
+            <h1>
+                No hay conexión
+            </h1>
+
+            <p class="offline-descripcion">
+                PW Hub no pudo obtener esta página desde la red.
+                Si ya visitaste este contenido anteriormente,
+                vuelve al Hub para consultar la copia guardada
+                en este navegador.
+            </p>
+
+            <div class="offline-nota">
+                <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="M12 8v4"></path>
+                    <path d="M12 16h.01"></path>
+                    <circle cx="12" cy="12" r="9"></circle>
+                </svg>
+
+                <span>
+                    El modo sin conexión funciona después de al
+                    menos una visita con internet. Los trabajos
+                    nuevos que nunca se hayan cargado todavía
+                    pueden no estar disponibles.
+                </span>
+            </div>
+
+            <div class="offline-acciones">
+                <button
+                    type="button"
+                    class="offline-boton primario"
+                    id="reintentar"
+                >
+                    Reintentar conexión
+                </button>
+
+                <a
+                    href="./"
+                    class="offline-boton"
+                >
+                    Volver al Hub
+                </a>
+            </div>
+        </section>
+
+        <footer class="offline-pie">
+            El contenido guardado permanece únicamente en este navegador.
+        </footer>
+    </main>
+
+    <script>
+        const estado =
+            document.getElementById(
+                "estado-red"
+            );
+
+        const textoEstado =
+            estado.querySelector(
+                "span"
+            );
+
+        const botonReintentar =
+            document.getElementById(
+                "reintentar"
+            );
+
+        function actualizarEstadoRed() {
+            const conectado =
+                navigator.onLine;
+
+            estado.classList.toggle(
+                "en-linea",
+                conectado
+            );
+
+            textoEstado.textContent =
+                conectado
+                    ? "Conexión recuperada"
+                    : "Sin conexión";
+
+            botonReintentar.textContent =
+                conectado
+                    ? "Volver a intentar"
+                    : "Reintentar conexión";
+        }
+
+        botonReintentar.addEventListener(
+            "click",
+            () => {
+                window.location.reload();
+            }
+        );
+
+        window.addEventListener(
+            "online",
+            () => {
+                actualizarEstadoRed();
+
+                window.setTimeout(
+                    () => {
+                        window.location.reload();
+                    },
+                    650
+                );
+            }
+        );
+
+        window.addEventListener(
+            "offline",
+            actualizarEstadoRed
+        );
+
+        actualizarEstadoRed();
+    </script>
+</body>
+</html>

@@ -1684,3 +1684,1110 @@ html[data-estilo="liquid"]
     }
 }
 
+/* =========================================================
+   LIQUID GLASS V11 - RIM ESPECULAR Y COLOR BLEED
+   ========================================================= */
+
+/*
+   Refinamiento ligero sobre V10.
+
+   La sensación de vidrio depende menos de un blur excesivo y
+   más de:
+   - color que atraviesa el material;
+   - saturación;
+   - brillo direccional en el canto;
+   - sombra suave;
+   - diferencias de luz entre borde superior/izquierdo y
+     borde inferior/derecho.
+
+   No se modifican position, overflow ni transforms estructurales.
+*/
+
+html[data-estilo="liquid"] {
+    --liquid-rim-fuerte:
+        rgba(
+            255,
+            255,
+            255,
+            0.38
+        );
+
+    --liquid-rim-medio:
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        );
+
+    --liquid-rim-suave:
+        rgba(
+            255,
+            255,
+            255,
+            0.075
+        );
+}
+
+
+/* ---------------------------------------------------------
+   TARJETAS GRANDES
+   --------------------------------------------------------- */
+
+html[data-estilo="liquid"]
+:is(
+    .unidad-card,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .trabajos-visor,
+    .visor-markdown,
+    .historial-resumen,
+    .roadmap-resumen,
+    .roadmap-nodo-principal
+) {
+    border-top-color:
+        var(--liquid-rim-fuerte)
+        !important;
+
+    border-left-color:
+        var(--liquid-rim-medio)
+        !important;
+
+    border-right-color:
+        var(--liquid-rim-suave)
+        !important;
+
+    border-bottom-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.055
+        )
+        !important;
+
+    backdrop-filter:
+        blur(24px)
+        saturate(180%)
+        brightness(1.025)
+        contrast(104%)
+        !important;
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(180%)
+        brightness(1.025)
+        contrast(104%)
+        !important;
+}
+
+
+/* ---------------------------------------------------------
+   TARJETAS SECUNDARIAS
+   --------------------------------------------------------- */
+
+html[data-estilo="liquid"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-temas,
+    .unidad-trabajo,
+    .estadistica-principal,
+    .historial-estadistica,
+    .roadmap-estadistica,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    border-top-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.30
+        )
+        !important;
+
+    border-left-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        )
+        !important;
+
+    border-right-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        )
+        !important;
+
+    border-bottom-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.045
+        )
+        !important;
+
+    backdrop-filter:
+        blur(18px)
+        saturate(168%)
+        brightness(1.018)
+        !important;
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(168%)
+        brightness(1.018)
+        !important;
+}
+
+
+/* ---------------------------------------------------------
+   NAVBAR
+   Se mantiene el blur de V10, pero con más color bleed.
+   --------------------------------------------------------- */
+
+html[data-estilo="liquid"]
+.navegacion-hub::before {
+    background:
+        radial-gradient(
+            115% 180% at 10% -45%,
+            rgba(
+                255,
+                255,
+                255,
+                0.19
+            ),
+            transparent 48%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.10
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.03
+            )
+        );
+
+    backdrop-filter:
+        blur(30px)
+        saturate(185%)
+        brightness(1.025);
+
+    -webkit-backdrop-filter:
+        blur(30px)
+        saturate(185%)
+        brightness(1.025);
+}
+
+
+/* ---------------------------------------------------------
+   PANEL, MENÚS Y BOTÓN FLOTANTE
+   --------------------------------------------------------- */
+
+html[data-estilo="liquid"]
+:is(
+    .panel-personalizacion,
+    .configuracion-flotante
+) {
+    border-top-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.34
+        )
+        !important;
+
+    border-left-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.16
+        )
+        !important;
+
+    border-right-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.075
+        )
+        !important;
+
+    border-bottom-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.055
+        )
+        !important;
+
+    backdrop-filter:
+        blur(24px)
+        saturate(178%)
+        brightness(1.02)
+        !important;
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(178%)
+        brightness(1.02)
+        !important;
+}
+
+
+html[data-estilo="liquid"]
+.nav-desplegable-menu {
+    border-top-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.34
+        )
+        !important;
+
+    border-left-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.15
+        )
+        !important;
+
+    border-right-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        )
+        !important;
+
+    border-bottom-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        )
+        !important;
+
+    background:
+        radial-gradient(
+            125% 100% at 5% 0%,
+            rgba(
+                255,
+                255,
+                255,
+                0.09
+            ),
+            transparent 42%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(
+                13,
+                27,
+                40,
+                0.80
+            ),
+            rgba(
+                7,
+                17,
+                28,
+                0.86
+            )
+        )
+        !important;
+
+    backdrop-filter:
+        blur(16px)
+        saturate(168%)
+        brightness(1.02)
+        contrast(103%)
+        !important;
+
+    -webkit-backdrop-filter:
+        blur(16px)
+        saturate(168%)
+        brightness(1.02)
+        contrast(103%)
+        !important;
+}
+
+
+/* ---------------------------------------------------------
+   RIM ESPECULAR GRADUAL
+   Solo se activa si el navegador soporta el recorte de máscara.
+   --------------------------------------------------------- */
+
+@supports (
+    (-webkit-mask-composite: xor)
+    or
+    (mask-composite: exclude)
+) {
+    html[data-estilo="liquid"]
+    :is(
+        .navegacion-hub,
+        .panel-personalizacion,
+        .nav-desplegable-menu,
+        .configuracion-flotante
+    )::after {
+        content:
+            "";
+
+        position:
+            absolute;
+
+        inset:
+            0;
+
+        z-index:
+            4;
+
+        padding:
+            1px;
+
+        pointer-events:
+            none;
+
+        border-radius:
+            inherit;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.72
+                ) 0%,
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.20
+                ) 30%,
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.015
+                ) 58%,
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.075
+                ) 100%
+            );
+
+        -webkit-mask:
+            linear-gradient(
+                #000 0 0
+            )
+            content-box,
+            linear-gradient(
+                #000 0 0
+            );
+
+        -webkit-mask-composite:
+            xor;
+
+        mask:
+            linear-gradient(
+                #000 0 0
+            )
+            content-box,
+            linear-gradient(
+                #000 0 0
+            );
+
+        mask-composite:
+            exclude;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   MÓVIL
+   Un poco menos de blur para mantener fluidez.
+   --------------------------------------------------------- */
+
+@media (max-width: 650px) {
+    html[data-estilo="liquid"]
+    :is(
+        .unidad-card,
+        .tarjeta-documento,
+        .actividad-tarjeta,
+        .estadisticas-panel,
+        .trabajo-explorador,
+        .trabajos-panel,
+        .visor-markdown,
+        .panel-personalizacion
+    ) {
+        backdrop-filter:
+            blur(18px)
+            saturate(168%)
+            brightness(1.018)
+            !important;
+
+        -webkit-backdrop-filter:
+            blur(18px)
+            saturate(168%)
+            brightness(1.018)
+            !important;
+    }
+
+
+    html[data-estilo="liquid"]
+    .nav-desplegable-menu {
+        backdrop-filter:
+            blur(15px)
+            saturate(160%)
+            brightness(1.015)
+            !important;
+
+        -webkit-backdrop-filter:
+            blur(15px)
+            saturate(160%)
+            brightness(1.015)
+            !important;
+    }
+}
+
+/* =========================================================
+   MATERIALES V12
+   ========================================================= */
+
+html[data-estilo="frosted"] body {
+    background:
+        radial-gradient(
+            circle at 12% 0%,
+            rgba(
+                var(--acento-rgb),
+                0.075
+            ),
+            transparent 32%
+        ),
+        var(--fondo);
+}
+
+
+html[data-estilo="frosted"]
+:is(
+    .navegacion-hub,
+    .panel-personalizacion,
+    .configuracion-flotante,
+    .nav-desplegable-menu,
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .trabajos-visor,
+    .visor-markdown,
+    .historial-resumen,
+    .historial-estadistica,
+    .roadmap-resumen,
+    .roadmap-estadistica,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        )
+        !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.105
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.045
+            )
+        )
+        !important;
+
+    backdrop-filter:
+        blur(27px)
+        saturate(125%)
+        brightness(1.05);
+
+    -webkit-backdrop-filter:
+        blur(27px)
+        saturate(125%)
+        brightness(1.05);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.18
+        ),
+        0 16px 38px
+        rgba(
+            0,
+            0,
+            0,
+            0.18
+        )
+        !important;
+}
+
+
+html[data-estilo="acrylic"] body {
+    background:
+        radial-gradient(
+            circle at 12% -5%,
+            rgba(
+                var(--acento-rgb),
+                0.16
+            ),
+            transparent 31%
+        ),
+        radial-gradient(
+            circle at 92% 18%,
+            rgba(
+                var(--acento-rgb),
+                0.065
+            ),
+            transparent 30%
+        ),
+        var(--fondo);
+}
+
+
+html[data-estilo="acrylic"]
+:is(
+    .navegacion-hub,
+    .panel-personalizacion,
+    .configuracion-flotante,
+    .nav-desplegable-menu,
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .trabajos-visor,
+    .visor-markdown,
+    .historial-resumen,
+    .historial-estadistica,
+    .roadmap-resumen,
+    .roadmap-estadistica,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    border-color:
+        rgba(
+            var(--acento-rgb),
+            0.18
+        )
+        !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(
+                var(--acento-rgb),
+                0.075
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.025
+            )
+        ),
+        rgba(
+            10,
+            20,
+            30,
+            0.72
+        )
+        !important;
+
+    backdrop-filter:
+        blur(18px)
+        saturate(155%)
+        contrast(103%);
+
+    -webkit-backdrop-filter:
+        blur(18px)
+        saturate(155%)
+        contrast(103%);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.085
+        ),
+        0 15px 36px
+        rgba(
+            0,
+            0,
+            0,
+            0.20
+        )
+        !important;
+}
+
+
+html[data-estilo="matte"] body {
+    background:
+        var(--fondo);
+}
+
+
+html[data-estilo="matte"]
+:is(
+    .navegacion-hub,
+    .panel-personalizacion,
+    .configuracion-flotante,
+    .nav-desplegable-menu,
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .trabajos-visor,
+    .visor-markdown,
+    .historial-resumen,
+    .historial-estadistica,
+    .roadmap-resumen,
+    .roadmap-estadistica,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    border-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.075
+        )
+        !important;
+
+    background:
+        var(--panel)
+        !important;
+
+    backdrop-filter:
+        none
+        !important;
+
+    -webkit-backdrop-filter:
+        none
+        !important;
+
+    box-shadow:
+        0 10px 26px
+        rgba(
+            0,
+            0,
+            0,
+            0.13
+        )
+        !important;
+}
+
+
+html[data-estilo="titanium"] body {
+    background:
+        radial-gradient(
+            circle at 50% -15%,
+            rgba(
+                180,
+                205,
+                225,
+                0.06
+            ),
+            transparent 35%
+        ),
+        var(--fondo);
+}
+
+
+html[data-estilo="titanium"]
+:is(
+    .navegacion-hub,
+    .panel-personalizacion,
+    .configuracion-flotante,
+    .nav-desplegable-menu,
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .trabajos-visor,
+    .visor-markdown,
+    .historial-resumen,
+    .historial-estadistica,
+    .roadmap-resumen,
+    .roadmap-estadistica,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    border-top-color:
+        rgba(
+            230,
+            241,
+            248,
+            0.24
+        )
+        !important;
+
+    border-left-color:
+        rgba(
+            190,
+            211,
+            224,
+            0.12
+        )
+        !important;
+
+    border-right-color:
+        rgba(
+            255,
+            255,
+            255,
+            0.045
+        )
+        !important;
+
+    border-bottom-color:
+        rgba(
+            0,
+            0,
+            0,
+            0.22
+        )
+        !important;
+
+    background:
+        linear-gradient(
+            155deg,
+            rgba(
+                190,
+                210,
+                222,
+                0.12
+            ),
+            rgba(
+                60,
+                76,
+                88,
+                0.055
+            ) 38%,
+            rgba(
+                5,
+                10,
+                14,
+                0.18
+            )
+        ),
+        var(--panel)
+        !important;
+
+    backdrop-filter:
+        blur(12px)
+        saturate(118%);
+
+    -webkit-backdrop-filter:
+        blur(12px)
+        saturate(118%);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        ),
+        inset 0 -1px 0
+        rgba(
+            0,
+            0,
+            0,
+            0.26
+        ),
+        0 14px 34px
+        rgba(
+            0,
+            0,
+            0,
+            0.19
+        )
+        !important;
+}
+
+
+/* =========================================================
+   LIQUID GLASS V12 - REFRACCIÓN PROGRESIVA
+   ========================================================= */
+
+/*
+   V12 mantiene la apariencia V10/V11 y agrega una refracción
+   ligera únicamente en superficies flotantes importantes.
+
+   El fallback sigue siendo blur + saturación + borde especular.
+   Chromium/Edge puede sumar feDisplacementMap.
+*/
+
+html[data-estilo="liquid"]
+:is(
+    .unidad-card,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadisticas-panel,
+    .trabajo-explorador,
+    .trabajos-panel,
+    .trabajos-visor,
+    .visor-markdown,
+    .historial-resumen,
+    .roadmap-resumen,
+    .roadmap-nodo-principal
+) {
+    backdrop-filter:
+        blur(20px)
+        saturate(182%)
+        brightness(1.025)
+        contrast(103%)
+        !important;
+
+    -webkit-backdrop-filter:
+        blur(20px)
+        saturate(182%)
+        brightness(1.025)
+        contrast(103%)
+        !important;
+}
+
+
+html[data-estilo="liquid"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-temas,
+    .unidad-trabajo,
+    .estadistica-principal,
+    .historial-estadistica,
+    .roadmap-estadistica,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    backdrop-filter:
+        blur(15px)
+        saturate(170%)
+        brightness(1.02)
+        !important;
+
+    -webkit-backdrop-filter:
+        blur(15px)
+        saturate(170%)
+        brightness(1.02)
+        !important;
+}
+
+
+/*
+   Más transparencia en el centro, pero con bordes mucho más
+   definidos. El cambio es deliberadamente pequeño respecto V11.
+*/
+html[data-estilo="liquid"]
+.nav-desplegable-menu {
+    background:
+        radial-gradient(
+            120% 95% at 4% 0%,
+            rgba(
+                255,
+                255,
+                255,
+                0.11
+            ),
+            transparent 44%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(
+                13,
+                27,
+                40,
+                0.78
+            ),
+            rgba(
+                7,
+                17,
+                28,
+                0.85
+            )
+        )
+        !important;
+}
+
+
+.filtros-visuales-pwhub {
+    position:
+        fixed;
+
+    width:
+        0;
+    height:
+        0;
+
+    pointer-events:
+        none;
+
+    opacity:
+        0;
+}
+
+
+/*
+   La refracción real se limita a pocos elementos para evitar
+   gasto innecesario de GPU. Si el navegador no acepta filtros
+   SVG dentro de backdrop-filter, esta sección simplemente se
+   ignora.
+*/
+@supports (
+    backdrop-filter:
+        url("#pw-liquid-refract")
+) {
+    html[data-estilo="liquid"]
+    .navegacion-hub::before {
+        backdrop-filter:
+            blur(22px)
+            saturate(185%)
+            brightness(1.025)
+            url("#pw-liquid-refract");
+
+        -webkit-backdrop-filter:
+            blur(22px)
+            saturate(185%)
+            brightness(1.025);
+    }
+
+
+    html[data-estilo="liquid"]
+    :is(
+        .nav-desplegable-menu,
+        .configuracion-flotante
+    ) {
+        backdrop-filter:
+            blur(10px)
+            saturate(178%)
+            brightness(1.025)
+            url("#pw-liquid-refract")
+            !important;
+
+        -webkit-backdrop-filter:
+            blur(16px)
+            saturate(178%)
+            brightness(1.025)
+            !important;
+    }
+}
+
+
+@media (
+    max-width:
+        650px
+) {
+    /*
+       En móvil mantenemos solo el fallback ligero.
+       La refracción SVG no se fuerza sobre superficies grandes.
+    */
+    html[data-estilo="liquid"]
+    :is(
+        .unidad-card,
+        .tarjeta-documento,
+        .actividad-tarjeta,
+        .estadisticas-panel,
+        .trabajo-explorador,
+        .trabajos-panel,
+        .visor-markdown,
+        .panel-personalizacion
+    ) {
+        backdrop-filter:
+            blur(16px)
+            saturate(168%)
+            brightness(1.018)
+            !important;
+
+        -webkit-backdrop-filter:
+            blur(16px)
+            saturate(168%)
+            brightness(1.018)
+            !important;
+    }
+}
+

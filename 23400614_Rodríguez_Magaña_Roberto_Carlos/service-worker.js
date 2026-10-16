@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v2";
+    "pw-hub-offline-v5";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;
@@ -31,9 +31,12 @@ const URL_MARKED =
 const ARCHIVOS_SHELL = [
     "hub/",
     "hub/index.html",
+    "hub/offline.html",
 
     "hub/css/actividad.css",
     "hub/css/apariencia-avanzada.css",
+    "hub/css/combobox.css",
+    "hub/css/offline.css",
     "hub/css/estadisticas.css",
     "hub/css/estilos.css",
     "hub/css/hero-codigo.css",
@@ -45,6 +48,8 @@ const ARCHIVOS_SHELL = [
     "hub/css/trabajos.css",
 
     "hub/js/actividad.js",
+    "hub/js/combobox.js",
+    "hub/js/offline.js",
     "hub/js/estadisticas.js",
     "hub/js/historial.js",
     "hub/js/hub.js",
@@ -346,15 +351,20 @@ async function redPrimeroHub(
             peticion.mode ===
             "navigate"
         ) {
-            const inicio =
+            /*
+               Si la URL exacta nunca fue visitada y por lo tanto
+               no está en caché, mostramos una página offline
+               explícita en vez de devolver el inicio del Hub.
+            */
+            const offline =
                 new URL(
-                    "hub/index.html",
+                    "hub/offline.html",
                     self.registration.scope
                 );
 
             const fallback =
                 await buscarEnCachesHub(
-                    inicio
+                    offline
                 );
 
             if (fallback) {
