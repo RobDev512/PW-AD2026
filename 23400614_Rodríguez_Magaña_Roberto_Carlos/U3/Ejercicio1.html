@@ -1,40 +1,43 @@
 <!DOCTYPE html> <!-- documento HTML5 -->
-<html> <!-- inicio del documento HTML -->
+<html lang="es"> <!-- inicio del documento HTML -->
     <head> <!-- inicio de la sección head -->
         <meta charset="UTF-8"> <!-- codificación de caracteres UTF-8 -->
         <title> Receta Pan Francés </title> <!-- título de la página -->
 
         <!-- Añadir estilos a la actividad 1 de la U2 -->
         <style>
-            .body {
-                background-color: #c5eeff; /* color de fondo del cuerpo */
+            body {
+                background-color: #fff4dc; /* color de fondo del cuerpo */
                 margin: 0; /* eliminar márgenes del cuerpo */
+                font-family: Aptos, sans-serif;
             }
+
             p {
-                font-family: Aptos, sans-serif;
                 font-size: 16px;
-                line-height: 1.1;
+                line-height: 1.4;
                 text-align: center; /* centrar el texto */
-                font-family: Aptos, sans-serif;
             }
+
             .Titulo {
                 color: red;
                 font-weight: bold;
-                font-family:  Aptos, sans-serif;
                 text-align: center;
-                -webkit-text-stroke: 1px darkred; /* contorno al texto */ 
+                -webkit-text-stroke: 1px darkred; /* contorno al texto */
             }
 
             hr {
                 border: 2px solid red;
                 border-radius: 5px; /* bordes redondeados del hr */
+                width: 90%;
             }
 
             img {
-                align-self: center; /* centrar la imagen horizontalmente */
                 display: block;
+                width: 400px;
+                box-sizing: border-box;
                 margin-left: auto;
                 margin-right: auto;
+                border: 5px solid #d69b5b;
                 border-radius: 10px; /* bordes redondeados de la imagen */
             }
 
@@ -42,75 +45,80 @@
                 color: blue; /* color del texto resaltado 1 */
                 font-style: italic; /* estilo de fuente cursiva */
             }
+
             .resaltado2 {
                 color: green; /* color del texto resaltado 2 */
                 font-weight: bold; /* estilo de fuente en negrita */
             }
 
             h2 {
-                font-family: Aptos, sans-serif;
                 color: darkred;
                 text-align: center; /* centrar el texto de los h2 */
             }
 
             .SeccionIngredientes {
                 color: darkblue;
-                font-family: Aptos, sans-serif;
             }
 
             .SeccionPasos {
                 color: darkblue;
-                font-family: Aptos, sans-serif;
             }
 
             .ListaIngredientes {
-                background-color: rgb(120, 224, 255); /* color de fondo de la lista de ingredientes */; /* margen alrededor de la lista de ingredientes */
-                margin-top: -20px;
-                margin-left:  auto;
+                background-color: #ffe0a8; /* color de fondo de la lista */
+                width: 400px; /* mismo ancho que la imagen */
+                box-sizing: border-box; /* incluir padding y borde en el ancho */
+                margin-left: auto;
                 margin-right: auto;
-                width: fit-content; /* ajustar el ancho de la lista al contenido */
-                padding: 30px 70px; /* espacio interno alrededor de la lista */
-                border-radius: 10px; /* bordes redondeados de la lista de ingredientes */
-                
+                padding: 25px 50px; /* espacio interno */
+                border: 3px solid #d69b5b;
+                border-radius: 10px; /* bordes redondeados */
             }
 
             .ListaPasos {
-                background-color: rgb(120, 224, 255); /* color de fondo de la lista de pasos */
-                margin-top: -20px;
-                margin-left:  auto;
+                background-color: #ffe0a8; /* color de fondo de la lista */
+                width: 400px; /* mismo ancho que la imagen */
+                box-sizing: border-box; /* incluir padding y borde en el ancho */
+                margin-left: auto;
                 margin-right: auto;
-                width: fit-content; /* ajustar el ancho de la lista al contenido */
-                padding: 30px 70px; /* espacio interno alrededor de la lista */
-                border-radius: 10px; /* bordes redondeados de la lista de pasos */  
+                padding: 25px 50px; /* espacio interno */
+                border: 3px solid #d69b5b;
+                border-radius: 10px; /* bordes redondeados */
             }
 
             footer {
                 text-align: center;
-                font-family: Aptos, sans-serif;
                 color: darkred;
-                margin-top: 20px;
+                margin-top: 30px;
+                padding-bottom: 15px;
             }
-
-        </style>
-    </head> <!-- Fin de la sección head -->
+        </style> <!-- fin de la sección de estilos -->
+    </head> <!-- fin de la sección head -->
 
     <body> <!-- inicio del cuerpo del documento -->
         <main> <!-- inicio del contenido principal -->
+
             <!-- Encabezado principal y división -->
             <h1 class="Titulo"> Receta Pan Francés </h1>
-            <hr color="black">
+            <hr>
 
             <!-- Sección de introducción -->
-            <section> <!-- inicio de la sección de introducción -->
-                <p> En esta <em class="resaltado1"> página </em> te explicaremos cómo hacer <b class="resaltado2"> pan francés </b> en tu casa. </p>
-                <img width="400" src="pan-frances.png" alt="Pan Francés"/>
+            <section>
+                <p>
+                    En esta <em class="resaltado1"> página </em> te explicaremos cómo hacer
+                    <b class="resaltado2"> pan francés </b> en tu casa.
+                </p>
 
-                <br>
-                <p> Esta receta rinde hasta para <b class="resaltado2"> nueve </b> rebanadas de pan. </p>
-            </section> <!-- fin de la sección de introducción -->
+                <img src="pan-frances.png" alt="Pan Francés">
+
+                <p>
+                    Esta receta rinde hasta para
+                    <b class="resaltado2"> nueve </b> rebanadas de pan.
+                </p>
+            </section>
 
             <!-- Sección de ingredientes -->
-            <section class="SeccionIngredientes"> <!-- inicio de la sección de ingredientes -->
+            <section class="SeccionIngredientes">
                 <h2> Ingredientes: </h2>
 
                 <ul class="ListaIngredientes">
@@ -120,10 +128,10 @@
                     <li> Aceite. </li>
                     <li> Pan de barra. </li>
                 </ul>
-            </section> <!-- fin de la sección de ingredientes -->
+            </section>
 
             <!-- Sección de pasos -->
-            <section class="SeccionPasos"> <!-- inicio de la sección de pasos -->
+            <section class="SeccionPasos">
                 <h2> Pasos: </h2>
 
                 <ol class="ListaPasos">
@@ -134,17 +142,17 @@
                     <li> Freír el pan por ambos lados en el sartén. </li>
                     <li> Agregar azúcar o mermelada al gusto. </li>
                 </ol>
-            </section> <!-- fin de la sección de pasos -->
+            </section>
         </main>
 
         <!-- Pie de página -->
-        <footer> <!-- inicio del pie de página -->
-            <hr color="black">
+        <footer>
+            <hr>
 
             <p>
                 <b> Roberto Carlos Rodríguez Magaña - 23400614 </b><br>
                 <b> Programación Web - Unidad 2: Ejercicio 1 </b>
             </p>
-        </footer> <!-- fin del pie de página -->
-    </body> <!-- Fin del cuerpo del documento -->
-</html> <!-- Fin del documento HTML -->
+        </footer>
+    </body>
+</html>

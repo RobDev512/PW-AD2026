@@ -94,7 +94,11 @@ async function sincronizarTrabajosGitHub(
         return snapshot
             ? fusionarTrabajosHub(
                 datos,
-                snapshot.trabajos
+                snapshot.trabajos,
+                {
+                    validarExistencia:
+                        true
+                }
             )
             : datos;
     }
@@ -114,7 +118,11 @@ async function sincronizarTrabajosGitHub(
 
         return fusionarTrabajosHub(
             datos,
-            snapshot.trabajos
+            snapshot.trabajos,
+            {
+                validarExistencia:
+                    true
+            }
         );
     }
 
@@ -152,7 +160,11 @@ async function sincronizarTrabajosGitHub(
 
         return fusionarTrabajosHub(
             datos,
-            trabajos
+            trabajos,
+            {
+                validarExistencia:
+                    true
+            }
         );
     } catch (error) {
         console.warn(
@@ -168,7 +180,11 @@ async function sincronizarTrabajosGitHub(
 
             return fusionarTrabajosHub(
                 datos,
-                snapshot.trabajos
+                snapshot.trabajos,
+                {
+                    validarExistencia:
+                        true
+                }
             );
         }
 
@@ -478,7 +494,8 @@ function generarNombreTrabajoHub(
 
 function fusionarTrabajosHub(
     datos,
-    detectados
+    detectados,
+    opciones = {}
 ) {
     if (
         !datos ||
@@ -519,9 +536,75 @@ function fusionarTrabajosHub(
                     ? unidad.trabajos
                     : [];
 
+            /*
+               Si GitHub está disponible, una ruta manual que ya
+               no existe no debe seguir produciendo una tarjeta 404.
+
+               Esto cubre renombres como:
+               Ejercicio1CSS.html -> Ejercicio0CSS.html
+
+               Solo validamos archivos que el sincronizador sabe
+               detectar. Otros tipos manuales se conservan.
+            */
+            const rutasDetectadas =
+                new Set(
+                    (
+                        porUnidad.get(
+                            unidad.numero
+                        ) || []
+                    ).map(
+                        (trabajo) =>
+                            trabajo.ruta
+                    )
+                );
+
+            const manualesValidos =
+                manuales.filter(
+                    (trabajo) => {
+                        if (
+                            !opciones
+                                .validarExistencia
+                        ) {
+                            return true;
+                        }
+
+                        const ruta =
+                            normalizarRutaTrabajoHub(
+                                trabajo.ruta
+                            );
+
+                        const tipo =
+                            obtenerTipoTrabajoHub(
+                                ruta
+                            );
+
+                        const tipoValidable =
+                            [
+                                "html",
+                                "markdown",
+                                "pdf"
+                            ].includes(
+                                tipo
+                            );
+
+                        if (
+                            !tipoValidable ||
+                            !/^U[1-5]\//i.test(
+                                ruta
+                            )
+                        ) {
+                            return true;
+                        }
+
+                        return rutasDetectadas.has(
+                            ruta
+                        );
+                    }
+                );
+
             const rutasManuales =
                 new Set(
-                    manuales
+                    manualesValidos
                         .map(
                             (trabajo) =>
                                 normalizarRutaTrabajoHub(
@@ -563,7 +646,7 @@ function fusionarTrabajosHub(
                     );
 
             unidad.trabajos = [
-                ...manuales,
+                ...manualesValidos,
                 ...nuevos
             ];
         }

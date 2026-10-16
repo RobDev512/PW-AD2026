@@ -350,3 +350,9 @@ El catálogo visual del Hub se construye a partir de `data/unidades.json` y se c
 Los trabajos registrados manualmente conservan sus nombres y descripciones. Cuando aparece un nuevo HTML, PDF o Markdown compatible, el Hub lo incorpora sin exigir editar inmediatamente `unidades.json`.
 
 La última detección se guarda en el navegador y el Service Worker mantiene una copia offline del portafolio. El modo sin conexión es una función de respaldo y no convierte PW Hub en una aplicación instalable.
+
+### Renombres y archivos eliminados
+
+La sincronización automática también controla rutas obsoletas. Cuando un trabajo HTML, PDF o Markdown registrado manualmente cambia de nombre o desaparece de GitHub, el Hub deja de mostrar la tarjeta antigua después de sincronizar el árbol actual del repositorio.
+
+Esto evita previews 404 causados por renombres posteriores.

@@ -935,3 +935,21 @@ La consulta se limita a una vez por minuto por navegador para reducir solicitude
 También se añadió `service-worker.js` en la raíz del portafolio. El Service Worker no instala una PWA: únicamente guarda una copia del Hub y de los archivos académicos para que, después de una visita con conexión, el portafolio pueda seguir consultándose sin internet.
 
 Como fallback local, U3 registra explícitamente `flex.html` y `grid.html`.
+
+---
+
+### Corrección de renombres en el catálogo automático
+
+**Tipo:** Corrección funcional posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día
+
+Se detectó que el archivo de modelo de caja había sido renombrado en GitHub de `Ejercicio1CSS.html` a `Ejercicio0CSS.html`. El catálogo base todavía conservaba la ruta anterior y por ello mostraba una tarjeta con error 404.
+
+El fallback local fue actualizado a **Ejercicio 0 - Modelo de caja CSS** y se registró también `Ejercicio1.html` como **Ejercicio 1 - Receta Pan Francés con CSS**.
+
+Además, la sincronización automática ahora valida las rutas manuales contra el árbol actual de GitHub. Si un HTML, PDF o Markdown registrado deja de existir porque fue renombrado o eliminado, la tarjeta obsoleta se descarta cuando GitHub confirma el nuevo estado del repositorio.
+
+La caché offline avanzó a `pw-hub-offline-v2` para evitar reutilizar referencias antiguas.

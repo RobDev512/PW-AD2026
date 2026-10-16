@@ -400,3 +400,8 @@ Esta mejora pertenece a la etapa de **mantenimiento y evolución visual** poster
 - [x] cachear el Hub y los archivos académicos visitables para uso offline posterior.
 
 El roadmap estructural permanece cerrado en **16/16**. Estas tareas corresponden únicamente a mantenimiento posterior al cierre.
+
+- [x] detectar y retirar referencias obsoletas tras renombrar trabajos en GitHub;
+- [x] actualizar U3 de `Ejercicio1CSS.html` a `Ejercicio0CSS.html`;
+- [x] registrar `Ejercicio1.html` como **Receta Pan Francés con CSS**;
+- [x] renovar la versión de caché offline para evitar conservar rutas antiguas.

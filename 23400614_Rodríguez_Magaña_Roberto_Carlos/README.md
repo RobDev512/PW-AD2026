@@ -269,3 +269,7 @@ La personalización final de PW Hub ofrece 20 temas oscuros combinables con los 
 PW Hub complementa su catálogo local con una lectura automática del contenido publicado en las carpetas `U1` a `U5` del repositorio. Los trabajos nuevos compatibles pueden aparecer en el Hub sin tener que agregarlos manualmente a la interfaz.
 
 Además, un Service Worker conserva una copia de los recursos esenciales y de los archivos académicos detectados. Después de al menos una visita con conexión, el portafolio puede seguir consultándose sin internet desde el mismo navegador.
+
+### Sincronización resistente a renombres
+
+PW Hub ahora contrasta los trabajos registrados con el árbol actual de GitHub. Los HTML, PDF y Markdown que hayan sido renombrados o eliminados dejan de producir tarjetas 404 después de la sincronización.

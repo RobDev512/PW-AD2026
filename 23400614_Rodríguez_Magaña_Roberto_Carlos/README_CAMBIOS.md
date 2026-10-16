@@ -1,80 +1,47 @@
-# PW Hub - Sincronización automática + modo offline
+# PW Hub - Corrección de renombres
 
-## Qué corrige
+## Qué encontré en GitHub
 
-Antes, subir un archivo a `U3` no hacía que apareciera en PW Hub.
-La interfaz solo mostraba lo escrito manualmente en `hub/data/unidades.json`.
+U3 contiene actualmente:
 
-Ahora el Hub:
-
-1. carga `unidades.json`;
-2. consulta el árbol público de GitHub;
-3. detecta HTML, PDF y Markdown nuevos dentro de U1-U5;
-4. conserva los nombres/descripciones manuales;
-5. agrega automáticamente lo nuevo;
-6. guarda la última detección para usarla como respaldo.
-
-## U3
-
-El fallback local incluye desde ahora:
-
-- `Ejercicio1CSS.html`
+- `Ejercicio0CSS.html`
+- `Ejercicio1.html`
 - `flex.html`
 - `grid.html`
+- `pan-frances.png`
 
-## Archivos que NO se convierten automáticamente en tarjetas
+La tarjeta 404 aparecía porque `hub/data/unidades.json` todavía apuntaba a:
 
-- CSS
-- JavaScript
-- imágenes
-- TXT
-- `README.md` situado directamente en la raíz de una unidad
-- `base.html`
+`../U3/Ejercicio1CSS.html`
 
-Esos archivos pueden seguir siendo dependencias de los trabajos y sí se
-guardan para el modo offline cuando pertenecen a U1-U5.
+Ese archivo ya no existe.
 
-## Modo offline
+## Corrección
 
-Se añade `service-worker.js` en la raíz del portafolio.
+El catálogo base ahora usa:
 
-No hay:
-- manifest;
-- botón de instalar;
-- comportamiento de PWA instalable.
+`../U3/Ejercicio0CSS.html`
 
-Solo se usa el Service Worker como respaldo.
+con el nombre:
 
-Después de visitar el Hub con internet, el navegador guarda:
+**Ejercicio 0 - Modelo de caja CSS**
 
-- estructura principal del Hub;
-- CSS y JavaScript;
-- documentación;
-- datos JSON;
-- visor universal;
-- recursos de marca esenciales;
-- archivos detectados dentro de U1-U5.
+También se registra:
 
-## Importante
+`../U3/Ejercicio1.html`
 
-Los Service Workers requieren HTTP/HTTPS.
+como:
 
-Funcionan en:
+**Ejercicio 1 - Receta Pan Francés con CSS**
 
-- GitHub Pages;
-- `http://localhost:5505/...`
+## Mejora adicional
 
-No funcionan al abrir el Hub directamente mediante `file:///`.
+La sincronización automática ahora elimina de la vista cualquier referencia
+manual HTML/PDF/Markdown que GitHub confirme que ya no existe.
 
-## Archivos modificados / nuevos
+Así, futuros renombres no deberían dejar tarjetas 404.
 
-- `README.md`
-- `service-worker.js` NUEVO
-- `hub/index.html`
-- `hub/data/unidades.json`
-- `hub/js/hub.js`
-- `hub/js/sincronizacion.js` NUEVO
-- `hub/docs/README.md`
-- `hub/docs/ROADMAP.md`
-- `hub/docs/HISTORIAL.md`
-- `hub/docs/CIERRE.md`
+## Caché
+
+`service-worker.js` cambia de `pw-hub-offline-v1` a
+`pw-hub-offline-v2` para retirar rutas viejas de la caché.

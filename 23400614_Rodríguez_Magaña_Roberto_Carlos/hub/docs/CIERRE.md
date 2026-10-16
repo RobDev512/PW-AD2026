@@ -254,3 +254,10 @@ A partir de este punto, el sistema de apariencia se considera finalizado y entra
 - [x] el diseño y la apariencia avanzada permanecen sin cambios.
 
 Con esta mejora el Hub queda preparado para crecer con futuras entregas sin requerir registrar manualmente cada archivo nuevo antes de que sea visible.
+
+## Corrección de renombres
+
+- [x] corregir la ruta de `Ejercicio0CSS.html`;
+- [x] registrar el nuevo `Ejercicio1.html`;
+- [x] evitar tarjetas 404 cuando un trabajo sea renombrado;
+- [x] renovar la caché offline a versión 2.

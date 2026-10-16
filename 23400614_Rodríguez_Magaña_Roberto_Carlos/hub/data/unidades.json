@@ -84,10 +84,16 @@
             ],
             "trabajos": [
                 {
-                    "nombre": "Ejercicio 1 - Modelo de caja CSS",
-                    "ruta": "../U3/Ejercicio1CSS.html",
+                    "nombre": "Ejercicio 0 - Modelo de caja CSS",
+                    "ruta": "../U3/Ejercicio0CSS.html",
                     "tipo": "html",
                     "descripcion": "Ejercicio de CSS para practicar dimensiones, padding, border y margin mediante una caja demostrativa."
+                },
+                {
+                    "nombre": "Ejercicio 1 - Receta Pan Francés con CSS",
+                    "ruta": "../U3/Ejercicio1.html",
+                    "tipo": "html",
+                    "descripcion": "Aplicación de estilos CSS a la receta de pan francés desarrollada previamente, incorporando colores, tipografía, bordes, espaciado y distribución visual."
                 },
                 {
                     "nombre": "Ejemplo Flexbox",
