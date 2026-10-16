@@ -777,6 +777,32 @@ body[data-animaciones="on"]
         translateY(
             18px
         );
+
+    transition:
+        opacity 0.55s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.2,
+            1
+        ),
+        transform 0.55s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.2,
+            1
+        );
+}
+
+
+html[data-movimiento="sutil"]
+body[data-animaciones="on"]
+.hub-reveal.hub-visible {
+    transform:
+        translateY(
+            0
+        );
 }
 
 

@@ -313,3 +313,11 @@ Con este bloque se considera terminado el soporte offline planificado para PW Hu
 - [x] invalidar específicamente la caché del CSS del hero;
 - [x] conservar el resto del Hub sin cambios;
 - [x] actualizar el Service Worker a versión 10.
+
+## Corrección del movimiento sutil
+
+- [x] localizar el `translateY(18px)` mediante estilos computados;
+- [x] corregir `.hub-reveal.hub-visible`;
+- [x] conservar la animación sutil;
+- [x] evitar cambios en la geometría del hero;
+- [x] actualizar la caché offline a versión 11.

@@ -450,3 +450,12 @@ El roadmap estructural continúa cerrado en **16/16**.
 - [x] renovar la caché offline a `pw-hub-offline-v10`.
 
 El roadmap estructural permanece cerrado en **16/16**.
+
+- [x] corregir el estado visible del movimiento sutil;
+- [x] devolver `.hub-reveal.hub-visible` a `translateY(0)`;
+- [x] eliminar el desplazamiento permanente de 18 px del encabezado;
+- [x] conservar el efecto de entrada sutil para el resto de secciones;
+- [x] invalidar específicamente la caché de `apariencia-avanzada.css`;
+- [x] renovar la caché offline a `pw-hub-offline-v11`.
+
+El roadmap estructural permanece cerrado en **16/16**.

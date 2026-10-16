@@ -303,3 +303,10 @@ La versión móvil del hero vuelve a mostrar los paneles flotantes **HTML** y **
 La corrección del espacio superior del banner se aplicó directamente en
 su hoja de estilos original y se añadió versionado a la URL del CSS para
 evitar que el Service Worker sirva una versión anterior.
+
+### Corrección del desplazamiento de 18 px
+
+El espacio superior del Hub provenía del modo de movimiento Sutil:
+`.hub-reveal` aplicaba un desplazamiento vertical de 18 px sin restaurarlo
+cuando el elemento se volvía visible. El estado visible ahora vuelve a
+`translateY(0)` correctamente.

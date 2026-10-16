@@ -389,3 +389,10 @@ El espacio previo al branding fue retirado directamente desde
 `hero-codigo.css`. El archivo usa una URL versionada para asegurar que
 la corrección sustituya cualquier copia anterior almacenada por el modo
 offline.
+
+### Movimiento sutil corregido
+
+El modo **Sutil** conserva ahora su animación de entrada, pero los
+elementos marcados como visibles regresan correctamente a su posición
+natural. Esto elimina el desplazamiento permanente de 18 px que afectaba
+al encabezado principal.

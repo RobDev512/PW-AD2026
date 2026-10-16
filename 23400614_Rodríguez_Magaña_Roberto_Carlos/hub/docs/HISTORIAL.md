@@ -1052,3 +1052,29 @@ no puede reutilizar la entrada antigua del caché para ese archivo.
 
 No se modifican body, header, viewport, safe areas, navegación ni otros
 componentes.
+
+---
+
+### Corrección del movimiento sutil y desplazamiento del encabezado
+
+**Tipo:** Corrección funcional y visual posterior al cierre  
+**Estado:** Implementado  
+**Unidad:** U3  
+**Fecha:** 2026-10-15  
+**Precisión:** Día
+
+La inspección directa del navegador mostró que `.encabezado-principal`
+tenía un `transform` computado equivalente a `translateY(18px)`.
+
+La causa no era un margen, padding, safe area ni el Service Worker:
+el modo de movimiento **Sutil** aplicaba `translateY(18px)` a
+`.hub-reveal`, pero carecía de la regla correspondiente para
+`.hub-reveal.hub-visible`.
+
+Por ello, aunque `IntersectionObserver` marcara el elemento como visible,
+el desplazamiento de 18 px permanecía activo.
+
+Se añadió el estado visible para movimiento sutil con
+`translateY(0)` y una transición equivalente a la del modo dinámico.
+También se versionó la URL de `apariencia-avanzada.css` para evitar
+reutilizar una copia anterior almacenada.
