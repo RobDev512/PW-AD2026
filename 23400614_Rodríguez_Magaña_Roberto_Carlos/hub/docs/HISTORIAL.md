@@ -1192,3 +1192,57 @@ su propio tema oscuro independiente.
 
 El Service Worker avanza a `pw-hub-offline-v18` e incluye la nueva hoja de
 estilos dentro del shell para evitar reutilizar versiones claras almacenadas.
+
+---
+
+### Inicio de la actualización v1.1.0 - Sincronización y novedades
+
+**Tipo:** Actualización funcional en validación  
+**Estado:** En desarrollo  
+**Unidad:** General  
+**Fecha:** 2026-10-17  
+**Precisión:** Día  
+**Fuente:** Implementación local basada en el roadmap versionado
+
+Se inicia la primera actualización posterior a la base estable v1.0.0. La
+versión candidata v1.1.0 hace visible el estado del catálogo sincronizado con
+GitHub, conserva la última sincronización conocida y diferencia entre datos
+recién obtenidos, caché local y ausencia de conexión.
+
+También se incorpora una memoria local de rutas conocidas para marcar como
+`NUEVO` únicamente los trabajos que aparezcan después de la primera ejecución
+de v1.1.0. La marca se retira cuando el usuario abre el trabajo o utiliza su
+vista previa.
+
+Las tarjetas pueden consultar la fecha real del último commit asociado a cada
+ruta mediante la API pública de GitHub. Estas fechas se almacenan localmente
+durante 24 horas para evitar solicitudes repetidas. El Service Worker avanza
+a `pw-hub-offline-v19` e incluye los nuevos recursos `novedades.js` y
+`novedades.css`.
+
+---
+
+### Publicación de v1.1.0 - Sincronización y novedades
+
+**Tipo:** Actualización funcional publicada  
+**Estado:** Implementado  
+**Unidad:** General  
+**Fecha:** 2026-10-17  
+**Precisión:** Día  
+**Fuente:** Validación funcional local y cierre del candidato v1.1.0
+
+La primera actualización posterior a la base estable queda validada y pasa a
+ser la versión publicada actual de PW Hub. Se comprobaron visualmente el
+indicador de sincronización, las fechas de actualización y la insignia `NUEVO`
+en las tarjetas de trabajos.
+
+La marca `NUEVO` permanece mientras el trabajo no haya sido revisado y se retira
+al abrir su vista previa o el visor completo. Las fechas consultadas desde
+GitHub continúan utilizando caché local para limitar solicitudes innecesarias.
+
+`ROADMAP.md` mueve v1.1.0 a **Publicada · actual**, `CHANGELOG.md` registra su
+publicación y v1.0.0 queda conservada como la base estable anterior. El Service
+Worker avanza a `pw-hub-offline-v20` para distribuir el cierre documental de la
+versión junto con los recursos funcionales de v1.1.0.
+
+---

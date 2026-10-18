@@ -31,9 +31,9 @@ También incluye **PW Hub**, un portafolio web que organiza y presenta el avance
 
 ## Estado de PW Hub
 
-**Versión base estable: v1.0.0**
+**Versión publicada actual: v1.1.0 - Sincronización y novedades**
 
-El desarrollo inicial del Hub quedó consolidado en v1.0.0.
+La base inicial quedó consolidada en v1.0.0. La primera actualización funcional, **v1.1.0**, ya fue validada y pasa a ser la versión publicada actual del Hub.
 
 El proyecto ya no utiliza fases para organizar su evolución futura. Las mejoras posteriores se documentan como **actualizaciones versionadas**.
 
@@ -49,7 +49,7 @@ La versión estable actual y las actualizaciones propuestas se encuentran en:
 hub/docs/ROADMAP.md
 ```
 
-El mapa comienza en `v1.0.0` como versión publicada actual, continúa con las mejoras previstas desde `v1.1.0` hasta `v1.9.0` y reserva `v2.0.0` para el siguiente salto mayor del Hub.
+El mapa conserva `v1.0.0` como base publicada anterior, marca `v1.1.0` como versión publicada actual y mantiene las mejoras previstas desde `v1.2.0` hasta `v1.9.0`, reservando `v2.0.0` para el siguiente salto mayor del Hub.
 
 El avance académico de U1-U5 y las versiones de PW Hub son independientes.
 
@@ -109,6 +109,7 @@ El Hub incluye:
 - materiales y paletas configurables;
 - identidad propia mediante logo, isotipo y favicon;
 - sincronización automática con GitHub;
+- estado visible de sincronización, novedades y fechas de actualización incorporados en v1.1.0;
 - respaldo offline mediante Service Worker;
 - página offline propia.
 
@@ -128,6 +129,8 @@ Un solo catálogo sincronizado alimenta:
 - Estadísticas.
 
 `unidades.json` sigue siendo útil para nombres, descripciones, destacados y otros metadatos personalizados.
+
+La versión v1.1.0 añade un indicador de estado, conserva la última sincronización conocida, marca con `NUEVO` los trabajos detectados después de la primera visita y consulta la fecha del último commit por ruta cuando GitHub la proporciona.
 
 ---
 

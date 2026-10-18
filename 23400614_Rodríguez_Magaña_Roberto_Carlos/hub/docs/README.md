@@ -4,7 +4,7 @@ PW Hub es el portafolio académico de **Programación Web** de Roberto Carlos Ro
 
 ## Estado actual
 
-**Versión base estable: v1.0.0**
+**Versión publicada actual: v1.1.0 - Sincronización y novedades**
 
 La etapa de construcción inicial ya terminó. El proyecto dejó de organizar su evolución futura mediante fases y ahora utiliza un esquema de **actualizaciones versionadas**.
 
@@ -73,6 +73,9 @@ PW Hub incluye:
 - perfiles de visualización;
 - materiales y paletas configurables;
 - sincronización automática de trabajos desde GitHub;
+- indicador de estado de sincronización y tiempo desde la última consulta;
+- detección de trabajos nuevos desde la última visita;
+- fechas de actualización obtenidas desde GitHub con caché local;
 - respaldo mediante caché local;
 - página offline propia.
 
@@ -94,6 +97,7 @@ hub/
 │   ├── hero-movil-fix.css
 │   ├── historial.css
 │   ├── navegacion.css
+│   ├── novedades.css
 │   ├── offline.css
 │   ├── personalizacion.css
 │   ├── refinamiento-final.css
@@ -114,6 +118,7 @@ hub/
 │   ├── historial.js
 │   ├── hub.js
 │   ├── navegacion.js
+│   ├── novedades.js
 │   ├── offline.js
 │   ├── personalizacion.js
 │   ├── roadmap.js
@@ -153,6 +158,21 @@ Un `README.md` situado directamente en la raíz de una unidad se considera docum
 La sincronización también evita conservar rutas manuales obsoletas cuando un archivo compatible fue renombrado o eliminado.
 
 Todas las secciones relacionadas con trabajos reutilizan el mismo catálogo sincronizado durante cada carga.
+
+## Estado y novedades de v1.1.0
+
+La versión v1.1.0 añade una capa visual sobre esa sincronización sin cambiar el catálogo académico base. `sincronizacion.js` expone el estado actual y `novedades.js` lo presenta dentro del Hub.
+
+El navegador conserva localmente:
+
+- rutas conocidas del último árbol válido;
+- trabajos nuevos pendientes de revisar;
+- última sincronización disponible;
+- fechas de actualización consultadas a GitHub.
+
+La primera ejecución de v1.1.0 toma los trabajos ya existentes como línea base para evitar marcar todo el portafolio como nuevo. En consultas posteriores, una ruta nueva dentro de U1-U5 recibe la insignia `NUEVO` hasta que el usuario abre el trabajo o su vista previa.
+
+Las fechas reales se consultan con el endpoint de commits por ruta y se cachean durante 24 horas. Si no hay conexión, el Hub conserva la última fecha conocida y evita nuevas solicitudes.
 
 ---
 
@@ -196,7 +216,7 @@ Los estados reconocidos son:
 - Planeada;
 - Visión futura.
 
-El roadmap incluye `v1.0.0` como versión publicada actual y utiliza el Changelog para conservar el detalle histórico de su construcción. Las versiones posteriores representan únicamente trabajo planeado o futuro.
+El roadmap conserva `v1.0.0` como base publicada anterior, marca `v1.1.0` como versión publicada actual y utiliza el Changelog para conservar el detalle de cada versión. Las versiones posteriores representan trabajo planeado o futuro.
 
 ---
 

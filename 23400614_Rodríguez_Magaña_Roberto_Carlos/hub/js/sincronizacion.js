@@ -12,7 +12,8 @@
     3. conserva nombres/descripciones manuales de unidades.json;
     4. agrega automáticamente los archivos nuevos;
     5. guarda el último catálogo detectado como respaldo local;
-    6. comparte ese mismo catálogo con todas las secciones del Hub.
+    6. comparte ese mismo catálogo con todas las secciones del Hub;
+    7. registra estado, novedades y fechas para PW Hub v1.1.0.
 
     Sin conexión:
     - usa unidades.json;
@@ -43,7 +44,19 @@ const PW_HUB_SYNC = {
         4500,
 
     tamanoMaximoCache:
-        10 * 1024 * 1024
+        10 * 1024 * 1024,
+
+    claveRutasConocidas:
+        "pw-hub-rutas-conocidas-v1",
+
+    claveNuevosPendientes:
+        "pw-hub-nuevos-pendientes-v1",
+
+    claveFechasGitHub:
+        "pw-hub-fechas-github-v1",
+
+    vigenciaFechasGitHub:
+        24 * 60 * 60 * 1000
 };
 
 const PW_HUB_ARCHIVOS_IGNORADOS =
@@ -74,12 +87,41 @@ const PW_HUB_URL_CATALOGO =
 let promesaCatalogoHubSincronizado =
     null;
 
+let estadoSincronizacionHub = {
+    estado: "sincronizando",
+    origen: "inicio",
+    ultimaSincronizacion: null
+};
+
+const promesasFechasGitHubHub =
+    new Map();
+
 
 window.sincronizarTrabajosGitHub =
     sincronizarTrabajosGitHub;
 
 window.obtenerDatosHubSincronizados =
     obtenerDatosHubSincronizados;
+
+window.PWHubSync = {
+    obtenerEstado:
+        obtenerEstadoSincronizacionHub,
+
+    obtenerNuevos:
+        obtenerTrabajosNuevosHub,
+
+    esNuevo:
+        esTrabajoNuevoHub,
+
+    marcarVisto:
+        marcarTrabajoVistoHub,
+
+    obtenerFechaActualizacion:
+        obtenerFechaActualizacionTrabajoHub,
+
+    normalizarRuta:
+        normalizarRutaTrabajoHub
+};
 
 window.forzarSincronizacionTrabajosHub =
     () => {
@@ -93,6 +135,13 @@ window.forzarSincronizacionTrabajosHub =
         } catch {
             // No es crítico si localStorage no está disponible.
         }
+
+        actualizarEstadoSincronizacionHub(
+            "sincronizando",
+            {
+                origen: "manual"
+            }
+        );
     };
 
 
@@ -135,6 +184,49 @@ window.fetch =
             }
         );
     };
+
+
+cargarRecursosNovedadesHub();
+
+window.addEventListener(
+    "offline",
+    () => {
+        actualizarEstadoSincronizacionHub(
+            "offline",
+            {
+                origen: "navegador",
+                ultimaSincronizacion:
+                    leerSnapshotTrabajosHub()
+                        ?.actualizado ||
+                    estadoSincronizacionHub
+                        .ultimaSincronizacion ||
+                    null
+            }
+        );
+    }
+);
+
+window.addEventListener(
+    "online",
+    () => {
+        const snapshot =
+            leerSnapshotTrabajosHub();
+
+        actualizarEstadoSincronizacionHub(
+            snapshot
+                ? "cache"
+                : "sincronizando",
+            {
+                origen:
+                    snapshot
+                        ? "cache"
+                        : "navegador",
+                ultimaSincronizacion:
+                    snapshot?.actualizado || null
+            }
+        );
+    }
+);
 
 
 document.addEventListener(
@@ -244,6 +336,9 @@ async function sincronizarTrabajosGitHub(
     const snapshot =
         leerSnapshotTrabajosHub();
 
+    const ultimaSincronizacion =
+        snapshot?.actualizado || null;
+
     /*
        En file:// la API podría responder, pero el Service
        Worker no funciona. El Hub conserva el catálogo local.
@@ -252,6 +347,16 @@ async function sincronizarTrabajosGitHub(
         window.location.protocol ===
         "file:"
     ) {
+        actualizarEstadoSincronizacionHub(
+            snapshot
+                ? "cache"
+                : "offline",
+            {
+                origen: "local",
+                ultimaSincronizacion
+            }
+        );
+
         return snapshot
             ? fusionarTrabajosHub(
                 datos,
@@ -262,6 +367,41 @@ async function sincronizarTrabajosGitHub(
                 }
             )
             : datos;
+    }
+
+    /*
+       Si el navegador ya sabe que no existe conexión, evitamos
+       una solicitud que necesariamente fallará y utilizamos la
+       última copia disponible.
+    */
+    if (navigator.onLine === false) {
+        actualizarEstadoSincronizacionHub(
+            "offline",
+            {
+                origen:
+                    snapshot
+                        ? "cache"
+                        : "base",
+                ultimaSincronizacion
+            }
+        );
+
+        if (snapshot) {
+            prepararCacheOfflineHub(
+                snapshot.archivosCache || []
+            );
+
+            return fusionarTrabajosHub(
+                datos,
+                snapshot.trabajos,
+                {
+                    validarExistencia:
+                        true
+                }
+            );
+        }
+
+        return datos;
     }
 
     /*
@@ -277,6 +417,26 @@ async function sincronizarTrabajosGitHub(
             snapshot.archivosCache || []
         );
 
+        /*
+           hub.js conserva por compatibilidad una llamada directa
+           a sincronizarTrabajosGitHub después de leer el catálogo.
+           Si esta misma carga acaba de sincronizar correctamente,
+           no degradamos el indicador a "caché" por esa segunda
+           llamada interna.
+        */
+        if (
+            estadoSincronizacionHub.estado !==
+            "sincronizado"
+        ) {
+            actualizarEstadoSincronizacionHub(
+                "cache",
+                {
+                    origen: "cache",
+                    ultimaSincronizacion
+                }
+            );
+        }
+
         return fusionarTrabajosHub(
             datos,
             snapshot.trabajos,
@@ -286,6 +446,14 @@ async function sincronizarTrabajosGitHub(
             }
         );
     }
+
+    actualizarEstadoSincronizacionHub(
+        "sincronizando",
+        {
+            origen: "github",
+            ultimaSincronizacion
+        }
+    );
 
     try {
         const arbol =
@@ -301,6 +469,13 @@ async function sincronizarTrabajosGitHub(
                 arbol.tree || []
             );
 
+        const actualizado =
+            new Date().toISOString();
+
+        actualizarNovedadesTrabajosHub(
+            trabajos
+        );
+
         guardarSnapshotTrabajosHub({
             sha:
                 arbol.sha || "",
@@ -309,14 +484,22 @@ async function sincronizarTrabajosGitHub(
 
             archivosCache,
 
-            actualizado:
-                new Date().toISOString()
+            actualizado
         });
 
         marcarConsultaGitHubHub();
 
         prepararCacheOfflineHub(
             archivosCache
+        );
+
+        actualizarEstadoSincronizacionHub(
+            "sincronizado",
+            {
+                origen: "github",
+                ultimaSincronizacion:
+                    actualizado
+            }
         );
 
         return fusionarTrabajosHub(
@@ -339,6 +522,14 @@ async function sincronizarTrabajosGitHub(
                 snapshot.archivosCache || []
             );
 
+            actualizarEstadoSincronizacionHub(
+                "cache",
+                {
+                    origen: "cache",
+                    ultimaSincronizacion
+                }
+            );
+
             return fusionarTrabajosHub(
                 datos,
                 snapshot.trabajos,
@@ -348,6 +539,14 @@ async function sincronizarTrabajosGitHub(
                 }
             );
         }
+
+        actualizarEstadoSincronizacionHub(
+            "offline",
+            {
+                origen: "base",
+                ultimaSincronizacion: null
+            }
+        );
 
         return datos;
     }
@@ -956,6 +1155,509 @@ function detectarArchivosParaCacheHub(
                     prefijo.length
                 )
         );
+}
+
+
+/* =========================================================
+   PW HUB v1.1.0 - ESTADO, NOVEDADES Y FECHAS
+   ========================================================= */
+
+function cargarRecursosNovedadesHub() {
+    const enlaceExistente =
+        document.querySelector(
+            "link[data-pw-novedades]"
+        );
+
+    if (!enlaceExistente) {
+        const enlace =
+            document.createElement(
+                "link"
+            );
+
+        enlace.rel = "stylesheet";
+        enlace.href =
+            new URL(
+                "css/novedades.css?v=1.1.0",
+                window.location.href
+            ).href;
+        enlace.dataset.pwNovedades =
+            "1.1.0";
+
+        document.head.appendChild(
+            enlace
+        );
+    }
+
+    const scriptExistente =
+        document.querySelector(
+            "script[data-pw-novedades]"
+        );
+
+    if (scriptExistente) {
+        return;
+    }
+
+    const script =
+        document.createElement(
+            "script"
+        );
+
+    script.src =
+        new URL(
+            "js/novedades.js?v=1.1.0",
+            window.location.href
+        ).href;
+    script.async = false;
+    script.dataset.pwNovedades =
+        "1.1.0";
+
+    document.head.appendChild(
+        script
+    );
+}
+
+
+function actualizarEstadoSincronizacionHub(
+    estado,
+    detalles = {}
+) {
+    estadoSincronizacionHub = {
+        ...estadoSincronizacionHub,
+        ...detalles,
+        estado,
+        actualizadoEn:
+            new Date().toISOString()
+    };
+
+    window.dispatchEvent(
+        new CustomEvent(
+            "pw-hub:sincronizacion",
+            {
+                detail:
+                    obtenerEstadoSincronizacionHub()
+            }
+        )
+    );
+}
+
+
+function obtenerEstadoSincronizacionHub() {
+    return {
+        ...estadoSincronizacionHub
+    };
+}
+
+
+function leerRutasConocidasHub() {
+    try {
+        const valor =
+            localStorage.getItem(
+                PW_HUB_SYNC.claveRutasConocidas
+            );
+
+        if (valor === null) {
+            return null;
+        }
+
+        const rutas =
+            JSON.parse(valor);
+
+        return new Set(
+            Array.isArray(rutas)
+                ? rutas
+                : []
+        );
+    } catch {
+        return null;
+    }
+}
+
+
+function guardarRutasConocidasHub(
+    rutas
+) {
+    try {
+        localStorage.setItem(
+            PW_HUB_SYNC.claveRutasConocidas,
+            JSON.stringify(
+                [...rutas].sort()
+            )
+        );
+    } catch {
+        // La detección de novedades no debe bloquear el Hub.
+    }
+}
+
+
+function leerNuevosPendientesHub() {
+    try {
+        const valor =
+            localStorage.getItem(
+                PW_HUB_SYNC.claveNuevosPendientes
+            );
+
+        const rutas =
+            valor
+                ? JSON.parse(valor)
+                : [];
+
+        return new Set(
+            Array.isArray(rutas)
+                ? rutas
+                : []
+        );
+    } catch {
+        return new Set();
+    }
+}
+
+
+function guardarNuevosPendientesHub(
+    rutas
+) {
+    try {
+        localStorage.setItem(
+            PW_HUB_SYNC.claveNuevosPendientes,
+            JSON.stringify(
+                [...rutas].sort()
+            )
+        );
+    } catch {
+        // El catálogo sigue funcionando aunque no haya storage.
+    }
+}
+
+
+function actualizarNovedadesTrabajosHub(
+    trabajos
+) {
+    const actuales =
+        new Set(
+            (trabajos || [])
+                .map(
+                    (trabajo) =>
+                        normalizarRutaTrabajoHub(
+                            trabajo.ruta
+                        )
+                )
+                .filter(Boolean)
+        );
+
+    const conocidos =
+        leerRutasConocidasHub();
+
+    const pendientes =
+        leerNuevosPendientesHub();
+
+    /*
+       En la primera ejecución de v1.1.0 tomamos el estado
+       actual como línea base. Así los trabajos históricos no
+       aparecen falsamente como NUEVOS.
+    */
+    if (conocidos === null) {
+        guardarRutasConocidasHub(
+            actuales
+        );
+
+        const vigentes =
+            new Set(
+                [...pendientes].filter(
+                    (ruta) =>
+                        actuales.has(ruta)
+                )
+            );
+
+        guardarNuevosPendientesHub(
+            vigentes
+        );
+
+        notificarNovedadesHub(
+            vigentes
+        );
+
+        return;
+    }
+
+    actuales.forEach(
+        (ruta) => {
+            if (!conocidos.has(ruta)) {
+                pendientes.add(ruta);
+            }
+        }
+    );
+
+    const vigentes =
+        new Set(
+            [...pendientes].filter(
+                (ruta) =>
+                    actuales.has(ruta)
+            )
+        );
+
+    guardarRutasConocidasHub(
+        actuales
+    );
+    guardarNuevosPendientesHub(
+        vigentes
+    );
+
+    notificarNovedadesHub(
+        vigentes
+    );
+}
+
+
+function obtenerTrabajosNuevosHub() {
+    return [
+        ...leerNuevosPendientesHub()
+    ];
+}
+
+
+function esTrabajoNuevoHub(
+    ruta
+) {
+    const normalizada =
+        normalizarRutaTrabajoHub(
+            ruta
+        );
+
+    return leerNuevosPendientesHub()
+        .has(normalizada);
+}
+
+
+function marcarTrabajoVistoHub(
+    ruta
+) {
+    const normalizada =
+        normalizarRutaTrabajoHub(
+            ruta
+        );
+
+    if (!normalizada) {
+        return false;
+    }
+
+    const pendientes =
+        leerNuevosPendientesHub();
+
+    if (!pendientes.delete(normalizada)) {
+        return false;
+    }
+
+    guardarNuevosPendientesHub(
+        pendientes
+    );
+
+    notificarNovedadesHub(
+        pendientes
+    );
+
+    return true;
+}
+
+
+function notificarNovedadesHub(
+    pendientes =
+        leerNuevosPendientesHub()
+) {
+    window.dispatchEvent(
+        new CustomEvent(
+            "pw-hub:novedades",
+            {
+                detail: {
+                    rutas:
+                        [...pendientes],
+                    total:
+                        pendientes.size
+                }
+            }
+        )
+    );
+}
+
+
+function leerCacheFechasGitHubHub() {
+    try {
+        const valor =
+            localStorage.getItem(
+                PW_HUB_SYNC.claveFechasGitHub
+            );
+
+        const datos =
+            valor
+                ? JSON.parse(valor)
+                : {};
+
+        return (
+            datos &&
+            typeof datos === "object" &&
+            !Array.isArray(datos)
+        )
+            ? datos
+            : {};
+    } catch {
+        return {};
+    }
+}
+
+
+function guardarCacheFechasGitHubHub(
+    cache
+) {
+    try {
+        localStorage.setItem(
+            PW_HUB_SYNC.claveFechasGitHub,
+            JSON.stringify(cache)
+        );
+    } catch {
+        // Las fechas son una mejora opcional.
+    }
+}
+
+
+async function obtenerFechaActualizacionTrabajoHub(
+    ruta
+) {
+    const normalizada =
+        normalizarRutaTrabajoHub(
+            ruta
+        );
+
+    if (!normalizada) {
+        return null;
+    }
+
+    const cache =
+        leerCacheFechasGitHubHub();
+
+    const guardada =
+        cache[normalizada];
+
+    const vigente =
+        guardada &&
+        Number.isFinite(
+            Number(guardada.consultado)
+        ) &&
+        (
+            Date.now() -
+            Number(guardada.consultado)
+        ) <
+            PW_HUB_SYNC
+                .vigenciaFechasGitHub;
+
+    if (vigente) {
+        return guardada.fecha || null;
+    }
+
+    if (navigator.onLine === false) {
+        return guardada?.fecha || null;
+    }
+
+    if (
+        promesasFechasGitHubHub.has(
+            normalizada
+        )
+    ) {
+        return promesasFechasGitHubHub.get(
+            normalizada
+        );
+    }
+
+    const promesa =
+        consultarFechaActualizacionGitHubHub(
+            normalizada,
+            guardada?.fecha || null
+        )
+            .finally(
+                () => {
+                    promesasFechasGitHubHub.delete(
+                        normalizada
+                    );
+                }
+            );
+
+    promesasFechasGitHubHub.set(
+        normalizada,
+        promesa
+    );
+
+    return promesa;
+}
+
+
+async function consultarFechaActualizacionGitHubHub(
+    ruta,
+    fechaAnterior = null
+) {
+    const rutaRepositorio =
+        `${PW_HUB_GITHUB.raiz}/${ruta}`;
+
+    const parametros =
+        new URLSearchParams({
+            sha:
+                PW_HUB_GITHUB.rama,
+            path:
+                rutaRepositorio,
+            per_page:
+                "1"
+        });
+
+    const url =
+        `https://api.github.com/repos/` +
+        `${PW_HUB_GITHUB.propietario}/` +
+        `${PW_HUB_GITHUB.repositorio}/` +
+        `commits?${parametros.toString()}`;
+
+    let fecha =
+        fechaAnterior;
+
+    try {
+        const respuesta =
+            await PW_HUB_FETCH_ORIGINAL(
+                url,
+                {
+                    headers: {
+                        Accept:
+                            "application/vnd.github+json"
+                    }
+                }
+            );
+
+        if (respuesta.ok) {
+            const commits =
+                await respuesta.json();
+
+            const ultimo =
+                Array.isArray(commits)
+                    ? commits[0]
+                    : null;
+
+            fecha =
+                ultimo?.commit?.committer?.date ||
+                ultimo?.commit?.author?.date ||
+                fechaAnterior ||
+                null;
+        }
+    } catch {
+        // Conservamos la fecha ya cacheada cuando exista.
+    }
+
+    const cache =
+        leerCacheFechasGitHubHub();
+
+    cache[ruta] = {
+        fecha,
+        consultado:
+            Date.now()
+    };
+
+    guardarCacheFechasGitHubHub(
+        cache
+    );
+
+    return fecha;
 }
 
 

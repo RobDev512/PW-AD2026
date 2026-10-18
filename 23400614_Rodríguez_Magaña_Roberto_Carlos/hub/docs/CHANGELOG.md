@@ -8,9 +8,35 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 
 ---
 
+# v1.1.0 - Sincronización y novedades
+
+**Estado:** Publicada  
+**Fecha de publicación:** 2026-10-17  
+**Tipo:** Actualización funcional
+
+La primera actualización posterior a la base estable hace visible el estado de la sincronización automática que ya utiliza PW Hub y añade señales para reconocer contenido reciente sin convertir la carga del portafolio en un proceso manual.
+
+## Implementado
+
+- indicador discreto con estados `Sincronizado`, `Usando caché local`, `Sin conexión` y transición de sincronización;
+- tiempo relativo desde la última sincronización conocida;
+- detección local de trabajos nuevos comparando el árbol actual con las rutas conocidas;
+- insignia `NUEVO` persistente hasta abrir el trabajo o su vista previa;
+- fecha real de última actualización consultada desde el historial de commits de GitHub cuando está disponible;
+- caché local de fechas durante 24 horas para reducir solicitudes repetidas;
+- reutilización del snapshot existente cuando la API no puede consultarse;
+- nueva capa visual `css/novedades.css` y módulo `js/novedades.js`;
+- Service Worker actualizado para incluir los recursos de v1.1.0.
+
+## Validación
+
+La actualización fue validada en servidor local antes de su publicación. Se comprobó el indicador de sincronización, la fecha de actualización y el ciclo de la insignia `NUEVO`. Con esta publicación, **v1.1.0 sustituye a v1.0.0 como versión actual**, mientras v1.0.0 permanece como base estable histórica.
+
+---
+
 # v1.0.0 - Base estable
 
-**Estado:** Publicada conceptualmente  
+**Estado:** Publicada  
 **Fecha de consolidación:** 2026-10-17  
 **Tipo:** Versión base estable
 

@@ -2,7 +2,7 @@
 
 ## Estado general
 
-**Versión base estable: v1.0.0**
+**Versión publicada actual: v1.1.0 - Sincronización y novedades**
 
 PW Hub terminó su etapa de construcción inicial. A partir de este punto el proyecto ya no utiliza fases: cualquier mejora futura se registra como una **actualización versionada**.
 
@@ -12,8 +12,9 @@ Este roadmap muestra la versión estable actual y la evolución técnica futura 
 
 El proyecto utiliza un versionado simple inspirado en SemVer:
 
-- `v1.0.0`: base estable actual;
-- `v1.1.0` a `v1.9.0`: actualizaciones de la primera generación estable;
+- `v1.0.0`: base estable inicial;
+- `v1.1.0`: primera actualización publicada;
+- `v1.2.0` a `v1.9.0`: actualizaciones previstas de la primera generación estable;
 - `v2.0.0`: siguiente salto mayor del Hub;
 - `vX.Y.Z`: el último número queda reservado para correcciones puntuales.
 
@@ -24,7 +25,7 @@ Por convención de PW Hub, una serie principal llega como máximo a `.9`; despu�
 
 # v1.0.0 - Base estable
 
-**Estado:** Publicada · actual
+**Estado:** Publicada
 
 ## Objetivo
 
@@ -51,21 +52,25 @@ El detalle completo de la construcción original, las 16 fases históricas y los
 
 # v1.1.0 - Sincronización y novedades
 
-**Estado:** Planeada
+**Estado:** Publicada · actual
 
 ## Objetivo
 
 Hacer más clara la relación entre PW Hub, GitHub y los cambios recientes del portafolio.
 
-## Planeado
+## Implementado
 
-- [ ] mostrar un indicador discreto de sincronización;
-- [ ] distinguir `Sincronizado`, `Usando caché local` y `Sin conexión`;
-- [ ] mostrar de forma opcional el tiempo desde la última sincronización;
-- [ ] marcar con `NUEVO` los trabajos aparecidos desde la última visita;
-- [ ] retirar la marca después de que el trabajo haya sido visto;
-- [ ] mostrar la fecha real de última actualización de cada trabajo cuando GitHub la proporcione;
-- [ ] cachear fechas y estados para evitar consultas innecesarias a la API.
+- [x] mostrar un indicador discreto de sincronización;
+- [x] distinguir `Sincronizado`, `Usando caché local` y `Sin conexión`;
+- [x] mostrar de forma opcional el tiempo desde la última sincronización;
+- [x] marcar con `NUEVO` los trabajos aparecidos desde la última visita;
+- [x] retirar la marca después de que el trabajo haya sido visto;
+- [x] mostrar la fecha real de última actualización de cada trabajo cuando GitHub la proporcione;
+- [x] cachear fechas y estados para evitar consultas innecesarias a la API.
+
+## Validación
+
+La actualización fue probada en servidor local. Se verificaron el indicador de sincronización, la fecha de actualización y la insignia `NUEVO`, incluyendo su retirada al revisar el trabajo.
 
 ## Resultado esperado
 
