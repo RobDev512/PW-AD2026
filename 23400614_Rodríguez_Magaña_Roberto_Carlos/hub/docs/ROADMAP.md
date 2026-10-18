@@ -1,486 +1,285 @@
-# Roadmap del Portafolio de Programación Web
+# Roadmap de actualizaciones de PW Hub
 
 ## Estado general
 
-**16 de 16 fases completadas. Roadmap estructural cerrado.**
+**Versión base estable: v1.0.0**
 
-El roadmap representa la evolución **técnica del Hub**, no el avance de las cinco unidades de la materia.
+PW Hub terminó su etapa de construcción inicial. A partir de este punto el proyecto ya no utiliza fases: cualquier mejora futura se registra como una **actualización versionada**.
 
-Las fases 1 a 15 documentan la construcción y cierre técnico original del Hub. Posteriormente se decidió abrir una **última Fase 16** para realizar un refinamiento final de identidad visual y experiencia de contenidos.
+El historial completo de la construcción original y de los ajustes incorporados antes de congelar la base estable se conserva en [`CHANGELOG.md`](CHANGELOG.md), dentro de la entrada **v1.0.0**.
 
-Agregar tareas, actividades o proyectos de U3, U4 y U5 continúa considerándose mantenimiento y actualización de contenido, salvo cuando un cambio forme parte explícita de la Fase 16.
+Este roadmap muestra la versión estable actual y la evolución técnica futura del Hub. El avance normal de U1 a U5 sigue perteneciendo al contenido académico de Programación Web y no crea nuevas versiones por sí solo.
 
----
+El proyecto utiliza un versionado simple inspirado en SemVer:
 
-# Fase 1 - Estructura inicial
+- `v1.0.0`: base estable actual;
+- `v1.1.0` a `v1.9.0`: actualizaciones de la primera generación estable;
+- `v2.0.0`: siguiente salto mayor del Hub;
+- `vX.Y.Z`: el último número queda reservado para correcciones puntuales.
 
-**Estado:** Completada
-
-## Objetivo
-
-Crear una página central para reunir los trabajos realizados durante Programación Web.
-
----
-
-# Fase 2 - Identidad visual
-
-**Estado:** Completada
-
-## Objetivo
-
-Crear una identidad visual propia para el portafolio académico.
+Por convención de PW Hub, una serie principal llega como máximo a `.9`; después continúa con la siguiente versión mayor. No existe una fecha obligatoria para estas actualizaciones. Pueden implementarse, reordenarse, combinarse o descartarse según el tiempo disponible y las necesidades reales del portafolio.
 
 ---
 
-# Fase 3 - Modelo académico
 
-**Estado:** Completada
+# v1.0.0 - Base estable
 
-## Objetivo
-
-Representar unidades, estado del curso y organización académica.
-
----
-
-# Fase 4 - Fuente de datos central
-
-**Estado:** Completada
+**Estado:** Publicada · actual
 
 ## Objetivo
 
-Centralizar unidades y trabajos mediante `data/unidades.json`.
-
----
-
-# Fase 5 - Vistas previas
-
-**Estado:** Completada
-
-## Objetivo
-
-Permitir explorar trabajos directamente desde el Hub.
-
----
-
-# Fase 6 - Documentación dinámica
-
-**Estado:** Completada
-
-## Objetivo
-
-Integrar README, Historial y Roadmap dentro de la interfaz.
-
----
-
-# Fase 7 - Roadmap visual
-
-**Estado:** Completada
-
-## Objetivo
-
-Convertir `ROADMAP.md` en una representación visual e interactiva.
-
----
-
-# Fase 8 - Historial interactivo
-
-**Estado:** Completada
-
-## Objetivo
-
-Convertir `HISTORIAL.md` en una memoria navegable de la evolución académica y técnica.
-
----
-
-# Fase 9 - Buscador y explorador de trabajos
-
-**Estado:** Completada
-
-## Objetivo
-
-Facilitar la localización de actividades mediante búsqueda, filtros, ordenamiento y vistas previas.
-
----
-
-# Fase 10 - Navegación avanzada
-
-**Estado:** Completada
-
-## Objetivo
-
-Mantener una navegación clara y escalable.
+Consolidar en una primera versión estable todo el desarrollo técnico, visual y documental construido antes de adoptar el roadmap por versiones.
 
 ## Implementado
 
-- menús agrupados;
-- navegación sticky;
-- sección activa;
-- subsección activa;
-- navegación mediante hash;
-- offset visual;
-- soporte para unidades dinámicas;
-- media pantalla;
-- pestañas verticales;
-- scrollbar personalizada.
+- [x] identidad visual propia de PW Hub;
+- [x] navegación responsive para escritorio, media pantalla y móvil;
+- [x] unidades, trabajos, búsqueda, filtros, favoritos y estadísticas;
+- [x] historial y documentación Markdown integrados;
+- [x] tema oscuro consistente para Markdown en visor completo, Documentación, miniaturas y vistas previas;
+- [x] personalización visual con materiales, paletas y movimiento;
+- [x] sincronización automática de trabajos con GitHub;
+- [x] funcionamiento offline con Service Worker y página de contingencia;
+- [x] catálogo compartido por Unidades, resumen, Todos los trabajos y Estadísticas;
+- [x] estructura estable con `hub/index.html` como HTML principal del Hub.
+
+## Notas
+
+El detalle completo de la construcción original, las 16 fases históricas y los mantenimientos incorporados antes de esta versión se conserva en [`CHANGELOG.md`](CHANGELOG.md).
 
 ---
 
-# Fase 11 - Favoritos y destacados
+# v1.1.0 - Sincronización y novedades
 
-**Estado:** Completada
-
-## Objetivo
-
-Permitir identificar trabajos importantes y guardar preferencias personales.
-
-## Implementado
-
-- favoritos con `localStorage`;
-- persistencia;
-- filtros y contadores;
-- soporte para destacados desde `unidades.json`.
-
----
-
-# Fase 12 - Actividad reciente
-
-**Estado:** Completada
+**Estado:** Planeada
 
 ## Objetivo
 
-Mostrar eventos recientes sin duplicar la fuente de datos.
+Hacer más clara la relación entre PW Hub, GitHub y los cambios recientes del portafolio.
 
-## Fuente
+## Planeado
 
-`docs/HISTORIAL.md`
-
----
-
-# Fase 13 - Estadísticas académicas
-
-**Estado:** Completada
-
-## Objetivo
-
-Calcular información académica automáticamente a partir de las fuentes existentes.
-
-## Implementado
-
-- trabajos registrados;
-- unidades completadas;
-- eventos históricos;
-- porcentaje académico;
-- trabajos por unidad;
-- tipos de trabajo;
-- eventos por unidad;
-- tipos de evento.
-
----
-
-# Fase 14 - Preparación para publicación
-
-**Estado:** Completada
-
-## Objetivo
-
-Probar una estrategia de producción separada del código fuente.
-
-## Trabajo realizado
-
-Durante esta fase se implementaron y probaron minificación, ausencia de source maps, ofuscación opcional y una copia separada de producción.
-
-Posteriormente se simplificó la arquitectura: el Hub pasó a utilizar directamente los archivos versionados del repositorio y la carpeta `publicacion/` dejó de formar parte del flujo actual.
-
-La Fase 14 permanece registrada porque documenta una etapa real de la evolución técnica, aunque sus herramientas de build ya no sean necesarias.
-
----
-
-# Fase 15 - Cierre técnico y personalización final
-
-**Estado:** Completada
-
-## Objetivo
-
-Cerrar la evolución técnica principal del Hub y dejar una experiencia configurable, limpia y preparada para continuar recibiendo contenido académico.
-
-## Implementado
-
-- panel de configuración;
-- perfil Minimal predeterminado;
-- perfiles Completo y Académico;
-- selección de secciones visibles;
-- navbar sincronizada con las secciones activas;
-- desaparición dinámica de submenús sin contenido;
-- colores de acento;
-- densidad visual;
-- iconografía SVG;
-- animaciones suaves;
-- control de animaciones y efectos;
-- respeto por `prefers-reduced-motion`;
-- revisión del comportamiento responsive;
-- documentación final del funcionamiento;
-- integración del Hub con el repositorio académico.
-
-## Resultado
-
-La Fase 15 cerró correctamente el desarrollo técnico principal del Hub en ese momento.
-
-Las modificaciones posteriores ligadas únicamente al contenido real de Programación Web continúan siendo mantenimiento normal:
-
-- nuevas actividades;
-- tareas;
-- prácticas;
-- proyectos;
-- cambios de estado de U3, U4 y U5.
-
-Posteriormente se decidió abrir una última fase de refinamiento visual y funcional sin invalidar el cierre histórico de esta fase.
-
----
-
-# Fase 16 - Identidad visual y experiencia de contenidos
-
-**Estado:** Completada
-
-## Objetivo
-
-Realizar una última etapa de refinamiento visual y funcional del Hub, reforzando su identidad propia y mejorando la forma en que se presentan los contenidos académicos.
-
-## Implementado
-
-- [x] diseñar una familia de logo propia para PW Hub;
-- [x] crear versiones horizontal, compacta e isotipo;
-- [x] conservar variantes alternativas del isotipo;
-- [x] crear favicon en 16, 32, 192 y 512 píxeles;
-- [x] integrar favicon en el Hub principal;
-- [x] integrar favicon e isotipo en el visor de trabajos;
-- [x] reorganizar y formatear el código del Hub;
-- [x] mover el visor completo a `vistas/trabajo.html`;
-- [x] renderizar documentos Markdown dentro de la interfaz;
-- [x] evitar que los documentos Markdown compatibles dependan de abrirse como texto plano;
-- [x] integrar `Perfil.md`, `Comandos_Git.md` y otros trabajos Markdown mediante el visor;
-- [x] incorporar modos **Diseño** y **Código** en la vista completa;
-- [x] mantener un solo modo activo;
-- [x] aplicar estilos propios a títulos, listas, tablas, código, citas y enlaces Markdown;
-- [x] abrir los trabajos en la misma pestaña;
-- [x] conservar el regreso al Hub mediante el historial del navegador cuando es posible.
-- [x] convertir el roadmap de fases en un mapa visual jerárquico;
-- [x] representar categorías y tareas como ramas y subramas;
-- [x] dibujar las conexiones del roadmap mediante Canvas para mantener líneas continuas y adaptables;
-- [x] consolidar el hero principal generado con HTML y CSS;
-- [x] terminar la integración visual de los logos de PW Hub, TecNM e Instituto Tecnológico de Tepic dentro del hero;
-- [x] reducir y equilibrar la altura del banner;
-- [x] limitar el ancho del roadmap visual en pantallas amplias para evitar separaciones excesivas entre fases y ramas;
-- [x] compactar el branding del hero en vistas estrechas y mantener el logo horizontal de PW Hub;
-- [x] corregir el tronco Canvas del roadmap para que conecte también categorías situadas por encima del centro de la tarjeta de fase;
-- [x] corregir el cálculo de ancho del Canvas para evitar crecimiento horizontal acumulativo al redimensionar la ventana;
-- [x] impedir que decoraciones visuales generen scroll horizontal de página;
-- [x] corregir el ancho del contenedor institucional en vista estrecha para eliminar el espacio libre antes del logo TecNM;
-- [x] compensar el margen transparente interno del PNG oficial de TecNM en vistas estrechas;
-- [x] sacar el botón de Configuración de la navbar;
-- [x] convertir Configuración en un botón flotante y siempre accesible;
-- [x] rediseñar la navegación para celular;
-- [x] implementar una barra móvil fija y compacta con Inicio, Curso, Explorar y GitHub;
-- [x] convertir Curso y Explorar en paneles inferiores dinámicos para móvil;
-- [x] integrar los accesos de Documentación dentro de Explorar en móvil;
-- [x] evitar que la navegación móvil ocupe gran parte de la altura de la pantalla;
-- [x] restaurar la navegación sticky original en escritorio y media pantalla;
-- [x] mantener el rediseño de barra inferior limitado exclusivamente a vistas angostas y móviles;
-- [x] sincronizar dinámicamente la barra con las secciones activadas o desactivadas desde Configuración;
-- [x] restaurar la posición normal del logo TecNM en media pantalla y limitar su compensación óptica a vistas angostas;
-- [x] ajustar el breakpoint de navegación móvil a 650 px para considerar el viewport real con barra lateral del navegador, zoom y escala del sistema;
-- [x] mantener escritorio y media pantalla con la navegación horizontal sticky;
-- [x] agregar títulos internos `Explorar` y `Documentación` dentro del panel móvil combinado;
-- [x] mantener la navbar horizontal de media pantalla en una sola fila, compactando botones y espacios sin ocultar accesos;
-- [x] corregir el panel móvil para que respete las opciones ocultas por Configuración y el perfil Minimal, incluyendo Documentación;
-- [x] separar correctamente las dos vistas del Roadmap: `Ver visual` mantiene el diagrama interactivo y `Ver Markdown` renderiza `ROADMAP.md` dentro del visor de Documentación;
-
-- [x] mantener compatibilidad con los perfiles de personalización existentes;
-- [x] reforzar el diseño de tarjetas, botones, estados e indicadores;
-- [x] mejorar la presentación de trabajos destacados;
-- [x] revisar colores, sombras, espaciados y detalles visuales restantes;
-- [x] realizar una revisión responsive completa;
-- [x] realizar una revisión final de navegación y coherencia visual.
-
-## Validación final
-
-- [x] validar el refinamiento final en escritorio;
-- [x] validar el refinamiento final en media pantalla;
-- [x] validar el refinamiento final en ventana angosta;
-- [x] validar el refinamiento final en celular.
-
-La validación final confirmó el funcionamiento del hero, roadmap Canvas, navegación sticky, barra móvil, paneles dinámicos, Configuración flotante, perfiles de personalización y visor de Documentación.
-
-## Pendiente
-
-No quedan cambios estructurales o funcionales pendientes. Los cambios posteriores se consideran mantenimiento, correcciones puntuales o incorporación de nuevas actividades académicas.
+- [ ] mostrar un indicador discreto de sincronización;
+- [ ] distinguir `Sincronizado`, `Usando caché local` y `Sin conexión`;
+- [ ] mostrar de forma opcional el tiempo desde la última sincronización;
+- [ ] marcar con `NUEVO` los trabajos aparecidos desde la última visita;
+- [ ] retirar la marca después de que el trabajo haya sido visto;
+- [ ] mostrar la fecha real de última actualización de cada trabajo cuando GitHub la proporcione;
+- [ ] cachear fechas y estados para evitar consultas innecesarias a la API.
 
 ## Resultado esperado
 
-El Hub contará con una identidad visual reconocible, una navegación clara en escritorio y móvil y una experiencia de consulta consistente para archivos HTML, Markdown y otros trabajos compatibles.
-
-Esta será la última fase de desarrollo estructural del Hub. Después de completarla, las modificaciones posteriores corresponderán únicamente al mantenimiento y a la incorporación de nuevas actividades de Programación Web.
+El usuario podrá identificar rápidamente qué cambió, cuándo se actualizó y de dónde proviene el catálogo visible.
 
 ---
 
-# Estado actual del roadmap
+# v1.2.0 - Navegación y búsqueda global
 
-**Completado: 16 / 16**
+**Estado:** Planeada
 
-**Fase actual: Ninguna - Desarrollo estructural completado**
+## Objetivo
 
-La Fase 16 fue validada y marcada como **Completada**. El roadmap estructural queda cerrado en **16 / 16 fases**. A partir de este punto, el Hub entra en etapa de mantenimiento y actualización de contenidos académicos.
+Convertir la navegación y la búsqueda en un sistema rápido y compartible para todo el Hub.
+
+## Planeado
+
+- [ ] abrir una paleta de comandos con `Ctrl + K` o `Cmd + K`;
+- [ ] buscar secciones, unidades y trabajos desde la paleta;
+- [ ] extender la búsqueda a Historial, Roadmap y Documentación;
+- [ ] diferenciar visualmente el tipo de cada resultado;
+- [ ] reflejar filtros, búsquedas y selección de unidad en la URL;
+- [ ] restaurar automáticamente el estado al abrir un enlace compartido;
+- [ ] conservar compatibilidad con la navegación mediante hashes.
+
+## Resultado esperado
+
+Una sola experiencia permitirá localizar contenido, ejecutar accesos rápidos y compartir vistas concretas del portafolio.
 
 ---
 
-# Mejoras posteriores al cierre
+# v1.3.0 - Proyectos inteligentes y GitHub
 
-## Personalización visual avanzada
+**Estado:** Planeada
 
-**Estado:** Implementada
+## Objetivo
 
-Después del cierre estructural en **16 / 16 fases**, PW Hub recibió una ampliación de mantenimiento visual sin reabrir la Fase 16.
+Hacer que la sincronización entienda mejor proyectos formados por varios archivos y conectarlos directamente con su fuente en GitHub.
 
-### Implementado
+## Planeado
 
-- [x] mantener el color de acento como ajuste independiente;
-- [x] añadir cinco variantes de tema oscuro: PW Dark, Obsidiana, Azul profundo, Grafito y OLED;
-- [x] añadir cuatro estilos visuales: Normal, Liquid Glass, Minimal y Neon Tech;
-- [x] añadir tres niveles de movimiento: Ninguno, Sutil y Dinámico;
-- [x] conservar el control independiente de efectos al pasar el cursor;
-- [x] añadir previsualizaciones visuales dentro de Configuración;
-- [x] migrar automáticamente preferencias guardadas desde `pw-hub-configuracion-v2` y `pw-hub-configuracion-v1`;
-- [x] guardar la nueva configuración en `pw-hub-configuracion-v3`;
-- [x] respetar `prefers-reduced-motion` incluso cuando se selecciona el modo Dinámico.
-- [x] refinar Liquid Glass con bordes especulares, mayor blur, saturación y profundidad inspirados en el vidrio líquido de iOS;
-- [x] añadir microanimaciones dinámicas adicionales para títulos, progreso actual y botones de documentación;
-- [x] corregir la regresión visual causada por animaciones que interferían con `position`, `overflow` y `transform` estructurales;
-- [x] aumentar blur y contraste de los menús Liquid Glass sin modificar su geometría;
-- [x] ampliar el modo Dinámico únicamente con animaciones seguras sobre contenido, filtros, sombras y elementos internos;
+- [ ] añadir la acción `Ver en GitHub` a los trabajos compatibles;
+- [ ] generar enlaces a archivos o carpetas reales del repositorio;
+- [ ] reconocer `index.html` como posible punto de entrada de un proyecto;
+- [ ] evitar registrar CSS, JS, imágenes y recursos internos como trabajos separados;
+- [ ] conservar compatibilidad con HTML, PDF y Markdown individuales;
+- [ ] definir reglas para proyectos anidados;
+- [ ] permitir un archivo opcional como `hub.json` dentro de un proyecto;
+- [ ] aceptar nombre, descripción, tecnologías y destacado desde esos metadatos;
+- [ ] conservar `unidades.json` como catálogo base y fallback.
 
-Esta mejora pertenece a la etapa de **mantenimiento y evolución visual** posterior al cierre del roadmap estructural.
+## Resultado esperado
 
-- [x] ajustar el modo Liquid Glass hacia un efecto más cercano al estilo iPhone;
-- [x] aumentar el blur real en menús desplegables;
-- [x] reducir ligeramente el blur del resto de superficies glass para ganar nitidez;
+Subir una carpeta de proyecto podrá bastar para que PW Hub la detecte, la agrupe y la presente correctamente sin mantenimiento repetitivo.
 
-- [x] resolver el aislamiento de backdrop causado por el blur de la navbar padre;
-- [x] hacer visible el blur real de los menús desplegables usando material más translúcido;
-- [x] reducir el blur general de tarjetas y paneles para acercar Liquid Glass al acabado de iPhone;
+---
 
-- [x] equilibrar transparencia y blur del Liquid Glass para evitar superficies demasiado transparentes;
-- [x] reducir ligeramente el blur de los menús sin perder desenfoque;
-- [x] aumentar la solidez visual de tarjetas, paneles y Configuración;
+# v1.4.0 - Ciclo de actualización del Hub
 
-- [x] consolidar `apariencia-avanzada.css` y retirar los parches acumulados V2-V7;
-- [x] dejar una única implementación de Liquid Glass con valores claros de opacidad y blur;
-- [x] conservar temas, estilos, animaciones y preferencias existentes sin cambiar la estructura del Hub;
+**Estado:** Planeada
 
-- [x] restaurar el aspecto Liquid Glass V2 para tarjetas, paneles, Configuración y superficies generales;
-- [x] limitar el nuevo refinamiento únicamente a los menús desplegables;
-- [x] aplicar blur moderado y visible en Curso / Explorar / Documentación sin volverlos excesivamente transparentes;
+## Objetivo
 
-- [x] restaurar el blur visual de la navbar Liquid Glass tal como se veía en V2;
-- [x] conservar los bordes especulares tipo iPhone de V2;
-- [x] mover técnicamente el blur de la navbar a una capa visual interna para permitir blur independiente en los dropdowns;
-- [x] mantener el resto de tarjetas, paneles y Configuración exactamente con la apariencia V2;
+Informar de forma clara cuando exista una versión nueva del propio PW Hub.
 
-- [x] añadir 15 variantes adicionales de tema oscuro;
-- [x] alcanzar 20 temas oscuros configurables en total;
-- [x] conservar el color de acento como ajuste independiente;
-- [x] mantener compatibilidad con Normal, Liquid Glass, Minimal y Neon Tech;
+## Planeado
 
-### Mejoras posteriores al cierre: sincronización y resiliencia
+- [ ] detectar un Service Worker actualizado;
+- [ ] mostrar un aviso discreto de actualización disponible;
+- [ ] permitir actualizar de forma controlada;
+- [ ] evitar recargas inesperadas durante el uso del Hub;
+- [ ] mostrar la versión actual cuando resulte útil para diagnóstico.
 
-- [x] sincronización automática de trabajos desde GitHub;
-- [x] detección de nuevos HTML, PDF y Markdown dentro de U1-U5;
-- [x] mantener `unidades.json` como catálogo base y capa de metadatos;
-- [x] registrar Flexbox y CSS Grid en el fallback local de U3;
-- [x] guardar el último catálogo detectado para funcionamiento sin conexión;
-- [x] añadir Service Worker sin convertir el Hub en aplicación instalable;
-- [x] cachear el Hub y los archivos académicos visitables para uso offline posterior.
+## Resultado esperado
 
-El roadmap estructural permanece cerrado en **16/16**. Estas tareas corresponden únicamente a mantenimiento posterior al cierre.
+Las mejoras publicadas podrán llegar al navegador sin depender de que el usuario borre caché o adivine cuándo recargar.
 
-- [x] detectar y retirar referencias obsoletas tras renombrar trabajos en GitHub;
-- [x] actualizar U3 de `Ejercicio1CSS.html` a `Ejercicio0CSS.html`;
-- [x] registrar `Ejercicio1.html` como **Receta Pan Francés con CSS**;
-- [x] renovar la versión de caché offline para evitar conservar rutas antiguas.
+---
 
-- [x] fusionar tema oscuro y estilo visual en una sola sección compacta de **Apariencia**;
-- [x] reemplazar las 20 tarjetas de tema por un selector compacto;
-- [x] conservar las 20 variantes y los 4 materiales visuales sin perder combinaciones;
-- [x] refinar Liquid Glass con borde especular direccional y mayor color bleed;
-- [x] reducir ligeramente el blur general sin cambiar la geometría del Hub;
-- [x] excluir `README_CAMBIOS.md` y `README_PRUEBA.md` mediante `.gitignore`;
-- [x] renovar la caché offline a `pw-hub-offline-v3`.
+# v1.5.0 - Presentación y exportación
 
-El roadmap estructural continúa cerrado en **16/16**.
+**Estado:** Planeada
 
-- [x] convertir todos los selects del Hub en combobox personalizados;
-- [x] evitar los menús nativos largos y cuadrados del navegador;
-- [x] hacer que el material determine qué paletas oscuras son compatibles;
-- [x] añadir Frosted Glass, Acrílico, Mate y Titanio;
-- [x] conservar Normal, Liquid Glass, Minimal y Neon Tech;
-- [x] refinar Liquid Glass a V12 con refracción SVG progresiva en Chromium/Edge;
-- [x] limitar la refracción costosa a navegación y superficies flotantes;
-- [x] actualizar la caché offline a `pw-hub-offline-v4`.
+## Objetivo
 
-El roadmap estructural permanece cerrado en **16/16**.
+Preparar PW Hub para exposiciones, revisiones académicas e impresión sin crear una segunda versión del sitio.
 
-- [x] añadir una página offline explícita y coherente con la identidad visual del Hub;
-- [x] mostrar la página offline solo cuando una navegación no esté disponible ni en red ni en caché;
-- [x] mantener accesibles las páginas previamente cacheadas sin redirecciones innecesarias;
-- [x] añadir un indicador discreto de estado únicamente al perder o recuperar conexión;
-- [x] conservar el portafolio como sitio web normal, sin manifest ni instalación;
-- [x] actualizar la caché del Service Worker a `pw-hub-offline-v5`.
+## Planeado
 
-El roadmap estructural permanece cerrado en **16/16**.
+- [ ] añadir un modo presentación que oculte controles secundarios;
+- [ ] priorizar hero, progreso, resumen y trabajos destacados;
+- [ ] simplificar temporalmente la navegación durante una exposición;
+- [ ] restaurar la vista normal al salir del modo presentación;
+- [ ] crear estilos `@media print` específicos;
+- [ ] incluir identidad, unidades, trabajos y estadísticas en impresión;
+- [ ] conservar enlaces útiles al exportar a PDF desde el navegador.
 
-- [x] restaurar los paneles flotantes **HTML** y **CSS** únicamente en móvil (`<= 420px`);
-- [x] aplicar la corrección mediante un override aislado del hero;
-- [x] conservar sin cambios escritorio, tablet, branding, editor y navegación;
-- [x] renovar la caché offline a `pw-hub-offline-v6`.
+## Resultado esperado
 
-El roadmap estructural continúa cerrado en **16/16**.
+El mismo Hub podrá utilizarse tanto como portafolio interactivo como evidencia presentable o imprimible.
 
-- [x] corregir el `padding-top` directamente en `hero-codigo.css`;
-- [x] eliminar el relleno superior de escritorio y móvil sin desplazar contenedores;
-- [x] forzar una URL nueva `hero-codigo.css?v=18` para evitar CSS antiguo del Service Worker;
-- [x] conservar el ajuste móvil de los paneles HTML y CSS;
-- [x] renovar la caché offline a `pw-hub-offline-v10`.
+---
 
-El roadmap estructural permanece cerrado en **16/16**.
+# v1.6.0 - Diagnóstico y actividad del repositorio
 
-- [x] corregir el estado visible del movimiento sutil;
-- [x] devolver `.hub-reveal.hub-visible` a `translateY(0)`;
-- [x] eliminar el desplazamiento permanente de 18 px del encabezado;
-- [x] conservar el efecto de entrada sutil para el resto de secciones;
-- [x] invalidar específicamente la caché de `apariencia-avanzada.css`;
-- [x] renovar la caché offline a `pw-hub-offline-v11`.
+**Estado:** Planeada
 
-El roadmap estructural permanece cerrado en **16/16**.
+## Objetivo
 
-### Alineación óptica del bloque institucional del hero
+Añadir herramientas técnicas para comprender la salud del Hub y los cambios automáticos detectados en el repositorio.
 
-- [x] identificar `.hero-institucion` como el contenedor visual de TecNM + ITT;
-- [x] desplazar únicamente ese contenedor 4 px hacia abajo;
-- [x] mantener inmóviles el logo PW Hub, `.hero-branding` y el hero completo;
-- [x] conservar la misma corrección en escritorio y celular;
-- [x] renovar la caché offline a `pw-hub-offline-v12`.
+## Planeado
 
-El roadmap estructural permanece cerrado en **16/16**. Esta corrección es
-mantenimiento posterior al cierre y no constituye una Fase 17.
+- [ ] comprobar rutas de trabajos y detectar referencias 404;
+- [ ] mostrar estado del Service Worker y cachés;
+- [ ] mostrar última sincronización con GitHub;
+- [ ] indicar versión actual del Hub;
+- [ ] crear un bloque separado de actividad automática del repositorio;
+- [ ] registrar apariciones, renombres o retiros detectados por sincronización;
+- [ ] evitar mezclar esos eventos con el historial académico de `HISTORIAL.md`;
+- [ ] reutilizar snapshots locales cuando sea posible.
 
-### Catálogo automático global y reorganización de vistas
+## Resultado esperado
 
-- [x] conservar `unidades.json` como catálogo base y fuente de metadatos;
-- [x] compartir un único catálogo sincronizado durante cada carga;
-- [x] evitar consultas duplicadas a GitHub para las distintas secciones;
-- [x] alimentar Unidades, resumen, Todos los trabajos y Estadísticas con el mismo catálogo;
-- [x] mantener compatibilidad con el respaldo local cuando no existe conexión;
-- [x] trasladar `hub/offline.html` a `hub/vistas/offline.html`;
-- [x] conservar `hub/index.html` como único HTML directamente en la raíz del Hub;
-- [x] renovar la caché offline a `pw-hub-offline-v13`.
+Los problemas técnicos y los cambios detectados automáticamente podrán revisarse sin contaminar el historial editorial del curso.
 
-El roadmap estructural permanece cerrado en **16/16**. Este bloque corresponde
-a mantenimiento posterior al cierre y no crea una Fase 17.
+---
+
+# v1.7.0 - Accesibilidad y teclado
+
+**Estado:** Visión futura
+
+## Objetivo
+
+Revisar de forma integral la accesibilidad del Hub y reforzar su uso sin mouse.
+
+## Planeado
+
+- [ ] revisar orden y visibilidad del foco;
+- [ ] completar navegación por teclado en controles y paneles;
+- [ ] usar `aria-live` en resultados dinámicos relevantes;
+- [ ] revisar contraste de materiales y paletas;
+- [ ] validar movimiento reducido;
+- [ ] asegurar que la paleta de comandos y la búsqueda global sean utilizables completamente con teclado.
+
+## Resultado esperado
+
+La interfaz será más consistente para usuarios de teclado y tecnologías de asistencia.
+
+---
+
+# v1.8.0 - Configuración portátil
+
+**Estado:** Visión futura
+
+## Objetivo
+
+Permitir respaldar y restaurar las preferencias visuales del Hub.
+
+## Planeado
+
+- [ ] exportar configuración a JSON;
+- [ ] importar una configuración compatible;
+- [ ] validar versión y valores antes de aplicarlos;
+- [ ] mantener las preferencias locales como comportamiento predeterminado;
+- [ ] permitir trasladar una configuración entre navegadores o equipos.
+
+## Resultado esperado
+
+La personalización dejará de depender exclusivamente del almacenamiento de un solo navegador.
+
+---
+
+# v1.9.0 - Acerca de PW Hub
+
+**Estado:** Visión futura
+
+## Objetivo
+
+Crear una ficha técnica compacta que documente identidad, arquitectura, tecnologías y evolución del proyecto.
+
+## Planeado
+
+- [ ] mostrar la versión actual;
+- [ ] resumir tecnologías utilizadas;
+- [ ] enlazar Changelog y Roadmap;
+- [ ] incluir créditos técnicos del proyecto;
+- [ ] ofrecer acceso desde la paleta `Ctrl + K` si ya existe;
+- [ ] mantener esta información separada del contenido académico de U1-U5.
+
+## Resultado esperado
+
+PW Hub contará con una identidad técnica propia y una referencia clara de su versión antes del siguiente salto mayor.
+
+---
+
+# v2.0.0 - PW Hub instalable
+
+**Estado:** Visión futura
+
+## Objetivo
+
+Convertir opcionalmente la base web y offline existente en una PWA instalable, tratándolo como un salto mayor del proyecto.
+
+## Planeado
+
+- [ ] crear `manifest.webmanifest`;
+- [ ] reutilizar la familia de iconos existente;
+- [ ] definir nombre, colores y comportamiento de apertura;
+- [ ] revisar la estrategia offline antes de habilitar instalación;
+- [ ] integrar correctamente el ciclo de actualización del Service Worker;
+- [ ] validar instalación en escritorio y móvil;
+- [ ] conservar el funcionamiento normal desde navegador sin exigir instalación.
+
+## Resultado esperado
+
+PW Hub podrá instalarse opcionalmente como aplicación sin dejar de funcionar como un portafolio web convencional.

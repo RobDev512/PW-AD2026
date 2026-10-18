@@ -1127,3 +1127,68 @@ el snapshot local y el límite temporal ya definidos.
 También se trasladó la página de contingencia de `hub/offline.html` a
 `hub/vistas/offline.html`. Sus rutas relativas se corrigieron y el Service
 Worker avanza a `pw-hub-offline-v13`.
+
+---
+
+### Migración del roadmap a versionado de PW Hub
+
+**Tipo:** Mantenimiento documental y funcional  
+**Estado:** Implementado  
+**Unidad:** General  
+**Fecha:** 2026-10-17  
+**Precisión:** Día  
+**Fuente:** Reorganización local validada antes de publicación
+
+PW Hub deja de organizar su evolución futura mediante fases. Las 16 fases
+históricas y los mantenimientos acumulados se consolidan dentro de
+`docs/CHANGELOG.md` como parte de **v1.0.0**, mientras que `ROADMAP.md` pasa a
+mostrar la versión estable actual y las actualizaciones planeadas desde
+`v1.1.0` hasta `v1.9.0`, reservando `v2.0.0` para el siguiente salto mayor.
+
+El documento `CIERRE.md` se retira porque su función histórica queda absorbida
+por el Changelog. El roadmap visual se adapta al nuevo esquema de versiones y
+se elimina su segunda vista de línea de tiempo para evitar duplicar el papel
+del Historial.
+
+---
+
+### Tema oscuro para archivos Markdown
+
+**Tipo:** Mejora visual de v1.0.0  
+**Estado:** Implementado  
+**Unidad:** General  
+**Fecha:** 2026-10-17  
+**Precisión:** Día  
+**Fuente:** Revisión del visor completo de trabajos
+
+La vista Diseño de los archivos Markdown en `hub/vistas/trabajo.html` deja de
+utilizar fondo blanco y texto negro. Ahora emplea una superficie oscura
+coherente con PW Hub, con colores adaptados para títulos, enlaces, código,
+citas y tablas.
+
+El cambio afecta únicamente al renderizado de `.md`; los HTML y PDF mantienen
+su presentación propia. La caché offline avanza a `pw-hub-offline-v17` para
+distribuir la versión nueva del visor.
+
+---
+
+### Unificación del tema oscuro Markdown en todo el Hub
+
+**Tipo:** Mejora visual de v1.0.0  
+**Estado:** Implementado  
+**Unidad:** General  
+**Fecha:** 2026-10-17  
+**Precisión:** Día  
+**Fuente:** Revisión visual de Documentación, Unidades y Vista previa
+
+Después de oscurecer el visor completo se detectaron tres superficies que aún
+usaban estilos claros: el contenido incrustado de Documentación, las miniaturas
+Markdown dentro de las unidades y el modal de Vista previa del explorador.
+
+Se añade `hub/css/markdown-oscuro.css` como capa visual compartida para esas
+superficies. El estilo usa las variables del tema actual para conservar
+compatibilidad con materiales y paletas, mientras `vistas/trabajo.html` mantiene
+su propio tema oscuro independiente.
+
+El Service Worker avanza a `pw-hub-offline-v18` e incluye la nueva hoja de
+estilos dentro del shell para evitar reutilizar versiones claras almacenadas.

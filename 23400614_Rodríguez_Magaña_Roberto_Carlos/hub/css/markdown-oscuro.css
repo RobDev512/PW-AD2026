@@ -1,0 +1,218 @@
+/* =========================================================
+   PW HUB - MARKDOWN OSCURO GLOBAL
+   =========================================================
+
+   Unifica el renderizado visual de Markdown dentro del Hub:
+   - visor de Documentación;
+   - miniaturas de trabajos Markdown por unidad;
+   - modal de Vista previa del explorador de trabajos.
+
+   El visor completo de vistas/trabajo.html mantiene su propio
+   tema oscuro para conservar independencia entre vistas.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   DOCUMENTACIÓN INCRUSTADA
+   --------------------------------------------------------- */
+
+#contenido-markdown {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(53, 201, 243, 0.025),
+            transparent 180px
+        ),
+        var(--fondo-secundario);
+    color: var(--texto);
+    border: 1px solid rgba(53, 201, 243, 0.10);
+}
+
+#contenido-markdown .mensaje-visor,
+#contenido-markdown p,
+#contenido-markdown li {
+    color: var(--texto-secundario);
+}
+
+#contenido-markdown h1,
+#contenido-markdown h2,
+#contenido-markdown h3,
+#contenido-markdown h4,
+#contenido-markdown h5,
+#contenido-markdown h6 {
+    color: var(--texto);
+}
+
+#contenido-markdown h1,
+#contenido-markdown h2 {
+    border-bottom-color: var(--borde);
+}
+
+#contenido-markdown a {
+    color: var(--azul-claro);
+}
+
+#contenido-markdown pre {
+    color: #dce8ef;
+    background: #070d12;
+    border: 1px solid rgba(157, 176, 191, 0.16);
+}
+
+#contenido-markdown :not(pre) > code {
+    color: var(--azul-suave);
+    background: rgba(53, 201, 243, 0.09);
+    border: 1px solid rgba(53, 201, 243, 0.12);
+}
+
+#contenido-markdown blockquote {
+    color: var(--texto-secundario);
+    background: rgba(53, 201, 243, 0.045);
+    border-left-color: var(--azul-claro);
+}
+
+#contenido-markdown th,
+#contenido-markdown td {
+    border-color: var(--borde);
+}
+
+#contenido-markdown th {
+    color: var(--texto);
+    background: rgba(53, 201, 243, 0.07);
+}
+
+#contenido-markdown tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.018);
+}
+
+#contenido-markdown hr {
+    border: 0;
+    border-top: 1px solid var(--borde);
+}
+
+/* ---------------------------------------------------------
+   MINIATURAS MARKDOWN EN UNIDADES
+   --------------------------------------------------------- */
+
+.unidad-trabajo-preview {
+    background: var(--fondo-secundario);
+}
+
+.unidad-trabajo-preview .preview-markdown-mini {
+    color: var(--texto-secundario);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(53, 201, 243, 0.035),
+            transparent 140px
+        ),
+        var(--fondo-secundario);
+}
+
+.unidad-trabajo-preview .preview-markdown-mini h1,
+.unidad-trabajo-preview .preview-markdown-mini h2,
+.unidad-trabajo-preview .preview-markdown-mini h3,
+.unidad-trabajo-preview .preview-markdown-mini h4,
+.unidad-trabajo-preview .preview-markdown-mini h5,
+.unidad-trabajo-preview .preview-markdown-mini h6,
+.unidad-trabajo-preview .preview-markdown-mini strong {
+    color: var(--texto);
+}
+
+.unidad-trabajo-preview .preview-markdown-mini a {
+    color: var(--azul-claro);
+}
+
+.unidad-trabajo-preview .preview-markdown-mini pre {
+    color: #dce8ef;
+    background: #070d12;
+}
+
+.unidad-trabajo-preview .preview-markdown-mini :not(pre) > code {
+    color: var(--azul-suave);
+    background: rgba(53, 201, 243, 0.10);
+}
+
+.unidad-trabajo-preview .preview-markdown-mini blockquote {
+    color: var(--texto-secundario);
+    background: rgba(53, 201, 243, 0.045);
+    border-left-color: var(--azul-claro);
+}
+
+.unidad-trabajo-preview .preview-markdown-mini th,
+.unidad-trabajo-preview .preview-markdown-mini td {
+    border-color: var(--borde);
+}
+
+.unidad-trabajo-preview .preview-markdown-mini th {
+    color: var(--texto);
+    background: rgba(53, 201, 243, 0.07);
+}
+
+/* ---------------------------------------------------------
+   VISTA PREVIA DEL EXPLORADOR DE TRABAJOS
+   --------------------------------------------------------- */
+
+.trabajos-visor-superficie {
+    background: var(--fondo-secundario);
+}
+
+.trabajos-preview-markdown {
+    color: var(--texto-secundario);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(53, 201, 243, 0.03),
+            transparent 180px
+        ),
+        var(--fondo-secundario);
+}
+
+.trabajos-preview-markdown h1,
+.trabajos-preview-markdown h2,
+.trabajos-preview-markdown h3,
+.trabajos-preview-markdown h4,
+.trabajos-preview-markdown h5,
+.trabajos-preview-markdown h6,
+.trabajos-preview-markdown strong {
+    color: var(--texto);
+}
+
+.trabajos-preview-markdown a {
+    color: var(--azul-claro);
+}
+
+.trabajos-preview-markdown pre {
+    color: #dce8ef;
+    background: #070d12;
+    border: 1px solid rgba(157, 176, 191, 0.16);
+}
+
+.trabajos-preview-markdown :not(pre) > code {
+    color: var(--azul-suave);
+    background: rgba(53, 201, 243, 0.09);
+    border: 1px solid rgba(53, 201, 243, 0.12);
+}
+
+.trabajos-preview-markdown blockquote {
+    color: var(--texto-secundario);
+    background: rgba(53, 201, 243, 0.045);
+    border-left-color: var(--azul-claro);
+}
+
+.trabajos-preview-markdown th,
+.trabajos-preview-markdown td {
+    border-color: var(--borde);
+}
+
+.trabajos-preview-markdown th {
+    color: var(--texto);
+    background: rgba(53, 201, 243, 0.07);
+}
+
+.trabajos-preview-markdown tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.018);
+}
+
+.trabajos-preview-markdown hr {
+    border: 0;
+    border-top: 1px solid var(--borde);
+}

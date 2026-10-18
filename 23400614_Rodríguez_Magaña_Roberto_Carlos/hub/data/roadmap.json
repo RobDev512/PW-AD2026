@@ -1,7 +1,7 @@
 {
-    "version": 1,
+    "version": 3,
     "fuente": "docs/ROADMAP.md",
-    "vistaPredeterminada": "mapa",
+    "esquema": "actualizaciones-semver",
     "expandirEstados": [
         "desarrollo"
     ],
@@ -14,29 +14,25 @@
             "tipo": "completada",
             "etiqueta": "Implementado"
         },
-        "Trabajo realizado": {
-            "tipo": "completada",
-            "etiqueta": "Trabajo realizado"
-        },
-        "Resultado": {
-            "tipo": "completada",
-            "etiqueta": "Resultado"
-        },
-        "Fuente": {
-            "tipo": "neutral",
-            "etiqueta": "Fuente"
+        "Planeado": {
+            "tipo": "planeada",
+            "etiqueta": "Planeado"
         },
         "En desarrollo": {
             "tipo": "desarrollo",
             "etiqueta": "En desarrollo"
         },
-        "Pendiente": {
-            "tipo": "planeada",
-            "etiqueta": "Pendiente"
-        },
         "Resultado esperado": {
             "tipo": "futura",
             "etiqueta": "Resultado esperado"
+        },
+        "Dependencias": {
+            "tipo": "neutral",
+            "etiqueta": "Dependencias"
+        },
+        "Notas": {
+            "tipo": "neutral",
+            "etiqueta": "Notas"
         }
     }
 }

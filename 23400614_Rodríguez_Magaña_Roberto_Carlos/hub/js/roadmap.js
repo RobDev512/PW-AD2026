@@ -1,34 +1,77 @@
-let fasesRoadmap = [];
+let actualizacionesRoadmap = [];
 let configuracionRoadmap = null;
 
 let filtroRoadmapActual = "todos";
-let vistaRoadmapActual = "mapa";
 
 let controlesRoadmapConfigurados = false;
 let promesaRoadmap = null;
+
+
+/*
+   Estilo Markdown compartido del Hub.
+
+   roadmap.js ya forma parte del shell global de index.html.
+   Aprovechamos su carga para registrar una hoja dedicada que
+   unifica el tema oscuro del visor de Documentación, las
+   miniaturas Markdown por unidad y el modal de Vista previa.
+*/
+cargarEstilosMarkdownOscuroHub();
+
+
+function cargarEstilosMarkdownOscuroHub() {
+    if (
+        document.querySelector(
+            "link[data-pw-markdown-oscuro]"
+        )
+    ) {
+        return;
+    }
+
+    const enlace =
+        document.createElement(
+            "link"
+        );
+
+    enlace.rel =
+        "stylesheet";
+
+    enlace.href =
+        "css/markdown-oscuro.css?v=1";
+
+    enlace.dataset.pwMarkdownOscuro =
+        "true";
+
+    document.head.appendChild(
+        enlace
+    );
+}
+
 
 document.addEventListener(
     "DOMContentLoaded",
     cargarRoadmap
 );
 
+
 async function cargarRoadmap() {
-    const contenedor = document.getElementById(
-        "roadmap-contenedor"
-    );
+    const contenedor =
+        document.getElementById(
+            "roadmap-contenedor"
+        );
 
     if (!contenedor) {
         return;
     }
 
     try {
+        actualizarEtiquetasRoadmap();
+
         await asegurarDatosRoadmap();
 
         configurarControlesRoadmap();
         actualizarResumenRoadmap();
         renderizarRoadmap();
-    }
-    catch (error) {
+    } catch (error) {
         console.error(error);
 
         contenedor.innerHTML = `
@@ -39,9 +82,10 @@ async function cargarRoadmap() {
     }
 }
 
+
 async function asegurarDatosRoadmap() {
     if (
-        fasesRoadmap.length &&
+        actualizacionesRoadmap.length &&
         configuracionRoadmap
     ) {
         return;
@@ -73,49 +117,54 @@ async function asegurarDatosRoadmap() {
             const markdown =
                 await respuestaMarkdown.text();
 
-            fasesRoadmap =
+            actualizacionesRoadmap =
                 parsearRoadmap(markdown);
-
-            vistaRoadmapActual =
-                configuracionRoadmap
-                    .vistaPredeterminada ||
-                "mapa";
         }
     );
 
     return promesaRoadmap;
 }
 
+
 function crearConfiguracionRoadmapPredeterminada() {
     return {
-        vistaPredeterminada: "mapa",
-        expandirEstados: ["desarrollo"],
+        expandirEstados: [
+            "desarrollo"
+        ],
+
         ramas: {}
     };
 }
 
+
 function parsearRoadmap(markdown) {
     const encabezados = [
-        ...markdown.matchAll(
-            /^#\s+Fase\s+(\d+)\s*-\s*(.+)$/gm
-        )
+        ...String(markdown || "")
+            .matchAll(
+                /^#\s+(v\d+\.\d+\.\d+)\s*-\s*(.+)$/gmi
+            )
     ];
 
     return encabezados.map(
         (coincidencia, indice) => {
-            const inicio = coincidencia.index;
+            const inicio =
+                coincidencia.index;
 
             const fin =
-                indice + 1 < encabezados.length
-                    ? encabezados[indice + 1].index
-                    : encontrarFinFasesRoadmap(
-                        markdown,
-                        inicio
-                    );
+                indice + 1 <
+                    encabezados.length
+                    ? encabezados[
+                        indice + 1
+                    ].index
+                    : markdown.length;
 
-            const bloque = markdown
-                .slice(inicio, fin)
-                .trim();
+            const bloque =
+                markdown
+                    .slice(
+                        inicio,
+                        fin
+                    )
+                    .trim();
 
             const estadoOriginal =
                 datoRoadmap(
@@ -130,18 +179,29 @@ function parsearRoadmap(markdown) {
 
             const objetivo =
                 secciones.find(
-                    seccion =>
+                    (seccion) =>
                         normalizarTextoRoadmap(
                             seccion.titulo
-                        ) === "objetivo"
+                        ) ===
+                        "objetivo"
                 )?.contenido || "";
 
+            const version =
+                normalizarVersionRoadmap(
+                    coincidencia[1]
+                );
+
             return {
-                numero:
-                    Number(coincidencia[1]),
+                version,
+
+                versionCorta:
+                    versionCortaRoadmap(
+                        version
+                    ),
 
                 titulo:
-                    coincidencia[2].trim(),
+                    coincidencia[2]
+                        .trim(),
 
                 estado:
                     normalizarEstadoRoadmap(
@@ -162,39 +222,57 @@ function parsearRoadmap(markdown) {
     );
 }
 
-function encontrarFinFasesRoadmap(
-    markdown,
-    inicio
-) {
-    const resto =
-        markdown.slice(inicio);
 
-    const coincidencia = resto.match(
-        /\n#\s+Estado actual del roadmap\b/i
-    );
+function normalizarVersionRoadmap(
+    version
+) {
+    const valor =
+        String(version || "")
+            .trim();
+
+    return valor.startsWith("v")
+        ? valor
+        : `v${valor}`;
+}
+
+
+function versionCortaRoadmap(
+    version
+) {
+    const coincidencia =
+        String(version || "")
+            .match(
+                /^v(\d+)\.(\d+)/i
+            );
 
     return coincidencia
-        ? inicio + coincidencia.index
-        : markdown.length;
+        ? `${coincidencia[1]}.${coincidencia[2]}`
+        : String(version || "")
+            .replace(/^v/i, "");
 }
+
 
 function datoRoadmap(
     bloque,
     campo
 ) {
-    const resultado = bloque.match(
-        new RegExp(
-            `\\*\\*${campo}:\\*\\*\\s*([^\\n]+)`,
-            "i"
-        )
-    );
+    const resultado =
+        bloque.match(
+            new RegExp(
+                `\\*\\*${campo}:\\*\\*\\s*([^\\n]+)`,
+                "i"
+            )
+        );
 
     return resultado
         ? resultado[1].trim()
         : "";
 }
 
-function extraerSeccionesRoadmap(bloque) {
+
+function extraerSeccionesRoadmap(
+    bloque
+) {
     const coincidencias = [
         ...bloque.matchAll(
             /^##\s+(.+)$/gm
@@ -209,22 +287,27 @@ function extraerSeccionesRoadmap(bloque) {
 
             const fin =
                 indice + 1 <
-                coincidencias.length
+                    coincidencias.length
                     ? coincidencias[
                         indice + 1
                     ].index
                     : bloque.length;
 
             const titulo =
-                coincidencia[1].trim();
+                coincidencia[1]
+                    .trim();
 
-            const contenido = bloque
-                .slice(inicio, fin)
-                .replace(
-                    /^---\s*$/gm,
-                    ""
-                )
-                .trim();
+            const contenido =
+                bloque
+                    .slice(
+                        inicio,
+                        fin
+                    )
+                    .replace(
+                        /^---\s*$/gm,
+                        ""
+                    )
+                    .trim();
 
             const estructura =
                 descomponerContenidoRoadmap(
@@ -234,12 +317,15 @@ function extraerSeccionesRoadmap(bloque) {
             return {
                 titulo,
                 contenido,
+
                 tipo:
                     tipoRamaRoadmap(
                         titulo
                     ),
+
                 introduccion:
                     estructura.introduccion,
+
                 items:
                     estructura.items
             };
@@ -247,12 +333,14 @@ function extraerSeccionesRoadmap(bloque) {
     );
 }
 
+
 function descomponerContenidoRoadmap(
     contenido
 ) {
-    const lineas = String(
-        contenido || ""
-    ).split(/\r?\n/);
+    const lineas =
+        String(
+            contenido || ""
+        ).split(/\r?\n/);
 
     const introduccion = [];
     const items = [];
@@ -260,51 +348,61 @@ function descomponerContenidoRoadmap(
     let parrafoActual = [];
 
     function guardarParrafo() {
-        const texto = parrafoActual
-            .join(" ")
-            .trim();
+        const texto =
+            parrafoActual
+                .join(" ")
+                .trim();
 
         if (texto) {
-            introduccion.push(texto);
+            introduccion.push(
+                texto
+            );
         }
 
         parrafoActual = [];
     }
 
-    lineas.forEach(linea => {
-        const matchItem = linea.match(
-            /^\s*-\s+(?:\[(x|X| )\]\s*)?(.+)$/
-        );
+    lineas.forEach(
+        (linea) => {
+            const matchItem =
+                linea.match(
+                    /^\s*-\s+(?:\[(x|X| )\]\s*)?(.+)$/
+                );
 
-        if (matchItem) {
-            guardarParrafo();
+            if (matchItem) {
+                guardarParrafo();
 
-            items.push({
-                completado:
-                    Boolean(
-                        matchItem[1] &&
-                        matchItem[1]
-                            .toLowerCase() === "x"
-                    ),
-                esTarea:
-                    typeof matchItem[1] !==
-                    "undefined",
-                texto:
-                    matchItem[2].trim()
-            });
+                items.push({
+                    completado:
+                        Boolean(
+                            matchItem[1] &&
+                            matchItem[1]
+                                .toLowerCase() ===
+                                "x"
+                        ),
 
-            return;
+                    esTarea:
+                        typeof matchItem[1] !==
+                        "undefined",
+
+                    texto:
+                        matchItem[2]
+                            .trim()
+                });
+
+                return;
+            }
+
+            if (!linea.trim()) {
+                guardarParrafo();
+                return;
+            }
+
+            parrafoActual.push(
+                linea.trim()
+            );
         }
-
-        if (!linea.trim()) {
-            guardarParrafo();
-            return;
-        }
-
-        parrafoActual.push(
-            linea.trim()
-        );
-    });
+    );
 
     guardarParrafo();
 
@@ -314,76 +412,344 @@ function descomponerContenidoRoadmap(
     };
 }
 
-function tipoRamaRoadmap(titulo) {
+
+function tipoRamaRoadmap(
+    titulo
+) {
     const ramas =
         configuracionRoadmap
             ?.ramas || {};
 
     const clave =
-        Object.keys(ramas).find(
-            nombre =>
-                normalizarTextoRoadmap(
-                    nombre
-                ) ===
-                normalizarTextoRoadmap(
-                    titulo
-                )
-        );
+        Object.keys(ramas)
+            .find(
+                (nombre) =>
+                    normalizarTextoRoadmap(
+                        nombre
+                    ) ===
+                    normalizarTextoRoadmap(
+                        titulo
+                    )
+            );
 
     return clave
         ? ramas[clave].tipo
         : "neutral";
 }
 
-function etiquetaRamaRoadmap(titulo) {
+
+function etiquetaRamaRoadmap(
+    titulo
+) {
     const ramas =
         configuracionRoadmap
             ?.ramas || {};
 
     const clave =
-        Object.keys(ramas).find(
-            nombre =>
-                normalizarTextoRoadmap(
-                    nombre
-                ) ===
-                normalizarTextoRoadmap(
-                    titulo
-                )
-        );
+        Object.keys(ramas)
+            .find(
+                (nombre) =>
+                    normalizarTextoRoadmap(
+                        nombre
+                    ) ===
+                    normalizarTextoRoadmap(
+                        titulo
+                    )
+            );
 
     return clave
         ? ramas[clave].etiqueta
         : titulo;
 }
 
-function normalizarEstadoRoadmap(estado) {
+
+function normalizarEstadoRoadmap(
+    estado
+) {
     const valor =
         normalizarTextoRoadmap(
             estado
         );
 
-    if (valor.includes("complet")) {
+    if (
+        valor.includes(
+            "public"
+        ) ||
+        valor.includes(
+            "complet"
+        ) ||
+        valor.includes(
+            "implement"
+        )
+    ) {
         return "completada";
     }
 
     if (
-        valor.includes("desarrollo") ||
-        valor.includes("progreso") ||
-        valor.includes("actual")
+        valor.includes(
+            "desarrollo"
+        ) ||
+        valor.includes(
+            "progreso"
+        ) ||
+        valor.includes(
+            "actual"
+        )
     ) {
         return "desarrollo";
     }
 
     if (
-        valor.includes("vision futura") ||
-        valor.includes("futuro") ||
-        valor.includes("futura")
+        valor.includes(
+            "vision futura"
+        ) ||
+        valor.includes(
+            "futuro"
+        ) ||
+        valor.includes(
+            "futura"
+        )
     ) {
         return "futura";
     }
 
     return "planeada";
 }
+
+
+function actualizarEtiquetasRoadmap() {
+    integrarChangelogDocumentacionRoadmap();
+
+    /*
+       El Roadmap conserva una sola representación visual.
+       La cronología de hechos realizados ya pertenece a
+       Historial y el detalle por versión a Changelog.
+    */
+    const controlesVista =
+        document.querySelector(
+            ".roadmap-vistas"
+        );
+
+    if (controlesVista) {
+        controlesVista.remove();
+    }
+
+    const timeline =
+        document.getElementById(
+            "roadmap-timeline"
+        );
+
+    if (timeline) {
+        timeline.remove();
+    }
+
+    const seccion =
+        document.querySelector(
+            ".seccion-roadmap"
+        );
+
+    if (seccion) {
+        const descripcion =
+            seccion.querySelector(
+                ".titulo-seccion > p:last-child"
+            );
+
+        if (descripcion) {
+            descripcion.textContent =
+                "Mapa visual de la versión estable actual y de las actualizaciones planeadas para PW Hub.";
+        }
+    }
+
+    const etiquetasResumen = {
+        "roadmap-total":
+            "Actualizaciones",
+
+        "roadmap-completadas":
+            "Publicadas",
+
+        "roadmap-desarrollo":
+            "En desarrollo",
+
+        "roadmap-futuras":
+            "Planeadas / futuras"
+    };
+
+    Object.entries(
+        etiquetasResumen
+    ).forEach(
+        ([id, texto]) => {
+            const valor =
+                document.getElementById(
+                    id
+                );
+
+            const etiqueta =
+                valor?.parentElement
+                    ?.querySelector("p");
+
+            if (etiqueta) {
+                etiqueta.textContent =
+                    texto;
+            }
+        }
+    );
+
+    const etiquetaProgreso =
+        document.querySelector(
+            ".roadmap-progreso-cabecera span:first-child"
+        );
+
+    if (etiquetaProgreso) {
+        etiquetaProgreso.textContent =
+            "Progreso de actualizaciones";
+    }
+
+    const textosFiltros = {
+        todos:
+            "Todas",
+
+        completada:
+            "Publicadas",
+
+        desarrollo:
+            "En desarrollo",
+
+        planeada:
+            "Planeadas",
+
+        futura:
+            "Visión futura"
+    };
+
+    Object.entries(
+        textosFiltros
+    ).forEach(
+        ([estado, texto]) => {
+            const boton =
+                document.querySelector(
+                    `[data-roadmap-filtro="${estado}"]`
+                );
+
+            if (boton) {
+                boton.textContent =
+                    texto;
+            }
+        }
+    );
+
+    const tarjetaRoadmap =
+        [
+            ...document.querySelectorAll(
+                ".tarjeta-documento"
+            )
+        ].find(
+            (tarjeta) =>
+                normalizarTextoRoadmap(
+                    tarjeta.querySelector("h3")
+                        ?.textContent
+                ) ===
+                "roadmap"
+        );
+
+    if (tarjetaRoadmap) {
+        const descripcion =
+            tarjetaRoadmap.querySelector(
+                "h3 + p"
+            );
+
+        if (descripcion) {
+            descripcion.textContent =
+                "Fuente principal de las actualizaciones planeadas para el portafolio.";
+        }
+    }
+}
+
+
+function integrarChangelogDocumentacionRoadmap() {
+    const contenedor =
+        document.querySelector(
+            ".contenedor-documentos"
+        );
+
+    if (
+        !contenedor ||
+        contenedor.querySelector(
+            "[data-changelog-doc]"
+        )
+    ) {
+        return;
+    }
+
+    const tarjetaRoadmap =
+        [
+            ...contenedor.querySelectorAll(
+                ".tarjeta-documento"
+            )
+        ].find(
+            (tarjeta) =>
+                normalizarTextoRoadmap(
+                    tarjeta.querySelector("h3")
+                        ?.textContent
+                ) ===
+                "roadmap"
+        );
+
+    const tarjeta =
+        document.createElement(
+            "article"
+        );
+
+    tarjeta.className =
+        "tarjeta-documento";
+
+    tarjeta.innerHTML = `
+        <p class="tipo-documento">Versiones</p>
+        <h3>Changelog</h3>
+        <p>Registro de versiones de PW Hub. v1.0.0 conserva la construcción histórica completa.</p>
+        <button
+            class="boton-documento"
+            type="button"
+            data-changelog-doc
+        >
+            Ver Changelog
+        </button>
+    `;
+
+    const boton =
+        tarjeta.querySelector(
+            "[data-changelog-doc]"
+        );
+
+    if (boton) {
+        boton.addEventListener(
+            "click",
+            () => {
+                if (
+                    typeof window
+                        .cargarDocumentoHub ===
+                    "function"
+                ) {
+                    window
+                        .cargarDocumentoHub(
+                            "CHANGELOG.md"
+                        );
+                }
+            }
+        );
+    }
+
+    if (tarjetaRoadmap) {
+        contenedor.insertBefore(
+            tarjeta,
+            tarjetaRoadmap
+        );
+    } else {
+        contenedor.appendChild(
+            tarjeta
+        );
+    }
+}
+
 
 function configurarControlesRoadmap() {
     if (
@@ -392,120 +758,92 @@ function configurarControlesRoadmap() {
         return;
     }
 
-    controlesRoadmapConfigurados = true;
+    controlesRoadmapConfigurados =
+        true;
 
     document
         .querySelectorAll(
             "[data-roadmap-filtro]"
         )
-        .forEach(boton => {
-            boton.addEventListener(
-                "click",
-                () => {
-                    document
-                        .querySelectorAll(
-                            "[data-roadmap-filtro]"
-                        )
-                        .forEach(
-                            elemento =>
-                                elemento
-                                    .classList
-                                    .remove(
-                                        "activo"
-                                    )
+        .forEach(
+            (boton) => {
+                boton.addEventListener(
+                    "click",
+                    () => {
+                        document
+                            .querySelectorAll(
+                                "[data-roadmap-filtro]"
+                            )
+                            .forEach(
+                                (elemento) =>
+                                    elemento
+                                        .classList
+                                        .remove(
+                                            "activo"
+                                        )
+                            );
+
+                        boton.classList.add(
+                            "activo"
                         );
 
-                    boton.classList.add(
-                        "activo"
-                    );
+                        filtroRoadmapActual =
+                            boton.dataset
+                                .roadmapFiltro;
 
-                    filtroRoadmapActual =
-                        boton.dataset
-                            .roadmapFiltro;
+                        renderizarRoadmap();
+                    }
+                );
+            }
+        );
 
-                    renderizarRoadmap();
-                }
-            );
-        });
 
-    document
-        .querySelectorAll(
-            "[data-roadmap-vista]"
-        )
-        .forEach(boton => {
-            boton.addEventListener(
-                "click",
-                () => {
-                    document
-                        .querySelectorAll(
-                            "[data-roadmap-vista]"
-                        )
-                        .forEach(
-                            elemento =>
-                                elemento
-                                    .classList
-                                    .remove(
-                                        "activo"
-                                    )
-                        );
-
-                    boton.classList.add(
-                        "activo"
-                    );
-
-                    vistaRoadmapActual =
-                        boton.dataset
-                            .roadmapVista;
-
-                    renderizarRoadmap();
-                }
-            );
-        });
 }
 
+
 function actualizarResumenRoadmap() {
-    const completadas =
-        fasesRoadmap.filter(
-            fase =>
-                fase.estado ===
+    const publicadas =
+        actualizacionesRoadmap.filter(
+            (actualizacion) =>
+                actualizacion.estado ===
                 "completada"
         ).length;
 
     const desarrollo =
-        fasesRoadmap.filter(
-            fase =>
-                fase.estado ===
+        actualizacionesRoadmap.filter(
+            (actualizacion) =>
+                actualizacion.estado ===
                 "desarrollo"
         ).length;
 
     const futuras =
-        fasesRoadmap.filter(
-            fase =>
+        actualizacionesRoadmap.filter(
+            (actualizacion) =>
                 [
                     "planeada",
                     "futura"
                 ].includes(
-                    fase.estado
+                    actualizacion.estado
                 )
         ).length;
 
     const porcentaje =
-        fasesRoadmap.length
+        actualizacionesRoadmap.length
             ? Math.round(
-                completadas /
-                fasesRoadmap.length *
+                publicadas /
+                actualizacionesRoadmap.length *
                 100
             )
             : 0;
 
     asignarRoadmap(
         "roadmap-total",
-        fasesRoadmap.length
+        actualizacionesRoadmap.length
     );
 
     asignarRoadmap(
         "roadmap-completadas",
-        completadas
+        publicadas
     );
 
     asignarRoadmap(
@@ -534,20 +872,22 @@ function actualizarResumenRoadmap() {
     }
 }
 
-function fasesRoadmapVisibles() {
+
+function actualizacionesRoadmapVisibles() {
     if (
         filtroRoadmapActual ===
         "todos"
     ) {
-        return fasesRoadmap;
+        return actualizacionesRoadmap;
     }
 
-    return fasesRoadmap.filter(
-        fase =>
-            fase.estado ===
+    return actualizacionesRoadmap.filter(
+        (actualizacion) =>
+            actualizacion.estado ===
             filtroRoadmapActual
     );
 }
+
 
 function renderizarRoadmap() {
     const mapa =
@@ -555,38 +895,15 @@ function renderizarRoadmap() {
             "roadmap-contenedor"
         );
 
-    const timeline =
-        document.getElementById(
-            "roadmap-timeline"
-        );
-
-    if (!mapa || !timeline) {
-        return;
-    }
-
-    const fases =
-        fasesRoadmapVisibles();
-
-    if (
-        vistaRoadmapActual ===
-        "timeline"
-    ) {
-        mapa.hidden = true;
-        timeline.hidden = false;
-
-        renderizarTimelineRoadmap(
-            fases
-        );
-
+    if (!mapa) {
         return;
     }
 
     mapa.hidden = false;
-    timeline.hidden = true;
 
     renderizarMapaRoadmapEn(
         mapa,
-        fases,
+        actualizacionesRoadmapVisibles(),
         {
             documento: false,
             expandirTodo: false
@@ -594,17 +911,18 @@ function renderizarRoadmap() {
     );
 }
 
+
 function renderizarMapaRoadmapEn(
     contenedor,
-    fases,
+    actualizaciones,
     opciones = {}
 ) {
     contenedor.innerHTML = "";
 
-    if (!fases.length) {
+    if (!actualizaciones.length) {
         contenedor.innerHTML = `
             <p class="estado-carga">
-                No hay fases en este filtro.
+                No hay actualizaciones en este filtro.
             </p>
         `;
 
@@ -621,24 +939,108 @@ function renderizarMapaRoadmapEn(
             ? "roadmap-mapa roadmap-mapa-documento"
             : "roadmap-mapa";
 
-    fases.forEach(fase => {
-        mapa.appendChild(
-            crearNodoRoadmap(
-                fase,
-                opciones
-            )
-        );
-    });
+    actualizaciones.forEach(
+        (actualizacion) => {
+            mapa.appendChild(
+                crearNodoRoadmap(
+                    actualizacion,
+                    opciones
+                )
+            );
+        }
+    );
 
-    contenedor.appendChild(mapa);
+    contenedor.appendChild(
+        mapa
+    );
+
+    configurarEnlacesDocumentacionRoadmap(
+        mapa
+    );
 
     configurarConectoresRoadmap(
         mapa
     );
 }
 
+
+function configurarEnlacesDocumentacionRoadmap(
+    contenedor
+) {
+    if (!contenedor) {
+        return;
+    }
+
+    const documentos =
+        new Set([
+            "README.md",
+            "HISTORIAL.md",
+            "CHANGELOG.md",
+            "ROADMAP.md"
+        ]);
+
+    contenedor
+        .querySelectorAll("a[href]")
+        .forEach((enlace) => {
+            const href =
+                String(
+                    enlace.getAttribute(
+                        "href"
+                    ) || ""
+                )
+                    .replace(/^\.\//, "")
+                    .split("#")[0];
+
+            if (
+                !documentos.has(href)
+            ) {
+                return;
+            }
+
+            enlace.addEventListener(
+                "click",
+                (evento) => {
+                    evento.preventDefault();
+
+                    /*
+                       Los enlaces de documentación que aparecen
+                       dentro del Roadmap deben funcionar incluso
+                       cuando la sección Documentación está oculta
+                       por el perfil Minimal.
+
+                       Por eso se abren en el visor completo de
+                       Markdown, en lugar de depender del visor
+                       incrustado de #documentacion.
+                    */
+                    const archivo =
+                        new URL(
+                            `docs/${href}`,
+                            window.location.href
+                        ).href;
+
+                    const titulo =
+                        href.replace(
+                            /\.md$/i,
+                            ""
+                        );
+
+                    const parametros =
+                        new URLSearchParams({
+                            archivo,
+                            tipo: "markdown",
+                            titulo
+                        });
+
+                    window.location.href =
+                        `vistas/trabajo.html?${parametros.toString()}`;
+                }
+            );
+        });
+}
+
+
 function crearNodoRoadmap(
-    fase,
+    actualizacion,
     opciones
 ) {
     const nodo =
@@ -647,15 +1049,15 @@ function crearNodoRoadmap(
         );
 
     nodo.className =
-        `roadmap-mapa-nodo ${fase.estado}`;
+        `roadmap-mapa-nodo ${actualizacion.estado}`;
 
-    nodo.dataset.faseRoadmap =
-        fase.numero;
+    nodo.dataset.versionRoadmap =
+        actualizacion.version;
 
     const expandido =
         opciones.expandirTodo ||
         debeExpandirseRoadmap(
-            fase
+            actualizacion
         );
 
     if (expandido) {
@@ -674,7 +1076,9 @@ function crearNodoRoadmap(
 
     eje.innerHTML = `
         <span>
-            ${fase.numero}
+            ${escaparHtmlRoadmap(
+                actualizacion.versionCorta
+            )}
         </span>
     `;
 
@@ -683,7 +1087,9 @@ function crearNodoRoadmap(
             "button"
         );
 
-    principal.type = "button";
+    principal.type =
+        "button";
+
     principal.className =
         "roadmap-nodo-principal";
 
@@ -694,19 +1100,21 @@ function crearNodoRoadmap(
 
     principal.innerHTML = `
         <span class="roadmap-nodo-kicker">
-            Fase ${fase.numero}
+            ${escaparHtmlRoadmap(
+                actualizacion.version
+            )}
         </span>
 
         <span class="roadmap-nodo-titulo">
             ${escaparHtmlRoadmap(
-                fase.titulo
+                actualizacion.titulo
             )}
         </span>
 
         <span class="roadmap-nodo-pie">
             <span class="roadmap-estado">
                 ${escaparHtmlRoadmap(
-                    fase.estadoTexto
+                    actualizacion.estadoTexto
                 )}
             </span>
 
@@ -728,19 +1136,25 @@ function crearNodoRoadmap(
         "roadmap-ramas";
 
     const secciones =
-        fase.secciones.length
-            ? fase.secciones
+        actualizacion.secciones.length
+            ? actualizacion.secciones
             : [
                 {
-                    titulo: "Objetivo",
+                    titulo:
+                        "Objetivo",
+
                     contenido:
-                        fase.objetivo ||
-                        "Evolución documentada del Hub.",
-                    tipo: "objetivo",
+                        actualizacion.objetivo ||
+                        "Actualización planeada de PW Hub.",
+
+                    tipo:
+                        "objetivo",
+
                     introduccion: [
-                        fase.objetivo ||
-                        "Evolución documentada del Hub."
+                        actualizacion.objetivo ||
+                        "Actualización planeada de PW Hub."
                     ],
+
                     items: []
                 }
             ];
@@ -819,6 +1233,7 @@ function crearNodoRoadmap(
     return nodo;
 }
 
+
 function crearRamaRoadmap(
     seccion,
     indice
@@ -874,7 +1289,7 @@ function crearRamaRoadmap(
         seccion.introduccion.length
     ) {
         seccion.introduccion.forEach(
-            parrafo => {
+            (parrafo) => {
                 const hojaTexto =
                     document.createElement(
                         "div"
@@ -889,7 +1304,9 @@ function crearRamaRoadmap(
                     <div>
                         ${
                             window.marked
-                                ? marked.parse(parrafo)
+                                ? marked.parse(
+                                    parrafo
+                                )
                                 : `<p>${escaparHtmlRoadmap(parrafo)}</p>`
                         }
                     </div>
@@ -959,6 +1376,7 @@ function crearRamaRoadmap(
     return rama;
 }
 
+
 function crearHojaRoadmap(
     item,
     seccion,
@@ -1023,8 +1441,7 @@ function crearHojaRoadmap(
                 ${htmlTexto}
             </p>
         `;
-    }
-    else {
+    } else {
         hoja.classList.add(
             "roadmap-hoja-texto"
         );
@@ -1044,81 +1461,22 @@ function crearHojaRoadmap(
     return hoja;
 }
 
+
 function debeExpandirseRoadmap(
-    fase
+    actualizacion
 ) {
     const estados =
         configuracionRoadmap
             ?.expandirEstados ||
-        ["desarrollo"];
+        [
+            "desarrollo"
+        ];
 
     return estados.includes(
-        fase.estado
+        actualizacion.estado
     );
 }
 
-function renderizarTimelineRoadmap(
-    fases
-) {
-    const contenedor =
-        document.getElementById(
-            "roadmap-timeline"
-        );
-
-    contenedor.innerHTML = "";
-
-    if (!fases.length) {
-        contenedor.innerHTML = `
-            <p class="estado-carga">
-                No hay fases en este filtro.
-            </p>
-        `;
-
-        return;
-    }
-
-    fases.forEach(fase => {
-        const item =
-            document.createElement(
-                "article"
-            );
-
-        item.className =
-            `roadmap-timeline-item ${fase.estado}`;
-
-        item.innerHTML = `
-            <div class="roadmap-timeline-numero">
-                ${fase.numero}
-            </div>
-
-            <div>
-                <p class="roadmap-timeline-kicker">
-                    ${escaparHtmlRoadmap(
-                        fase.estadoTexto
-                    )}
-                </p>
-
-                <h3>
-                    Fase ${fase.numero} ·
-                    ${escaparHtmlRoadmap(
-                        fase.titulo
-                    )}
-                </h3>
-
-                <p>
-                    ${escaparHtmlRoadmap(
-                        fase.objetivo ||
-                        "Evolución documentada del Hub académico."
-                    )}
-                </p>
-            </div>
-        `;
-
-        contenedor.appendChild(
-            item
-        );
-    });
-}
 
 async function renderizarRoadmapDocumento(
     contenedor
@@ -1135,10 +1493,10 @@ async function renderizarRoadmapDocumento(
     introduccion.className =
         "roadmap-documento-intro";
 
-    const completadas =
-        fasesRoadmap.filter(
-            fase =>
-                fase.estado ===
+    const publicadas =
+        actualizacionesRoadmap.filter(
+            (actualizacion) =>
+                actualizacion.estado ===
                 "completada"
         ).length;
 
@@ -1149,24 +1507,24 @@ async function renderizarRoadmapDocumento(
             </p>
 
             <h4>
-                Evolución técnica de PW Hub
+                Actualizaciones de PW Hub
             </h4>
 
             <p class="roadmap-documento-ayuda">
-                Cada fase se divide en ramas y cada viñeta
-                se representa como una subrama independiente.
+                Cada versión se divide en objetivos, alcance y
+                resultados esperados mediante ramas independientes.
             </p>
         </div>
 
         <div class="roadmap-documento-resumen">
             <span>
-                <strong>${completadas}</strong>
-                completadas
+                <strong>${publicadas}</strong>
+                publicadas
             </span>
 
             <span>
-                <strong>${fasesRoadmap.length}</strong>
-                fases
+                <strong>${actualizacionesRoadmap.length}</strong>
+                actualizaciones
             </span>
         </div>
     `;
@@ -1186,7 +1544,7 @@ async function renderizarRoadmapDocumento(
 
     renderizarMapaRoadmapEn(
         mapaCompleto,
-        fasesRoadmap,
+        actualizacionesRoadmap,
         {
             documento: true,
             expandirTodo: true
@@ -1194,11 +1552,9 @@ async function renderizarRoadmapDocumento(
     );
 }
 
+
 /* =========================================================
    CONECTORES CANVAS
-   Dibuja el árbol directamente sobre un <canvas> superpuesto
-   al roadmap. Las posiciones se calculan desde los elementos
-   reales del DOM, por lo que las líneas se adaptan al layout.
    ========================================================= */
 
 const mapasRoadmapCanvas =
@@ -1207,6 +1563,7 @@ const mapasRoadmapCanvas =
 let frameRoadmapCanvas = null;
 let resizeRoadmapCanvasConfigurado = false;
 
+
 function configurarConectoresRoadmap(
     mapa
 ) {
@@ -1214,7 +1571,9 @@ function configurarConectoresRoadmap(
         return;
     }
 
-    mapasRoadmapCanvas.add(mapa);
+    mapasRoadmapCanvas.add(
+        mapa
+    );
 
     let canvas =
         mapa.querySelector(
@@ -1235,7 +1594,9 @@ function configurarConectoresRoadmap(
             "true"
         );
 
-        mapa.prepend(canvas);
+        mapa.prepend(
+            canvas
+        );
     }
 
     if (
@@ -1251,7 +1612,9 @@ function configurarConectoresRoadmap(
                 }
             );
 
-        observador.observe(mapa);
+        observador.observe(
+            mapa
+        );
 
         mapa._observadorRoadmapCanvas =
             observador;
@@ -1279,6 +1642,7 @@ function configurarConectoresRoadmap(
     );
 }
 
+
 function solicitarDibujoConectoresRoadmap(
     mapaEspecifico = null
 ) {
@@ -1297,33 +1661,39 @@ function solicitarDibujoConectoresRoadmap(
     frameRoadmapCanvas =
         requestAnimationFrame(
             () => {
-                frameRoadmapCanvas = null;
+                frameRoadmapCanvas =
+                    null;
 
                 [
                     ...mapasRoadmapCanvas
-                ].forEach(mapa => {
-                    if (!mapa.isConnected) {
-                        if (
-                            mapa._observadorRoadmapCanvas
-                        ) {
-                            mapa
-                                ._observadorRoadmapCanvas
-                                .disconnect();
+                ].forEach(
+                    (mapa) => {
+                        if (!mapa.isConnected) {
+                            if (
+                                mapa._observadorRoadmapCanvas
+                            ) {
+                                mapa
+                                    ._observadorRoadmapCanvas
+                                    .disconnect();
+                            }
+
+                            mapasRoadmapCanvas
+                                .delete(
+                                    mapa
+                                );
+
+                            return;
                         }
 
-                        mapasRoadmapCanvas
-                            .delete(mapa);
-
-                        return;
+                        dibujarConectoresRoadmap(
+                            mapa
+                        );
                     }
-
-                    dibujarConectoresRoadmap(
-                        mapa
-                    );
-                });
+                );
             }
         );
 }
+
 
 function dibujarConectoresRoadmap(
     mapa
@@ -1340,22 +1710,6 @@ function dibujarConectoresRoadmap(
     const rectMapa =
         mapa.getBoundingClientRect();
 
-    /*
-       El ancho del canvas debe seguir el ancho VISIBLE del mapa.
-
-       Antes se utilizaba mapa.scrollWidth. Como el propio canvas es
-       un hijo absoluto del mapa, después de ciertos cambios de tamaño
-       podía terminar participando en el cálculo del scrollWidth y
-       alimentar un crecimiento horizontal acumulativo.
-
-       Resultado anterior:
-       - aparecía espacio vacío a la derecha;
-       - la página permitía scroll horizontal;
-       - el problema podía empeorar al redimensionar varias veces.
-
-       Ahora el canvas usa exclusivamente el ancho real del contenedor.
-       La altura sí puede seguir el contenido vertical del roadmap.
-    */
     const ancho =
         Math.max(
             1,
@@ -1378,7 +1732,8 @@ function dibujarConectoresRoadmap(
     const dpr =
         Math.max(
             1,
-            window.devicePixelRatio || 1
+            window.devicePixelRatio ||
+            1
         );
 
     canvas.style.width =
@@ -1398,7 +1753,9 @@ function dibujarConectoresRoadmap(
         );
 
     const contexto =
-        canvas.getContext("2d");
+        canvas.getContext(
+            "2d"
+        );
 
     if (!contexto) {
         return;
@@ -1438,34 +1795,40 @@ function dibujarConectoresRoadmap(
         nodos
     );
 
-    nodos.forEach(nodo => {
-        dibujarArbolFaseCanvas(
-            contexto,
-            mapa,
-            nodo
-        );
-    });
+    nodos.forEach(
+        (nodo) => {
+            dibujarArbolActualizacionCanvas(
+                contexto,
+                mapa,
+                nodo
+            );
+        }
+    );
 }
+
 
 function dibujarEjePrincipalCanvas(
     contexto,
     mapa,
     nodos
 ) {
-    const puntos = nodos
-        .map(nodo =>
-            nodo.querySelector(
-                ":scope > .roadmap-mapa-eje span"
+    const puntos =
+        nodos
+            .map(
+                (nodo) =>
+                    nodo.querySelector(
+                        ":scope > .roadmap-mapa-eje span"
+                    )
             )
-        )
-        .filter(Boolean)
-        .map(elemento =>
-            geometriaRoadmapCanvas(
-                elemento,
-                mapa
+            .filter(Boolean)
+            .map(
+                (elemento) =>
+                    geometriaRoadmapCanvas(
+                        elemento,
+                        mapa
+                    )
             )
-        )
-        .filter(Boolean);
+            .filter(Boolean);
 
     if (puntos.length < 2) {
         return;
@@ -1474,7 +1837,8 @@ function dibujarEjePrincipalCanvas(
     const x =
         promedioRoadmapCanvas(
             puntos.map(
-                punto => punto.cx
+                (punto) =>
+                    punto.cx
             )
         );
 
@@ -1500,7 +1864,8 @@ function dibujarEjePrincipalCanvas(
     );
 }
 
-function dibujarArbolFaseCanvas(
+
+function dibujarArbolActualizacionCanvas(
     contexto,
     mapa,
     nodo
@@ -1546,7 +1911,7 @@ function dibujarArbolFaseCanvas(
         geoCirculo,
         geoPrincipal,
         colorRoadmapCanvas(
-            "fase"
+            "actualizacion"
         ),
         1.2
     );
@@ -1565,28 +1930,29 @@ function dibujarArbolFaseCanvas(
         )
     ];
 
-    const categorias = ramas
-        .map(rama => ({
-            rama,
-            cabecera:
-                rama.querySelector(
-                    ":scope > .roadmap-rama-cabecera"
-                )
-        }))
-        .filter(
-            item => item.cabecera
-        );
+    const categorias =
+        ramas
+            .map(
+                (rama) => ({
+                    rama,
+                    cabecera:
+                        rama.querySelector(
+                            ":scope > .roadmap-rama-cabecera"
+                        )
+                })
+            )
+            .filter(
+                (item) =>
+                    item.cabecera
+            );
 
-    /*
-       Tronco compartido entre la fase y TODAS sus categorías.
-       No se dibuja una ruta separada por categoría.
-    */
     dibujarTroncoCompartidoCanvas(
         contexto,
         mapa,
         geoPrincipal,
         categorias.map(
-            item => item.cabecera
+            (item) =>
+                item.cabecera
         ),
         colorRoadmapCanvas(
             "categoria"
@@ -1596,7 +1962,10 @@ function dibujarArbolFaseCanvas(
     );
 
     categorias.forEach(
-        ({ rama, cabecera }) => {
+        ({
+            rama,
+            cabecera
+        }) => {
             const geoCabecera =
                 geometriaRoadmapCanvas(
                     cabecera,
@@ -1617,10 +1986,6 @@ function dibujarArbolFaseCanvas(
                 return;
             }
 
-            /*
-               Cada categoría tiene UN solo tronco.
-               Todas las viñetas salen de ese tronco.
-            */
             dibujarTroncoCompartidoCanvas(
                 contexto,
                 mapa,
@@ -1638,6 +2003,7 @@ function dibujarArbolFaseCanvas(
     );
 }
 
+
 function dibujarConexionNodoCanvas(
     contexto,
     desde,
@@ -1646,7 +2012,8 @@ function dibujarConexionNodoCanvas(
     grosor
 ) {
     const haciaDerecha =
-        hacia.cx >= desde.cx;
+        hacia.cx >=
+        desde.cx;
 
     const inicioX =
         haciaDerecha
@@ -1658,12 +2025,6 @@ function dibujarConexionNodoCanvas(
             ? hacia.left
             : hacia.right;
 
-    /*
-       Si el centro del círculo queda dentro de la altura
-       de la tarjeta, la conexión puede ser completamente
-       horizontal. Esto evita el pequeño tramo vertical que
-       se veía pegado al borde izquierdo de la tarjeta.
-    */
     const haySuperposicionVertical =
         desde.cy >= hacia.top &&
         desde.cy <= hacia.bottom;
@@ -1719,6 +2080,7 @@ function dibujarConexionNodoCanvas(
     );
 }
 
+
 function dibujarTroncoCompartidoCanvas(
     contexto,
     mapa,
@@ -1730,11 +2092,12 @@ function dibujarTroncoCompartidoCanvas(
 ) {
     const hijos =
         hijosElementos
-            .map(elemento =>
-                geometriaRoadmapCanvas(
-                    elemento,
-                    mapa
-                )
+            .map(
+                (elemento) =>
+                    geometriaRoadmapCanvas(
+                        elemento,
+                        mapa
+                    )
             )
             .filter(Boolean);
 
@@ -1744,11 +2107,6 @@ function dibujarTroncoCompartidoCanvas(
 
     const primerHijo =
         hijos[0];
-
-    const ultimoHijo =
-        hijos[
-            hijos.length - 1
-        ];
 
     const apilados =
         primerHijo.top >=
@@ -1776,6 +2134,7 @@ function dibujarTroncoCompartidoCanvas(
     );
 }
 
+
 function dibujarTroncoVerticalCanvas(
     contexto,
     padre,
@@ -1792,10 +2151,6 @@ function dibujarTroncoVerticalCanvas(
             hijos.length - 1
         ];
 
-    /*
-       El tronco arranca EXACTAMENTE en el borde inferior
-       del padre y llega hasta el centro del último hijo.
-    */
     let troncoX =
         padre.left +
         desplazamiento;
@@ -1831,24 +2186,27 @@ function dibujarTroncoVerticalCanvas(
         grosor
     );
 
-    hijos.forEach(hijo => {
-        dibujarLineaCanvas(
-            contexto,
-            [
-                {
-                    x: troncoX,
-                    y: hijo.cy
-                },
-                {
-                    x: hijo.left,
-                    y: hijo.cy
-                }
-            ],
-            color,
-            grosor
-        );
-    });
+    hijos.forEach(
+        (hijo) => {
+            dibujarLineaCanvas(
+                contexto,
+                [
+                    {
+                        x: troncoX,
+                        y: hijo.cy
+                    },
+                    {
+                        x: hijo.left,
+                        y: hijo.cy
+                    }
+                ],
+                color,
+                grosor
+            );
+        }
+    );
 }
+
 
 function dibujarTroncoLateralCanvas(
     contexto,
@@ -1880,19 +2238,11 @@ function dibujarTroncoLateralCanvas(
             finX
         ) / 2;
 
-    /*
-       El tronco debe cubrir TODAS las ramas, incluso cuando
-       una categoría queda visualmente por encima del centro
-       de la tarjeta padre.
-
-       Antes el tronco comenzaba en padre.cy y solo bajaba
-       hasta el último hijo. Si el primer hijo estaba arriba
-       de padre.cy, su derivación horizontal quedaba flotando.
-    */
     const centrosY = [
         padre.cy,
         ...hijos.map(
-            hijo => hijo.cy
+            (hijo) =>
+                hijo.cy
         )
     ];
 
@@ -1906,9 +2256,6 @@ function dibujarTroncoLateralCanvas(
             ...centrosY
         );
 
-    /*
-       Conexión padre -> tronco.
-    */
     dibujarLineaCanvas(
         contexto,
         [
@@ -1925,9 +2272,6 @@ function dibujarTroncoLateralCanvas(
         grosor
     );
 
-    /*
-       Un único tronco vertical cubre el rango completo.
-    */
     dibujarLineaCanvas(
         contexto,
         [
@@ -1944,30 +2288,30 @@ function dibujarTroncoLateralCanvas(
         grosor
     );
 
-    /*
-       Todas las ramas nacen del mismo tronco continuo.
-    */
-    hijos.forEach(hijo => {
-        dibujarLineaCanvas(
-            contexto,
-            [
-                {
-                    x: troncoX,
-                    y: hijo.cy
-                },
-                {
-                    x:
-                        haciaDerecha
-                            ? hijo.left
-                            : hijo.right,
-                    y: hijo.cy
-                }
-            ],
-            color,
-            grosor
-        );
-    });
+    hijos.forEach(
+        (hijo) => {
+            dibujarLineaCanvas(
+                contexto,
+                [
+                    {
+                        x: troncoX,
+                        y: hijo.cy
+                    },
+                    {
+                        x:
+                            haciaDerecha
+                                ? hijo.left
+                                : hijo.right,
+                        y: hijo.cy
+                    }
+                ],
+                color,
+                grosor
+            );
+        }
+    );
 }
+
 
 function dibujarLineaCanvas(
     contexto,
@@ -2024,6 +2368,7 @@ function dibujarLineaCanvas(
     contexto.restore();
 }
 
+
 function geometriaRoadmapCanvas(
     elemento,
     mapa
@@ -2041,8 +2386,10 @@ function geometriaRoadmapCanvas(
         );
 
     if (
-        estilo.display === "none" ||
-        estilo.visibility === "hidden"
+        estilo.display ===
+            "none" ||
+        estilo.visibility ===
+            "hidden"
     ) {
         return null;
     }
@@ -2073,24 +2420,31 @@ function geometriaRoadmapCanvas(
     return {
         left,
         top,
+
         right:
             left +
             rect.width,
+
         bottom:
             top +
             rect.height,
+
         width:
             rect.width,
+
         height:
             rect.height,
+
         cx:
             left +
             rect.width / 2,
+
         cy:
             top +
             rect.height / 2
     };
 }
+
 
 function colorRoadmapCanvas(
     tipo
@@ -2120,7 +2474,7 @@ function colorRoadmapCanvas(
         eje:
             "rgba(53, 201, 243, 0.46)",
 
-        fase:
+        actualizacion:
             "rgba(113, 143, 163, 0.34)",
 
         categoria:
@@ -2154,6 +2508,7 @@ function colorRoadmapCanvas(
     return colores[tipo] ||
         colores.neutral;
 }
+
 
 function colorConAlphaRoadmapCanvas(
     color,
@@ -2192,6 +2547,7 @@ function colorConAlphaRoadmapCanvas(
     return valor;
 }
 
+
 function obtenerTipoRamaRoadmapCanvas(
     rama
 ) {
@@ -2205,12 +2561,13 @@ function obtenerTipoRamaRoadmapCanvas(
     ];
 
     return tipos.find(
-        tipo =>
+        (tipo) =>
             rama.classList.contains(
                 tipo
             )
     ) || "neutral";
 }
+
 
 function promedioRoadmapCanvas(
     valores
@@ -2226,18 +2583,16 @@ function promedioRoadmapCanvas(
     ) / valores.length;
 }
 
+
 function alinearPixelCanvas(
     valor,
     grosor
 ) {
-    /*
-       Para líneas de 1px o cercanas a 1px, el .5 evita
-       el desenfoque típico del canvas.
-    */
     return grosor <= 1.5
         ? Math.round(valor) + .5
         : Math.round(valor);
 }
+
 
 function limpiarMarkdownRoadmap(
     texto
@@ -2264,6 +2619,7 @@ function limpiarMarkdownRoadmap(
         .trim();
 }
 
+
 function normalizarTextoRoadmap(
     texto
 ) {
@@ -2278,6 +2634,7 @@ function normalizarTextoRoadmap(
         )
         .trim();
 }
+
 
 function asignarRoadmap(
     id,
@@ -2294,6 +2651,7 @@ function asignarRoadmap(
     }
 }
 
+
 function escaparHtmlRoadmap(
     texto
 ) {
@@ -2309,6 +2667,7 @@ function escaparHtmlRoadmap(
 
     return div.innerHTML;
 }
+
 
 window.renderizarRoadmapDocumento =
     renderizarRoadmapDocumento;

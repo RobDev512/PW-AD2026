@@ -3,7 +3,7 @@
 **Número de control:** 23400614  
 **Carrera:** Ingeniería en Sistemas Computacionales  
 **Institución:** Instituto Tecnológico de Tepic  
-**Materia:** Programación Web  
+**Materia:** Programación Web
 
 ---
 
@@ -11,7 +11,7 @@
 
 Esta carpeta contiene las actividades, ejercicios y proyectos realizados durante la materia de **Programación Web**.
 
-Además de los archivos correspondientes a cada unidad, se desarrolló un **Hub académico** que funciona como portafolio visual e índice general del trabajo realizado durante el curso.
+También incluye **PW Hub**, un portafolio web que organiza y presenta el avance académico de forma visual.
 
 🌐 **[Ver portafolio en línea](https://robdev512.github.io/PW-AD2026/23400614_Rodr%C3%ADguez_Maga%C3%B1a_Roberto_Carlos/hub/)**
 
@@ -29,6 +29,32 @@ Además de los archivos correspondientes a cada unidad, se desarrolló un **Hub 
 
 ---
 
+## Estado de PW Hub
+
+**Versión base estable: v1.0.0**
+
+El desarrollo inicial del Hub quedó consolidado en v1.0.0.
+
+El proyecto ya no utiliza fases para organizar su evolución futura. Las mejoras posteriores se documentan como **actualizaciones versionadas**.
+
+La construcción histórica de las 16 fases originales se conserva en:
+
+```text
+hub/docs/CHANGELOG.md
+```
+
+La versión estable actual y las actualizaciones propuestas se encuentran en:
+
+```text
+hub/docs/ROADMAP.md
+```
+
+El mapa comienza en `v1.0.0` como versión publicada actual, continúa con las mejoras previstas desde `v1.1.0` hasta `v1.9.0` y reserva `v2.0.0` para el siguiente salto mayor del Hub.
+
+El avance académico de U1-U5 y las versiones de PW Hub son independientes.
+
+---
+
 ## Organización de archivos
 
 ```text
@@ -42,8 +68,14 @@ Además de los archivos correspondientes a cada unidad, se desarrolló un **Hub 
 │   ├── css/
 │   ├── data/
 │   ├── docs/
+│   │   ├── README.md
+│   │   ├── HISTORIAL.md
+│   │   ├── CHANGELOG.md
+│   │   └── ROADMAP.md
 │   ├── js/
 │   ├── vistas/
+│   │   ├── trabajo.html
+│   │   └── offline.html
 │   └── index.html
 ├── Comandos_Git.md
 ├── Perfil.md
@@ -51,53 +83,97 @@ Además de los archivos correspondientes a cada unidad, se desarrolló un **Hub 
 └── README.md
 ```
 
-Cada carpeta de unidad contiene los ejercicios y actividades desarrollados durante las clases.
+Cada carpeta de unidad contiene ejercicios, actividades y proyectos desarrollados durante el curso.
 
 ---
 
-## Hub académico
+## Funciones principales de PW Hub
 
-El directorio `hub/` contiene un portafolio web desarrollado para organizar y consultar de forma visual el avance de la materia.
-
-Entre sus funciones se encuentran:
+El Hub incluye:
 
 - visualización de las cinco unidades;
-- registro de trabajos realizados;
-- progreso del curso;
+- progreso académico;
 - vistas previas de actividades;
-- búsqueda y filtrado de trabajos;
-- favoritos;
+- explorador de trabajos con búsqueda y filtros;
+- favoritos y destacados;
 - actividad reciente;
 - estadísticas académicas;
 - historial del portafolio;
-- roadmap del desarrollo del Hub;
-- personalización de la interfaz;
-- perfiles de visualización;
-- renderizado interno de documentos Markdown;
-- visor completo de trabajos con modos **Diseño** y **Código**;
-- identidad propia mediante logo e isotipo de PW Hub;
-- favicon propio;
-- diseño adaptable a diferentes tamaños de pantalla.
+- roadmap visual de actualizaciones;
+- visor interno de Markdown;
+- renderizado Markdown con tema oscuro integrado en visor completo, Documentación, miniaturas y vistas previas;
+- visor completo con modos **Diseño** y **Código**;
+- navegación responsive;
+- Configuración flotante;
+- perfiles visuales;
+- materiales y paletas configurables;
+- identidad propia mediante logo, isotipo y favicon;
+- sincronización automática con GitHub;
+- respaldo offline mediante Service Worker;
+- página offline propia.
 
-La información académica se administra principalmente mediante:
+---
 
-```text
-hub/data/unidades.json
-```
+## Sincronización de trabajos
 
-mientras que el historial y la documentación se encuentran en:
+PW Hub mantiene `hub/data/unidades.json` como catálogo base y fuente de metadatos, pero complementa automáticamente esa información con los archivos publicados en U1-U5.
+
+Los nuevos HTML, PDF y Markdown compatibles pueden aparecer en el Hub después de ser subidos al repositorio sin tener que registrar manualmente cada ruta en todas las secciones.
+
+Un solo catálogo sincronizado alimenta:
+
+- Unidades;
+- resumen general;
+- Todos los trabajos;
+- Estadísticas.
+
+`unidades.json` sigue siendo útil para nombres, descripciones, destacados y otros metadatos personalizados.
+
+---
+
+## Documentación
+
+La documentación principal se encuentra en:
 
 ```text
 hub/docs/
 ```
 
+### `README.md`
+
+Arquitectura y funcionamiento actual.
+
+### `HISTORIAL.md`
+
+Eventos académicos y técnicos que ya ocurrieron.
+
+### `CHANGELOG.md`
+
+Historial de versiones. `v1.0.0` contiene el desarrollo histórico completo de la etapa basada en fases.
+
+### `ROADMAP.md`
+
+Actualizaciones futuras planeadas para PW Hub.
+
 ---
 
-## Identidad visual de PW Hub
+## Versionado
 
-Durante la Fase 16 se creó una familia propia de recursos visuales para el portafolio.
+El Hub utiliza a partir de v1.0.0 un esquema tipo SemVer como referencia:
 
-Los archivos se encuentran en:
+```text
+v1.0.0  Base estable
+v1.1.0  Nueva actualización funcional
+v1.1.1  Corrección puntual
+```
+
+Las versiones planeadas son opcionales y no tienen una fecha obligatoria de implementación.
+
+---
+
+## Identidad visual
+
+Los recursos de marca de PW Hub se encuentran en:
 
 ```text
 hub/assets/branding/
@@ -106,85 +182,67 @@ hub/assets/branding/
 La familia incluye:
 
 - logo maestro;
-- versiones optimizadas del logo;
 - logo horizontal;
 - logo compacto;
-- isotipo principal y alternativas;
-- favicon en 16, 32, 192 y 512 píxeles.
+- isotipo principal y variantes;
+- favicon en varios tamaños.
 
-También se encuentra en desarrollo un **hero generado completamente con HTML y CSS**, sin depender de una imagen de fondo.
-
----
-
-## Estado técnico del Hub
-
-El desarrollo técnico principal fue cerrado originalmente con 15 fases.
-
-Posteriormente se completó la **Fase 16 - Identidad visual y experiencia de contenidos**. El roadmap estructural permanece cerrado en **16 / 16**.
-
-Entre los avances de esta fase ya se encuentran:
-
-- reorganización de la estructura y formato del código;
-- visor completo de trabajos en `hub/vistas/trabajo.html`;
-- renderizado interno de Markdown;
-- modos Diseño y Código;
-- integración de logo y favicon;
-- familia completa de branding;
-- roadmap visual jerárquico con conexiones Canvas;
-- hero generado por código, consolidado y con identidad institucional integrada;
-- reducción y equilibrio de la altura del banner;
-- ajuste del roadmap visual para pantallas amplias;
-- compactación del branding del hero en vistas estrechas.
-- corrección del tronco Canvas para mantener ramas continuas;
-- corrección del overflow horizontal causado por el Canvas al redimensionar;
-- protección frente a desplazamiento horizontal accidental de la página.
-- ajuste del contenedor institucional TecNM + ITT en vistas estrechas.
-- compensación del margen transparente interno del logo TecNM;
-- navegación inferior compacta para celular;
-- paneles móviles dinámicos para Curso y Explorar;
-- Configuración flotante independiente de la navbar.
-- comportamiento sticky restaurado en escritorio y media pantalla;
-- navegación dinámica sincronizada con Configuración;
-- corrección del logo TecNM en media pantalla.
-- breakpoint móvil reducido a 650 px para separar correctamente media pantalla de vista angosta;
-- agrupación visual de Explorar y Documentación dentro del panel móvil.
-- navbar horizontal compactada en media pantalla para conservar una sola fila.
-- panel móvil corregido para respetar perfiles y secciones ocultas desde Configuración.
-- separación correcta entre Roadmap visual y `ROADMAP.md` renderizado en Documentación.
-- refinamiento final de tarjetas, botones, estados e indicadores;
-- mejora visual de trabajos destacados;
-- revisión final de sombras, espaciados y coherencia visual;
-- safe-area móvil, foco visible y soporte para movimiento reducido.
-
-La Fase 16 fue completada y validada. El roadmap estructural del PW Hub queda cerrado en 16 / 16 fases; los cambios posteriores corresponden a mantenimiento y actualización de contenidos académicos.
+El hero principal está construido con HTML y CSS y combina la identidad de PW Hub con los elementos institucionales del TecNM y del Instituto Tecnológico de Tepic.
 
 ---
 
-## Actividades registradas
+## Apariencia
 
-### Unidad 1
+PW Hub dispone de ocho materiales visuales:
 
-- Perfil personal.
-- Comandos de Git.
-- Catálogo de Películas.
+- Normal;
+- Liquid Glass;
+- Frosted Glass;
+- Acrílico;
+- Minimal;
+- Neon Tech;
+- Mate;
+- Titanio.
 
-### Unidad 2
+Los materiales se combinan con paletas compatibles, color de acento, densidad y niveles de movimiento.
 
-- Ejercicio 1 - Receta de Pan Francés.
-- Ejercicio 2 - Tears for Fears.
-- Ejercicio 5 - CineMundo.
+Las preferencias se guardan localmente en el navegador.
 
-### Unidad 3
+---
 
-- Ejercicio 1 - Modelo de caja CSS.
+## Modo sin conexión
 
-Las nuevas actividades se agregarán conforme avance la materia.
+Después de una visita con internet, el Service Worker puede reutilizar recursos guardados y trabajos cacheados.
+
+Si una navegación no está disponible ni en red ni en caché, PW Hub muestra:
+
+```text
+hub/vistas/offline.html
+```
+
+La base v1.0.0 sigue siendo un sitio web convencional y no una PWA instalable. La instalación se conserva como posibilidad futura dentro del roadmap.
+
+---
+
+
+### Markdown oscuro consistente
+
+La base v1.0.0 utiliza tema oscuro en las cuatro superficies donde se renderiza Markdown: visor completo, visor incrustado de Documentación, miniaturas de trabajos por unidad y modal de Vista previa. Los HTML y PDF conservan su presentación original.
+
+
+## Flujo para nuevas actividades
+
+Una actividad nueva normalmente requiere:
+
+1. guardar el trabajo en la unidad correspondiente;
+2. hacer commit y push;
+3. dejar que el sincronizador lo detecte si el formato es compatible;
+4. editar `unidades.json` solo cuando se deseen metadatos personalizados;
+5. registrar el evento en `HISTORIAL.md` cuando sea relevante.
 
 ---
 
 ## Tecnologías utilizadas
-
-Durante el curso y el desarrollo del portafolio se han utilizado principalmente:
 
 - HTML;
 - CSS;
@@ -193,26 +251,16 @@ Durante el curso y el desarrollo del portafolio se han utilizado principalmente:
 - JSON;
 - Git;
 - GitHub;
-- GitHub Pages.
+- GitHub Pages;
+- Service Worker / Cache API.
 
 ---
 
-## Control de versiones
-
-Los archivos de esta carpeta forman parte del repositorio académico:
+## Repositorio
 
 **[RobDev512/PW-AD2026](https://github.com/RobDev512/PW-AD2026)**
 
 Git y GitHub se utilizan para mantener el historial de cambios y registrar las actividades realizadas durante el curso.
-
----
-
-## Publicación
-
-El Hub se encuentra publicado mediante **GitHub Pages**.
-
-🌐 **Portafolio:**  
-https://robdev512.github.io/PW-AD2026/23400614_Rodr%C3%ADguez_Maga%C3%B1a_Roberto_Carlos/hub/
 
 ---
 
@@ -221,120 +269,3 @@ https://robdev512.github.io/PW-AD2026/23400614_Rodr%C3%ADguez_Maga%C3%B1a_Robert
 **Roberto Carlos Rodríguez Magaña**  
 Ingeniería en Sistemas Computacionales  
 Instituto Tecnológico de Tepic
-
-## Personalización avanzada
-
-Después de completar el roadmap estructural en **16 / 16 fases**, PW Hub incorporó una mejora de mantenimiento visual con temas oscuros alternativos, estilos Normal / Liquid Glass / Minimal / Neon Tech y niveles de movimiento configurables.
-
-La configuración sigue siendo local al navegador y conserva compatibilidad con preferencias guardadas anteriormente.
-
-### Liquid Glass V2
-
-El modo Liquid Glass incorpora un tratamiento más profundo de borde, reflejo y transparencia inspirado en interfaces de vidrio líquido modernas, junto con nuevas microanimaciones opcionales en el modo Dinámico.
-
-### Apariencia avanzada V4 reparada
-
-Se corrigieron regresiones de navegación provocadas por animaciones estructurales. Liquid Glass mantiene ahora mayor blur y contraste en menús sin modificar su geometría, y las animaciones Dinámicas se limitan a propiedades visuales seguras.
-
-### Liquid Glass V5 ajustado
-
-Se calibró el efecto Liquid Glass: más blur real en menús desplegables y menos blur en otras superficies para obtener un acabado más cercano al estilo tipo iPhone, sin romper la navegación ni la estructura.
-
-### Liquid Glass V6
-
-El sistema Liquid Glass separa ahora correctamente el material de la navbar y el blur de sus menús desplegables. Esto permite un desenfoque visible en los dropdowns y un acabado más nítido en el resto del Hub.
-
-### Liquid Glass V7
-
-El modo Liquid Glass fue equilibrado para conservar blur visible en menús sin hacer transparentes las superficies. Tarjetas, navegación y paneles utilizan ahora materiales más sólidos y definidos.
-
-### Liquid Glass V8 consolidado
-
-Se limpió la hoja de apariencia avanzada para eliminar reglas Liquid Glass duplicadas y dejar una única implementación estable. Esto hace que los cambios de material, opacidad y blur sean realmente predecibles.
-
-### Liquid Glass V9
-
-El aspecto general de Liquid Glass volvió a la versión V2. Solo los menús de navegación conservan un ajuste nuevo de blur para distinguirse mejor del contenido posterior sin volverse demasiado transparentes.
-
-### Liquid Glass V10
-
-La navbar vuelve a utilizar el blur y los bordes especulares del Liquid Glass V2. El efecto se implementa mediante una capa interna para conservar simultáneamente el blur independiente de los menús desplegables.
-
-### 20 temas oscuros
-
-La personalización final de PW Hub ofrece 20 temas oscuros combinables con los colores de acento, cuatro estilos visuales y tres niveles de movimiento. Con esta ampliación se cierra la etapa planificada de personalización visual.
-
-### Sincronización automática y respaldo offline
-
-PW Hub complementa su catálogo local con una lectura automática del contenido publicado en las carpetas `U1` a `U5` del repositorio. Los trabajos nuevos compatibles pueden aparecer en el Hub sin tener que agregarlos manualmente a la interfaz.
-
-Además, un Service Worker conserva una copia de los recursos esenciales y de los archivos académicos detectados. Después de al menos una visita con conexión, el portafolio puede seguir consultándose sin internet desde el mismo navegador.
-
-### Sincronización resistente a renombres
-
-PW Hub ahora contrasta los trabajos registrados con el árbol actual de GitHub. Los HTML, PDF y Markdown que hayan sido renombrados o eliminados dejan de producir tarjetas 404 después de la sincronización.
-
-### Apariencia compacta y Liquid Glass V11
-
-Los controles de tema oscuro y estilo visual se integraron en una sola sección compacta de Apariencia. Se conservan las 20 paletas y los cuatro materiales, pero sin la extensa cuadrícula de tarjetas que ocupaba gran parte del panel de Configuración en celular.
-
-Liquid Glass V11 mantiene la base visual aprobada y mejora el borde especular, la transmisión del color y el equilibrio entre blur y legibilidad.
-
-### Materiales dependientes y Liquid Glass V12
-
-PW Hub ofrece ahora ocho materiales visuales. Al escoger uno, el selector de paleta muestra únicamente las variantes oscuras compatibles con ese acabado.
-
-Los antiguos desplegables nativos fueron sustituidos visualmente por un combobox propio con menú compacto y desplazamiento interno.
-
-Liquid Glass V12 añade, de forma progresiva, una refracción ligera mediante SVG en navegadores compatibles, manteniendo blur, saturación y bordes especulares como fallback.
-
-### Modo sin conexión final
-
-Después de una visita con internet, PW Hub puede reutilizar los recursos y trabajos almacenados por el navegador. Si se solicita una página que todavía no existe en la caché y no hay conexión, se muestra una página offline propia en lugar de un error genérico del navegador.
-
-El sitio continúa siendo un portafolio web convencional y no incluye funciones de instalación.
-
-### Ajuste puntual del hero móvil
-
-La versión móvil del hero vuelve a mostrar los paneles flotantes **HTML** y **CSS** junto al panel **JS**. El ajuste está aislado a pantallas de hasta 420 px y no modifica escritorio, tablet ni otras secciones del Hub.
-
-### Invalidación de caché del hero
-
-La corrección del espacio superior del banner se aplicó directamente en
-su hoja de estilos original y se añadió versionado a la URL del CSS para
-evitar que el Service Worker sirva una versión anterior.
-
-### Corrección del desplazamiento de 18 px
-
-El espacio superior del Hub provenía del modo de movimiento Sutil:
-`.hub-reveal` aplicaba un desplazamiento vertical de 18 px sin restaurarlo
-cuando el elemento se volvía visible. El estado visible ahora vuelve a
-`translateY(0)` correctamente.
-
-### Alineación óptica del bloque institucional
-
-Como mantenimiento posterior al cierre de la Fase 16, el bloque que contiene
-los logos de **TecNM + Instituto Tecnológico de Tepic** se desplaza visualmente
-**4 px hacia abajo**. El ajuste se aplica únicamente a `.hero-institucion`;
-no mueve el logo PW Hub, `.hero-branding`, el hero ni el resto de la interfaz.
-
-La caché offline se actualiza a **v12** para distribuir esta corrección sin
-reutilizar la versión anterior del CSS.
-
-### Catálogo automático global de trabajos y organización de vistas
-
-PW Hub comparte ahora un único catálogo sincronizado durante cada carga. La
-fuente base sigue siendo `hub/data/unidades.json`, pero
-`hub/js/sincronizacion.js` intercepta únicamente las lecturas de ese catálogo,
-lo fusiona una sola vez con los trabajos publicados en GitHub y entrega copias
-del mismo resultado al resto del Hub.
-
-Con esto, **Unidades**, el resumen, **Todos los trabajos** y **Estadísticas**
-consultan el mismo conjunto de trabajos. Subir, renombrar o retirar un archivo
-compatible dentro de U1-U5 deja de requerir registrar la misma ruta en varias
-secciones. `unidades.json` continúa sirviendo para nombres, descripciones,
-destacados y otros metadatos personalizados.
-
-La página de contingencia se trasladó de `hub/offline.html` a
-`hub/vistas/offline.html`, dejando `hub/index.html` como el único HTML
-situado directamente en la raíz del Hub. La caché offline avanza a **v13**.

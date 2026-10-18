@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v13";
+    "pw-hub-offline-v18";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;
@@ -42,6 +42,7 @@ const ARCHIVOS_SHELL = [
     "hub/css/hero-codigo.css?v=18",
     "hub/css/hero-movil-fix.css",
     "hub/css/historial.css",
+    "hub/css/markdown-oscuro.css?v=1",
     "hub/css/navegacion.css",
     "hub/css/personalizacion.css",
     "hub/css/refinamiento-final.css",
@@ -63,7 +64,7 @@ const ARCHIVOS_SHELL = [
     "hub/data/roadmap.json",
     "hub/data/unidades.json",
 
-    "hub/docs/CIERRE.md",
+    "hub/docs/CHANGELOG.md",
     "hub/docs/HISTORIAL.md",
     "hub/docs/README.md",
     "hub/docs/ROADMAP.md",
@@ -210,10 +211,6 @@ async function instalarCacheHub() {
             CACHE_SHELL
         );
 
-    /*
-       Se cachea uno por uno para que un archivo opcional
-       ausente no cancele toda la instalación.
-    */
     await Promise.allSettled(
         ARCHIVOS_SHELL.map(
             async (ruta) => {
@@ -244,10 +241,6 @@ async function instalarCacheHub() {
         )
     );
 
-    /*
-       marked es externo. Intentamos guardarlo, pero su fallo
-       no impide que el Service Worker quede instalado.
-    */
     try {
         const respuesta =
             await fetch(
@@ -352,11 +345,6 @@ async function redPrimeroHub(
             peticion.mode ===
             "navigate"
         ) {
-            /*
-               Si la URL exacta nunca fue visitada y por lo tanto
-               no está en caché, mostramos una página offline
-               explícita en vez de devolver el inicio del Hub.
-            */
             const offline =
                 new URL(
                     "hub/vistas/offline.html",
@@ -389,9 +377,6 @@ async function cachePrimeroHub(
         );
 
     if (guardada) {
-        /*
-           Actualizamos en segundo plano cuando hay red.
-        */
         actualizarEnSegundoPlanoHub(
             peticion
         );
@@ -483,23 +468,17 @@ async function cachearArchivosPortafolioHub(
             CACHE_RUNTIME
         );
 
-    const unicas =
-        [
-            ...new Set(
-                rutas
-                    .filter(
-                        (ruta) =>
-                            typeof ruta ===
-                                "string" &&
-                            ruta.length > 0
-                    )
+    const unicas = [
+        ...new Set(
+            rutas.filter(
+                (ruta) =>
+                    typeof ruta ===
+                        "string" &&
+                    ruta.length > 0
             )
-        ];
+        )
+    ];
 
-    /*
-       Trabajo secuencial en pequeños lotes para no lanzar
-       demasiadas solicitudes a la vez.
-    */
     const tamanoLote =
         6;
 
