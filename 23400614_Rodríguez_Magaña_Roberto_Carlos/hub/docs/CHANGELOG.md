@@ -8,6 +8,37 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 
 ---
 
+# v1.1.1 - Reestructuración de navegación y vistas
+
+**Estado:** Publicada  
+**Fecha de publicación:** 2026-10-18  
+**Tipo:** Parche de experiencia de uso y estabilidad
+
+Este parche reorganiza el Hub para reducir el desplazamiento vertical sin convertirlo en varias páginas HTML independientes y corrige el arranque detectado durante la validación del candidato.
+
+## Implementado
+
+- hero institucional y navegación superior visibles como cabecera común;
+- `Inicio` dedicado al Resumen académico;
+- Resumen académico convertido en bloque fijo de Inicio y retirado de las opciones que pueden ocultarse;
+- `Curso` con Progreso general y U1-U5 visibles dentro de la misma vista;
+- `Explorar` con Actividad, Todos los trabajos, Estadísticas, Historial y Roadmap como vistas individuales;
+- `Documentación` como vista propia;
+- compatibilidad con hashes y botones Atrás / Adelante;
+- carga directa de `vistas-internas.js` y `vistas-internas.css` desde `index.html`, sin depender del sincronizador;
+- eliminación de una segunda sincronización redundante durante el arranque de `hub.js`;
+- timeout independiente para la consulta del árbol de GitHub;
+- la consulta del árbol de GitHub deja de ser retenida por el Service Worker;
+- Service Worker actualizado a `pw-hub-offline-v30` para distribuir el cierre publicado.
+
+## Validación
+
+Durante las pruebas del candidato se detectó que el arranque podía quedar esperando indefinidamente o mostrar una vista incorrecta cuando navegación, personalización y sincronización competían durante la inicialización. La corrección final desacopló el router de `sincronizacion.js`, eliminó la sincronización duplicada de `hub.js` y se volvió a probar el proyecto mediante un origen local limpio.
+
+Con esta publicación, **v1.1.1 sustituye a v1.1.0 como versión actual**, mientras v1.1.0 permanece como actualización publicada anterior.
+
+---
+
 # v1.1.0 - Sincronización y novedades
 
 **Estado:** Publicada  

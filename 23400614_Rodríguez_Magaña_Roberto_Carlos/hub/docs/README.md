@@ -4,7 +4,7 @@ PW Hub es el portafolio académico de **Programación Web** de Roberto Carlos Ro
 
 ## Estado actual
 
-**Versión publicada actual: v1.1.0 - Sincronización y novedades**
+**Versión publicada actual: v1.1.1 - Reestructuración de navegación y vistas**
 
 La etapa de construcción inicial ya terminó. El proyecto dejó de organizar su evolución futura mediante fases y ahora utiliza un esquema de **actualizaciones versionadas**.
 
@@ -216,7 +216,7 @@ Los estados reconocidos son:
 - Planeada;
 - Visión futura.
 
-El roadmap conserva `v1.0.0` como base publicada anterior, marca `v1.1.0` como versión publicada actual y utiliza el Changelog para conservar el detalle de cada versión. Las versiones posteriores representan trabajo planeado o futuro.
+El roadmap conserva `v1.0.0` como base histórica, `v1.1.0` como actualización publicada anterior y marca `v1.1.1` como versión publicada actual. El Changelog conserva el detalle de cada versión; las versiones posteriores representan trabajo planeado o futuro.
 
 ---
 
@@ -303,6 +303,29 @@ No es necesario mantener una segunda copia de publicación.
 
 PW Hub mantiene una apariencia oscura coherente para los archivos Markdown en todas sus superficies internas: Documentación, miniaturas de unidades, Vista previa del explorador y visor completo. La hoja `css/markdown-oscuro.css` concentra los estilos compartidos del Hub principal; `vistas/trabajo.html` conserva su propio tema para el visor completo.
 
+
+## Vistas internas de v1.1.1
+
+La versión v1.1.1 reorganiza la navegación sin dividir PW Hub en múltiples páginas HTML.
+
+La estructura prevista es:
+
+- `Inicio`: Resumen académico fijo;
+- `Curso`: Progreso general y U1-U5 juntos;
+- `Explorar`: una herramienta extensa por vista;
+- `Documentación`: centro documental y visor Markdown.
+
+`hub/js/vistas-internas.js` se carga directamente desde `hub/index.html` después de los módulos principales. La sincronización automática conserva una responsabilidad separada y ya no inicia el router.
+
+El Resumen académico forma parte estructural de Inicio y no aparece entre los controles que pueden ocultarse desde Personalización.
+
+### Arranque y sincronización
+
+`hub.js` utiliza directamente el catálogo devuelto por la lectura de `data/unidades.json`. Como `sincronizacion.js` ya intercepta esa lectura y devuelve el catálogo fusionado, no se realiza una segunda sincronización redundante.
+
+La consulta del árbol de GitHub conserva un límite de espera propio. Si GitHub no responde, el Hub puede recurrir al snapshot o al catálogo base en lugar de mantener indefinidamente los estados de carga.
+
+---
 
 # Desarrollo local
 

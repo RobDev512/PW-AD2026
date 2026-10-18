@@ -557,12 +557,6 @@ async function obtenerArbolGitHubHub() {
     const controlador =
         new AbortController();
 
-    const temporizador =
-        window.setTimeout(
-            () => controlador.abort(),
-            PW_HUB_SYNC.tiempoMaximoConsulta
-        );
-
     const raiz =
         encodeURIComponent(
             PW_HUB_GITHUB.rama
@@ -574,43 +568,80 @@ async function obtenerArbolGitHubHub() {
         `${PW_HUB_GITHUB.repositorio}/` +
         `git/trees/${raiz}?recursive=1`;
 
-    try {
-        const respuesta =
-            await fetch(
-                url,
-                {
-                    headers: {
-                        Accept:
-                            "application/vnd.github+json"
-                    },
-                    signal:
-                        controlador.signal
+    let temporizador =
+        null;
+
+    const limite =
+        new Promise(
+            (_, rechazar) => {
+                temporizador =
+                    window.setTimeout(
+                        () => {
+                            controlador.abort();
+
+                            rechazar(
+                                new Error(
+                                    "La sincronización con GitHub excedió el tiempo de espera."
+                                )
+                            );
+                        },
+                        PW_HUB_SYNC
+                            .tiempoMaximoConsulta
+                    );
+            }
+        );
+
+    const solicitud =
+        PW_HUB_FETCH_ORIGINAL(
+            url,
+            {
+                headers: {
+                    Accept:
+                        "application/vnd.github+json"
+                },
+                signal:
+                    controlador.signal,
+                cache:
+                    "no-store"
+            }
+        )
+            .then(
+                async (respuesta) => {
+                    if (!respuesta.ok) {
+                        throw new Error(
+                            `GitHub respondió ${respuesta.status}`
+                        );
+                    }
+
+                    const datos =
+                        await respuesta.json();
+
+                    if (
+                        !datos ||
+                        !Array.isArray(
+                            datos.tree
+                        )
+                    ) {
+                        throw new Error(
+                            "La respuesta de GitHub no contiene un árbol válido."
+                        );
+                    }
+
+                    return datos;
                 }
             );
 
-        if (!respuesta.ok) {
-            throw new Error(
-                `GitHub respondió ${respuesta.status}`
-            );
-        }
-
-        const datos =
-            await respuesta.json();
-
-        if (
-            !datos ||
-            !Array.isArray(datos.tree)
-        ) {
-            throw new Error(
-                "La respuesta de GitHub no contiene un árbol válido."
-            );
-        }
-
-        return datos;
+    try {
+        return await Promise.race([
+            solicitud,
+            limite
+        ]);
     } finally {
-        window.clearTimeout(
-            temporizador
-        );
+        if (temporizador) {
+            window.clearTimeout(
+                temporizador
+            );
+        }
     }
 }
 

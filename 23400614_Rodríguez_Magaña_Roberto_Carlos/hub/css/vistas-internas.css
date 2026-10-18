@@ -1,0 +1,74 @@
+/* =========================================================
+   PW HUB v1.1.1 - VISTAS INTERNAS
+   =========================================================
+
+   El hero y la navegación permanecen como cabecera común.
+   Inicio muestra Resumen académico.
+   Curso reúne Progreso + U1-U5.
+   Explorar muestra una herramienta extensa a la vez.
+   Documentación conserva su centro y visor.
+   ========================================================= */
+
+.hub-vistas-internas .hub-vista-oculta {
+    display: none !important;
+}
+
+body.hub-vistas-internas main {
+    min-height: 0;
+}
+
+body.hub-vistas-internas main > section:not(.hub-vista-oculta) {
+    animation: hub-vista-entrada 0.18s ease both;
+}
+
+body.hub-vistas-internas:not([data-hub-vista="inicio"]) main {
+    padding-top: 42px;
+}
+
+body[data-hub-vista="inicio"] .seccion-resumen,
+body[data-hub-vista="curso"] #progreso,
+body[data-hub-vista="curso"] .seccion-portafolio,
+body[data-hub-vista="explorar"] #actividad,
+body[data-hub-vista="explorar"] #trabajos,
+body[data-hub-vista="explorar"] #estadisticas,
+body[data-hub-vista="explorar"] #historial,
+body[data-hub-vista="explorar"] #roadmap,
+body[data-hub-vista="documentacion"] #documentacion {
+    margin-bottom: 58px;
+}
+
+@keyframes hub-vista-entrada {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 650px) {
+    body.hub-vistas-internas:not([data-hub-vista="inicio"]) main {
+        padding-top: 28px;
+    }
+
+    body[data-hub-vista="inicio"] .seccion-resumen,
+    body[data-hub-vista="curso"] #progreso,
+    body[data-hub-vista="curso"] .seccion-portafolio,
+    body[data-hub-vista="explorar"] #actividad,
+    body[data-hub-vista="explorar"] #trabajos,
+    body[data-hub-vista="explorar"] #estadisticas,
+    body[data-hub-vista="explorar"] #historial,
+    body[data-hub-vista="explorar"] #roadmap,
+    body[data-hub-vista="documentacion"] #documentacion {
+        margin-bottom: 46px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.hub-vistas-internas main > section:not(.hub-vista-oculta) {
+        animation: none !important;
+    }
+}

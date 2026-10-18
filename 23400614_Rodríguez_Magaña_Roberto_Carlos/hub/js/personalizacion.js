@@ -16,7 +16,7 @@ const CONFIGURACION_PREDETERMINADA = {
     secciones: {
         encabezado: true,
         progreso: true,
-        resumen: false,
+        resumen: true,
         actividad: false,
         unidades: true,
         trabajos: true,
@@ -510,6 +510,9 @@ function cargarConfiguracionHub() {
             }
         };
 
+        // Resumen académico forma parte fija de Inicio desde v1.1.1.
+        configuracion.secciones.resumen = true;
+
         migrarPerfilMinimalAnterior(
             configuracion
         );
@@ -903,7 +906,7 @@ function aplicarPerfilHub(perfil) {
         configuracionHub.secciones = {
             encabezado: true,
             progreso: true,
-            resumen: false,
+            resumen: true,
             actividad: false,
             unidades: true,
             trabajos: true,
@@ -918,6 +921,9 @@ function aplicarPerfilHub(perfil) {
 }
 
 function aplicarConfiguracionHub(guardar = true) {
+    // Inicio siempre conserva el Resumen académico.
+    configuracionHub.secciones.resumen = true;
+
     configuracionHub.animaciones =
         configuracionHub.movimiento !==
         "ninguno";

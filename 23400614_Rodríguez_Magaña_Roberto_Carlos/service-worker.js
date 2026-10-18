@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v20";
+    "pw-hub-offline-v30";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;
@@ -44,6 +44,7 @@ const ARCHIVOS_SHELL = [
     "hub/css/historial.css",
     "hub/css/markdown-oscuro.css?v=1",
     "hub/css/novedades.css?v=1.1.0",
+    "hub/css/vistas-internas.css?v=1.1.1",
     "hub/css/navegacion.css",
     "hub/css/personalizacion.css",
     "hub/css/refinamiento-final.css",
@@ -55,12 +56,13 @@ const ARCHIVOS_SHELL = [
     "hub/js/offline.js",
     "hub/js/estadisticas.js",
     "hub/js/historial.js",
-    "hub/js/hub.js",
-    "hub/js/navegacion.js",
-    "hub/js/personalizacion.js",
+    "hub/js/hub.js?v=1.1.1",
+    "hub/js/navegacion.js?v=1.1.1",
+    "hub/js/personalizacion.js?v=1.1.1",
     "hub/js/roadmap.js",
-    "hub/js/sincronizacion.js",
+    "hub/js/sincronizacion.js?v=1.1.1",
     "hub/js/novedades.js?v=1.1.0",
+    "hub/js/vistas-internas.js?v=1.1.1",
     "hub/js/trabajos.js",
 
     "hub/data/roadmap.json",
@@ -122,18 +124,16 @@ self.addEventListener(
                 peticion.url
             );
 
+        /*
+           La consulta del árbol de GitHub se deja pasar directamente
+           a la red. sincronizacion.js ya controla su timeout y fallback
+           local; no conviene que el Service Worker pueda prolongarla.
+        */
         if (
             esConsultaArbolGitHubHub(
                 url
             )
         ) {
-            evento.respondWith(
-                redPrimeroHub(
-                    peticion,
-                    CACHE_GITHUB
-                )
-            );
-
             return;
         }
 

@@ -2,7 +2,7 @@
 
 ## Estado general
 
-**Versión publicada actual: v1.1.0 - Sincronización y novedades**
+**Versión publicada actual: v1.1.1 - Reestructuración de navegación y vistas**
 
 PW Hub terminó su etapa de construcción inicial. A partir de este punto el proyecto ya no utiliza fases: cualquier mejora futura se registra como una **actualización versionada**.
 
@@ -52,7 +52,7 @@ El detalle completo de la construcción original, las 16 fases históricas y los
 
 # v1.1.0 - Sincronización y novedades
 
-**Estado:** Publicada · actual
+**Estado:** Publicada
 
 ## Objetivo
 
@@ -75,6 +75,37 @@ La actualización fue probada en servidor local. Se verificaron el indicador de 
 ## Resultado esperado
 
 El usuario podrá identificar rápidamente qué cambió, cuándo se actualizó y de dónde proviene el catálogo visible.
+
+---
+
+# v1.1.1 - Reestructuración de navegación y vistas
+
+**Estado:** Publicada · actual
+
+## Objetivo
+
+Reducir el desplazamiento vertical de `hub/index.html` y hacer que la barra superior funcione como selector de contextos, sin adelantar las funciones planeadas para v1.2.0.
+
+## Implementado
+
+- [x] conservar hero y navegación en todas las vistas;
+- [x] reservar Inicio para el Resumen académico;
+- [x] mantener el Resumen académico siempre disponible;
+- [x] agrupar Progreso general y U1-U5 dentro de Curso;
+- [x] mostrar cada herramienta de Explorar de forma independiente;
+- [x] conservar Documentación como vista propia;
+- [x] mantener hashes y Atrás / Adelante;
+- [x] desacoplar el router de `sincronizacion.js`;
+- [x] evitar la segunda sincronización redundante de `hub.js`;
+- [x] añadir un límite de espera independiente a la consulta de GitHub.
+
+## Validación
+
+La versión fue probada en servidor local después de reconstruir el arranque desde el estado real del proyecto. Se verificó la carga estable del Hub, el Resumen académico fijo en Inicio, Curso con U1-U5 agrupadas, las vistas individuales de Explorar y la separación entre navegación y sincronización.
+
+## Resultado
+
+El Hub conserva su identidad visual, reduce recorridos verticales innecesarios y mantiene un arranque estable incluso cuando GitHub tarda o no responde.
 
 ---
 

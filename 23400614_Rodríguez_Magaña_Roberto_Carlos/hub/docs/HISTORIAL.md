@@ -1246,3 +1246,33 @@ Worker avanza a `pw-hub-offline-v20` para distribuir el cierre documental de la
 versión junto con los recursos funcionales de v1.1.0.
 
 ---
+
+
+### Candidato v1.1.1 reconstruido con navegación desacoplada
+
+**Tipo:** Corrección de estabilidad y experiencia de uso
+**Estado:** En validación
+**Unidad:** General
+**Fecha:** 2026-10-17
+**Precisión:** Día
+**Fuente:** Mantenimiento de PW Hub
+
+Se reconstruyó el candidato v1.1.1 a partir del estado local compartido y de la versión v1.1.0 publicada. El router de vistas internas dejó de cargarse desde `sincronizacion.js` y pasó a depender directamente de `index.html`. También se retiró la segunda sincronización redundante de `hub.js`, se añadió un límite de espera independiente a la consulta de GitHub y el Service Worker dejó pasar esa consulta directamente a la red. Inicio conserva de forma permanente el Resumen académico, Curso reúne Progreso y U1-U5, y Explorar utiliza vistas individuales.
+
+---
+
+### Publicación de v1.1.1 - Reestructuración de navegación y vistas
+
+**Tipo:** Parche funcional publicado  
+**Estado:** Implementado  
+**Unidad:** General  
+**Fecha:** 2026-10-18  
+**Precisión:** Día  
+**Fuente:** Validación local y reparación del arranque de PW Hub
+
+Después de reconstruir el candidato desde el estado real del proyecto, v1.1.1 queda validada y publicada. La navegación se organiza mediante vistas internas sin dividir el Hub en múltiples páginas HTML: Inicio conserva el Resumen académico, Curso reúne Progreso y U1-U5, Explorar muestra cada herramienta extensa de forma independiente y Documentación mantiene su propio contexto.
+
+La corrección final separa el router de la lógica de sincronización, elimina una segunda sincronización redundante durante el arranque y añade un límite de espera independiente para GitHub. El Service Worker avanza a `pw-hub-offline-v30` para distribuir la versión publicada.
+
+`ROADMAP.md` mueve v1.1.1 a **Publicada · actual**, `CHANGELOG.md` registra el cierre y v1.1.0 queda conservada como la actualización publicada anterior.
+

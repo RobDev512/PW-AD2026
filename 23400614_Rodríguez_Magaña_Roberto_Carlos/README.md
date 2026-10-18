@@ -31,9 +31,9 @@ También incluye **PW Hub**, un portafolio web que organiza y presenta el avance
 
 ## Estado de PW Hub
 
-**Versión publicada actual: v1.1.0 - Sincronización y novedades**
+**Versión publicada actual: v1.1.1 - Reestructuración de navegación y vistas**
 
-La base inicial quedó consolidada en v1.0.0. La primera actualización funcional, **v1.1.0**, ya fue validada y pasa a ser la versión publicada actual del Hub.
+La base inicial quedó consolidada en v1.0.0. **v1.1.0** incorporó sincronización y novedades, y **v1.1.1** publica la reestructuración de navegación y las correcciones de estabilidad del arranque.
 
 El proyecto ya no utiliza fases para organizar su evolución futura. Las mejoras posteriores se documentan como **actualizaciones versionadas**.
 
@@ -49,7 +49,7 @@ La versión estable actual y las actualizaciones propuestas se encuentran en:
 hub/docs/ROADMAP.md
 ```
 
-El mapa conserva `v1.0.0` como base publicada anterior, marca `v1.1.0` como versión publicada actual y mantiene las mejoras previstas desde `v1.2.0` hasta `v1.9.0`, reservando `v2.0.0` para el siguiente salto mayor del Hub.
+El mapa conserva `v1.0.0` como base estable histórica, `v1.1.0` como actualización publicada anterior y marca `v1.1.1` como versión publicada actual. Las mejoras previstas continúan desde `v1.2.0` hasta `v1.9.0`, reservando `v2.0.0` para el siguiente salto mayor del Hub.
 
 El avance académico de U1-U5 y las versiones de PW Hub son independientes.
 
@@ -210,6 +210,22 @@ PW Hub dispone de ocho materiales visuales:
 Los materiales se combinan con paletas compatibles, color de acento, densidad y niveles de movimiento.
 
 Las preferencias se guardan localmente en el navegador.
+
+---
+
+## Navegación por vistas internas
+
+La versión **v1.1.1** reorganiza `hub/index.html` para reducir el desplazamiento vertical manteniendo una sola página principal.
+
+La cabecera visual permanece común a todas las vistas. Inicio conserva el Resumen académico; Curso reúne Progreso y U1-U5; Explorar presenta cada herramienta extensa de forma independiente; y Documentación mantiene su propio contexto.
+
+El router vive en:
+
+```text
+hub/js/vistas-internas.js
+```
+
+y se carga directamente desde `hub/index.html`, separado de la lógica de sincronización.
 
 ---
 

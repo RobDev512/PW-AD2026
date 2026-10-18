@@ -1154,6 +1154,13 @@ function configurarNavegacionActiva() {
         "popstate",
         () => {
 
+            if (
+                window.PWHubVistasInternas &&
+                window.PWHubVistasInternas.activo
+            ) {
+                return;
+            }
+
             const idDestino =
                 obtenerIdDesdeHash();
 
@@ -1254,6 +1261,23 @@ function solicitarActualizacionNavegacion() {
    ========================================================= */
 
 function actualizarSeccionActiva() {
+    /*
+       v1.1.1 usa vistas internas. Mientras el router esté activo,
+       la sección seleccionada la decide el hash y no la posición
+       vertical del scroll. Esto evita que volver al hero cambie
+       accidentalmente la vista a Inicio.
+    */
+    if (
+        window.PWHubVistasInternas &&
+        window.PWHubVistasInternas.activo
+    ) {
+        marcarNavegacionActiva(
+            window.PWHubVistasInternas.obtenerActual()
+        );
+
+        return;
+    }
+
     /*
         Mientras ocurre un scroll iniciado desde la nav,
         conservamos seleccionado el destino elegido.

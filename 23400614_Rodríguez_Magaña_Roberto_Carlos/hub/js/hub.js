@@ -20,15 +20,13 @@ async function iniciarHub() {
         const datosBase =
             await respuesta.json();
 
-        datosHub =
-            typeof window
-                .sincronizarTrabajosGitHub ===
-                "function"
-                ? await window
-                    .sincronizarTrabajosGitHub(
-                        datosBase
-                    )
-                : datosBase;
+        /*
+           sincronizacion.js intercepta únicamente la lectura de
+           data/unidades.json y ya entrega el catálogo fusionado.
+           Evitamos una segunda sincronización redundante para que
+           el render inicial nunca quede esperando dos consultas.
+        */
+        datosHub = datosBase;
 
         renderizarProgresoHub(datosHub);
         renderizarResumenHub(datosHub);
