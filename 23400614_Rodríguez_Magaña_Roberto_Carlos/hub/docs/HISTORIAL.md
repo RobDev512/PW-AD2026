@@ -16,11 +16,11 @@ Las mejoras futuras pertenecen al `ROADMAP.md`.
 
 ### Perfil personal y comandos Git
 
-**Tipo:** Actividad  
-**Estado:** Completado  
-**Unidad:** U1  
-**FechaHora:** 2026-09-18T20:16:06Z  
-**Precisión:** Exacta  
+**Tipo:** Actividad
+**Estado:** Completado
+**Unidad:** U1
+**FechaHora:** 2026-09-18T20:16:06Z
+**Precisión:** Exacta
 **Fuente:** GitHub
 
 Se registró la primera actividad correspondiente al perfil personal y al documento de comandos Git.
@@ -29,11 +29,11 @@ Se registró la primera actividad correspondiente al perfil personal y al docume
 
 ### Catálogo de Películas
 
-**Tipo:** Actividad  
-**Estado:** Completado  
-**Unidad:** U1  
-**FechaHora:** 2026-09-18T20:25:29Z  
-**Precisión:** Exacta  
+**Tipo:** Actividad
+**Estado:** Completado
+**Unidad:** U1
+**FechaHora:** 2026-09-18T20:25:29Z
+**Precisión:** Exacta
 **Fuente:** GitHub
 
 Se registró la práctica del Catálogo de Películas.
@@ -44,11 +44,11 @@ Se registró la práctica del Catálogo de Películas.
 
 ### Ejercicios 1 y 2 de HTML
 
-**Tipo:** Actividad  
-**Estado:** Completado  
-**Unidad:** U2  
-**FechaHora:** 2026-09-26T02:16:21Z  
-**Precisión:** Exacta  
+**Tipo:** Actividad
+**Estado:** Completado
+**Unidad:** U2
+**FechaHora:** 2026-09-26T02:16:21Z
+**Precisión:** Exacta
 **Fuente:** GitHub
 
 Se registraron los ejercicios 1 y 2 realizados durante la Unidad 2.
@@ -57,11 +57,11 @@ Se registraron los ejercicios 1 y 2 realizados durante la Unidad 2.
 
 ### Ejercicio 5 - CineMundo
 
-**Tipo:** Actividad  
-**Estado:** Completado  
-**Unidad:** U2  
-**FechaHora:** 2026-09-30T18:50:21Z  
-**Precisión:** Exacta  
+**Tipo:** Actividad
+**Estado:** Completado
+**Unidad:** U2
+**FechaHora:** 2026-09-30T18:50:21Z
+**Precisión:** Exacta
 **Fuente:** GitHub
 
 Se registró el Ejercicio 5 de la Unidad 2.
@@ -72,11 +72,11 @@ Se registró el Ejercicio 5 de la Unidad 2.
 
 ### Creación del Hub académico
 
-**Tipo:** Proyecto  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-12  
-**Precisión:** Día  
+**Tipo:** Proyecto
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-12
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Se comenzó a desarrollar un Hub académico independiente para organizar los trabajos realizados durante Programación Web.
@@ -85,11 +85,11 @@ Se comenzó a desarrollar un Hub académico independiente para organizar los tra
 
 ### Datos centralizados
 
-**Tipo:** Mejora  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-12  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-12
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Se creó `data/unidades.json` como fuente central de información académica.
@@ -98,11 +98,11 @@ Se creó `data/unidades.json` como fuente central de información académica.
 
 ### Roadmap visual
 
-**Tipo:** Mejora  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-12  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-12
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 `ROADMAP.md` comenzó a utilizarse como fuente visual del roadmap.
@@ -111,11 +111,11 @@ Se creó `data/unidades.json` como fuente central de información académica.
 
 ### Historial interactivo
 
-**Tipo:** Mejora  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-12  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-12
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 `HISTORIAL.md` comenzó a utilizarse como fuente de una cronología interactiva.
@@ -124,11 +124,11 @@ Se creó `data/unidades.json` como fuente central de información académica.
 
 ### Explorador general de trabajos
 
-**Tipo:** Hito  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-12  
-**Precisión:** Día  
+**Tipo:** Hito
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-12
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Se completó la Fase 9 con búsqueda, filtros, ordenamiento y vistas previas globales.
@@ -137,11 +137,11 @@ Se completó la Fase 9 con búsqueda, filtros, ordenamiento y vistas previas glo
 
 ### Navegación avanzada completada
 
-**Tipo:** Hito  
-**Estado:** Completado  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T00:18:00-07:00  
-**Precisión:** Exacta  
+**Tipo:** Hito
+**Estado:** Completado
+**Unidad:** U3
+**FechaHora:** 2026-10-13T00:18:00-07:00
+**Precisión:** Exacta
 **Fuente:** Registro del Hub
 
 Se completó la Fase 10.
@@ -152,11 +152,11 @@ La navegación quedó agrupada, con menús desplegables, sección activa, subsec
 
 ### Inicio de favoritos y destacados
 
-**Tipo:** Mejora  
-**Estado:** Actual  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T00:18:00-07:00  
-**Precisión:** Exacta  
+**Tipo:** Mejora
+**Estado:** Actual
+**Unidad:** U3
+**FechaHora:** 2026-10-13T00:18:00-07:00
+**Precisión:** Exacta
 **Fuente:** Registro del Hub
 
 Comenzó la Fase 11.
@@ -167,11 +167,11 @@ El explorador de trabajos incorpora favoritos persistentes mediante `localStorag
 
 ### Favoritos y destacados completados
 
-**Tipo:** Hito  
-**Estado:** Completado  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T00:49:24-07:00  
-**Precisión:** Exacta  
+**Tipo:** Hito
+**Estado:** Completado
+**Unidad:** U3
+**FechaHora:** 2026-10-13T00:49:24-07:00
+**Precisión:** Exacta
 **Fuente:** Registro del Hub
 
 Se completó la Fase 11.
@@ -182,11 +182,11 @@ El explorador permite guardar favoritos mediante `localStorage`, filtrar los fav
 
 ### Inicio de Actividad reciente
 
-**Tipo:** Mejora  
-**Estado:** Actual  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T00:49:24-07:00  
-**Precisión:** Exacta  
+**Tipo:** Mejora
+**Estado:** Actual
+**Unidad:** U3
+**FechaHora:** 2026-10-13T00:49:24-07:00
+**Precisión:** Exacta
 **Fuente:** Registro del Hub
 
 Comenzó la Fase 12.
@@ -199,11 +199,11 @@ La sección evita duplicar datos y permite saltar al Historial para consultar ca
 
 ### Actividad reciente completada
 
-**Tipo:** Hito  
-**Estado:** Completado  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T00:55:10-07:00  
-**Precisión:** Exacta  
+**Tipo:** Hito
+**Estado:** Completado
+**Unidad:** U3
+**FechaHora:** 2026-10-13T00:55:10-07:00
+**Precisión:** Exacta
 **Fuente:** Registro del Hub
 
 Se completó la Fase 12.
@@ -214,11 +214,11 @@ El Hub puede mostrar automáticamente los eventos más recientes utilizando `HIS
 
 ### Inicio de Estadísticas académicas
 
-**Tipo:** Mejora  
-**Estado:** Actual  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T00:55:10-07:00  
-**Precisión:** Exacta  
+**Tipo:** Mejora
+**Estado:** Actual
+**Unidad:** U3
+**FechaHora:** 2026-10-13T00:55:10-07:00
+**Precisión:** Exacta
 **Fuente:** Registro del Hub
 
 Comenzó la Fase 13.
@@ -231,11 +231,11 @@ La primera versión resume trabajos, avance de unidades, eventos históricos, ti
 
 ### Estadísticas académicas completadas
 
-**Tipo:** Hito  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-13  
-**Precisión:** Día  
+**Tipo:** Hito
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-13
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Se completó la Fase 13.
@@ -246,11 +246,11 @@ El Hub calcula automáticamente estadísticas académicas utilizando `data/unida
 
 ### Inicio de preparación para publicación
 
-**Tipo:** Mejora  
-**Estado:** Actual  
-**Unidad:** U3  
-**Fecha:** 2026-10-13  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** Actual
+**Unidad:** U3
+**Fecha:** 2026-10-13
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Comenzó la Fase 14.
@@ -263,11 +263,11 @@ La generación de esta versión no publica automáticamente el Hub.
 
 ### Preparación para publicación completada
 
-**Tipo:** Hito  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-13  
-**Precisión:** Día  
+**Tipo:** Hito
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-13
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Se completó la preparación técnica de la Fase 14.
@@ -278,11 +278,11 @@ Se verificó la generación de una versión protegida de producción, el funcion
 
 ### Personalización, iconos y animaciones
 
-**Tipo:** Mejora  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-13  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-13
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Se añadió un panel de personalización persistente mediante `localStorage`.
@@ -295,11 +295,11 @@ También se incorporó iconografía SVG propia en la navegación y microanimacio
 
 ### Perfil Minimal predeterminado y navegación sincronizada
 
-**Tipo:** Mejora  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-13  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-13
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 La configuración inicial del Hub cambió al perfil Minimal para ofrecer una vista de portafolio más directa a nuevos visitantes.
@@ -310,11 +310,11 @@ También se sincronizó la visibilidad de las secciones con los submenús del na
 
 ### Cierre técnico de la Fase 15
 
-**Tipo:** Hito  
-**Estado:** Completado  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T11:18:00-07:00  
-**Precisión:** Exacta  
+**Tipo:** Hito
+**Estado:** Completado
+**Unidad:** U3
+**FechaHora:** 2026-10-13T11:18:00-07:00
+**Precisión:** Exacta
 **Fuente:** Registro del Hub
 
 La Fase 15 fue redefinida como cierre técnico y personalización final del Hub.
@@ -327,11 +327,11 @@ Con este cambio, las 15 fases quedan completadas.
 
 ### Publicación del código fuente del Hub en GitHub
 
-**Tipo:** Hito  
-**Estado:** Completado  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T11:18:00-07:00  
-**Precisión:** Exacta  
+**Tipo:** Hito
+**Estado:** Completado
+**Unidad:** U3
+**FechaHora:** 2026-10-13T11:18:00-07:00
+**Precisión:** Exacta
 **Fuente:** GitHub
 
 Se incorporó el Hub al repositorio académico `RobDev512/PW-AD2026`.
@@ -340,11 +340,11 @@ Se incorporó el Hub al repositorio académico `RobDev512/PW-AD2026`.
 
 ### Ejercicio 1 - Modelo de caja CSS
 
-**Tipo:** Actividad  
-**Estado:** Completado  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T19:08:22Z  
-**Precisión:** Exacta  
+**Tipo:** Actividad
+**Estado:** Completado
+**Unidad:** U3
+**FechaHora:** 2026-10-13T19:08:22Z
+**Precisión:** Exacta
 **Fuente:** GitHub
 
 Se agregó el primer ejercicio de U3 para practicar dimensiones, `padding`, `border` y `margin` mediante una caja demostrativa.
@@ -355,11 +355,11 @@ El archivo quedó organizado como `U3/Ejercicio1CSS.html` y registrado en `data/
 
 ### Simplificación de publicación del Hub
 
-**Tipo:** Mejora  
-**Estado:** Completado  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T12:20:00-07:00  
-**Precisión:** Exacta  
+**Tipo:** Mejora
+**Estado:** Completado
+**Unidad:** U3
+**FechaHora:** 2026-10-13T12:20:00-07:00
+**Precisión:** Exacta
 **Fuente:** GitHub
 
 Se retiró la carpeta de publicación como parte del flujo normal.
@@ -370,11 +370,11 @@ El Hub utiliza directamente los archivos versionados del repositorio, evitando m
 
 ### Apertura de la Fase 16
 
-**Tipo:** Hito  
-**Estado:** Actual  
-**Unidad:** U3  
-**FechaHora:** 2026-10-13T23:26:00-07:00  
-**Precisión:** Exacta  
+**Tipo:** Hito
+**Estado:** Actual
+**Unidad:** U3
+**FechaHora:** 2026-10-13T23:26:00-07:00
+**Precisión:** Exacta
 **Fuente:** Registro del Hub
 
 Después del cierre técnico original de la Fase 15, se decidió abrir una última Fase 16 denominada **Identidad visual y experiencia de contenidos**.
@@ -387,11 +387,11 @@ La Fase 15 permanece registrada como un cierre histórico válido; la Fase 16 fu
 
 ### Reorganización estructural y visor unificado de trabajos
 
-**Tipo:** Mejora  
-**Estado:** Completado  
-**Unidad:** U3  
-**FechaHora:** 2026-10-14T23:04:36Z  
-**Precisión:** Exacta  
+**Tipo:** Mejora
+**Estado:** Completado
+**Unidad:** U3
+**FechaHora:** 2026-10-14T23:04:36Z
+**Precisión:** Exacta
 **Fuente:** GitHub
 
 Se reorganizó y formateó el código del Hub para mantener una estructura más clara y legible.
@@ -406,11 +406,11 @@ También quedaron disponibles los modos **Diseño** y **Código** para los traba
 
 ### Integración de identidad visual de PW Hub
 
-**Tipo:** Hito  
-**Estado:** Completado  
-**Unidad:** U3  
-**FechaHora:** 2026-10-14T23:34:22Z  
-**Precisión:** Exacta  
+**Tipo:** Hito
+**Estado:** Completado
+**Unidad:** U3
+**FechaHora:** 2026-10-14T23:34:22Z
+**Precisión:** Exacta
 **Fuente:** GitHub
 
 Se incorporó una identidad propia para el portafolio mediante una familia completa de recursos de PW Hub.
@@ -425,11 +425,11 @@ El favicon se integró en el Hub y en el visor completo de trabajos. La identida
 
 ### Hero generado completamente con código
 
-**Tipo:** Mejora  
-**Estado:** Actual  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** Actual
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Se desarrolló y probó localmente un hero principal generado completamente mediante HTML y CSS, sin utilizar una imagen de fondo.
@@ -444,11 +444,11 @@ El hero continúa en refinamiento antes de considerarse terminado.
 
 ### Revisión de navegación móvil y Configuración
 
-**Tipo:** Decisión técnica  
-**Estado:** Actual  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Decisión técnica
+**Estado:** Actual
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Durante la revisión en un dispositivo móvil se detectó que la navbar actual ocupa demasiado espacio vertical al apilar sus controles.
@@ -463,11 +463,11 @@ La implementación queda registrada como trabajo pendiente de la Fase 16 en `ROA
 
 ### Roadmap jerárquico con conexiones Canvas
 
-**Tipo:** Mejora  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** GitHub
 
 El roadmap visual fue ampliado para representar cada fase mediante una jerarquía de ramas, categorías y subramas en lugar de mostrar únicamente listas de texto.
@@ -482,11 +482,11 @@ También se simplificaron los indicadores de cada tarea para evitar iconos visua
 
 ### Consolidación del hero principal de PW Hub
 
-**Tipo:** Mejora  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Registro del Hub
 
 Se consolidó el hero principal generado completamente mediante HTML y CSS.
@@ -501,11 +501,11 @@ El siguiente paso de la Fase 16 es validar esta versión consolidada en escritor
 
 ### Ajustes responsive del roadmap y branding del hero
 
-**Tipo:** Mejora  
-**Estado:** En validación  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** En validación
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Prueba visual local
 
 Durante la validación responsive de la Fase 16 se detectaron dos comportamientos a corregir.
@@ -520,11 +520,11 @@ Ambos cambios quedan pendientes de revalidación visual antes de cerrar el bloqu
 
 ### Segunda corrección responsive del roadmap y hero
 
-**Tipo:** Corrección  
-**Estado:** En validación  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección
+**Estado:** En validación
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Prueba visual local
 
 La segunda revisión responsive permitió identificar dos detalles adicionales.
@@ -539,11 +539,11 @@ Ambas correcciones quedan pendientes de revalidación visual antes de cerrar el 
 
 ### Corrección de overflow horizontal durante el responsive
 
-**Tipo:** Corrección  
-**Estado:** En validación móvil  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección
+**Estado:** En validación móvil
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Prueba visual local
 
 Durante una nueva prueba de redimensionamiento se detectó que la página podía generar espacio vacío hacia la derecha y habilitar desplazamiento horizontal.
@@ -560,11 +560,11 @@ La siguiente validación se realizará desde un dispositivo móvil real conectad
 
 ### Corrección del contenedor institucional en vista estrecha
 
-**Tipo:** Corrección  
-**Estado:** En validación móvil  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección
+**Estado:** En validación móvil
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Prueba visual local
 
 Se aclaró que el espacio señalado en la cabecera móvil no correspondía al logo principal de PW Hub, sino al bloque institucional que contiene TecNM e ITT.
@@ -577,11 +577,11 @@ La validación final se realizará desde un dispositivo móvil real junto con la
 
 ### Navegación móvil compacta y Configuración flotante
 
-**Tipo:** Mejora  
-**Estado:** En validación móvil  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** En validación móvil
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Implementación local de Fase 16
 
 La prueba en un celular real confirmó que la navegación anterior ocupaba una parte excesiva de la pantalla al apilar Inicio, Curso, Explorar, Documentación, Configuración y GitHub.
@@ -599,11 +599,11 @@ El bloque queda pendiente de validación desde un dispositivo móvil real antes 
 ---
 ### Corrección de regresiones de navegación responsive
 
-**Tipo:** Corrección  
-**Estado:** En validación  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección
+**Estado:** En validación
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Prueba visual local y móvil
 
 La primera implementación de la barra inferior móvil introdujo tres regresiones detectadas durante la validación.
@@ -620,11 +620,11 @@ El conjunto queda pendiente de una nueva validación en los cuatro tamaños de r
 
 ### Ajuste del breakpoint móvil y agrupación del panel Explorar
 
-**Tipo:** Corrección  
-**Estado:** En validación  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección
+**Estado:** En validación
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Prueba visual local
 
 La validación mostró que el breakpoint móvil de 760 px era demasiado alto para una ventana media de Edge cuando se considera la barra vertical del navegador, el zoom y la escala de pantalla. Aunque la ventana aparentaba tener suficiente anchura física, su viewport efectivo en píxeles CSS podía entrar en el modo móvil.
@@ -637,11 +637,11 @@ En el panel móvil Explorar se añadieron los títulos `Explorar` y `Documentaci
 
 ### Navbar de media pantalla en una sola fila
 
-**Tipo:** Corrección  
-**Estado:** En validación  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección
+**Estado:** En validación
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Prueba visual local
 
 La validación de media pantalla mostró que la navegación horizontal todavía heredaba una regla responsive antigua con `flex-wrap: wrap`, lo que permitía que GitHub saltara a una segunda fila.
@@ -652,11 +652,11 @@ Se mantuvo el breakpoint móvil en 650 px y, para el intervalo de 651 a 900 px, 
 
 ### Corrección de opciones ocultas en el panel móvil
 
-**Tipo:** Corrección  
-**Estado:** En validación  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección
+**Estado:** En validación
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Prueba visual local
 
 Durante la prueba del perfil Minimal se detectó que los accesos de Documentación seguían apareciendo dentro del panel móvil Explorar aunque la sección estuviera desactivada.
@@ -671,11 +671,11 @@ La siguiente validación consiste en probar los perfiles Minimal, Académico y C
 
 ### Separación de vista visual y Markdown del Roadmap
 
-**Tipo:** Corrección  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Prueba funcional local
 
 En la sección Documentación, el botón correspondiente a `ROADMAP.md` seguía reutilizando el renderizador visual del Roadmap, por lo que mostraba nuevamente el diagrama interactivo.
@@ -691,11 +691,11 @@ Con esto cada control representa una vista distinta del mismo contenido y se evi
 
 ### Refinamiento visual final de la Fase 16
 
-**Tipo:** Mejora  
-**Estado:** En validación final  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mejora
+**Estado:** En validación final
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Implementación local de Fase 16
 
 Se completó el bloque de refinamiento visual pendiente del Hub.
@@ -714,11 +714,11 @@ Con este cambio no quedan tareas estructurales pendientes en la Fase 16. Solo re
 
 ### Cierre definitivo de la Fase 16
 
-**Tipo:** Cierre  
-**Estado:** Completado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Cierre
+**Estado:** Completado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Validación visual final local y móvil
 
 Se completó y validó la Fase 16, **Identidad visual y experiencia de contenidos**.
@@ -733,11 +733,11 @@ A partir de este punto los cambios se consideran mantenimiento, correcciones pun
 
 ### Personalización visual avanzada posterior al cierre
 
-**Tipo:** Mejora de mantenimiento  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mejora de mantenimiento
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Evolución visual posterior al roadmap 16 / 16
 
 Se amplió el sistema de Configuración de PW Hub sin reabrir la Fase 16.
@@ -754,11 +754,11 @@ La clave de almacenamiento local pasó a `pw-hub-configuracion-v3`. Las preferen
 
 ### Refinamiento Liquid Glass y animaciones dinámicas
 
-**Tipo:** Mejora de mantenimiento  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mejora de mantenimiento
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Evolución visual posterior al roadmap 16 / 16
 
 El estilo Liquid Glass fue refinado para acercarse más al lenguaje visual del vidrio líquido moderno de iOS.
@@ -771,11 +771,11 @@ También se amplió el modo de movimiento Dinámico con microanimaciones adicion
 
 ### Reparación de Liquid Glass y animaciones seguras V4
 
-**Tipo:** Corrección de mantenimiento  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección de mantenimiento
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Validación visual local
 
 La versión anterior de los refinamientos de Liquid Glass alteró propiedades estructurales de componentes sensibles de navegación, específicamente `position`, `overflow` y `transform`.
@@ -792,11 +792,11 @@ También se añadieron animaciones seguras en chips del hero, estados actuales, 
 
 ### Ajuste fino de Liquid Glass V5
 
-**Tipo:** Refinamiento visual  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Refinamiento visual
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Validación visual local
 
 Se refinó el estilo Liquid Glass para equilibrar mejor el efecto de vidrio translúcido.
@@ -809,11 +809,11 @@ Al mismo tiempo, el resto de superficies glass (panel de Configuración, botón 
 
 ### Liquid Glass V6: blur real en menús
 
-**Tipo:** Corrección y refinamiento visual  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección y refinamiento visual
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Diagnóstico de composición CSS y validación visual local
 
 Se identificó que el problema no era únicamente la intensidad del desenfoque. La navbar padre también utilizaba `backdrop-filter`, creando una capa de composición que reducía el efecto perceptible del blur aplicado a los menús hijos.
@@ -826,11 +826,11 @@ Los dropdowns usan ahora un material menos opaco y un blur considerablemente may
 
 ### Liquid Glass V7: equilibrio de transparencia y blur
 
-**Tipo:** Refinamiento visual  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Refinamiento visual
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Validación visual local
 
 La versión anterior conseguía un blur visible en los menús, pero el material general resultaba demasiado transparente.
@@ -843,11 +843,11 @@ El resto de superficies utiliza blur más moderado y fondos más sólidos, busca
 
 ### Consolidación definitiva de Liquid Glass V8
 
-**Tipo:** Corrección técnica y refinamiento visual  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección técnica y refinamiento visual
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Revisión directa del proyecto completo enviado por Robert
 
 La revisión del proyecto real mostró que `apariencia-avanzada.css` había acumulado en cascada las variantes V2, V4, V5, V6 y V7. Varias de ellas repetían los mismos selectores de Liquid Glass con distintos valores de fondo, blur y sombra.
@@ -862,11 +862,11 @@ También se mantienen los temas oscuros, los estilos Normal / Minimal / Neon Tec
 
 ### Liquid Glass V9: restauración visual con blur solo en menús
 
-**Tipo:** Corrección visual  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección visual
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Retroalimentación visual de Robert
 
 Tras probar la versión consolidada, se decidió restaurar el aspecto de Liquid Glass que tenía la versión V2 para todas las superficies generales del Hub.
@@ -881,11 +881,11 @@ Los dropdowns utilizan ahora un blur moderado de 18 px en escritorio y 16 px en 
 
 ### Liquid Glass V10: restauración real de navbar y superficies V2
 
-**Tipo:** Corrección visual  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección visual
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Revisión de las versiones históricas del estilo
 
 Se corrigió una interpretación incorrecta de la restauración anterior.
@@ -900,11 +900,11 @@ Los dropdowns mantienen un ajuste separado y más sólido, con blur moderado de 
 
 ### Expansión final a 20 temas oscuros
 
-**Tipo:** Mejora final de mantenimiento  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mejora final de mantenimiento
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Cierre visual del PW Hub
 
 Se añadieron quince variantes nuevas al selector de tema oscuro, alcanzando un total de veinte temas configurables.
@@ -919,10 +919,10 @@ Esta ampliación se considera el último añadido visual planificado antes del c
 
 ### Sincronización automática y modo offline
 
-**Tipo:** Mantenimiento funcional posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
+**Tipo:** Mantenimiento funcional posterior al cierre
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
 **Precisión:** Día
 
 El Hub dejó de depender exclusivamente de la lista manual de trabajos de `data/unidades.json`.
@@ -939,10 +939,10 @@ Como fallback local, U3 registra explícitamente `flex.html` y `grid.html`.
 
 ### Corrección de renombres en el catálogo automático
 
-**Tipo:** Corrección funcional posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
+**Tipo:** Corrección funcional posterior al cierre
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
 **Precisión:** Día
 
 Se detectó que el archivo de modelo de caja había sido renombrado en GitHub de `Ejercicio1CSS.html` a `Ejercicio0CSS.html`. El catálogo base todavía conservaba la ruta anterior y por ello mostraba una tarjeta con error 404.
@@ -957,10 +957,10 @@ La caché offline avanzó a `pw-hub-offline-v2` para evitar reutilizar referenci
 
 ### Apariencia compacta y Liquid Glass V11
 
-**Tipo:** Refinamiento de mantenimiento posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
+**Tipo:** Refinamiento de mantenimiento posterior al cierre
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
 **Precisión:** Día
 
 Las antiguas secciones **Tema oscuro** y **Estilo visual** se fusionaron bajo un único bloque denominado **Apariencia**.
@@ -977,10 +977,10 @@ También se excluyen los archivos temporales `README_CAMBIOS.md` y `README_PRUEB
 
 ### Materiales dependientes, combobox y Liquid Glass V12
 
-**Tipo:** Refinamiento visual y de interacción posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
+**Tipo:** Refinamiento visual y de interacción posterior al cierre
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
 **Precisión:** Día
 
 Los controles `<select>` nativos fueron reemplazados visualmente por un combobox propio de PW Hub. El `select` original permanece en el DOM para conservar compatibilidad con los módulos existentes, mientras el nuevo control ofrece un menú flotante redondeado, altura limitada, desplazamiento interno, navegación por teclado y estilos coherentes con cada material.
@@ -995,10 +995,10 @@ Liquid Glass V12 incorpora una mejora progresiva inspirada en técnicas modernas
 
 ### Página offline final y estado de conexión
 
-**Tipo:** Mantenimiento funcional posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
+**Tipo:** Mantenimiento funcional posterior al cierre
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
 **Precisión:** Día
 
 Se completó el modo sin conexión con una página `hub/offline.html` independiente y autocontenida.
@@ -1015,10 +1015,10 @@ No se añadió `manifest.webmanifest`, instalación ni comportamiento de aplicac
 
 ### Restauración de HTML y CSS flotantes en móvil
 
-**Tipo:** Corrección visual puntual posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
+**Tipo:** Corrección visual puntual posterior al cierre
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
 **Precisión:** Día
 
 Los paneles flotantes **HTML** y **CSS** del hero estaban ocultos por una regla responsive en pantallas de hasta 420 px.
@@ -1031,10 +1031,10 @@ La caché offline avanza a `pw-hub-offline-v6` para propagar el nuevo CSS.
 
 ### Corrección directa del hero con invalidación de caché
 
-**Tipo:** Corrección visual puntual posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
+**Tipo:** Corrección visual puntual posterior al cierre
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
 **Precisión:** Día
 
 El hueco superior coincidía con el relleno interno del propio hero:
@@ -1056,10 +1056,10 @@ componentes.
 
 ### Corrección del movimiento sutil y desplazamiento del encabezado
 
-**Tipo:** Corrección funcional y visual posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
+**Tipo:** Corrección funcional y visual posterior al cierre
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
 **Precisión:** Día
 
 La inspección directa del navegador mostró que `.encabezado-principal`
@@ -1082,11 +1082,11 @@ reutilizar una copia anterior almacenada.
 
 ### Alineación óptica del bloque institucional del hero
 
-**Tipo:** Corrección visual puntual posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** U3  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Corrección visual puntual posterior al cierre
+**Estado:** Implementado
+**Unidad:** U3
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Revisión directa de la versión actual en GitHub
 
 El bloque institucional se encontraba matemáticamente centrado dentro de
@@ -1106,11 +1106,11 @@ conservar la copia anterior de `hero-movil-fix.css`.
 
 ### Catálogo automático global y reorganización de la vista offline
 
-**Tipo:** Mantenimiento funcional y estructural posterior al cierre  
-**Estado:** Implementado  
-**Unidad:** General  
-**Fecha:** 2026-10-15  
-**Precisión:** Día  
+**Tipo:** Mantenimiento funcional y estructural posterior al cierre
+**Estado:** Implementado
+**Unidad:** General
+**Fecha:** 2026-10-15
+**Precisión:** Día
 **Fuente:** Revisión de la versión actual del Hub y su sincronización con GitHub
 
 Se detectó que las tarjetas de Unidades ya recibían trabajos sincronizados con
@@ -1132,11 +1132,11 @@ Worker avanza a `pw-hub-offline-v13`.
 
 ### Migración del roadmap a versionado de PW Hub
 
-**Tipo:** Mantenimiento documental y funcional  
-**Estado:** Implementado  
-**Unidad:** General  
-**Fecha:** 2026-10-17  
-**Precisión:** Día  
+**Tipo:** Mantenimiento documental y funcional
+**Estado:** Implementado
+**Unidad:** General
+**Fecha:** 2026-10-17
+**Precisión:** Día
 **Fuente:** Reorganización local validada antes de publicación
 
 PW Hub deja de organizar su evolución futura mediante fases. Las 16 fases
@@ -1154,11 +1154,11 @@ del Historial.
 
 ### Tema oscuro para archivos Markdown
 
-**Tipo:** Mejora visual de v1.0.0  
-**Estado:** Implementado  
-**Unidad:** General  
-**Fecha:** 2026-10-17  
-**Precisión:** Día  
+**Tipo:** Mejora visual de v1.0.0
+**Estado:** Implementado
+**Unidad:** General
+**Fecha:** 2026-10-17
+**Precisión:** Día
 **Fuente:** Revisión del visor completo de trabajos
 
 La vista Diseño de los archivos Markdown en `hub/vistas/trabajo.html` deja de
@@ -1174,11 +1174,11 @@ distribuir la versión nueva del visor.
 
 ### Unificación del tema oscuro Markdown en todo el Hub
 
-**Tipo:** Mejora visual de v1.0.0  
-**Estado:** Implementado  
-**Unidad:** General  
-**Fecha:** 2026-10-17  
-**Precisión:** Día  
+**Tipo:** Mejora visual de v1.0.0
+**Estado:** Implementado
+**Unidad:** General
+**Fecha:** 2026-10-17
+**Precisión:** Día
 **Fuente:** Revisión visual de Documentación, Unidades y Vista previa
 
 Después de oscurecer el visor completo se detectaron tres superficies que aún
@@ -1197,11 +1197,11 @@ estilos dentro del shell para evitar reutilizar versiones claras almacenadas.
 
 ### Inicio de la actualización v1.1.0 - Sincronización y novedades
 
-**Tipo:** Actualización funcional en validación  
-**Estado:** En desarrollo  
-**Unidad:** General  
-**Fecha:** 2026-10-17  
-**Precisión:** Día  
+**Tipo:** Actualización funcional en validación
+**Estado:** En desarrollo
+**Unidad:** General
+**Fecha:** 2026-10-17
+**Precisión:** Día
 **Fuente:** Implementación local basada en el roadmap versionado
 
 Se inicia la primera actualización posterior a la base estable v1.0.0. La
@@ -1224,11 +1224,11 @@ a `pw-hub-offline-v19` e incluye los nuevos recursos `novedades.js` y
 
 ### Publicación de v1.1.0 - Sincronización y novedades
 
-**Tipo:** Actualización funcional publicada  
-**Estado:** Implementado  
-**Unidad:** General  
-**Fecha:** 2026-10-17  
-**Precisión:** Día  
+**Tipo:** Actualización funcional publicada
+**Estado:** Implementado
+**Unidad:** General
+**Fecha:** 2026-10-17
+**Precisión:** Día
 **Fuente:** Validación funcional local y cierre del candidato v1.1.0
 
 La primera actualización posterior a la base estable queda validada y pasa a
@@ -1263,11 +1263,11 @@ Se reconstruyó el candidato v1.1.1 a partir del estado local compartido y de la
 
 ### Publicación de v1.1.1 - Reestructuración de navegación y vistas
 
-**Tipo:** Parche funcional publicado  
-**Estado:** Implementado  
-**Unidad:** General  
-**Fecha:** 2026-10-18  
-**Precisión:** Día  
+**Tipo:** Parche funcional publicado
+**Estado:** Implementado
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
 **Fuente:** Validación local y reparación del arranque de PW Hub
 
 Después de reconstruir el candidato desde el estado real del proyecto, v1.1.1 queda validada y publicada. La navegación se organiza mediante vistas internas sin dividir el Hub en múltiples páginas HTML: Inicio conserva el Resumen académico, Curso reúne Progreso y U1-U5, Explorar muestra cada herramienta extensa de forma independiente y Documentación mantiene su propio contexto.
@@ -1280,13 +1280,218 @@ La corrección final separa el router de la lógica de sincronización, elimina 
 
 ### Hotfix visual posterior a v1.1.1: franja inferior en superficies
 
-**Tipo:** Corrección visual de mantenimiento  
-**Estado:** Implementado  
-**Unidad:** General  
-**Fecha:** 2026-10-18  
-**Precisión:** Día  
+**Tipo:** Corrección visual de mantenimiento
+**Estado:** Implementado
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
 **Fuente:** Validación sobre GitHub Pages y Microsoft Edge
 
 Se detectó un artefacto visual en GitHub Pages/Edge donde algunas superficies translúcidas del Hub —principalmente tarjetas del Roadmap, botones de filtro y paneles estadísticos— mostraban una franja brillante en el borde inferior al desplazarse.
 
 La corrección añade una hoja de estilo puntual que aísla el pintado de estas superficies (`isolation`, `contain: paint`, `overflow: hidden` y `background-clip`) para evitar que el brillo o las capas de composición se filtren hacia el borde inferior. El Service Worker avanza a `pw-hub-offline-v31` para distribuir correctamente el hotfix.
+
+---
+
+### Inicio del candidato v1.2.0 - Navegación y búsqueda global
+
+**Tipo:** Actualización funcional en validación
+**Estado:** En desarrollo
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Implementación local basada en ROADMAP.md
+
+Se inicia v1.2.0 con una paleta de comandos accesible mediante `Ctrl + K` o `Cmd + K`, acompañada por un botón Buscar en la navegación para conservar acceso en equipos táctiles o sin atajo de teclado.
+
+La búsqueda reúne secciones, unidades, trabajos, eventos del Historial, versiones del Roadmap y entradas de Documentación. Los resultados se distinguen por tipo y reutilizan el router interno de v1.1.1 para no duplicar la navegación.
+
+También se incorpora estado compartible en la URL para filtros y búsquedas de Todos los trabajos, Historial y Roadmap, además de restauración automática al abrir un enlace o recorrer Atrás/Adelante. Documentación puede conservar el archivo y la sección solicitada mediante parámetros de URL.
+
+El Service Worker avanza a `pw-hub-offline-v32` e incorpora `busqueda-global.js` y `busqueda-global.css`. La versión permanece como candidata hasta completar validación funcional local y en GitHub Pages.
+
+---
+
+### Segundo candidato v1.2.0: integración responsive de búsqueda y menús
+
+**Tipo:** Refinamiento funcional en validación
+**Estado:** En desarrollo
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Validación visual del primer candidato en media pantalla
+
+La primera prueba de v1.2.0 confirmó que la paleta global funciona, pero mostró presión horizontal adicional en la navegación y un desplegable de Curso capaz de extenderse más allá del espacio vertical visible.
+
+El segundo candidato reduce el acceso Buscar a un icono en anchos medios. En móvil, la búsqueda sale de la barra inferior y utiliza un botón flotante circular junto al acceso de Configuración, conservando cuatro destinos principales en la navegación móvil.
+
+Los menús desplegables de escritorio y media pantalla calculan ahora el espacio disponible debajo de la navegación y limitan su altura con scroll interno cuando sea necesario. También se restringe su ancho máximo al viewport. El Service Worker avanza a `pw-hub-offline-v33`.
+
+---
+
+### Tercer candidato v1.2.0: contención horizontal de desplegables
+
+**Tipo:** Corrección responsive en validación
+**Estado:** En desarrollo
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Validación visual del segundo candidato en media pantalla
+
+La segunda prueba confirmó la integración del buscador, pero mostró que limitar únicamente el ancho de los menús no impedía que un desplegable centrado respecto a su botón pudiera quedar parcialmente fuera del viewport, especialmente hacia la izquierda en ventanas intermedias.
+
+El tercer candidato mide la posición real de cada menú al abrirse y calcula un desplazamiento horizontal correctivo. Si el borde izquierdo o derecho rebasa el margen seguro de la ventana, el menú se mueve solo lo necesario para quedar completamente visible, conservando su ancho, su relación visual con el botón y el ajuste vertical con scroll interno incorporado en el candidato anterior.
+
+El Service Worker avanza a `pw-hub-offline-v34` para distribuir el tercer candidato.
+
+---
+
+### Cuarto candidato v1.2.0: fijación móvil del botón Buscar
+
+**Tipo:** Corrección responsive en validación
+**Estado:** En desarrollo
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Prueba real en teléfono móvil
+
+La prueba del tercer candidato en un teléfono confirmó que la navegación inferior, los menús y la paleta global funcionaban correctamente, pero mostró que el botón flotante Buscar podía quedar más abajo que Configuración al llegar al final de Inicio o durante cambios rápidos del viewport visual del navegador móvil.
+
+El cuarto candidato conserva un fallback CSS sensible al área segura y añade una alineación dinámica con el botón real de Configuración. La posición de Buscar se recalcula mediante `getBoundingClientRect()` y se actualiza ante scroll, cambios de tamaño y eventos de `visualViewport`, de modo que ambos accesos permanezcan en la misma fila incluso cuando la interfaz del navegador móvil expande o contrae su área visible.
+
+El Service Worker avanza a `pw-hub-offline-v35` para distribuir el cuarto candidato.
+
+---
+
+### Quinto candidato v1.2.0: corrección reforzada de franjas de composición
+
+**Tipo:** Corrección visual en validación
+**Estado:** En desarrollo
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Revalidación visual previa al cierre de v1.2.0
+
+Antes de generar la publicación definitiva se detectó que el artefacto de franjas brillantes podía reaparecer en Roadmap, Todos los trabajos y otras superficies repetidas. La hoja `parche-franja-visual.css` seguía cargándose, por lo que el problema no era la desaparición del hotfix sino que la primera estrategia —aislamiento de pintado y promoción de numerosas tarjetas a capas de composición— no resultaba completamente estable al crecer la interfaz.
+
+El quinto candidato elimina esa promoción forzada y desactiva `backdrop-filter` únicamente en tarjetas, filtros y nodos repetidos de contenido. Se mantienen los gradientes, bordes, sombras y colores, mientras los efectos de vidrio continúan activos en navegación, paleta de búsqueda, Configuración y modales. El Service Worker avanza a `pw-hub-offline-v36` y el parche se entrega explícitamente dentro del paquete del candidato para asegurar una prueba reproducible.
+
+---
+
+### Sexto candidato v1.2.0: composición estable y rendimiento móvil
+
+**Tipo:** Corrección visual y optimización en validación
+**Estado:** En desarrollo
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Revalidación visual del quinto candidato y prueba real en teléfono
+
+La prueba del quinto candidato confirmó que retirar `backdrop-filter` de las tarjetas repetidas no eliminaba por completo las franjas observadas en Edge/Chromium. Las nuevas capturas mostraron el artefacto concentrado en el borde inferior de tarjetas de Todos los trabajos y Roadmap, especialmente al interactuar con elementos inferiores, lo que apunta también a la combinación de transparencia y cambios de capa provocados por `transform` en estados `:hover`.
+
+El sexto candidato estabiliza esas superficies con un fondo opaco bajo el gradiente, elimina la traslación vertical de tarjetas durante hover y evita transiciones de `transform`/`backdrop-filter` en contenido repetido. Los realces visuales mediante borde, color y sombra se conservan.
+
+Aprovechando la misma revisión, se incorpora un perfil de rendimiento para pantallas de hasta 650 px: navegación, menús, búsqueda y Configuración dejan de usar blur de fondo, los fondos complejos se simplifican y se reducen animaciones/transiciones no esenciales. El objetivo es disminuir repintados y composición por GPU durante el scroll en teléfonos sin alterar la funcionalidad responsive ya validada. El Service Worker avanza a `pw-hub-offline-v37`.
+
+---
+
+### v1.2.0 - Candidato 7: anclaje móvil y microinteracciones estables
+
+**Tipo:** Ajuste de candidato
+**Estado:** En validación
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Prueba directa en teléfono y escritorio
+
+Tras validar que el candidato 6 eliminó las franjas de composición, se detectó que el botón flotante Buscar todavía podía desplazarse temporalmente al cambiar el viewport visual del navegador móvil. La causa era el recálculo de su posición mediante `getBoundingClientRect()` durante `scroll` y eventos de `visualViewport`.
+
+El candidato 7 elimina ese seguimiento dinámico: Buscar queda anclado únicamente por CSS al mismo `bottom` que Configuración y reutiliza la clase visual `configuracion-flotante`, por lo que hereda tema, acento, material y detalles decorativos. También se recupera el feedback visual de tarjetas en escritorio mediante transición de borde y resplandor del color de acento, sin volver a utilizar traslaciones `transform` que puedan reintroducir el artefacto gráfico. El perfil ligero de móvil se conserva. El Service Worker avanza a `pw-hub-offline-v38`.
+
+---
+
+### v1.2.0 - Candidato 8: botón móvil apilado y hover sin sombra
+
+**Tipo:** Corrección visual en validación
+**Estado:** En validación
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Prueba directa de C7 en teléfono y escritorio
+
+La validación de C7 confirmó que el anclaje puramente CSS resolvió el desplazamiento del botón Buscar, pero evidenció tres regresiones: el icono de la lupa no quedaba centrado, el botón no reflejaba claramente el color de acento y la microinteracción con `box-shadow` hacía reaparecer visualmente la franja inferior en tarjetas.
+
+C8 coloca Buscar en una columna vertical sobre Configuración, iguala sus dimensiones a 54 px, centra explícitamente el SVG y usa `currentColor` con `var(--azul-claro)`. Ambos botones conservan la clase visual de Configuración y quedan fuera de la simplificación de material aplicada al resto de elementos fijos en móvil.
+
+Para las tarjetas se elimina el resplandor añadido en C7 y se vuelve a la composición estable de C6. El feedback visual se recupera mediante una transición de 180 ms exclusivamente sobre el borde con el color de acento, sin traslación, escala ni sombra nueva. El Service Worker avanza a `pw-hub-offline-v39`.
+---
+
+### v1.2.0 - Candidato 9: especificidad de materiales y botón móvil idéntico a Configuración
+
+**Tipo:** Corrección visual y de comportamiento en validación
+**Estado:** En validación
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+
+La validación de C8 permitió aislar el problema: Normal no presentaba franjas ni pérdida del hover, mientras que los materiales alternativos sí. `apariencia-avanzada.css` aplica blur, sombras, bordes y fondos mediante selectores `!important` con mayor especificidad que el parche anterior, por lo que parte de la composición problemática seguía activa aunque la hoja de corrección cargara al final.
+
+C9 aumenta la especificidad únicamente para materiales distintos de Normal y elimina blur, filtros y sombras de las superficies repetidas, manteniendo fondos opacos diferenciados por material. El parche deja de reemplazar el shorthand `transition`, de modo que las animaciones Sutil/Dinámico del Hub vuelven a conservar sus transiciones originales; el hover de escritorio se limita a un cambio animado del borde al color de acento sin `transform` ni `box-shadow`.
+
+En móvil, Buscar recibe también la clase `nav-configuracion` y la misma estructura interna de icono que Configuración. Usa 48 px, el mismo `right` y el mismo material/tema/acento; solamente cambia `bottom` para quedar 10 px arriba del botón de Configuración. El Service Worker avanza a `pw-hub-offline-v40`.
+
+---
+
+### v1.2.0 - Candidato 10: microinteracciones y bordes de acento globales
+
+**Tipo:** Refinamiento visual en validación
+**Estado:** En validación
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Validación satisfactoria de C9 y solicitud de ampliar la respuesta visual
+
+La prueba del candidato 9 confirma la corrección de las franjas en materiales alternativos, la recuperación de las animaciones configurables y la integración correcta del botón Buscar móvil. Sobre esa base estable se solicita aumentar las microanimaciones y reforzar la iluminación de bordes en todos los materiales y variantes de tema sin reintroducir el fallo gráfico.
+
+C10 añade `hub/css/microinteracciones.css` como capa independiente. Los bordes interactivos usan `--acento-rgb`, por lo que siguen automáticamente el color elegido sin depender del tema o material. En tarjetas grandes la respuesta se limita al borde/contorno; no se añaden blur, filtros, sombras ni transformaciones sobre las superficies estabilizadas. El movimiento adicional se concentra en elementos pequeños como etiquetas, números, iconos, filtros, botones, favoritos y controles del Roadmap. El modo Dinámico agrega pulsos discretos únicamente en escritorio y el perfil móvil conserva la reducción de carga gráfica. El Service Worker avanza a `pw-hub-offline-v41`.
+
+---
+
+### v1.2.0 - Candidato 11: cierre de Configuración y bloqueo modal
+
+**Tipo:** Ajuste final de experiencia de uso
+**Estado:** En validación
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+
+Después de validar C10 sin reaparición de franjas y con las nuevas microinteracciones activas, se detectaron dos detalles finales. En pantallas estrechas el botón `Restablecer` podía partir su texto en dos líneas, y tanto el panel de Configuración como la paleta de Búsqueda permitían desplazar la página situada detrás. C11 conserva el botón en una sola línea con ancho automático, añade bloqueo de overflow a `html` y `body` mientras cualquiera de las dos capas está abierta y contiene el overscroll dentro de los paneles modales. El Service Worker avanza a `pw-hub-offline-v42`.
+
+---
+
+### v1.2.0 - Candidato 12: búsqueda coherente con Contenido visible
+
+**Tipo:** Refinamiento funcional en validación
+**Estado:** En validación
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+
+Después de validar C11, se detectó una última incoherencia: la paleta global podía mostrar resultados correspondientes a secciones que el usuario había desactivado desde Configuración. C12 vincula los resultados de búsqueda con los interruptores de **Contenido visible**.
+
+Inicio permanece siempre disponible porque el Resumen académico es estructural. Progreso, Actividad, Estadísticas, Historial, Roadmap y Documentación dependen de su interruptor; las unidades dependen de `Unidades de la materia`. Los trabajos permanecen disponibles cuando está habilitada al menos una de las dos vistas que los exponen: Unidades o Todos los trabajos. Si un interruptor cambia mientras la paleta está abierta, los resultados se actualizan inmediatamente. El Service Worker avanza a `pw-hub-offline-v44`.
+
+---
+
+### Publicación de PW Hub v1.2.0 - Navegación y búsqueda global
+
+**Tipo:** Publicación de versión
+**Estado:** Publicada
+**Unidad:** General
+**Fecha:** 2026-10-18
+**Precisión:** Día
+**Fuente:** Validación final en escritorio y teléfono
+
+Después de validar el candidato 12, PW Hub v1.2.0 queda publicado como versión actual. La versión integra la paleta de búsqueda global con `Ctrl + K` / `Cmd + K`, acceso responsive mediante botón Buscar, navegación y filtros compartibles por URL, restauración de estado, resultados sensibles a los interruptores de Contenido visible y compatibilidad con el router interno de v1.1.1.
+
+El cierre conserva las correcciones de composición para materiales alternativos, microinteracciones y bordes ligados al color de acento, perfil móvil optimizado, botones flotantes de Buscar y Configuración, menús contenidos dentro del viewport, botón Restablecer estable y bloqueo del desplazamiento de fondo mientras Configuración o Búsqueda están abiertas. El Service Worker final avanza a `pw-hub-offline-v45`.

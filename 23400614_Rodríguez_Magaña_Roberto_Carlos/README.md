@@ -1,8 +1,8 @@
 # Roberto Carlos Rodríguez Magaña
 
-**Número de control:** 23400614  
-**Carrera:** Ingeniería en Sistemas Computacionales  
-**Institución:** Instituto Tecnológico de Tepic  
+**Número de control:** 23400614
+**Carrera:** Ingeniería en Sistemas Computacionales
+**Institución:** Instituto Tecnológico de Tepic
 **Materia:** Programación Web
 
 ---
@@ -31,9 +31,13 @@ También incluye **PW Hub**, un portafolio web que organiza y presenta el avance
 
 ## Estado de PW Hub
 
-**Versión publicada actual: v1.1.1 - Reestructuración de navegación y vistas**
+**Versión publicada actual: v1.2.0 - Navegación y búsqueda global**
 
-La base inicial quedó consolidada en v1.0.0. **v1.1.0** incorporó sincronización y novedades, y **v1.1.1** publica la reestructuración de navegación y las correcciones de estabilidad del arranque.
+**Próxima actualización planeada: v1.3.0 - Proyectos inteligentes y GitHub**
+
+v1.2.0 publica la búsqueda global, la navegación responsive refinada, los estados compartibles por URL y la integración de la paleta con los interruptores de **Contenido visible** de Configuración.
+
+La base inicial quedó consolidada en v1.0.0. **v1.1.0** incorporó sincronización y novedades, **v1.1.1** reorganizó la navegación y estabilizó el arranque, y **v1.2.0** publica la búsqueda global y el refinamiento responsive asociado.
 
 El proyecto ya no utiliza fases para organizar su evolución futura. Las mejoras posteriores se documentan como **actualizaciones versionadas**.
 
@@ -49,9 +53,11 @@ La versión estable actual y las actualizaciones propuestas se encuentran en:
 hub/docs/ROADMAP.md
 ```
 
-El mapa conserva `v1.0.0` como base estable histórica, `v1.1.0` como actualización publicada anterior y marca `v1.1.1` como versión publicada actual. Las mejoras previstas continúan desde `v1.2.0` hasta `v1.9.0`, reservando `v2.0.0` para el siguiente salto mayor del Hub.
+El mapa conserva `v1.0.0` como base estable histórica, `v1.1.0` y `v1.1.1` como actualizaciones publicadas anteriores y marca `v1.2.0` como versión publicada actual. Las mejoras previstas continúan desde `v1.3.0` hasta `v1.9.0`, reservando `v2.0.0` para el siguiente salto mayor del Hub.
 
 El avance académico de U1-U5 y las versiones de PW Hub son independientes.
+
+v1.2.0 conserva la corrección estable de composición para materiales alternativos, añade microinteracciones seguras y bordes ligados al color de acento, mantiene un perfil móvil más ligero y hace que la búsqueda global solo ofrezca contenido disponible según la configuración visible del usuario.
 
 ---
 
@@ -211,6 +217,8 @@ Los materiales se combinan con paletas compatibles, color de acento, densidad y 
 
 Las preferencias se guardan localmente en el navegador.
 
+Durante la validación de **v1.2.0**, las capas de Configuración y Búsqueda bloquean el desplazamiento de la página de fondo y conservan únicamente su scroll interno; el pie de Configuración también mantiene la acción `Restablecer` en una sola línea en pantallas estrechas.
+
 ---
 
 ## Navegación por vistas internas
@@ -285,6 +293,6 @@ Git y GitHub se utilizan para mantener el historial de cambios y registrar las a
 
 ## Autor
 
-**Roberto Carlos Rodríguez Magaña**  
-Ingeniería en Sistemas Computacionales  
+**Roberto Carlos Rodríguez Magaña**
+Ingeniería en Sistemas Computacionales
 Instituto Tecnológico de Tepic

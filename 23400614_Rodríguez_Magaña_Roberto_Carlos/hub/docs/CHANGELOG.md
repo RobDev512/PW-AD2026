@@ -8,10 +8,76 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 
 ---
 
+# v1.2.0 - Navegación y búsqueda global
+
+**Estado:** Publicada · actual
+**Fecha de publicación:** 2026-10-18
+**Tipo:** Actualización funcional
+
+## Implementado
+
+- paleta global accesible con `Ctrl + K` o `Cmd + K` y botón Buscar en la navegación;
+- búsqueda unificada de secciones, unidades, trabajos, eventos de Historial, versiones del Roadmap y Documentación;
+- resultados con categoría visual para distinguir el tipo de destino;
+- navegación directa a secciones y unidades, apertura de trabajos en el visor y acceso contextual a Historial, Roadmap y documentación Markdown;
+- parámetros compartibles para búsquedas, filtros y vistas de Todos los trabajos, Historial y Roadmap;
+- restauración automática de esos parámetros al abrir o regresar a una URL;
+- apertura compartible de documentos y secciones de README mediante parámetros `doc` y `doc-seccion`;
+- compatibilidad conservada con hashes y el router interno de v1.1.1;
+- Service Worker actualizado a `pw-hub-offline-v32` en el primer candidato;
+- acceso Buscar reducido a solo icono entre 651 y 1100 px para liberar espacio horizontal;
+- botón de búsqueda flotante en móvil, alineado junto al acceso de Configuración y fuera de la barra inferior;
+- ajuste dinámico de altura para los menús desplegables de navegación en escritorio y media pantalla, con scroll interno cuando no cabe todo el contenido;
+- límites de ancho para evitar que los desplegables excedan el viewport;
+- corrección dinámica del desplazamiento horizontal de los menús para impedir recortes por la izquierda o la derecha en media pantalla;
+- Service Worker actualizado a `pw-hub-offline-v34` para distribuir el tercer candidato;
+- alineación móvil del botón flotante Buscar con el botón de Configuración mediante medición de posición real;
+- actualización de esa alineación ante scroll, resize y cambios del `visualViewport` para evitar desplazamientos al llegar al final de la página;
+- Service Worker actualizado a `pw-hub-offline-v35` para distribuir el cuarto candidato.
+- sexto candidato con estabilización de fondos y hover para eliminar las franjas persistentes en tarjetas, filtros y nodos repetidos;
+- retirada de `backdrop-filter` solo en superficies de contenido propensas al fallo de composición, manteniendo los efectos en navegación, búsqueda, configuración y modales;
+- perfil de rendimiento móvil con menos blur, animaciones y fondos complejos en pantallas pequeñas;
+- Service Worker actualizado a `pw-hub-offline-v37` para distribuir el sexto candidato.
+- séptimo candidato con posicionamiento móvil de Buscar completamente resuelto por CSS, sin mediciones durante el scroll;
+- Buscar reutiliza la clase visual de Configuración para heredar tema, acento, material y detalles decorativos;
+- recuperación del feedback visual de tarjetas en escritorio mediante transición de borde y resplandor de acento, sin traslaciones ni promoción por `transform`;
+- Service Worker actualizado a `pw-hub-offline-v38` para distribuir el séptimo candidato.
+- octavo candidato con Buscar apilado sobre Configuración en móvil, centrado y coloreado por el acento actual;
+- Buscar conserva la misma clase visual de Configuración y vuelve a permitir sus reglas de material en móvil;
+- se retira el resplandor `box-shadow` agregado en C7 y se conserva una microinteracción segura basada solo en transición del borde;
+- Service Worker actualizado a `pw-hub-offline-v39` para distribuir el octavo candidato.
+- noveno candidato con corrección de especificidad: los materiales alternativos ya no pueden reactivar blur/sombras sobre las superficies estabilizadas;
+- retirada del `transition` global del parche visual para no sustituir las animaciones Sutil/Dinámico;
+- Buscar móvil usa también `nav-configuracion`, la misma estructura interna de icono y exactamente el mismo eje X/tamaño que Configuración;
+- Service Worker actualizado a `pw-hub-offline-v40` para distribuir el noveno candidato.
+- décimo candidato con `microinteracciones.css` como capa visual independiente y segura;
+- iluminación de borde ligada a `--acento-rgb` para Normal, Liquid Glass, Frosted Glass, Acrílico, Minimal, Neon Tech, Mate y Titanio, compatible con todas sus variantes de tema;
+- microanimaciones de etiquetas, números, iconos, filtros, botones, favoritos y controles del Roadmap sin transformar superficies grandes;
+- modo Dinámico ampliado con pulsos discretos en elementos pequeños solo fuera de móvil;
+- perfil móvil conservado sin animaciones continuas para no perder la mejora de fluidez;
+- Service Worker actualizado a `pw-hub-offline-v41` para distribuir el décimo candidato.
+- undécimo candidato con corrección final del pie de Configuración: `Restablecer` permanece en una sola línea y conserva ancho automático;
+- bloqueo compartido del scroll de fondo mientras Configuración o la paleta de búsqueda están abiertas, manteniendo únicamente el desplazamiento interno de cada capa;
+- Service Worker actualizado a `pw-hub-offline-v42` para distribuir el undécimo candidato.
+- duodécimo candidato con búsqueda global sensible a los interruptores de Contenido visible;
+- secciones, unidades, Historial, Roadmap y Documentación desaparecen de la paleta cuando su vista está desactivada;
+- los trabajos siguen disponibles si está activa al menos una de sus dos superficies: Unidades o Todos los trabajos;
+- actualización inmediata de resultados cuando un interruptor cambia mientras la paleta está abierta;
+- búsqueda global sensible a los interruptores de Contenido visible, con actualización inmediata de resultados;
+- Service Worker final actualizado a `pw-hub-offline-v45` para publicar v1.2.0.
+
+## Validación y publicación
+
+La versión fue validada en escritorio y teléfono antes de publicarse. Se comprobaron la paleta global, los accesos responsive, los menús contenidos dentro del viewport, los estados compartibles por URL, el bloqueo del scroll de fondo en capas modales, la estabilidad visual de materiales alternativos, las microinteracciones, el perfil móvil de rendimiento y la coherencia de resultados con los interruptores de Contenido visible.
+
+C12 cerró la validación funcional: ocultar o mostrar secciones desde Configuración actualiza la paleta sin modificar el catálogo académico base. Con esta validación, v1.2.0 pasa a estado publicada y se convierte en la versión actual del Hub.
+
+---
+
 # v1.1.1 - Reestructuración de navegación y vistas
 
-**Estado:** Publicada  
-**Fecha de publicación:** 2026-10-18  
+**Estado:** Publicada
+**Fecha de publicación:** 2026-10-18
 **Tipo:** Parche de experiencia de uso y estabilidad
 
 Este parche reorganiza el Hub para reducir el desplazamiento vertical sin convertirlo en varias páginas HTML independientes y corrige el arranque detectado durante la validación del candidato.
@@ -41,8 +107,8 @@ Con esta publicación, **v1.1.1 sustituye a v1.1.0 como versión actual**, mient
 
 # v1.1.0 - Sincronización y novedades
 
-**Estado:** Publicada  
-**Fecha de publicación:** 2026-10-17  
+**Estado:** Publicada
+**Fecha de publicación:** 2026-10-17
 **Tipo:** Actualización funcional
 
 La primera actualización posterior a la base estable hace visible el estado de la sincronización automática que ya utiliza PW Hub y añade señales para reconocer contenido reciente sin convertir la carga del portafolio en un proceso manual.
@@ -67,8 +133,8 @@ La actualización fue validada en servidor local antes de su publicación. Se co
 
 # v1.0.0 - Base estable
 
-**Estado:** Publicada  
-**Fecha de consolidación:** 2026-10-17  
+**Estado:** Publicada
+**Fecha de consolidación:** 2026-10-17
 **Tipo:** Versión base estable
 
 Esta entrada consolida todo el desarrollo realizado desde la estructura inicial hasta el estado actual del Hub. No implica por sí sola la creación de un tag de Git: define el punto de partida del nuevo esquema de versiones.

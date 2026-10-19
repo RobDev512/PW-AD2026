@@ -4,7 +4,7 @@ PW Hub es el portafolio académico de **Programación Web** de Roberto Carlos Ro
 
 ## Estado actual
 
-**Versión publicada actual: v1.1.1 - Reestructuración de navegación y vistas**
+**Versión publicada actual: v1.2.0 - Navegación y búsqueda global**
 
 La etapa de construcción inicial ya terminó. El proyecto dejó de organizar su evolución futura mediante fases y ahora utiliza un esquema de **actualizaciones versionadas**.
 
@@ -68,6 +68,7 @@ PW Hub incluye:
 - visor completo en `vistas/trabajo.html`;
 - modos **Diseño** y **Código**;
 - navegación agrupada y responsive;
+- búsqueda global sensible a la configuración visible: solo indexa resultados habilitados por los interruptores del usuario;
 - barra móvil compacta;
 - Configuración flotante;
 - perfiles de visualización;
@@ -216,7 +217,7 @@ Los estados reconocidos son:
 - Planeada;
 - Visión futura.
 
-El roadmap conserva `v1.0.0` como base histórica, `v1.1.0` como actualización publicada anterior y marca `v1.1.1` como versión publicada actual. El Changelog conserva el detalle de cada versión; las versiones posteriores representan trabajo planeado o futuro.
+El roadmap conserva `v1.0.0` como base histórica, `v1.1.0` y `v1.1.1` como actualizaciones publicadas anteriores y marca `v1.2.0` como versión publicada actual. El Changelog conserva el detalle de cada versión; desde `v1.3.0` las versiones posteriores representan trabajo planeado o futuro.
 
 ---
 
@@ -368,3 +369,49 @@ Ruta:
 PW Hub se considera un proyecto terminado en su base v1.0.0.
 
 Las futuras versiones son mejoras opcionales. Si ninguna se implementa, el estado actual continúa siendo válido y estable.
+
+---
+
+## v1.2.0 publicada: navegación y búsqueda global
+
+El candidato actual añade una paleta global con `Ctrl + K` / `Cmd + K`. En escritorio amplio conserva el acceso Buscar en la navegación; entre 651 y 1100 px ese acceso se reduce al icono de lupa y en móvil se presenta como botón flotante anclado por CSS directamente sobre Configuración. Ambos botones comparten la misma superficie visual para responder al tema, acento y material seleccionados, y Buscar usa explícitamente el color de acento actual. El índice combina secciones, unidades, trabajos, Historial, Roadmap y Documentación sin sustituir los buscadores específicos que ya existen.
+
+Los filtros y búsquedas de las vistas principales pueden reflejarse en parámetros de URL y restaurarse al abrir un enlace compartido. Los hashes de v1.1.1 continúan siendo la referencia principal para seleccionar Inicio, Curso, Explorar y Documentación.
+
+Recursos nuevos del candidato:
+
+```text
+hub/css/busqueda-global.css
+hub/js/busqueda-global.js
+```
+
+
+### Integración responsive del candidato 4
+
+Los desplegables de Curso, Explorar y Documentación limitan dinámicamente su altura al espacio visible cuando se abren fuera de móvil y corrigen su posición horizontal para no salir del viewport. El cuarto candidato probó una alineación móvil calculada con JavaScript. Ese enfoque quedó sustituido posteriormente por un anclaje completamente CSS para evitar desplazamientos temporales durante el scroll y los cambios del `visualViewport`.
+
+### Estabilidad visual y rendimiento del candidato 6
+
+Durante la validación del candidato 5 se comprobó que las franjas podían persistir aun sin `backdrop-filter`. Las capturas mostraron que el problema también coincidía con superficies semitransparentes que cambiaban de capa de composición mediante `transform` durante `:hover`. El candidato 6 vuelve opacos los fondos de tarjetas repetidas en materiales de vidrio, elimina la traslación hover de esas tarjetas y estabiliza su composición; los candidatos posteriores afinan el realce para conservar únicamente una transición de borde segura. En móvil añade un perfil ligero: elimina blur de fondo en controles fijos, simplifica fondos y reduce transiciones/animaciones costosas para mejorar la fluidez del scroll.
+
+### Candidato 9 de v1.2.0
+
+La corrección actual identifica que el fallo de franjas era específico de los materiales alternativos: sus reglas `!important` podían superar al parche anterior. C9 estabiliza las superficies con selectores material-aware de mayor especificidad, elimina blur/sombra solo en contenido repetido y deja intactas las transiciones del sistema Sutil/Dinámico. En escritorio, el hover se limita a un cambio suave de borde al color de acento. En móvil, Buscar utiliza las mismas clases, estructura interna, tamaño y eje X que Configuración y se coloca exactamente una fila por encima.
+
+### Candidato 10 de v1.2.0
+
+Tras validar C9, el décimo candidato amplía la respuesta visual sin modificar la estrategia de estabilidad. Se añade `hub/css/microinteracciones.css`, una capa independiente que ilumina bordes con el color de acento en todos los materiales y temas y anima únicamente elementos pequeños —etiquetas, iconos, números, filtros, botones y controles del Roadmap—. Las tarjetas grandes de materiales alternativos continúan sin blur, sombra, filtro ni transformaciones de hover para no reintroducir las franjas de composición. El modo Dinámico añade pulsos discretos solo fuera de móvil; en teléfono se conserva el perfil ligero y únicamente existe feedback de toque.
+
+### Candidato 11 de v1.2.0
+
+Tras validar las microinteracciones de C10, el undécimo candidato realiza dos ajustes de cierre sin alterar la apariencia ya aprobada. El botón `Restablecer` del pie de Configuración conserva su texto en una sola línea mediante ancho automático, y Búsqueda Global observa el estado del panel de Configuración para aplicar un bloqueo común del scroll de fondo. Los contenedores internos de Configuración y de la paleta mantienen su propio desplazamiento con `overscroll-behavior`, evitando el scroll encadenado hacia la página.
+
+---
+
+## Ajuste de búsqueda de v1.2.0 - Candidato 12
+
+La paleta global filtra sus resultados según los interruptores de **Contenido visible**. Las unidades requieren la sección Unidades; Historial, Roadmap y Documentación requieren sus vistas correspondientes. Un trabajo sigue apareciendo cuando está habilitada al menos una de las dos superficies que lo exponen: Unidades o Todos los trabajos. El filtrado se evalúa en tiempo real y no modifica el catálogo base.
+
+### Publicación final de v1.2.0
+
+Tras validar C12 en escritorio y móvil, v1.2.0 queda publicada como versión actual. La publicación conserva la búsqueda global, navegación responsive, URLs compartibles, correcciones de composición para materiales alternativos, microinteracciones seguras, perfil móvil optimizado y bloqueo modal del scroll de fondo. El Service Worker final utiliza `pw-hub-offline-v45`.

@@ -1,0 +1,376 @@
+/* =========================================================
+   PW HUB v1.2.0 - MICROINTERACCIONES SEGURAS
+   =========================================================
+
+   Objetivo:
+   - reforzar el feedback visual en TODOS los materiales y temas;
+   - conservar la corrección de franjas validada en C9;
+   - evitar transform/filter/backdrop-filter/box-shadow sobre
+     tarjetas grandes de materiales alternativos;
+   - respetar Movimiento: Ninguno / Sutil / Dinámico y la
+     preferencia reduced-motion del sistema.
+   ========================================================= */
+
+:root {
+    --pw-borde-hover: rgba(var(--acento-rgb), 0.84);
+    --pw-borde-activo: rgba(var(--acento-rgb), 0.94);
+    --pw-contorno-hover: rgba(var(--acento-rgb), 0.12);
+    --pw-contorno-activo: rgba(var(--acento-rgb), 0.18);
+}
+
+html[data-estilo="liquid"] {
+    --pw-borde-hover: rgba(var(--acento-rgb), 0.92);
+    --pw-contorno-hover: rgba(var(--acento-rgb), 0.16);
+}
+
+html[data-estilo="frosted"] {
+    --pw-borde-hover: rgba(var(--acento-rgb), 0.88);
+    --pw-contorno-hover: rgba(var(--acento-rgb), 0.14);
+}
+
+html[data-estilo="acrylic"] {
+    --pw-borde-hover: rgba(var(--acento-rgb), 0.90);
+    --pw-contorno-hover: rgba(var(--acento-rgb), 0.15);
+}
+
+html[data-estilo="minimal"] {
+    --pw-borde-hover: rgba(var(--acento-rgb), 0.72);
+    --pw-contorno-hover: rgba(var(--acento-rgb), 0.08);
+}
+
+html[data-estilo="neon"] {
+    --pw-borde-hover: rgba(var(--acento-rgb), 0.98);
+    --pw-contorno-hover: rgba(var(--acento-rgb), 0.20);
+}
+
+html[data-estilo="matte"] {
+    --pw-borde-hover: rgba(var(--acento-rgb), 0.80);
+    --pw-contorno-hover: rgba(var(--acento-rgb), 0.10);
+}
+
+html[data-estilo="titanium"] {
+    --pw-borde-hover: rgba(var(--acento-rgb), 0.86);
+    --pw-contorno-hover: rgba(var(--acento-rgb), 0.13);
+}
+
+/* ---------------------------------------------------------
+   BORDES ILUMINADOS
+   No se agrega sombra a las superficies grandes.
+   --------------------------------------------------------- */
+
+@media (hover: hover) and (pointer: fine) {
+    html[data-estilo]
+    body[data-efectos="on"]
+    :is(
+        .progreso-unidad,
+        .tarjeta-resumen,
+        .unidad-card,
+        .unidad-temas,
+        .unidad-trabajo,
+        .tarjeta-documento,
+        .actividad-tarjeta,
+        .estadistica-principal,
+        .estadisticas-panel,
+        .trabajo-explorador,
+        .historial-resumen,
+        .historial-estadistica,
+        .roadmap-estadistica,
+        .roadmap-progreso,
+        .roadmap-nodo-principal,
+        .roadmap-rama-cabecera,
+        .roadmap-hoja
+    ):hover {
+        border-color: var(--pw-borde-hover) !important;
+        outline: 1px solid var(--pw-contorno-hover);
+        outline-offset: 2px;
+    }
+
+    html[data-estilo]
+    body[data-efectos="on"]
+    :is(
+        .trabajos-filtro,
+        .trabajos-vista,
+        .trabajos-limpiar,
+        .roadmap-filtro,
+        .roadmap-vista,
+        .boton-documento,
+        .trabajo-preview,
+        .trabajo-abrir,
+        .trabajos-abrir,
+        .trabajos-cerrar,
+        .pw-busqueda-nav
+    ):hover {
+        border-color: var(--pw-borde-hover) !important;
+    }
+
+    html[data-estilo]
+    :is(
+        .trabajos-filtro,
+        .trabajos-vista,
+        .roadmap-filtro,
+        .roadmap-vista
+    ).activo {
+        border-color: var(--pw-borde-activo) !important;
+        outline: 1px solid var(--pw-contorno-activo);
+        outline-offset: 1px;
+    }
+}
+
+/* ---------------------------------------------------------
+   MICROINTERACCIONES DE CONTENIDO
+   Solo se mueven elementos pequeños dentro de las tarjetas.
+   --------------------------------------------------------- */
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    body[data-efectos="on"]
+    :is(
+        .trabajo-unidad,
+        .trabajo-tipo,
+        .trabajo-destacado,
+        .roadmap-estado,
+        .roadmap-nodo-toggle,
+        .trabajo-favorito,
+        .numero-resumen,
+        .roadmap-estadistica span,
+        .pw-paleta-tipo,
+        .nav-configuracion-icono,
+        .icono-nav
+    ) {
+        transition:
+            color 0.20s ease,
+            border-color 0.20s ease,
+            background-color 0.20s ease,
+            opacity 0.20s ease,
+            transform 0.20s cubic-bezier(.2,.8,.2,1);
+    }
+
+    body[data-efectos="on"]
+    .trabajo-explorador:hover
+    :is(.trabajo-unidad, .trabajo-tipo, .trabajo-destacado) {
+        transform: translateY(-1px);
+    }
+
+    body[data-efectos="on"]
+    .trabajo-explorador:hover h3,
+    body[data-efectos="on"]
+    .tarjeta-documento:hover h3,
+    body[data-efectos="on"]
+    .roadmap-nodo-principal:hover .roadmap-nodo-titulo {
+        color: var(--azul-suave);
+        transition: color 0.20s ease;
+    }
+
+    body[data-efectos="on"]
+    .tarjeta-resumen:hover .numero-resumen,
+    body[data-efectos="on"]
+    .roadmap-estadistica:hover span {
+        transform: scale(1.045);
+    }
+
+    body[data-efectos="on"]
+    .roadmap-nodo-principal:hover .roadmap-nodo-toggle {
+        transform: rotate(90deg) scale(1.06);
+        border-color: var(--pw-borde-hover);
+    }
+
+    body[data-efectos="on"]
+    .roadmap-mapa-nodo.expandido
+    .roadmap-nodo-toggle {
+        transform: rotate(180deg);
+    }
+
+    body[data-efectos="on"]
+    .trabajo-favorito:hover {
+        transform: rotate(-8deg) scale(1.10);
+    }
+
+    body[data-efectos="on"]
+    :is(
+        .trabajos-filtro,
+        .trabajos-vista,
+        .trabajos-limpiar,
+        .roadmap-filtro,
+        .roadmap-vista,
+        .boton-documento,
+        .trabajo-preview,
+        .trabajo-abrir,
+        .trabajos-abrir,
+        .trabajos-cerrar,
+        .pw-busqueda-nav
+    ):hover {
+        transform: translateY(-1px);
+    }
+
+    body[data-efectos="on"]
+    :is(
+        .trabajos-filtro,
+        .trabajos-vista,
+        .trabajos-limpiar,
+        .roadmap-filtro,
+        .roadmap-vista,
+        .boton-documento,
+        .trabajo-preview,
+        .trabajo-abrir,
+        .trabajos-abrir,
+        .trabajos-cerrar,
+        .pw-busqueda-nav
+    ):active {
+        transform: translateY(0) scale(0.985);
+    }
+
+    .navegacion-hub
+    :is(a, .nav-desplegable-boton):hover
+    .icono-nav {
+        transform: translateY(-1px) scale(1.10);
+    }
+
+    .pw-paleta-resultado:hover .pw-paleta-tipo,
+    .pw-paleta-resultado.activo .pw-paleta-tipo {
+        transform: translateX(2px);
+    }
+}
+
+/* ---------------------------------------------------------
+   MODO DINÁMICO
+   Animaciones continuas únicamente en piezas pequeñas y solo
+   fuera de móvil. Las tarjetas grandes permanecen estáticas.
+   --------------------------------------------------------- */
+
+@media (min-width: 651px) and (prefers-reduced-motion: no-preference) {
+    html[data-movimiento="dinamico"]
+    body[data-animaciones="on"]
+    .roadmap-mapa-nodo.desarrollo
+    .roadmap-mapa-eje span {
+        animation: pw-c10-pulso-borde 3.4s ease-in-out infinite;
+    }
+
+    html[data-movimiento="dinamico"]
+    body[data-animaciones="on"]
+    .trabajo-es-destacado .trabajo-destacado {
+        animation: pw-c10-etiqueta-viva 3.8s ease-in-out infinite;
+    }
+
+    html[data-movimiento="dinamico"]
+    body[data-animaciones="on"]
+    :is(.configuracion-flotante, .pw-busqueda-nav)
+    :is(.nav-configuracion-icono, .pw-busqueda-nav-icono) {
+        animation: pw-c10-icono-respiro 4.6s ease-in-out infinite;
+    }
+}
+
+@keyframes pw-c10-pulso-borde {
+    0%, 100% {
+        border-color: rgba(var(--acento-rgb), 0.58);
+    }
+    50% {
+        border-color: rgba(var(--acento-rgb), 0.98);
+    }
+}
+
+@keyframes pw-c10-etiqueta-viva {
+    0%, 100% { opacity: 0.82; }
+    50% { opacity: 1; }
+}
+
+@keyframes pw-c10-icono-respiro {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.075); }
+}
+
+/* ---------------------------------------------------------
+   FOCO DE TECLADO
+   --------------------------------------------------------- */
+
+:is(
+    .trabajos-filtro,
+    .trabajos-vista,
+    .roadmap-filtro,
+    .roadmap-vista,
+    .boton-documento,
+    .trabajo-preview,
+    .trabajo-abrir,
+    .trabajos-abrir,
+    .trabajos-cerrar,
+    .trabajo-favorito,
+    .pw-busqueda-nav
+):focus-visible {
+    outline: 2px solid rgba(var(--acento-rgb), 0.88);
+    outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   MÓVIL
+   Mantiene el perfil de rendimiento de C9. No hay animaciones
+   continuas; solo feedback inmediato de toque en controles.
+   --------------------------------------------------------- */
+
+@media (max-width: 650px) {
+    :is(
+        .trabajos-filtro,
+        .trabajos-vista,
+        .roadmap-filtro,
+        .roadmap-vista,
+        .boton-documento,
+        .trabajo-preview,
+        .trabajo-abrir,
+        .trabajos-abrir,
+        .trabajos-cerrar,
+        .pw-busqueda-flotante,
+        .configuracion-flotante
+    ):active {
+        transform: scale(0.97) !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pw-busqueda-nav-icono,
+    .nav-configuracion-icono,
+    .roadmap-mapa-eje span,
+    .trabajo-destacado {
+        animation: none !important;
+    }
+}
+
+/* ---------------------------------------------------------
+   PANEL DE CONFIGURACIÓN
+   El pie conserva Restablecer en una sola línea y evita que
+   el scroll interno se encadene con la página del fondo.
+   --------------------------------------------------------- */
+
+.panel-personalizacion,
+.personalizacion-contenido {
+    overscroll-behavior: contain;
+}
+
+.personalizacion-pie {
+    align-items: center;
+    gap: 14px;
+}
+
+.personalizacion-pie p {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.personalizacion-restablecer {
+    flex: 0 0 auto;
+    width: auto !important;
+    min-width: max-content;
+    max-width: none;
+    white-space: nowrap;
+    word-break: normal;
+    overflow-wrap: normal;
+    line-height: 1.15;
+}
+
+@media (max-width: 430px) {
+    .personalizacion-pie {
+        gap: 10px;
+    }
+
+    .personalizacion-restablecer {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 9px;
+    }
+}

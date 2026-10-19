@@ -2,7 +2,7 @@
 
 ## Estado general
 
-**Versión publicada actual: v1.1.1 - Reestructuración de navegación y vistas**
+**Versión publicada actual: v1.2.0 - Navegación y búsqueda global**
 
 PW Hub terminó su etapa de construcción inicial. A partir de este punto el proyecto ya no utiliza fases: cualquier mejora futura se registra como una **actualización versionada**.
 
@@ -80,7 +80,7 @@ El usuario podrá identificar rápidamente qué cambió, cuándo se actualizó y
 
 # v1.1.1 - Reestructuración de navegación y vistas
 
-**Estado:** Publicada · actual
+**Estado:** Publicada
 
 ## Objetivo
 
@@ -111,25 +111,38 @@ El Hub conserva su identidad visual, reduce recorridos verticales innecesarios y
 
 # v1.2.0 - Navegación y búsqueda global
 
-**Estado:** Planeada
+**Estado:** Publicada · actual
 
 ## Objetivo
 
 Convertir la navegación y la búsqueda en un sistema rápido y compartible para todo el Hub.
 
-## Planeado
+## Implementado
 
-- [ ] abrir una paleta de comandos con `Ctrl + K` o `Cmd + K`;
-- [ ] buscar secciones, unidades y trabajos desde la paleta;
-- [ ] extender la búsqueda a Historial, Roadmap y Documentación;
-- [ ] diferenciar visualmente el tipo de cada resultado;
-- [ ] reflejar filtros, búsquedas y selección de unidad en la URL;
-- [ ] restaurar automáticamente el estado al abrir un enlace compartido;
-- [ ] conservar compatibilidad con la navegación mediante hashes.
+- [x] abrir una paleta de comandos con `Ctrl + K` o `Cmd + K`;
+- [x] buscar secciones, unidades y trabajos desde la paleta;
+- [x] extender la búsqueda a Historial, Roadmap y Documentación;
+- [x] diferenciar visualmente el tipo de cada resultado;
+- [x] reflejar filtros, búsquedas y selección de unidad en la URL;
+- [x] restaurar automáticamente el estado al abrir un enlace compartido;
+- [x] conservar compatibilidad con la navegación mediante hashes.
+- [x] respetar los interruptores de Contenido visible al construir los resultados de la búsqueda global.
 
-## Resultado esperado
+## Validación
 
-Una sola experiencia permitirá localizar contenido, ejecutar accesos rápidos y compartir vistas concretas del portafolio.
+- [x] validar C9 en Normal y en los siete materiales alternativos, confirmando ausencia de franjas y recuperación del hover/animaciones;
+- [x] validar Buscar móvil con la misma geometría, color de acento y material que Configuración;
+- [x] validar C10 con iluminación de bordes en todos los materiales/temas sin reaparición de franjas;
+- [x] validar las nuevas microinteracciones en modos Sutil y Dinámico, además del perfil ligero de móvil;
+- [x] validar C11 con `Restablecer` en una sola línea en móvil y escritorio;
+- [x] validar que Configuración y Búsqueda bloqueen el scroll de fondo sin impedir su desplazamiento interno;
+- [x] validar C12 ocultando y mostrando secciones desde Configuración y comprobando que la paleta se actualice en tiempo real;
+
+C9 quedó validado como base estable, C10 confirmó que las microinteracciones y bordes de acento pueden ampliarse sin reintroducir franjas ni degradar el perfil móvil, C11 cerró correctamente las capas modales y C12 confirmó la coherencia entre Configuración y Búsqueda. La paleta ofrece únicamente contenido habilitado por los interruptores visibles sin alterar el catálogo académico.
+
+## Resultado
+
+PW Hub dispone de una experiencia unificada para localizar contenido, ejecutar accesos rápidos y compartir vistas concretas del portafolio, con comportamiento consistente en escritorio y móvil.
 
 ---
 

@@ -1,98 +1,444 @@
+\
 /* =========================================================
-   PW HUB v1.1.1 - HOTFIX VISUAL CONTRA FRANJA INFERIOR
+   PW HUB - ESTABILIDAD DE MATERIALES Y MICROINTERACCIONES
+   Revisión para v1.2.0
    =========================================================
 
-   Corrige un artefacto de composición observado en Edge/
-   GitHub Pages, donde algunas superficies translúcidas del
-   Hub mostraban una franja brillante en la parte inferior
-   al desplazarse.
+   Diagnóstico de C8:
+   - Normal funcionaba correctamente.
+   - Los materiales alternativos aplican varias reglas con
+     !important y mayor especificidad que el parche anterior.
+   - Por ello seguían activos blur, sombras y transformaciones
+     en Liquid, Frosted, Acrylic, Minimal, Neon, Mate y Titanio.
+   - El shorthand transition del parche anterior también podía
+     sustituir transiciones de entrada definidas por el Hub.
 
-   La corrección no rediseña los componentes: simplemente
-   aísla el pintado de tarjetas, paneles y filtros para que
-   sus capas visuales no se filtren hacia el borde inferior.
+   C9 corrige la especificidad sin tocar el material Normal.
+   Las tarjetas conservan identidad visual, pero las superficies
+   repetidas dejan de depender de composición translúcida.
    ========================================================= */
 
-.seccion-resumen .tarjeta-resumen,
-.seccion-actividad .actividad-grid > *,
-.seccion-portafolio .contenedor-unidades > *,
-.seccion-trabajos .trabajos-panel,
-.seccion-trabajos .trabajos-filtro,
-.seccion-trabajos .trabajos-visor,
-.seccion-trabajos .trabajos-grid > *,
-.seccion-estadisticas .estadistica-principal,
-.seccion-estadisticas .estadisticas-panel,
-.seccion-historial article,
-.seccion-roadmap article,
-.seccion-roadmap button,
-#roadmap article,
-#roadmap .roadmap-filtro,
-#roadmap .roadmap-estadistica,
-#roadmap .roadmap-estado,
-#roadmap .roadmap-linea-tiempo > * {
-    position: relative;
+/* ---------------------------------------------------------
+   LISTA DE SUPERFICIES ESTABLES PARA MATERIALES NO NORMALES
+   --------------------------------------------------------- */
+
+html[data-estilo]:not([data-estilo="normal"])
+:is(
+    body,
+    body[data-efectos="on"]
+)
+:is(
+    .pw-material-estable-inexistente
+) {
+    /* Regla centinela intencional: evita alterar especificidad
+       de los selectores reales que aparecen a continuación. */
+}
+
+html[data-estilo]:not([data-estilo="normal"])
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajos-panel,
+    .trabajos-filtro,
+    .trabajos-vista,
+    .trabajo-explorador,
+    .historial-resumen,
+    .historial-estadistica,
+    .historial-filtro,
+    .roadmap-estadistica,
+    .roadmap-progreso,
+    .roadmap-filtro,
+    .roadmap-vista,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
     isolation: isolate;
-    overflow: hidden;
-    contain: paint;
     background-clip: padding-box;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    transform: translateZ(0);
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    filter: none !important;
+    will-change: auto !important;
+
+    /* Las sombras de material eran una segunda fuente de
+       repintado/composición. La profundidad se conserva por
+       contraste de fondo y borde, no mediante una capa sombra. */
+    box-shadow: none !important;
 }
 
-.seccion-resumen .tarjeta-resumen::before,
-.seccion-resumen .tarjeta-resumen::after,
-.seccion-actividad .actividad-grid > *::before,
-.seccion-actividad .actividad-grid > *::after,
-.seccion-portafolio .contenedor-unidades > *::before,
-.seccion-portafolio .contenedor-unidades > *::after,
-.seccion-trabajos .trabajos-panel::before,
-.seccion-trabajos .trabajos-panel::after,
-.seccion-trabajos .trabajos-filtro::before,
-.seccion-trabajos .trabajos-filtro::after,
-.seccion-trabajos .trabajos-visor::before,
-.seccion-trabajos .trabajos-visor::after,
-.seccion-trabajos .trabajos-grid > *::before,
-.seccion-trabajos .trabajos-grid > *::after,
-.seccion-estadisticas .estadistica-principal::before,
-.seccion-estadisticas .estadistica-principal::after,
-.seccion-estadisticas .estadisticas-panel::before,
-.seccion-estadisticas .estadisticas-panel::after,
-.seccion-historial article::before,
-.seccion-historial article::after,
-.seccion-roadmap article::before,
-.seccion-roadmap article::after,
-.seccion-roadmap button::before,
-.seccion-roadmap button::after,
-#roadmap article::before,
-#roadmap article::after,
-#roadmap .roadmap-filtro::before,
-#roadmap .roadmap-filtro::after,
-#roadmap .roadmap-estadistica::before,
-#roadmap .roadmap-estadistica::after,
-#roadmap .roadmap-estado::before,
-#roadmap .roadmap-estado::after,
-#roadmap .roadmap-linea-tiempo > *::before,
-#roadmap .roadmap-linea-tiempo > *::after {
-    background-attachment: scroll !important;
+/* ---------------------------------------------------------
+   FONDOS OPACOS POR MATERIAL
+   Conservan carácter sin muestrear píxeles detrás de la tarjeta.
+   --------------------------------------------------------- */
+
+html[data-estilo="liquid"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajos-panel,
+    .trabajos-filtro,
+    .trabajos-vista,
+    .trabajo-explorador,
+    .historial-resumen,
+    .historial-estadistica,
+    .historial-filtro,
+    .roadmap-estadistica,
+    .roadmap-progreso,
+    .roadmap-filtro,
+    .roadmap-vista,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.075),
+            rgba(var(--acento-rgb), 0.028) 52%,
+            rgba(255, 255, 255, 0.012)
+        ),
+        var(--panel) !important;
 }
 
-html[data-estilo="liquid"] .seccion-resumen .tarjeta-resumen,
-html[data-estilo="liquid"] .seccion-actividad .actividad-grid > *,
-html[data-estilo="liquid"] .seccion-portafolio .contenedor-unidades > *,
-html[data-estilo="liquid"] .seccion-trabajos .trabajos-panel,
-html[data-estilo="liquid"] .seccion-trabajos .trabajos-filtro,
-html[data-estilo="liquid"] .seccion-trabajos .trabajos-visor,
-html[data-estilo="liquid"] .seccion-trabajos .trabajos-grid > *,
-html[data-estilo="liquid"] .seccion-estadisticas .estadistica-principal,
-html[data-estilo="liquid"] .seccion-estadisticas .estadisticas-panel,
-html[data-estilo="liquid"] .seccion-historial article,
-html[data-estilo="liquid"] .seccion-roadmap article,
-html[data-estilo="liquid"] .seccion-roadmap button,
-html[data-estilo="liquid"] #roadmap article,
-html[data-estilo="liquid"] #roadmap .roadmap-filtro,
-html[data-estilo="liquid"] #roadmap .roadmap-estadistica,
-html[data-estilo="liquid"] #roadmap .roadmap-estado,
-html[data-estilo="liquid"] #roadmap .roadmap-linea-tiempo > * {
-    -webkit-transform: translateZ(0);
-    filter: none;
+html[data-estilo="frosted"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajos-panel,
+    .trabajos-filtro,
+    .trabajos-vista,
+    .trabajo-explorador,
+    .historial-resumen,
+    .historial-estadistica,
+    .historial-filtro,
+    .roadmap-estadistica,
+    .roadmap-progreso,
+    .roadmap-filtro,
+    .roadmap-vista,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.075),
+            rgba(255, 255, 255, 0.022)
+        ),
+        var(--panel) !important;
+}
+
+html[data-estilo="acrylic"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajos-panel,
+    .trabajos-filtro,
+    .trabajos-vista,
+    .trabajo-explorador,
+    .historial-resumen,
+    .historial-estadistica,
+    .historial-filtro,
+    .roadmap-estadistica,
+    .roadmap-progreso,
+    .roadmap-filtro,
+    .roadmap-vista,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(var(--acento-rgb), 0.065),
+            rgba(255, 255, 255, 0.016) 72%
+        ),
+        var(--panel) !important;
+}
+
+html[data-estilo="minimal"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajos-panel,
+    .trabajos-filtro,
+    .trabajos-vista,
+    .trabajo-explorador,
+    .historial-resumen,
+    .historial-estadistica,
+    .historial-filtro,
+    .roadmap-estadistica,
+    .roadmap-progreso,
+    .roadmap-filtro,
+    .roadmap-vista,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+),
+html[data-estilo="matte"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajos-panel,
+    .trabajos-filtro,
+    .trabajos-vista,
+    .trabajo-explorador,
+    .historial-resumen,
+    .historial-estadistica,
+    .historial-filtro,
+    .roadmap-estadistica,
+    .roadmap-progreso,
+    .roadmap-filtro,
+    .roadmap-vista,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    background: var(--panel) !important;
+}
+
+html[data-estilo="neon"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajos-panel,
+    .trabajos-filtro,
+    .trabajos-vista,
+    .trabajo-explorador,
+    .historial-resumen,
+    .historial-estadistica,
+    .historial-filtro,
+    .roadmap-estadistica,
+    .roadmap-progreso,
+    .roadmap-filtro,
+    .roadmap-vista,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(var(--acento-rgb), 0.045),
+            transparent 68%
+        ),
+        var(--panel) !important;
+}
+
+html[data-estilo="titanium"]
+:is(
+    .progreso-unidad,
+    .tarjeta-resumen,
+    .unidad-card,
+    .unidad-temas,
+    .unidad-trabajo,
+    .tarjeta-documento,
+    .actividad-tarjeta,
+    .estadistica-principal,
+    .estadisticas-panel,
+    .trabajos-panel,
+    .trabajos-filtro,
+    .trabajos-vista,
+    .trabajo-explorador,
+    .historial-resumen,
+    .historial-estadistica,
+    .historial-filtro,
+    .roadmap-estadistica,
+    .roadmap-progreso,
+    .roadmap-filtro,
+    .roadmap-vista,
+    .roadmap-nodo-principal,
+    .roadmap-rama-cabecera,
+    .roadmap-hoja
+) {
+    background:
+        linear-gradient(
+            155deg,
+            rgba(210, 225, 235, 0.075),
+            rgba(85, 105, 118, 0.035) 44%,
+            rgba(0, 0, 0, 0.06)
+        ),
+        var(--panel) !important;
+}
+
+/* ---------------------------------------------------------
+   HOVER ESTABLE
+   La regla incluye html + material + body[data-efectos] para
+   superar las reglas !important de apariencia-avanzada.css.
+   No usa transform, filter, blur ni box-shadow.
+   --------------------------------------------------------- */
+
+@media (hover: hover) and (pointer: fine) {
+    html[data-estilo]:not([data-estilo="normal"])
+    body[data-efectos="on"]
+    :is(
+        .unidad-card,
+        .tarjeta-documento,
+        .actividad-tarjeta,
+        .estadistica-principal,
+        .estadisticas-panel,
+        .trabajo-explorador,
+        .historial-resumen,
+        .historial-estadistica,
+        .roadmap-estadistica,
+        .roadmap-nodo-principal,
+        .roadmap-rama-cabecera,
+        .roadmap-hoja
+    ):hover {
+        transform: none !important;
+        filter: none !important;
+        box-shadow: none !important;
+        border-color:
+            rgba(var(--acento-rgb), 0.78)
+            !important;
+    }
+
+    html[data-estilo]:not([data-estilo="normal"])
+    body[data-efectos="on"]
+    :is(
+        .trabajos-filtro,
+        .trabajos-vista,
+        .historial-filtro,
+        .roadmap-filtro,
+        .roadmap-vista
+    ):hover {
+        transform: none !important;
+        border-color:
+            rgba(var(--acento-rgb), 0.70)
+            !important;
+    }
+}
+
+/* ---------------------------------------------------------
+   MOVIMIENTO: NO REEMPLAZAR TRANSICIONES GLOBALES
+   --------------------------------------------------------- */
+
+/*
+   No se declara transition aquí. Así permanecen operativas las
+   transiciones originales de borde y las animaciones hub-reveal
+   de los modos Sutil y Dinámico.
+*/
+
+/* Evita que la animación de brillo de un trabajo destacado
+   vuelva a promover toda la tarjeta a una capa de filtro. */
+html[data-estilo]:not([data-estilo="normal"])
+.trabajo-es-destacado {
+    filter: none !important;
+}
+
+/* =========================================================
+   PERFIL DE RENDIMIENTO MÓVIL
+   ========================================================= */
+
+@media (max-width: 650px) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    html[data-estilo="liquid"] body,
+    html[data-estilo="frosted"] body,
+    html[data-estilo="acrylic"] body,
+    html[data-estilo="neon"] body,
+    html[data-estilo="titanium"] body {
+        background: var(--fondo) !important;
+    }
+
+    /* Superficies grandes: sin blur en móvil. Los botones
+       flotantes de Buscar y Configuración quedan excluidos para
+       conservar el material escogido por el usuario. */
+    .navegacion-hub,
+    .navegacion-hub::before,
+    .nav-desplegable-menu,
+    .pw-paleta,
+    .pw-paleta-panel,
+    .panel-personalizacion,
+    .personalizacion-capa,
+    .nav-movil-capa,
+    .trabajos-visor-backdrop {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    .navegacion-hub,
+    .navegacion-hub::before {
+        background: rgba(7, 13, 18, 0.985) !important;
+    }
+
+    .nav-desplegable-menu {
+        background: rgba(12, 19, 26, 0.995) !important;
+    }
+
+    .pw-paleta {
+        background: rgba(2, 7, 11, 0.92) !important;
+    }
+
+    .pw-paleta-panel {
+        background: #0b151e !important;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42) !important;
+    }
+
+    .personalizacion-capa,
+    .nav-movil-capa,
+    .trabajos-visor-backdrop {
+        background-color: rgba(2, 7, 12, 0.78) !important;
+    }
+
+    .panel-personalizacion {
+        background: #0c131a !important;
+    }
+
+    /* No se anulan las transiciones de tarjetas: Sutil/Dinámico
+       siguen funcionando. La mejora de FPS viene de retirar blur
+       y sombras en superficies repetidas. */
 }

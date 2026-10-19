@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v31";
+    "pw-hub-offline-v45";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;
@@ -37,7 +37,9 @@ const ARCHIVOS_SHELL = [
     "hub/css/apariencia-avanzada.css?v=19",
     "hub/css/combobox.css",
     "hub/css/offline.css",
-    "hub/css/parche-franja-visual.css?v=1.1.1-hotfix1",
+    "hub/css/parche-franja-visual.css?v=1.2.0",
+    "hub/css/busqueda-global.css?v=1.2.0",
+    "hub/css/microinteracciones.css?v=1.2.0",
     "hub/css/estadisticas.css",
     "hub/css/estilos.css",
     "hub/css/hero-codigo.css?v=18",
@@ -64,6 +66,7 @@ const ARCHIVOS_SHELL = [
     "hub/js/sincronizacion.js?v=1.1.1",
     "hub/js/novedades.js?v=1.1.0",
     "hub/js/vistas-internas.js?v=1.1.1",
+    "hub/js/busqueda-global.js?v=1.2.0",
     "hub/js/trabajos.js",
 
     "hub/data/roadmap.json",
