@@ -1,0 +1,98 @@
+/* =========================================================
+   PW HUB v1.1.1 - HOTFIX VISUAL CONTRA FRANJA INFERIOR
+   =========================================================
+
+   Corrige un artefacto de composición observado en Edge/
+   GitHub Pages, donde algunas superficies translúcidas del
+   Hub mostraban una franja brillante en la parte inferior
+   al desplazarse.
+
+   La corrección no rediseña los componentes: simplemente
+   aísla el pintado de tarjetas, paneles y filtros para que
+   sus capas visuales no se filtren hacia el borde inferior.
+   ========================================================= */
+
+.seccion-resumen .tarjeta-resumen,
+.seccion-actividad .actividad-grid > *,
+.seccion-portafolio .contenedor-unidades > *,
+.seccion-trabajos .trabajos-panel,
+.seccion-trabajos .trabajos-filtro,
+.seccion-trabajos .trabajos-visor,
+.seccion-trabajos .trabajos-grid > *,
+.seccion-estadisticas .estadistica-principal,
+.seccion-estadisticas .estadisticas-panel,
+.seccion-historial article,
+.seccion-roadmap article,
+.seccion-roadmap button,
+#roadmap article,
+#roadmap .roadmap-filtro,
+#roadmap .roadmap-estadistica,
+#roadmap .roadmap-estado,
+#roadmap .roadmap-linea-tiempo > * {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    contain: paint;
+    background-clip: padding-box;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.seccion-resumen .tarjeta-resumen::before,
+.seccion-resumen .tarjeta-resumen::after,
+.seccion-actividad .actividad-grid > *::before,
+.seccion-actividad .actividad-grid > *::after,
+.seccion-portafolio .contenedor-unidades > *::before,
+.seccion-portafolio .contenedor-unidades > *::after,
+.seccion-trabajos .trabajos-panel::before,
+.seccion-trabajos .trabajos-panel::after,
+.seccion-trabajos .trabajos-filtro::before,
+.seccion-trabajos .trabajos-filtro::after,
+.seccion-trabajos .trabajos-visor::before,
+.seccion-trabajos .trabajos-visor::after,
+.seccion-trabajos .trabajos-grid > *::before,
+.seccion-trabajos .trabajos-grid > *::after,
+.seccion-estadisticas .estadistica-principal::before,
+.seccion-estadisticas .estadistica-principal::after,
+.seccion-estadisticas .estadisticas-panel::before,
+.seccion-estadisticas .estadisticas-panel::after,
+.seccion-historial article::before,
+.seccion-historial article::after,
+.seccion-roadmap article::before,
+.seccion-roadmap article::after,
+.seccion-roadmap button::before,
+.seccion-roadmap button::after,
+#roadmap article::before,
+#roadmap article::after,
+#roadmap .roadmap-filtro::before,
+#roadmap .roadmap-filtro::after,
+#roadmap .roadmap-estadistica::before,
+#roadmap .roadmap-estadistica::after,
+#roadmap .roadmap-estado::before,
+#roadmap .roadmap-estado::after,
+#roadmap .roadmap-linea-tiempo > *::before,
+#roadmap .roadmap-linea-tiempo > *::after {
+    background-attachment: scroll !important;
+}
+
+html[data-estilo="liquid"] .seccion-resumen .tarjeta-resumen,
+html[data-estilo="liquid"] .seccion-actividad .actividad-grid > *,
+html[data-estilo="liquid"] .seccion-portafolio .contenedor-unidades > *,
+html[data-estilo="liquid"] .seccion-trabajos .trabajos-panel,
+html[data-estilo="liquid"] .seccion-trabajos .trabajos-filtro,
+html[data-estilo="liquid"] .seccion-trabajos .trabajos-visor,
+html[data-estilo="liquid"] .seccion-trabajos .trabajos-grid > *,
+html[data-estilo="liquid"] .seccion-estadisticas .estadistica-principal,
+html[data-estilo="liquid"] .seccion-estadisticas .estadisticas-panel,
+html[data-estilo="liquid"] .seccion-historial article,
+html[data-estilo="liquid"] .seccion-roadmap article,
+html[data-estilo="liquid"] .seccion-roadmap button,
+html[data-estilo="liquid"] #roadmap article,
+html[data-estilo="liquid"] #roadmap .roadmap-filtro,
+html[data-estilo="liquid"] #roadmap .roadmap-estadistica,
+html[data-estilo="liquid"] #roadmap .roadmap-estado,
+html[data-estilo="liquid"] #roadmap .roadmap-linea-tiempo > * {
+    -webkit-transform: translateZ(0);
+    filter: none;
+}

@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v30";
+    "pw-hub-offline-v31";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;
@@ -37,6 +37,7 @@ const ARCHIVOS_SHELL = [
     "hub/css/apariencia-avanzada.css?v=19",
     "hub/css/combobox.css",
     "hub/css/offline.css",
+    "hub/css/parche-franja-visual.css?v=1.1.1-hotfix1",
     "hub/css/estadisticas.css",
     "hub/css/estilos.css",
     "hub/css/hero-codigo.css?v=18",

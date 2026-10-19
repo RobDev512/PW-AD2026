@@ -1276,3 +1276,17 @@ La corrección final separa el router de la lógica de sincronización, elimina 
 
 `ROADMAP.md` mueve v1.1.1 a **Publicada · actual**, `CHANGELOG.md` registra el cierre y v1.1.0 queda conservada como la actualización publicada anterior.
 
+---
+
+### Hotfix visual posterior a v1.1.1: franja inferior en superficies
+
+**Tipo:** Corrección visual de mantenimiento  
+**Estado:** Implementado  
+**Unidad:** General  
+**Fecha:** 2026-10-18  
+**Precisión:** Día  
+**Fuente:** Validación sobre GitHub Pages y Microsoft Edge
+
+Se detectó un artefacto visual en GitHub Pages/Edge donde algunas superficies translúcidas del Hub —principalmente tarjetas del Roadmap, botones de filtro y paneles estadísticos— mostraban una franja brillante en el borde inferior al desplazarse.
+
+La corrección añade una hoja de estilo puntual que aísla el pintado de estas superficies (`isolation`, `contain: paint`, `overflow: hidden` y `background-clip`) para evitar que el brillo o las capas de composición se filtren hacia el borde inferior. El Service Worker avanza a `pw-hub-offline-v31` para distribuir correctamente el hotfix.

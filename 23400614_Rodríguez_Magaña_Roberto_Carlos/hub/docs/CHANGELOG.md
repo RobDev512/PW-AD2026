@@ -407,3 +407,14 @@ No quedan fases abiertas. Desde esta versión:
 - las correcciones pequeñas pueden utilizar versiones `v1.x.y`;
 - las mejoras funcionales planeadas se registran en `ROADMAP.md` como versiones `v1.x.0`;
 - el historial detallado de eventos académicos y técnicos continúa en `HISTORIAL.md`.
+
+---
+
+## Hotfix visual sobre v1.1.1
+
+### Franja inferior en tarjetas y filtros
+
+- [x] corregir el artefacto visual observado en Roadmap, filtros y paneles translúcidos de GitHub Pages/Edge;
+- [x] aislar el pintado de las superficies afectadas para evitar filtraciones visuales en el borde inferior;
+- [x] añadir `css/parche-franja-visual.css` como ajuste puntual sin modificar la estructura del Hub;
+- [x] renovar la caché offline a `pw-hub-offline-v31`.
