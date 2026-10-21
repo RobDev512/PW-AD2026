@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Perfil Instagram </title>
+    <style>
+        body {
+            margin: 0;
+            background-color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Marco exterior del celular */
+        .celular {
+            width: 450px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #111111;
+            border: 2px solid #555555;
+            border-radius: 30px;
+            box-sizing: border-box;
+        }
+
+        /* Pantalla interior */
+        .perfil-instagram {
+            background-color: black;
+            color: white;
+            border: 1px solid #333333;
+            border-radius: 22px;
+            overflow: hidden;
+        }
+
+        /* FLEXBOX - Barra superior */
+        .barra-superior {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #262626;
+        }
+
+        .crear {
+            display: flex;
+            align-items: center;
+        }
+
+        .crear button,
+        .opciones-superiores button {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+        }
+
+        .crear img,
+        .opciones-superiores img {
+            display: block;
+            width: 28px;
+            height: 28px;
+        }
+
+        .usuario {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .opciones-superiores {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        /* FLEXBOX - Perfil y estadísticas */
+        .informacion-perfil {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            gap: 30px;
+        }
+
+        /* GRID - Foto de perfil */
+        .foto-perfil {
+            width: 100px;
+            height: 100px;
+            display: grid;
+            grid-template-columns: 70px 30px;
+            grid-template-rows: 70px 30px;
+        }
+
+        .imagen-perfil {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            grid-column: 1 / 3;
+            grid-row: 1 / 3;
+        }
+
+        .agregar-foto {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border: 4px solid black;
+            border-radius: 50%;
+            padding: 4px;
+            box-sizing: border-box;
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+
+        /* GRID - Estadísticas */
+        .estadisticas {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            justify-items: center;
+            gap: 5px;
+        }
+
+        .estadisticas strong {
+            font-size: 18px;
+        }
+
+        .estadisticas span {
+            font-size: 13px;
+        }
+
+        /* Flujo normal */
+        .descripcion-perfil {
+            padding: 0 20px 15px 20px;
+        }
+
+        .nombre {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .presentacion {
+            font-size: 14px;
+        }
+
+        /* FLEXBOX - Botones */
+        .acciones-perfil {
+            display: flex;
+            gap: 8px;
+            padding: 10px 20px 20px 20px;
+        }
+
+        .acciones-perfil button {
+            height: 34px;
+            background-color: #363636;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .boton-principal {
+            flex-grow: 1;
+        }
+
+        .boton-persona {
+            width: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .boton-persona img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* GRID - Galería */
+        .galeria {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3px;
+            margin: 55px 13px 13px 13px;
+        }
+
+        .publicacion {
+            height: 132px;
+            background-color: #262626;
+            overflow: hidden;
+        }
+
+        .publicacion img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <main class="celular">
+        <div class="perfil-instagram">
+            <!-- FLEXBOX - Barra superior -->
+            <header class="barra-superior">
+                <div class="crear">
+                    <button type="button" title="Crear">
+                        <img src="svg/plus-blanco.svg" alt="Crear">
+                    </button>
+                </div>
+                <div class="usuario">
+                    Rodríguez Magaña
+                </div>
+                <div class="opciones-superiores">
+                    <button type="button" title="Threads">
+                        <img src="svg/threads.svg" alt="Threads">
+                    </button>
+                    <button type="button" title="Menú">
+                        <img src="svg/menu.svg" alt="Menú">
+                    </button>
+                </div>
+            </header>
+
+            <!-- FLEXBOX - Perfil y estadísticas -->
+            <section class="informacion-perfil">
+                <div class="foto-perfil">
+                    <img class="imagen-perfil" src="img/perfil/foto.jpg" alt="Foto de perfil">
+                    <img class="agregar-foto" src="svg/plus-negro.svg" alt="Agregar foto">
+                </div>
+                <div class="estadisticas">
+                    <strong> 0 </strong>
+                    <strong> 0 </strong>
+                    <strong> 0 </strong>
+                    <span> publicaciones </span>
+                    <span> seguidores </span>
+                    <span> seguidos </span>
+                </div>
+            </section>
+
+            <!-- Flujo normal -->
+            <section class="descripcion-perfil">
+                <div class="nombre">
+                    Rodríguez Magaña Roberto Carlos
+                </div>
+                <div class="presentacion">
+                    presentación
+                </div>
+            </section>
+
+            <!-- FLEXBOX - Botones -->
+            <section class="acciones-perfil">
+                <button class="boton-principal" type="button">
+                    Editar
+                </button>
+                <button class="boton-principal" type="button">
+                    Compartir perfil
+                </button>
+                <button class="boton-persona" type="button">
+                    <img src="svg/persona-outline.svg" alt="Agregar persona">
+                </button>
+            </section>
+
+            <!-- GRID - Galería -->
+            <section class="galeria">
+                <div class="publicacion">
+                    <img src="img/publicaciones/publicacion-01.png" alt="Paisaje 1">
+                </div>
+                <div class="publicacion">
+                    <img src="img/publicaciones/publicacion-02.png" alt="Paisaje 2">
+                </div>
+                <div class="publicacion">
+                    <img src="img/publicaciones/publicacion-03.png" alt="Paisaje 3">
+                </div>
+                <div class="publicacion">
+                    <img src="img/publicaciones/publicacion-04.png" alt="Paisaje 4">
+                </div>
+                <div class="publicacion">
+                    <img src="img/publicaciones/publicacion-05.png" alt="Paisaje 5">
+                </div>
+                <div class="publicacion">
+                    <img src="img/publicaciones/publicacion-06.png" alt="Paisaje 6">
+                </div>
+                <div class="publicacion">
+                    <img src="img/publicaciones/publicacion-07.png" alt="Paisaje 7">
+                </div>
+                <div class="publicacion">
+                    <img src="img/publicaciones/publicacion-08.png" alt="Paisaje 8">
+                </div>
+                <div class="publicacion">
+                    <img src="img/publicaciones/publicacion-09.png" alt="Paisaje 9">
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

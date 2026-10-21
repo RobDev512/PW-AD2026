@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="3 0.5 44 45.5">
+    <circle
+        cx="25"
+        cy="11.5"
+        r="9"
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="4"
+    />
+
+    <path
+        d="
+            M5 44
+            L5 39
+            C5 30.5 13 26.5 25 26.5
+            C37 26.5 45 30.5 45 39
+            L45 44
+        "
+        fill="none"
+        stroke="#FFFFFF"
+        stroke-width="4"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+</svg>
