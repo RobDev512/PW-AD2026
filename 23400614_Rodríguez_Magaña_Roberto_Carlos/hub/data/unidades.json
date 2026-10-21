@@ -85,27 +85,39 @@
             "trabajos": [
                 {
                     "nombre": "Ejercicio 0 - Modelo de caja CSS",
-                    "ruta": "../U3/Ejercicio0CSS - U3 Act 1.html",
+                    "ruta": "../U3/Ej0CSS - U3A1.html",
                     "tipo": "html",
                     "descripcion": "Ejercicio de CSS para practicar dimensiones, padding, border y margin mediante una caja demostrativa."
                 },
                 {
-                    "nombre": "Ejercicio 1 - Receta Pan Francés con CSS",
-                    "ruta": "../U3/U3 Act 4 - Ejercicio1/Ejercicio1 - U3 Act 4.html",
-                    "tipo": "html",
-                    "descripcion": "Aplicación de estilos CSS a la receta de pan francés desarrollada previamente, incorporando colores, tipografía, bordes, espaciado y distribución visual."
-                },
-                {
                     "nombre": "Ejemplo Flexbox",
-                    "ruta": "../U3/flex - U3 Act 2.html",
+                    "ruta": "../U3/flex - U3A2.html",
                     "tipo": "html",
                     "descripcion": "Ejemplo de una barra de navegación construida con Flexbox, alineación y separación de elementos."
                 },
                 {
                     "nombre": "Ejemplo CSS Grid",
-                    "ruta": "../U3/grid - U3 Act 3.html",
+                    "ruta": "../U3/grid - U3A3.html",
                     "tipo": "html",
                     "descripcion": "Ejemplo de distribución de seis elementos mediante una cuadrícula de tres columnas con CSS Grid."
+                },
+                {
+                    "nombre": "Ejercicio 1 - Receta Pan Francés con CSS",
+                    "ruta": "../U3/U3. A4 - Ej1/Ej1 - U3A4.html",
+                    "tipo": "html",
+                    "descripcion": "Aplicación de estilos CSS a la receta de pan francés desarrollada previamente, incorporando colores, tipografía, bordes, espaciado y distribución visual."
+                },
+                {
+                    "nombre": "Ejercicio 2 - Tears for Fears con CSS",
+                    "ruta": "../U3/U3. A5 - Ej2/Ej2 - U3A5.html",
+                    "tipo": "html",
+                    "descripcion": "Aplicación de estilos CSS al ejercicio desarrollado previamente sobre Tears for Fears, utilizando colores, tipografía, bordes, espaciado y distribución visual."
+                },
+                {
+                    "nombre": "Perfil de Instagram",
+                    "ruta": "../U3/U3. A6 - Perfil Instagram/Perfil - U3A6.html",
+                    "tipo": "html",
+                    "descripcion": "Recreación de un perfil de Instagram utilizando HTML y CSS, con Flexbox para la distribución de elementos y Grid para las estadísticas y la galería de publicaciones."
                 }
             ]
         },
@@ -141,4 +153,3 @@
         }
     ]
 }
-
