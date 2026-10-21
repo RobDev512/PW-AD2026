@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.app-container {
+    max-width: 400px;
+    margin: 0 auto;
+    border-left: 1px solid #262626;
+    border-right: 1px solid #262626;
+    min-height: 100vh;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 22px;
+}
+
+.nav-center {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    gap: 15px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px 20px 15px;
+    gap: 20px;
+}
+
+.profile-pic-container {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.profile-pic {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.add-story-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    color: black;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 50%;
+}
+
+.add-story-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+}
+
+.stat-item strong {
+    font-size: 16px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 15px 15px;
+    font-size: 14px;
+}
+
+.profile-info strong {
+    margin-bottom: 5px;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 8px;
+    padding: 5px 15px 20px 15px;
+}
+
+.profile-actions button {
+    height: 34px;
+    background-color: #363636;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.action-btn {
+    flex-grow: 1;
+}
+
+.person-btn {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #262626;
+    border-bottom: 1px solid #262626;
+}
+
+.tab-item {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    color: #a8a8a8;
+}
+
+.active-tab {
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3px;
+}
+
+.post {
+    height: 132px;
+    background-color: #262626;
+    overflow: hidden;
+}
+
+.post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}

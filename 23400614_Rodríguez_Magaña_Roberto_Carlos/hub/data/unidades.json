@@ -115,7 +115,7 @@
                 },
                 {
                     "nombre": "Perfil de Instagram",
-                    "ruta": "../U3/U3. A6 - Perfil Instagram/Perfil - U3A6.html",
+                    "ruta": "../U3/U3. A6 - Instagram/Perfil - U3A6.html",
                     "tipo": "html",
                     "descripcion": "Recreación de un perfil de Instagram utilizando HTML y CSS, con Flexbox para la distribución de elementos y Grid para las estadísticas y la galería de publicaciones."
                 }
