@@ -7,54 +7,28 @@
     <meta name="theme-color" content="#070d12">
     <title>Trabajo - PW Hub</title>
 
-    <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="../assets/branding/favicon-32.png"
-    >
-    <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="../assets/branding/favicon-16.png"
-    >
-    <link
-        rel="icon"
-        type="image/png"
-        sizes="192x192"
-        href="../assets/branding/favicon-192.png"
-    >
-    <link
-        rel="apple-touch-icon"
-        sizes="192x192"
-        href="../assets/branding/favicon-192.png"
-    >
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/branding/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/branding/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../assets/branding/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="../assets/branding/favicon-192.png">
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"
-        defer
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         :root {
             --fondo: #070d12;
+            --fondo-secundario: #0b1219;
             --panel: #0e171f;
+            --panel-suave: #111c25;
             --borde: #253543;
             --texto: #f4f7fa;
             --texto-secundario: #9db0bf;
             --acento: #35c9f3;
+            --acento-rgb: 53, 201, 243;
             --papel: #f6f8fa;
-            --papel-texto: #1d252c;
-            --markdown-fondo: #0b1219;
-            --markdown-panel: #0f1922;
-            --markdown-borde: #263846;
-            --markdown-texto: #dce8ef;
-            --markdown-secundario: #a8bac6;
+            --codigo: #0b1219;
         }
 
         html {
@@ -65,39 +39,34 @@
         body {
             min-height: 100vh;
             margin: 0;
-            background:
-                radial-gradient(
-                    circle at 15% -10%,
-                    rgba(53, 201, 243, 0.08),
-                    transparent 30%
-                ),
-                var(--fondo);
             color: var(--texto);
-            font-family:
-                Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
+            background:
+                radial-gradient(circle at 15% -10%, rgba(var(--acento-rgb), .08), transparent 30%),
+                var(--fondo);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        button,
+        a { font: inherit; }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--acento);
+            outline-offset: 3px;
         }
 
         .barra-trabajo {
             position: sticky;
             top: 0;
-            z-index: 50;
+            z-index: 80;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             gap: 18px;
             min-height: 72px;
-            padding:
-                12px
-                max(18px, calc((100vw - 1180px) / 2));
+            padding: 11px max(18px, calc((100vw - 1440px) / 2));
             border-bottom: 1px solid var(--borde);
-            background: rgba(7, 13, 18, 0.94);
-            backdrop-filter: blur(14px);
+            background: #091118;
         }
 
         .barra-identidad {
@@ -109,993 +78,1758 @@
 
         .barra-logo {
             flex: 0 0 auto;
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             object-fit: contain;
-            filter:
-                drop-shadow(
-                    0 8px 16px
-                    rgba(0, 0, 0, 0.28)
-                );
         }
 
-        .barra-titulo {
-            min-width: 0;
-        }
+        .barra-titulo { min-width: 0; }
 
         .barra-etiqueta {
             margin: 0 0 3px;
             color: var(--acento);
             font-size: 9px;
             font-weight: 800;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.4px;
             text-transform: uppercase;
         }
 
         .barra-trabajo h1 {
             overflow: hidden;
             margin: 0;
-            font-size: clamp(17px, 2.5vw, 22px);
+            font-size: clamp(17px, 2.4vw, 22px);
             line-height: 1.25;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
-        .barra-volver {
-            flex: 0 0 auto;
-            padding: 9px 13px;
-            border:
-                1px solid rgba(53, 201, 243, 0.45);
-            border-radius: 8px;
-            color: var(--acento);
-            text-decoration: none;
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .barra-volver:hover {
-            color: white;
-            border-color: var(--acento);
-            background:
-                rgba(53, 201, 243, 0.09);
-        }
-
-        .contenedor-trabajo {
-            width:
-                min(1180px, calc(100% - 32px));
-            margin: 28px auto 48px;
-        }
-
-        .visor {
-            position: relative;
-            overflow: hidden;
-            min-height: calc(100vh - 130px);
-            border:
-                1px solid rgba(53, 201, 243, 0.33);
-            border-radius: 16px;
-            background: var(--panel);
-            box-shadow:
-                0 22px 70px rgba(0, 0, 0, 0.28);
-        }
-
-        .controles {
-            position: absolute;
-            top: 14px;
-            right: 14px;
-            z-index: 20;
+        .barra-acciones {
             display: flex;
+            flex: 0 0 auto;
+            flex-wrap: wrap;
+            justify-content: flex-end;
             gap: 8px;
         }
 
-        .modo {
-            display: grid;
-            place-items: center;
-            width: 44px;
-            height: 44px;
-            padding: 0;
-            cursor: pointer;
-            border:
-                1px solid rgba(157, 176, 191, 0.35);
-            border-radius: 9px;
-            color: #b8c7d2;
-            background:
-                rgba(7, 13, 18, 0.94);
-            box-shadow:
-                0 8px 22px rgba(0, 0, 0, 0.24);
-            transition:
-                color 0.18s,
-                border-color 0.18s,
-                background-color 0.18s,
-                transform 0.18s,
-                box-shadow 0.18s;
-        }
-
-        .modo svg {
-            width: 21px;
-            height: 21px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.9;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        .modo:hover:not(:disabled) {
-            color: white;
-            border-color:
-                rgba(53, 201, 243, 0.65);
-            transform: translateY(-1px);
-        }
-
-        .modo.activo {
-            color: #041d26;
-            border-color: var(--acento);
-            background: var(--acento);
-            box-shadow:
-                0 0 0 3px rgba(53, 201, 243, 0.14),
-                0 8px 22px rgba(0, 0, 0, 0.28);
-        }
-
-        .modo:disabled {
-            cursor: not-allowed;
-            opacity: 0.34;
-        }
-
-        .superficie {
-            min-height: calc(100vh - 130px);
+        .barra-accion {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 38px;
+            padding: 8px 12px;
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            color: var(--texto-secundario);
             background: var(--panel);
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 800;
         }
 
-        .estado {
+        .barra-accion:hover {
+            color: white;
+            border-color: var(--acento);
+        }
+
+        .barra-accion.primaria {
+            color: var(--acento);
+            border-color: rgba(var(--acento-rgb), .48);
+            background: rgba(var(--acento-rgb), .06);
+        }
+
+        .barra-accion[hidden] { display: none !important; }
+
+        .contenedor-trabajo {
+            width: min(1440px, calc(100% - 24px));
+            margin: 14px auto 22px;
+        }
+
+        .estado-pagina {
             display: grid;
-            min-height: calc(100vh - 130px);
+            min-height: calc(100dvh - 112px);
             place-items: center;
-            padding: 80px 26px 30px;
+            padding: 32px;
+            border: 1px solid var(--borde);
+            border-radius: 14px;
             color: var(--texto-secundario);
             background: var(--panel);
             text-align: center;
         }
 
+        /* Proyecto completo */
+        .proyecto-shell {
+            container-type: inline-size;
+            display: grid;
+            grid-template-columns: minmax(240px, 305px) minmax(0, 1fr);
+            height: calc(100dvh - 108px);
+            min-height: 560px;
+            overflow: hidden;
+            border: 1px solid rgba(var(--acento-rgb), .34);
+            border-radius: 15px;
+            background: var(--panel);
+            box-shadow: 0 18px 54px rgba(0, 0, 0, .24);
+        }
+
+        .proyecto-archivos {
+            min-width: 0;
+            min-height: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-gutter: stable;
+            border-right: 1px solid var(--borde);
+            background: var(--panel);
+        }
+
+        .proyecto-cabecera {
+            position: sticky;
+            top: 0;
+            z-index: 4;
+            padding: 16px;
+            border-bottom: 1px solid var(--borde);
+            background: var(--panel);
+        }
+
+        .proyecto-cabecera-linea {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .proyecto-cabecera-linea span,
+        .recurso-info > span {
+            color: var(--acento);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1.1px;
+            text-transform: uppercase;
+        }
+
+        .proyecto-cabecera-linea strong {
+            color: var(--texto-secundario);
+            font-size: 9px;
+        }
+
+        .proyecto-cabecera h2 {
+            margin: 9px 0 6px;
+            color: var(--texto);
+            font-size: 15px;
+            line-height: 1.35;
+        }
+
+        .proyecto-cabecera p {
+            margin: 0 0 8px;
+            color: var(--texto-secundario);
+            font-size: 9px;
+            line-height: 1.55;
+        }
+
+        .proyecto-cabecera code {
+            display: block;
+            overflow: hidden;
+            color: var(--texto-secundario);
+            font-size: 8px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .proyecto-lista { padding: 11px; }
+
+        .proyecto-grupo + .proyecto-grupo { margin-top: 15px; }
+
+        .proyecto-grupo h3 {
+            margin: 0 0 7px;
+            padding: 0 4px;
+            color: var(--texto-secundario);
+            font-size: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .proyecto-grupo-lista {
+            display: grid;
+            gap: 6px;
+        }
+
+        .proyecto-archivo {
+            display: grid;
+            grid-template-columns: 52px minmax(0, 1fr);
+            align-items: center;
+            gap: 9px;
+            width: 100%;
+            min-height: 52px;
+            padding: 7px 8px;
+            cursor: pointer;
+            border: 1px solid var(--borde);
+            border-radius: 9px;
+            color: var(--texto);
+            background: var(--fondo-secundario);
+            text-align: left;
+        }
+
+        .proyecto-archivo:hover,
+        .proyecto-archivo.activo {
+            border-color: rgba(var(--acento-rgb), .7);
+            background: rgba(var(--acento-rgb), .07);
+        }
+
+        .proyecto-archivo.activo {
+            box-shadow: inset 3px 0 0 var(--acento);
+        }
+
+        .archivo-extension {
+            display: inline-grid;
+            place-items: center;
+            min-height: 27px;
+            padding: 0 5px;
+            border: 1px solid rgba(var(--acento-rgb), .34);
+            border-radius: 6px;
+            color: var(--acento);
+            font-size: 8px;
+            font-weight: 800;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .archivo-texto { min-width: 0; }
+
+        .archivo-texto strong,
+        .archivo-texto small {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .archivo-texto strong { font-size: 10px; }
+        .archivo-texto small {
+            margin-top: 3px;
+            color: var(--texto-secundario);
+            font-size: 8px;
+        }
+
+        .proyecto-panel {
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            min-width: 0;
+            min-height: 0;
+            overflow: hidden;
+            background: var(--panel);
+        }
+
+        .recurso-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            min-width: 0;
+            min-height: 72px;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--borde);
+            background: var(--panel);
+        }
+
+        .recurso-info {
+            flex: 1 1 280px;
+            min-width: 0;
+        }
+
+        .recurso-info strong,
+        .recurso-info code {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .recurso-info strong {
+            margin-top: 2px;
+            font-size: 12px;
+        }
+
+        .recurso-info code {
+            margin-top: 3px;
+            color: var(--texto-secundario);
+            font-size: 9px;
+        }
+
+        .recurso-modos {
+            display: flex;
+            flex: 0 1 auto;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .recurso-modo {
+            min-height: 34px;
+            padding: 6px 10px;
+            cursor: pointer;
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            color: var(--texto-secundario);
+            background: var(--fondo-secundario);
+            font-size: 9px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .recurso-modo:hover,
+        .recurso-modo.activo {
+            color: var(--texto);
+            border-color: rgba(var(--acento-rgb), .72);
+        }
+
+        .recurso-modo.activo {
+            color: var(--acento);
+            background: rgba(var(--acento-rgb), .09);
+        }
+
+        .superficie {
+            min-width: 0;
+            min-height: 0;
+            height: 100%;
+            overflow: auto;
+            overscroll-behavior: contain;
+            scrollbar-gutter: stable;
+            background: var(--panel);
+        }
+
+        .superficie.iframe { overflow: hidden; scrollbar-gutter: auto; }
+
         .frame {
             display: block;
             width: 100%;
-            height: calc(100vh - 130px);
-            min-height: 560px;
+            height: 100%;
+            min-height: 0;
             border: 0;
             background: white;
         }
 
-        .markdown {
-            min-height: calc(100vh - 130px);
-            padding:
-                76px
-                clamp(24px, 5vw, 58px)
-                45px;
-            color: var(--markdown-texto);
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(53, 201, 243, 0.025),
-                    transparent 180px
-                ),
-                var(--markdown-fondo);
-            line-height: 1.75;
+        .estado-recurso {
+            display: grid;
+            min-height: 100%;
+            place-items: center;
+            align-content: center;
+            gap: 8px;
+            padding: 30px;
+            color: var(--texto-secundario);
+            text-align: center;
         }
 
-        .markdown > * {
-            max-width: 920px;
-            margin-left: auto;
-            margin-right: auto;
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--borde);
+            border-top-color: var(--acento);
+            border-radius: 50%;
+            animation: giro .8s linear infinite;
         }
 
-        .markdown h1,
-        .markdown h2,
-        .markdown h3,
-        .markdown h4 {
-            color: var(--texto);
-            line-height: 1.28;
-        }
-
-        .markdown h1,
-        .markdown h2 {
-            padding-bottom: 0.35em;
-            border-bottom:
-                1px solid var(--markdown-borde);
-        }
-
-        .markdown hr {
-            border: 0;
-            border-top:
-                1px solid var(--markdown-borde);
-        }
-
-        .markdown img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .markdown a {
-            color: var(--acento);
-        }
-
-        .markdown a:hover {
-            color: #8ae7ff;
-        }
-
-        .markdown pre {
-            overflow-x: auto;
-            padding: 18px;
-            border:
-                1px solid var(--markdown-borde);
-            border-radius: 10px;
-            color: #edf6fb;
-            background: #070c11;
-        }
-
-        .markdown code {
-            font-family:
-                Consolas,
-                "Cascadia Code",
-                "Courier New",
-                monospace;
-        }
-
-        .markdown :not(pre) > code {
-            padding: 2px 6px;
-            border:
-                1px solid rgba(53, 201, 243, 0.15);
-            border-radius: 5px;
-            color: #bdefff;
-            background:
-                rgba(53, 201, 243, 0.08);
-        }
-
-        .markdown blockquote {
-            padding: 10px 18px;
-            border-left:
-                4px solid var(--acento);
-            color: var(--markdown-secundario);
-            background:
-                rgba(53, 201, 243, 0.055);
-        }
-
-        .markdown table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .markdown th,
-        .markdown td {
-            padding: 10px 12px;
-            border:
-                1px solid var(--markdown-borde);
-            text-align: left;
-        }
-
-        .markdown th {
-            color: var(--texto);
-            background: var(--markdown-panel);
-        }
-
-        .markdown tr:nth-child(even) td {
-            background:
-                rgba(255, 255, 255, 0.015);
-        }
-
-        .markdown strong {
-            color: var(--texto);
-        }
+        @keyframes giro { to { transform: rotate(360deg); } }
 
         .codigo {
-            min-height: calc(100vh - 130px);
+            width: max-content;
+            min-width: 100%;
+            min-height: 100%;
             margin: 0;
-            padding: 76px 26px 40px;
-            overflow-x: auto;
+            padding: 22px;
             color: #dce8ef;
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(53, 201, 243, 0.025),
-                    transparent 150px
-                ),
-                #0b1219;
+            background: var(--codigo);
             white-space: pre;
             tab-size: 4;
-            font-family:
-                Consolas,
-                "Cascadia Code",
-                "Courier New",
-                monospace;
-            font-size: 13px;
+            font-family: Consolas, "Cascadia Code", "Courier New", monospace;
+            font-size: 12px;
             line-height: 1.65;
         }
 
-        .imagen {
-            display: grid;
-            min-height: calc(100vh - 130px);
-            place-items: center;
-            padding: 76px 28px 32px;
+        .imagen-visor {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            min-height: 0;
+            overflow: hidden;
             background: var(--papel);
         }
 
-        .imagen img {
-            max-width: 100%;
-            max-height: calc(100vh - 175px);
-            object-fit: contain;
+        .imagen-escenario {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            touch-action: none;
+            cursor: grab;
+            background:
+                linear-gradient(rgba(35, 55, 70, .055) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(35, 55, 70, .055) 1px, transparent 1px),
+                var(--papel);
+            background-size: 20px 20px;
         }
 
-        @media (max-width: 650px) {
+        .imagen-escenario.arrastrando {
+            cursor: grabbing;
+        }
+
+        .imagen-zoomable {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            display: block;
+            max-width: none;
+            max-height: none;
+            transform: translate(-50%, -50%);
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .imagen-controles {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 12;
+            display: flex;
+            gap: 5px;
+            padding: 4px;
+            border: 1px solid rgba(25, 45, 60, .25);
+            border-radius: 9px;
+            background: rgba(10, 18, 24, .94);
+        }
+
+        .imagen-controles button {
+            min-width: 34px;
+            height: 32px;
+            padding: 0 9px;
+            cursor: pointer;
+            border: 1px solid rgba(157, 176, 191, .28);
+            border-radius: 6px;
+            color: #dce8ef;
+            background: #111c25;
+            font-size: 10px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .imagen-controles button:hover,
+        .imagen-controles button.activo {
+            color: white;
+            border-color: rgba(var(--acento-rgb), .72);
+        }
+
+        .imagen-visor:fullscreen,
+        .imagen-visor.fullscreen-fallback {
+            width: 100vw;
+            height: 100vh;
+            background: var(--papel);
+        }
+
+        .imagen-visor.fullscreen-fallback {
+            position: fixed;
+            inset: 0;
+            z-index: 100000;
+        }
+
+        .markdown {
+            min-height: 100%;
+            padding: 28px clamp(22px, 5vw, 58px) 42px;
+            color: #dce8ef;
+            background: var(--fondo-secundario);
+            line-height: 1.75;
+        }
+
+        .markdown > * { max-width: 920px; margin-left: auto; margin-right: auto; }
+        .markdown img { max-width: 100%; height: auto; }
+        .markdown a { color: var(--acento); }
+        .markdown pre { overflow-x: auto; padding: 16px; border-radius: 9px; background: #070c11; }
+        .markdown code { font-family: Consolas, "Cascadia Code", monospace; }
+        .markdown table { width: 100%; border-collapse: collapse; }
+        .markdown th, .markdown td { padding: 9px 11px; border: 1px solid var(--borde); text-align: left; }
+
+        /* Draw.io */
+        .drawio {
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            overflow: hidden;
+            background: var(--panel);
+        }
+
+        .drawio-aviso {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--borde);
+            color: var(--texto-secundario);
+            font-size: 9px;
+        }
+
+        .drawio-aviso span {
+            flex: 0 0 auto;
+            padding: 4px 7px;
+            border: 1px solid rgba(var(--acento-rgb), .42);
+            border-radius: 20px;
+            color: var(--acento);
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .drawio-aviso p { margin: 0; }
+
+        .drawio-render {
+            position: relative;
+            min-width: 0;
+            min-height: 0;
+            height: 100%;
+            overflow: hidden;
+            touch-action: none;
+            cursor: grab;
+            background:
+                linear-gradient(rgba(35, 55, 70, .07) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(35, 55, 70, .07) 1px, transparent 1px),
+                #f5f6f8;
+            background-size: 20px 20px;
+        }
+
+        .drawio-render.arrastrando { cursor: grabbing; }
+        .drawio-escenario { position: absolute; inset: 0; overflow: hidden; }
+
+        .drawio-graph {
+            position: absolute;
+            inset: 0;
+            width: 100% !important;
+            height: 100% !important;
+            min-width: 0;
+            min-height: 0;
+            max-width: none;
+            max-height: none;
+            overflow: hidden;
+            background: #fff;
+            transform: none !important;
+        }
+
+        .drawio-controles {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 12;
+            display: flex;
+            gap: 5px;
+            padding: 4px;
+            border: 1px solid rgba(25, 45, 60, .25);
+            border-radius: 9px;
+            background: rgba(10, 18, 24, .94);
+        }
+
+        .drawio-controles button {
+            min-width: 34px;
+            height: 32px;
+            padding: 0 9px;
+            cursor: pointer;
+            border: 1px solid rgba(157, 176, 191, .28);
+            border-radius: 6px;
+            color: #dce8ef;
+            background: #111c25;
+            font-size: 10px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .drawio-controles button:hover,
+        .drawio-controles button.activo {
+            color: white;
+            border-color: rgba(var(--acento-rgb), .72);
+        }
+
+        .drawio-render:fullscreen,
+        .drawio-render.fullscreen-fallback {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .drawio-render.fullscreen-fallback {
+            position: fixed;
+            inset: 0;
+            z-index: 100000;
+        }
+
+        /* Archivo individual fuera de proyecto */
+        .visor-simple {
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr);
+            min-height: calc(100dvh - 108px);
+            overflow: hidden;
+            border: 1px solid rgba(var(--acento-rgb), .34);
+            border-radius: 15px;
+            background: var(--panel);
+        }
+
+        @container (max-width: 760px) {
+            .proyecto-shell {
+                grid-template-columns: 1fr;
+                grid-template-rows: minmax(150px, 31vh) minmax(0, 1fr);
+            }
+
+            .proyecto-archivos {
+                border-right: 0;
+                border-bottom: 1px solid var(--borde);
+            }
+        }
+
+        @container (max-width: 620px) {
+            .recurso-toolbar {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .recurso-modos {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .recurso-modo { flex: 1 1 auto; }
+        }
+
+        @media (max-width: 720px) {
             .barra-trabajo {
-                padding: 11px 12px;
+                align-items: flex-start;
+                padding: 10px 12px;
             }
 
-            .barra-identidad {
-                gap: 9px;
-            }
-
-            .barra-logo {
-                width: 38px;
-                height: 38px;
-            }
-
-            .barra-volver {
-                display: none;
-            }
+            .barra-logo { width: 38px; height: 38px; }
+            .barra-acciones { gap: 6px; }
+            .barra-accion { min-height: 34px; padding: 7px 9px; font-size: 9px; }
+            .barra-accion.secundaria { display: none; }
 
             .contenedor-trabajo {
-                width: calc(100% - 16px);
-                margin: 8px auto 18px;
+                width: calc(100% - 12px);
+                margin: 6px auto 12px;
             }
 
-            .visor {
+            .proyecto-shell {
+                height: calc(100dvh - 88px);
+                min-height: 500px;
                 border-radius: 11px;
             }
 
-            .controles {
-                top: 10px;
-                right: 10px;
-                gap: 6px;
-            }
+            .proyecto-cabecera { padding: 11px 12px; }
+            .proyecto-lista { padding: 8px; }
+            .proyecto-grupo-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .proyecto-archivo { min-height: 48px; grid-template-columns: 48px minmax(0, 1fr); }
+            .codigo { padding: 16px; font-size: 10px; }
+            .imagen-controles { top: 7px; left: 7px; }
+        }
 
-            .modo {
-                width: 39px;
-                height: 39px;
-            }
+        @media (max-width: 430px) {
+            .barra-trabajo h1 { font-size: 16px; }
+            .proyecto-grupo-lista { grid-template-columns: 1fr; }
+            .drawio-controles,
+            .imagen-controles { top: 7px; left: 7px; }
 
-            .markdown,
-            .codigo {
-                padding-top: 66px;
-            }
+            .drawio-controles button,
+            .imagen-controles button { min-width: 31px; height: 30px; padding-inline: 7px; }
+        }
 
-            .codigo {
-                padding-left: 16px;
-                padding-right: 16px;
-                font-size: 11px;
-            }
+        @media (prefers-reduced-motion: reduce) {
+            .spinner { animation: none; }
         }
     </style>
 </head>
-
 <body>
     <header class="barra-trabajo">
         <div class="barra-identidad">
-            <img
-                src="../assets/branding/isotipo-pwhub.png"
-                alt=""
-                class="barra-logo"
-                aria-hidden="true"
-            >
-
+            <img src="../assets/branding/isotipo-pwhub.png" alt="" class="barra-logo" aria-hidden="true">
             <div class="barra-titulo">
-                <p
-                    class="barra-etiqueta"
-                    id="tipo-trabajo"
-                >
-                    Trabajo
-                </p>
-
-                <h1 id="titulo-trabajo">
-                    Cargando trabajo...
-                </h1>
+                <p class="barra-etiqueta" id="tipo-trabajo">Trabajo</p>
+                <h1 id="titulo-trabajo">Cargando trabajo...</h1>
             </div>
         </div>
 
-        <a
-            href="../index.html"
-            class="barra-volver"
-            id="volver-hub"
-        >
-            Volver al Hub
-        </a>
+        <div class="barra-acciones">
+            <a href="#" class="barra-accion primaria" id="abrir-original" target="_blank" rel="noopener noreferrer" hidden>
+                Abrir archivo original
+            </a>
+            <a href="../index.html" class="barra-accion secundaria" id="volver-hub">Volver al Hub</a>
+        </div>
     </header>
 
-    <main class="contenedor-trabajo">
-        <section class="visor">
-            <div
-                class="controles"
-                role="group"
-                aria-label="Modo de visualización"
-            >
-                <button
-                    type="button"
-                    class="modo"
-                    id="modo-diseno"
-                    aria-label="Ver diseño"
-                    title="Ver diseño"
-                >
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6-9.5-6Z"
-                        ></path>
-                        <circle
-                            cx="12"
-                            cy="12"
-                            r="2.7"
-                        ></circle>
-                    </svg>
-                </button>
-
-                <button
-                    type="button"
-                    class="modo"
-                    id="modo-codigo"
-                    aria-label="Ver código"
-                    title="Ver código"
-                >
-                    <svg
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                    >
-                        <path d="m8.5 7-5 5 5 5"></path>
-                        <path d="m15.5 7 5 5-5 5"></path>
-                        <path d="m13.5 4-3 16"></path>
-                    </svg>
-                </button>
-            </div>
-
-            <div
-                class="superficie"
-                id="superficie"
-            >
-                <div class="estado">
-                    Cargando trabajo...
-                </div>
-            </div>
-        </section>
+    <main class="contenedor-trabajo" id="contenedor-trabajo">
+        <div class="estado-pagina">Cargando trabajo...</div>
     </main>
 
     <script>
-        let rutaTrabajo = "";
-        let tipoTrabajo = "";
-        let tituloTrabajo = "";
-        let fuenteTrabajo = "";
-        let modoActual = "diseno";
+        (() => {
+            "use strict";
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            () => {
+            const VERSION = "1.2.1";
+            const REPOSITORIO = "RobDev512/PW-AD2026";
+            const RAMA = "main";
+            const RAIZ_ALUMNO = "23400614_Rodríguez_Magaña_Roberto_Carlos";
+            const DRAWIO_VIEWER_URL = "https://viewer.diagrams.net/js/viewer-static.min.js";
+
+            const FALLBACKS = {
+                "U2/U2 Act 1 - Ejercicio1/": ["Ejercicio1 - U2 Act 1.html", "pan-frances.png"],
+                "U2/U2 Act 2 - Ejercicio2/": ["Ejercicio2 - U2 Act 2.html", "tears-for-fears.jpg"],
+                "U2/U2 Act 5 - Ejercicio5/": ["Ejercicio5 - U2 Act 5.html", "Michael.jpg"],
+                "U3/U3. A4 - Ej1/": ["Ej1 - U3A4.html", "pan-frances.png"],
+                "U3/U3. A5 - Ej2/": ["Ej2 - U3A5.html", "tears-for-fears.jpg"],
+                "U3/U3. A6 - Instagram/": [
+                    "Perfil - U3A6.html",
+                    "css/styles.css",
+                    "diseno/Perfil - U3A6.drawio",
+                    "diseno/Perfil - U3A6.png",
+                    "img/perfil/foto.jpg",
+                    "img/publicaciones/publicacion-01.png",
+                    "img/publicaciones/publicacion-02.png",
+                    "img/publicaciones/publicacion-03.png",
+                    "img/publicaciones/publicacion-04.png",
+                    "img/publicaciones/publicacion-05.png",
+                    "img/publicaciones/publicacion-06.png",
+                    "img/publicaciones/publicacion-07.png",
+                    "img/publicaciones/publicacion-08.png",
+                    "img/publicaciones/publicacion-09.png"
+                ]
+            };
+
+            const GRUPOS = ["Página", "Código", "Diseño", "Imágenes", "Documentos", "Otros"];
+            const cacheFuente = new Map();
+            let promesaVisorDrawio = null;
+            let tokenRender = 0;
+
+            let rutaTrabajo = "";
+            let tipoTrabajo = "";
+            let tituloTrabajo = "";
+            let infoProyecto = null;
+            let recursosProyecto = [];
+            let recursoActual = null;
+            let modoActual = "diseno";
+            let trabajoCatalogo = null;
+
+            document.addEventListener("DOMContentLoaded", iniciar);
+
+            async function iniciar() {
                 configurarVolverHub();
-                iniciarVisor();
+
+                const parametros = new URLSearchParams(window.location.search);
+                rutaTrabajo = parametros.get("archivo") || "";
+                tipoTrabajo = normalizarTipo(parametros.get("tipo") || obtenerTipoDesdeRuta(rutaTrabajo));
+                tituloTrabajo = parametros.get("titulo") || "Trabajo";
+
+                if (!rutaTrabajo) {
+                    mostrarEstadoPagina("No se indicó un archivo para mostrar.");
+                    return;
+                }
+
+                infoProyecto = detectarProyecto(rutaTrabajo);
+
+                if (infoProyecto) {
+                    await iniciarProyecto();
+                } else {
+                    iniciarArchivoIndividual();
+                }
             }
-        );
 
-        function configurarVolverHub() {
-            const volver =
-                document.getElementById(
-                    "volver-hub"
-                );
-
-            if (!volver) {
-                return;
-            }
-
-            volver.addEventListener(
-                "click",
-                (evento) => {
+            function configurarVolverHub() {
+                const volver = document.getElementById("volver-hub");
+                volver?.addEventListener("click", (evento) => {
                     try {
-                        const referencia =
-                            document.referrer
-                                ? new URL(
-                                    document.referrer
-                                )
-                                : null;
+                        const referencia = document.referrer ? new URL(document.referrer) : null;
+                        const mismaAplicacion = referencia &&
+                            referencia.origin === window.location.origin &&
+                            referencia.pathname.includes("/hub/");
 
-                        const mismaAplicacion =
-                            referencia &&
-                            referencia.origin ===
-                                window.location.origin &&
-                            referencia.pathname.includes(
-                                "/hub/"
-                            );
-
-                        if (
-                            mismaAplicacion &&
-                            window.history.length > 1
-                        ) {
+                        if (mismaAplicacion && window.history.length > 1) {
                             evento.preventDefault();
                             window.history.back();
                         }
                     } catch {
-                        // Si no se puede validar la referencia,
-                        // el enlace normal a index.html sigue funcionando.
+                        // El enlace normal sigue siendo el fallback.
                     }
-                }
-            );
-        }
-
-        async function iniciarVisor() {
-            const parametros =
-                new URLSearchParams(
-                    window.location.search
-                );
-
-            rutaTrabajo =
-                parametros.get("archivo") || "";
-
-            tipoTrabajo =
-                normalizarTipo(
-                    parametros.get("tipo") ||
-                    obtenerTipoDesdeRuta(
-                        rutaTrabajo
-                    )
-                );
-
-            tituloTrabajo =
-                parametros.get("titulo") ||
-                "Trabajo";
-
-            document.getElementById(
-                "titulo-trabajo"
-            ).textContent =
-                tituloTrabajo;
-
-            document.getElementById(
-                "tipo-trabajo"
-            ).textContent =
-                formatearTipo(
-                    tipoTrabajo
-                );
-
-            document.title =
-                `${tituloTrabajo} - PW Hub`;
-
-            configurarControles();
-
-            if (!rutaTrabajo) {
-                mostrarError(
-                    "No se indicó un archivo para mostrar."
-                );
-                return;
+                });
             }
 
-            const modos =
-                obtenerModosDisponibles();
+            async function iniciarProyecto() {
+                mostrarEstadoPagina("Explorando archivos del proyecto...");
 
-            modoActual =
-                modos.diseno
-                    ? "diseno"
-                    : "codigo";
+                trabajoCatalogo = await obtenerTrabajoCatalogo(infoProyecto).catch(() => null);
+                const nombreProyecto = trabajoCatalogo?.nombre || limpiarNombreCarpeta(infoProyecto.carpeta);
+                const descripcion = trabajoCatalogo?.descripcion || "Proyecto académico organizado por carpeta.";
 
-            actualizarControles();
-            await renderizarModo();
-        }
+                infoProyecto.principal = normalizarRutaRelativa(trabajoCatalogo?.ruta || infoProyecto.rutaAlumno);
 
-        function configurarControles() {
-            document.getElementById(
-                "modo-diseno"
-            ).addEventListener(
-                "click",
-                async () => {
-                    if (
-                        !obtenerModosDisponibles()
-                            .diseno
-                    ) {
-                        return;
-                    }
+                document.getElementById("tipo-trabajo").textContent =
+                    `U${infoProyecto.unidad} · Proyecto por carpeta`;
+                document.getElementById("titulo-trabajo").textContent = nombreProyecto;
+                document.title = `${nombreProyecto} - PW Hub`;
 
-                    modoActual = "diseno";
-                    actualizarControles();
-                    await renderizarModo();
-                }
-            );
+                recursosProyecto = await obtenerRecursosProyecto(infoProyecto);
 
-            document.getElementById(
-                "modo-codigo"
-            ).addEventListener(
-                "click",
-                async () => {
-                    if (
-                        !obtenerModosDisponibles()
-                            .codigo
-                    ) {
-                        return;
-                    }
+                recursoActual = recursosProyecto.find((recurso) =>
+                    recurso.rutaAlumno === infoProyecto.rutaAlumno
+                ) || recursosProyecto.find((recurso) =>
+                    recurso.rutaAlumno === infoProyecto.principal
+                ) || recursosProyecto[0] || crearRecurso(infoProyecto.rutaAlumno, infoProyecto);
 
-                    modoActual = "codigo";
-                    actualizarControles();
-                    await renderizarModo();
-                }
-            );
-        }
+                construirWorkspaceProyecto(nombreProyecto, descripcion);
+                seleccionarRecurso(recursoActual);
+            }
 
-        function actualizarControles() {
-            const modos =
-                obtenerModosDisponibles();
+            function iniciarArchivoIndividual() {
+                document.getElementById("tipo-trabajo").textContent = formatearTipo(tipoTrabajo);
+                document.getElementById("titulo-trabajo").textContent = tituloTrabajo;
+                document.title = `${tituloTrabajo} - PW Hub`;
 
-            [
-                ["diseno", "modo-diseno"],
-                ["codigo", "modo-codigo"]
-            ].forEach(
-                ([modo, id]) => {
-                    const boton =
-                        document.getElementById(
-                            id
+                const recurso = {
+                    nombre: tituloTrabajo,
+                    ruta: new URL(rutaTrabajo, window.location.href).href,
+                    rutaAlumno: "",
+                    relativa: tituloTrabajo,
+                    tipo: tipoTrabajo,
+                    categoria: "Trabajo"
+                };
+
+                document.getElementById("contenedor-trabajo").innerHTML = `
+                    <section class="visor-simple proyecto-panel">
+                        <header class="recurso-toolbar">
+                            <div class="recurso-info">
+                                <span>Archivo</span>
+                                <strong id="recurso-nombre"></strong>
+                                <code id="recurso-ruta"></code>
+                            </div>
+                            <div class="recurso-modos" id="recurso-modos"></div>
+                        </header>
+                        <div class="superficie" id="superficie"></div>
+                    </section>
+                `;
+
+                recursoActual = recurso;
+                seleccionarRecurso(recurso);
+            }
+
+            async function obtenerTrabajoCatalogo(info) {
+                const respuesta = await fetch("../data/unidades.json", { cache: "no-cache" });
+                if (!respuesta.ok) return null;
+                const datos = await respuesta.json();
+                const trabajos = (datos?.unidades || []).flatMap((unidad) => unidad?.trabajos || []);
+                return trabajos.find((trabajo) => {
+                    const ruta = normalizarRutaRelativa(trabajo?.ruta || "");
+                    return ruta.startsWith(info.raiz);
+                }) || null;
+            }
+
+            async function obtenerRecursosProyecto(info) {
+                try {
+                    const url = `https://api.github.com/repos/${REPOSITORIO}/git/trees/${encodeURIComponent(RAMA)}?recursive=1`;
+                    const respuesta = await fetch(url, {
+                        headers: { Accept: "application/vnd.github+json" },
+                        cache: "no-store"
+                    });
+
+                    if (!respuesta.ok) throw new Error(`GitHub respondió ${respuesta.status}`);
+                    const datos = await respuesta.json();
+                    const prefijo = `${RAIZ_ALUMNO}/${info.raiz}`;
+                    const recursos = (datos.tree || [])
+                        .filter((elemento) =>
+                            elemento?.type === "blob" &&
+                            typeof elemento.path === "string" &&
+                            elemento.path.startsWith(prefijo)
+                        )
+                        .map((elemento) =>
+                            crearRecurso(elemento.path.slice(RAIZ_ALUMNO.length + 1), info)
                         );
 
-                    const disponible =
-                        Boolean(modos[modo]);
-
-                    const activo =
-                        disponible &&
-                        modo === modoActual;
-
-                    boton.disabled =
-                        !disponible;
-
-                    boton.classList.toggle(
-                        "activo",
-                        activo
-                    );
-
-                    boton.setAttribute(
-                        "aria-pressed",
-                        activo
-                            ? "true"
-                            : "false"
-                    );
-                }
-            );
-        }
-
-        async function renderizarModo() {
-            const superficie =
-                document.getElementById(
-                    "superficie"
-                );
-
-            superficie.innerHTML = `
-                <div class="estado">
-                    ${
-                        modoActual === "codigo"
-                            ? "Cargando código..."
-                            : "Cargando diseño..."
+                    if (recursos.length) {
+                        return recursos.sort((a, b) => compararRecursos(a, b, info.principal));
                     }
-                </div>
-            `;
-
-            try {
-                if (
-                    modoActual === "codigo"
-                ) {
-                    await renderizarCodigo(
-                        superficie
-                    );
-                } else {
-                    await renderizarDiseno(
-                        superficie
-                    );
+                } catch (error) {
+                    console.warn("PW Hub: se usará el inventario local del proyecto.", error);
                 }
-            } catch (error) {
-                console.error(error);
 
-                mostrarError(
-                    "No fue posible cargar el trabajo. Abre el Hub mediante un servidor local o GitHub Pages."
-                );
+                const rutas = FALLBACKS[info.raiz] || [info.rutaAlumno.slice(info.raiz.length)];
+                const recursos = rutas.map((ruta) => crearRecurso(`${info.raiz}${ruta}`, info));
+
+                if (!recursos.some((recurso) => recurso.rutaAlumno === info.rutaAlumno)) {
+                    recursos.unshift(crearRecurso(info.rutaAlumno, info));
+                }
+
+                return recursos.sort((a, b) => compararRecursos(a, b, info.principal));
             }
-        }
 
-        async function renderizarDiseno(
-            superficie
-        ) {
-            if (
-                tipoTrabajo === "html" ||
-                tipoTrabajo === "pdf"
-            ) {
-                superficie.innerHTML = `
-                    <iframe
-                        src="${rutaTrabajo}"
-                        class="frame"
-                        title="${escaparHtml(tituloTrabajo)}"
-                    ></iframe>
+            function crearRecurso(rutaAlumno, info) {
+                const rutaNormalizada = normalizarRutaRelativa(rutaAlumno);
+                const relativa = rutaNormalizada.startsWith(info.raiz)
+                    ? rutaNormalizada.slice(info.raiz.length)
+                    : rutaNormalizada;
+                const nombre = relativa.split("/").pop() || relativa;
+                const tipo = obtenerTipoDesdeRuta(rutaNormalizada);
+
+                return {
+                    ruta: new URL(`../../${rutaNormalizada}`, window.location.href).href,
+                    rutaAlumno: rutaNormalizada,
+                    relativa,
+                    nombre,
+                    tipo,
+                    categoria: obtenerCategoriaRecurso(relativa, tipo)
+                };
+            }
+
+            function construirWorkspaceProyecto(nombre, descripcion) {
+                const grupos = agruparRecursos(recursosProyecto);
+
+                document.getElementById("contenedor-trabajo").innerHTML = `
+                    <section class="proyecto-shell">
+                        <aside class="proyecto-archivos" aria-label="Archivos del proyecto">
+                            <header class="proyecto-cabecera">
+                                <div class="proyecto-cabecera-linea">
+                                    <span>Proyecto completo</span>
+                                    <strong>${recursosProyecto.length} ${recursosProyecto.length === 1 ? "archivo" : "archivos"}</strong>
+                                </div>
+                                <h2>${escaparHtml(nombre)}</h2>
+                                <p>${escaparHtml(descripcion)}</p>
+                                <code>${escaparHtml(infoProyecto.raiz)}</code>
+                            </header>
+                            <div class="proyecto-lista">
+                                ${grupos.map(renderizarGrupo).join("")}
+                            </div>
+                        </aside>
+
+                        <section class="proyecto-panel">
+                            <header class="recurso-toolbar">
+                                <div class="recurso-info">
+                                    <span id="recurso-categoria">Archivo</span>
+                                    <strong id="recurso-nombre">Selecciona un recurso</strong>
+                                    <code id="recurso-ruta"></code>
+                                </div>
+                                <div class="recurso-modos" id="recurso-modos" role="group" aria-label="Modo de visualización"></div>
+                            </header>
+                            <div class="superficie" id="superficie"></div>
+                        </section>
+                    </section>
                 `;
-                return;
+
+                document.querySelectorAll("[data-recurso]").forEach((boton) => {
+                    boton.addEventListener("click", () => {
+                        const recurso = recursosProyecto[Number(boton.dataset.recurso)];
+                        if (recurso) seleccionarRecurso(recurso);
+                    });
+                });
             }
 
-            if (
-                tipoTrabajo === "markdown"
-            ) {
-                const fuente =
-                    await cargarFuente();
+            function agruparRecursos(recursos) {
+                return GRUPOS.map((categoria) => ({
+                    categoria,
+                    recursos: recursos
+                        .map((recurso, indice) => ({ ...recurso, indice }))
+                        .filter((recurso) => recurso.categoria === categoria)
+                })).filter((grupo) => grupo.recursos.length > 0);
+            }
 
-                superficie.innerHTML = `
-                    <article class="markdown">
-                        ${
-                            window.marked
-                                ? marked.parse(
-                                    fuente
-                                )
-                                : `<pre>${escaparHtml(fuente)}</pre>`
-                        }
-                    </article>
+            function renderizarGrupo(grupo) {
+                return `
+                    <section class="proyecto-grupo">
+                        <h3>${escaparHtml(grupo.categoria)}</h3>
+                        <div class="proyecto-grupo-lista">
+                            ${grupo.recursos.map((recurso) => `
+                                <button type="button" class="proyecto-archivo" data-recurso="${recurso.indice}" title="${escaparHtml(recurso.relativa)}">
+                                    <span class="archivo-extension">${escaparHtml(etiquetaTipo(recurso.tipo))}</span>
+                                    <span class="archivo-texto">
+                                        <strong>${escaparHtml(recurso.nombre)}</strong>
+                                        <small>${escaparHtml(recurso.relativa)}</small>
+                                    </span>
+                                </button>
+                            `).join("")}
+                        </div>
+                    </section>
                 `;
-
-                corregirRutasMarkdown(
-                    superficie,
-                    rutaTrabajo
-                );
-                return;
             }
 
-            if (esImagen(tipoTrabajo)) {
+            function seleccionarRecurso(recurso) {
+                recursoActual = recurso;
+                tokenRender += 1;
+                fuenteActualReset();
+
+                document.querySelectorAll("[data-recurso]").forEach((boton) => {
+                    const candidato = recursosProyecto[Number(boton.dataset.recurso)];
+                    boton.classList.toggle("activo", candidato?.rutaAlumno === recurso.rutaAlumno);
+                });
+
+                const nombre = document.getElementById("recurso-nombre");
+                const ruta = document.getElementById("recurso-ruta");
+                const categoria = document.getElementById("recurso-categoria");
+
+                if (nombre) nombre.textContent = recurso.nombre;
+                if (ruta) ruta.textContent = recurso.relativa || recurso.ruta;
+                if (categoria) categoria.textContent = recurso.categoria || formatearTipo(recurso.tipo);
+
+                const abrir = document.getElementById("abrir-original");
+                abrir.href = recurso.ruta;
+                abrir.hidden = false;
+
+                const modos = obtenerModosRecurso(recurso);
+                modoActual = modos[0]?.id || "codigo";
+                construirBotonesModo(modos);
+                renderizarRecurso(recurso, modoActual, tokenRender);
+            }
+
+            function construirBotonesModo(modos) {
+                const contenedor = document.getElementById("recurso-modos");
+                if (!contenedor) return;
+
+                contenedor.innerHTML = modos.map((modo) => `
+                    <button type="button" class="recurso-modo ${modo.id === modoActual ? "activo" : ""}" data-modo="${modo.id}">
+                        ${escaparHtml(modo.etiqueta)}
+                    </button>
+                `).join("");
+
+                contenedor.querySelectorAll("[data-modo]").forEach((boton) => {
+                    boton.addEventListener("click", () => {
+                        modoActual = boton.dataset.modo;
+                        contenedor.querySelectorAll(".recurso-modo").forEach((elemento) =>
+                            elemento.classList.toggle("activo", elemento === boton)
+                        );
+                        tokenRender += 1;
+                        renderizarRecurso(recursoActual, modoActual, tokenRender);
+                    });
+                });
+            }
+
+            function obtenerModosRecurso(recurso) {
+                if (recurso.tipo === "html") {
+                    return [
+                        { id: "diseno", etiqueta: "Diseño" },
+                        { id: "codigo", etiqueta: "Código HTML" }
+                    ];
+                }
+
+                if (recurso.tipo === "markdown") {
+                    return [
+                        { id: "diseno", etiqueta: "Vista" },
+                        { id: "codigo", etiqueta: "Markdown" }
+                    ];
+                }
+
+                if (recurso.tipo === "drawio") {
+                    const modos = [{ id: "diagrama", etiqueta: "Diagrama" }];
+                    if (encontrarVisualDrawio(recurso)) modos.push({ id: "png", etiqueta: "PNG" });
+                    modos.push({ id: "codigo", etiqueta: "XML" });
+                    return modos;
+                }
+
+                if (recurso.tipo === "pdf" || esImagen(recurso.tipo)) {
+                    return [{ id: "diseno", etiqueta: "Vista" }];
+                }
+
+                return [{ id: "codigo", etiqueta: etiquetaTipo(recurso.tipo) }];
+            }
+
+            async function renderizarRecurso(recurso, modo, token) {
+                const superficie = document.getElementById("superficie");
+                if (!superficie || !recurso) return;
+
+                superficie.classList.remove("iframe");
                 superficie.innerHTML = `
-                    <div class="imagen">
-                        <img
-                            src="${rutaTrabajo}"
-                            alt="${escaparHtml(tituloTrabajo)}"
-                        >
+                    <div class="estado-recurso">
+                        <span class="spinner" aria-hidden="true"></span>
+                        <span>Cargando ${escaparHtml(recurso.nombre)}...</span>
                     </div>
                 `;
-                return;
-            }
 
-            mostrarError(
-                "Este tipo de archivo no cuenta con una vista de diseño."
-            );
-        }
-
-        async function renderizarCodigo(
-            superficie
-        ) {
-            const fuente =
-                await cargarFuente();
-
-            let contenido = fuente;
-
-            if (
-                tipoTrabajo === "json"
-            ) {
                 try {
-                    contenido =
-                        JSON.stringify(
-                            JSON.parse(fuente),
-                            null,
-                            2
-                        );
-                } catch {
-                    contenido = fuente;
+                    if (recurso.tipo === "html" || recurso.tipo === "pdf") {
+                        if (modo === "codigo") {
+                            await renderizarCodigo(recurso, superficie, token);
+                        } else {
+                            renderizarIframe(recurso, superficie);
+                        }
+                    } else if (recurso.tipo === "markdown") {
+                        if (modo === "codigo") {
+                            await renderizarCodigo(recurso, superficie, token);
+                        } else {
+                            await renderizarMarkdown(recurso, superficie, token);
+                        }
+                    } else if (esImagen(recurso.tipo)) {
+                        renderizarImagen(recurso, superficie);
+                    } else if (recurso.tipo === "drawio") {
+                        if (modo === "codigo") {
+                            await renderizarCodigo(recurso, superficie, token);
+                        } else if (modo === "png") {
+                            const visual = encontrarVisualDrawio(recurso);
+                            if (!visual) throw new Error("No existe una exportación visual asociada.");
+                            renderizarImagen(visual, superficie);
+                        } else {
+                            await renderizarDrawio(recurso, superficie, token);
+                        }
+                    } else {
+                        await renderizarCodigo(recurso, superficie, token);
+                    }
+                } catch (error) {
+                    console.error(error);
+                    if (token !== tokenRender) return;
+                    superficie.innerHTML = `
+                        <div class="estado-recurso">
+                            <strong>No fue posible mostrar este archivo.</strong>
+                            <span>${escaparHtml(recurso.relativa || recurso.nombre)}</span>
+                        </div>
+                    `;
                 }
             }
 
-            const pre =
-                document.createElement(
-                    "pre"
-                );
-
-            pre.className = "codigo";
-            pre.textContent = contenido;
-
-            superficie.innerHTML = "";
-            superficie.appendChild(pre);
-        }
-
-        async function cargarFuente() {
-            if (fuenteTrabajo) {
-                return fuenteTrabajo;
+            function renderizarIframe(recurso, superficie) {
+                superficie.classList.add("iframe");
+                superficie.innerHTML = `<iframe src="${recurso.ruta}" class="frame" title="${escaparHtml(recurso.nombre)}"></iframe>`;
             }
 
-            const respuesta =
-                await fetch(rutaTrabajo);
+            function renderizarImagen(recurso, superficie) {
+                superficie.innerHTML = "";
 
-            if (!respuesta.ok) {
-                throw new Error(
-                    "No fue posible cargar el archivo."
+                const visor = document.createElement("div");
+                visor.className = "imagen-visor";
+                visor.tabIndex = 0;
+                visor.setAttribute(
+                    "aria-label",
+                    `Visor ampliable de ${recurso.nombre}`
                 );
-            }
 
-            fuenteTrabajo =
-                await respuesta.text();
+                const controles = document.createElement("div");
+                controles.className = "imagen-controles";
+                controles.setAttribute("role", "group");
+                controles.setAttribute("aria-label", "Controles de la imagen");
+                controles.innerHTML = `
+                    <button type="button" data-imagen-zoom="menos" title="Alejar" aria-label="Alejar">−</button>
+                    <button type="button" data-imagen-zoom="mas" title="Acercar" aria-label="Acercar">+</button>
+                    <button type="button" data-imagen-ajustar>Ajustar</button>
+                    <button type="button" data-imagen-pantalla title="Pantalla completa" aria-label="Pantalla completa">⛶</button>
+                `;
 
-            return fuenteTrabajo;
-        }
+                const escenario = document.createElement("div");
+                escenario.className = "imagen-escenario";
 
-        function obtenerModosDisponibles() {
-            if (
-                tipoTrabajo === "pdf" ||
-                esImagen(tipoTrabajo)
-            ) {
-                return {
-                    diseno: true,
-                    codigo: false
+                const imagen = document.createElement("img");
+                imagen.className = "imagen-zoomable";
+                imagen.src = recurso.ruta;
+                imagen.alt = recurso.nombre;
+                imagen.draggable = false;
+
+                escenario.appendChild(imagen);
+                visor.append(controles, escenario);
+                superficie.appendChild(visor);
+
+                const iniciar = () => {
+                    if (!visor.isConnected) return;
+                    configurarVisorImagen(visor, escenario, imagen);
                 };
+
+                if (imagen.complete && imagen.naturalWidth > 0) iniciar();
+                else imagen.addEventListener("load", iniciar, { once: true });
             }
 
-            if (
-                tipoTrabajo === "html" ||
-                tipoTrabajo === "markdown"
-            ) {
-                return {
-                    diseno: true,
-                    codigo: true
+            function configurarVisorImagen(visor, escenario, imagen) {
+                const anchoNatural = Math.max(1, imagen.naturalWidth || 1);
+                const altoNatural = Math.max(1, imagen.naturalHeight || 1);
+                const estado = {
+                    escala: 1,
+                    x: 0,
+                    y: 0,
+                    arrastrando: false,
+                    puntero: null,
+                    inicioX: 0,
+                    inicioY: 0,
+                    baseX: 0,
+                    baseY: 0,
+                    autoAjuste: true,
+                    raf: null
                 };
-            }
 
-            return {
-                diseno: false,
-                codigo: true
-            };
-        }
+                const aplicar = () => {
+                    imagen.style.width = `${Math.max(1, anchoNatural * estado.escala)}px`;
+                    imagen.style.height = "auto";
+                    imagen.style.left = `calc(50% + ${estado.x}px)`;
+                    imagen.style.top = `calc(50% + ${estado.y}px)`;
+                };
 
-        function corregirRutasMarkdown(
-            contenedor,
-            rutaDocumento
-        ) {
-            const urlDocumento =
-                new URL(
-                    rutaDocumento,
-                    window.location.href
-                );
+                const escalaAjuste = () => {
+                    const margen = 40;
+                    return Math.min(
+                        Math.max(1, escenario.clientWidth - margen) / anchoNatural,
+                        Math.max(1, escenario.clientHeight - margen) / altoNatural,
+                        1
+                    );
+                };
 
-            const urlBase =
-                new URL(
-                    ".",
-                    urlDocumento
-                );
+                const ajustar = () => {
+                    if (!visor.isConnected) return;
+                    estado.escala = Math.max(.03, escalaAjuste());
+                    estado.x = 0;
+                    estado.y = 0;
+                    estado.autoAjuste = true;
+                    aplicar();
+                };
 
-            contenedor
-                .querySelectorAll("img")
-                .forEach((imagen) => {
-                    const src =
-                        imagen.getAttribute(
-                            "src"
-                        );
+                const programarAjuste = () => {
+                    if (estado.raf) cancelAnimationFrame(estado.raf);
+                    estado.raf = requestAnimationFrame(() => {
+                        estado.raf = requestAnimationFrame(() => {
+                            estado.raf = null;
+                            ajustar();
+                        });
+                    });
+                };
 
-                    if (
-                        src &&
-                        esRutaRelativa(src)
-                    ) {
-                        imagen.src =
-                            new URL(
-                                src,
-                                urlBase
-                            ).href;
+                const zoom = (direccion) => {
+                    const factor = direccion > 0 ? 1.22 : 1 / 1.22;
+                    const minimo = Math.max(.03, escalaAjuste() * .45);
+                    const nueva = Math.min(6, Math.max(minimo, estado.escala * factor));
+                    if (Math.abs(nueva - estado.escala) < .0001) return;
+                    estado.escala = nueva;
+                    estado.autoAjuste = false;
+                    aplicar();
+                };
+
+                visor.querySelector('[data-imagen-zoom="menos"]')?.addEventListener("click", () => zoom(-1));
+                visor.querySelector('[data-imagen-zoom="mas"]')?.addEventListener("click", () => zoom(1));
+                visor.querySelector("[data-imagen-ajustar]")?.addEventListener("click", programarAjuste);
+
+                const pantalla = visor.querySelector("[data-imagen-pantalla]");
+                pantalla?.addEventListener("click", async () => {
+                    try {
+                        if (document.fullscreenElement === visor) {
+                            await document.exitFullscreen();
+                        } else if (typeof visor.requestFullscreen === "function") {
+                            await visor.requestFullscreen();
+                        } else {
+                            visor.classList.toggle("fullscreen-fallback");
+                            programarAjuste();
+                        }
+                    } catch (error) {
+                        console.warn("PW Hub: fullscreen de imagen no disponible.", error);
                     }
                 });
 
-            contenedor
-                .querySelectorAll("a")
-                .forEach((enlace) => {
-                    const href =
-                        enlace.getAttribute(
-                            "href"
-                        );
-
-                    if (
-                        href &&
-                        esRutaRelativa(href)
-                    ) {
-                        enlace.href =
-                            new URL(
-                                href,
-                                urlBase
-                            ).href;
-                    }
-
-                    enlace.target =
-                        "_blank";
-
-                    enlace.rel =
-                        "noopener noreferrer";
+                escenario.addEventListener("pointerdown", (evento) => {
+                    if (evento.button !== 0) return;
+                    estado.arrastrando = true;
+                    estado.autoAjuste = false;
+                    estado.puntero = evento.pointerId;
+                    estado.inicioX = evento.clientX;
+                    estado.inicioY = evento.clientY;
+                    estado.baseX = estado.x;
+                    estado.baseY = estado.y;
+                    escenario.classList.add("arrastrando");
+                    escenario.setPointerCapture?.(evento.pointerId);
+                    evento.preventDefault();
                 });
-        }
 
-        function mostrarError(mensaje) {
-            document.getElementById(
-                "superficie"
-            ).innerHTML = `
-                <div class="estado">
-                    ${escaparHtml(mensaje)}
-                </div>
-            `;
-        }
+                escenario.addEventListener("pointermove", (evento) => {
+                    if (!estado.arrastrando || evento.pointerId !== estado.puntero) return;
+                    estado.x = estado.baseX + evento.clientX - estado.inicioX;
+                    estado.y = estado.baseY + evento.clientY - estado.inicioY;
+                    aplicar();
+                });
 
-        function obtenerTipoDesdeRuta(
-            ruta
-        ) {
-            const extension =
-                String(ruta || "")
-                    .split(".")
-                    .pop()
-                    .toLowerCase();
+                const terminar = (evento) => {
+                    if (evento.pointerId !== estado.puntero) return;
+                    estado.arrastrando = false;
+                    estado.puntero = null;
+                    escenario.classList.remove("arrastrando");
+                };
 
-            return normalizarTipo(
-                extension
-            );
-        }
+                escenario.addEventListener("pointerup", terminar);
+                escenario.addEventListener("pointercancel", terminar);
 
-        function normalizarTipo(tipo) {
-            const valor =
-                String(tipo || "")
-                    .toLowerCase();
-
-            if (valor === "md") {
-                return "markdown";
-            }
-
-            if (valor === "htm") {
-                return "html";
-            }
-
-            if (valor === "txt") {
-                return "texto";
-            }
-
-            return valor || "archivo";
-        }
-
-        function formatearTipo(tipo) {
-            const mapa = {
-                html: "HTML",
-                markdown: "Markdown",
-                pdf: "PDF",
-                texto: "Texto",
-                css: "CSS",
-                js: "JavaScript",
-                json: "JSON"
-            };
-
-            return (
-                mapa[tipo] ||
-                "Trabajo"
-            );
-        }
-
-        function esImagen(tipo) {
-            return [
-                "png",
-                "jpg",
-                "jpeg",
-                "gif",
-                "webp",
-                "svg"
-            ].includes(tipo);
-        }
-
-        function esRutaRelativa(ruta) {
-            return !(
-                ruta.startsWith("http://") ||
-                ruta.startsWith("https://") ||
-                ruta.startsWith("#") ||
-                ruta.startsWith("mailto:") ||
-                ruta.startsWith("data:")
-            );
-        }
-
-        function escaparHtml(texto) {
-            const div =
-                document.createElement(
-                    "div"
+                visor.addEventListener(
+                    "wheel",
+                    (evento) => {
+                        if (!evento.ctrlKey) return;
+                        evento.preventDefault();
+                        zoom(evento.deltaY < 0 ? 1 : -1);
+                    },
+                    { passive: false }
                 );
 
-            div.textContent =
-                String(texto ?? "");
+                escenario.addEventListener("dblclick", (evento) => {
+                    evento.preventDefault();
+                    zoom(1);
+                });
 
-            return div.innerHTML;
-        }
+                document.addEventListener("fullscreenchange", () => {
+                    if (!visor.isConnected) return;
+                    pantalla?.classList.toggle("activo", document.fullscreenElement === visor);
+                    programarAjuste();
+                });
+
+                if (typeof ResizeObserver === "function") {
+                    const observador = new ResizeObserver(() => {
+                        if (!visor.isConnected) {
+                            observador.disconnect();
+                            return;
+                        }
+                        if (!estado.arrastrando && estado.autoAjuste) programarAjuste();
+                    });
+                    observador.observe(escenario);
+                }
+
+                programarAjuste();
+            }
+
+            async function renderizarMarkdown(recurso, superficie, token) {
+                const fuente = await cargarFuente(recurso.ruta);
+                if (token !== tokenRender) return;
+                superficie.innerHTML = `
+                    <article class="markdown">
+                        ${window.marked ? marked.parse(fuente) : `<pre>${escaparHtml(fuente)}</pre>`}
+                    </article>
+                `;
+                corregirRutasMarkdown(superficie, recurso.ruta);
+            }
+
+            async function renderizarCodigo(recurso, superficie, token) {
+                let fuente = await cargarFuente(recurso.ruta);
+                if (token !== tokenRender) return;
+
+                if (recurso.tipo === "json") {
+                    try { fuente = JSON.stringify(JSON.parse(fuente), null, 2); } catch { /* original */ }
+                }
+
+                const pre = document.createElement("pre");
+                pre.className = "codigo";
+                pre.textContent = fuente;
+                superficie.innerHTML = "";
+                superficie.appendChild(pre);
+            }
+
+            async function renderizarDrawio(recurso, superficie, token) {
+                const fuente = await cargarFuente(recurso.ruta);
+                if (token !== tokenRender) return;
+                validarFuenteDrawio(fuente);
+
+                superficie.innerHTML = "";
+
+                const contenedor = document.createElement("div");
+                contenedor.className = "drawio";
+
+                const aviso = document.createElement("div");
+                aviso.className = "drawio-aviso";
+                aviso.innerHTML = `<span>DRAWIO</span><p>Diagrama interpretado desde el XML original de <code>${escaparHtml(recurso.nombre)}</code>.</p>`;
+
+                const lienzo = document.createElement("div");
+                lienzo.className = "drawio-render";
+                lienzo.tabIndex = 0;
+
+                const controles = document.createElement("div");
+                controles.className = "drawio-controles";
+                controles.innerHTML = `
+                    <button type="button" data-zoom="menos" title="Alejar" aria-label="Alejar">−</button>
+                    <button type="button" data-zoom="mas" title="Acercar" aria-label="Acercar">+</button>
+                    <button type="button" data-ajustar>Ajustar</button>
+                    <button type="button" data-pantalla title="Pantalla completa" aria-label="Pantalla completa">⛶</button>
+                `;
+
+                const escenario = document.createElement("div");
+                escenario.className = "drawio-escenario";
+
+                const grafico = document.createElement("div");
+                grafico.className = "mxgraph drawio-graph";
+                grafico.setAttribute("data-mxgraph", JSON.stringify({
+                    highlight: "#35c9f3",
+                    nav: false,
+                    lightbox: false,
+                    "auto-fit": false,
+                    responsive: false,
+                    "dark-mode": "auto",
+                    xml: fuente
+                }));
+
+                escenario.appendChild(grafico);
+                lienzo.append(controles, escenario);
+                contenedor.append(aviso, lienzo);
+                superficie.appendChild(contenedor);
+
+                await cargarVisorDrawio();
+                if (token !== tokenRender || !grafico.isConnected) return;
+
+                const visor = await crearVisorDrawio(grafico);
+                if (token !== tokenRender || !grafico.isConnected) return;
+                configurarLienzoDrawio(lienzo, escenario, grafico, visor);
+            }
+
+            function configurarLienzoDrawio(lienzo, escenario, grafico, visor) {
+                const graph = visor?.graph;
+                if (!graph || !graph.view) throw new Error("Draw.io no entregó un grafo utilizable.");
+
+                graph.useScrollbarsForPanning = false;
+
+                const estado = {
+                    arrastrando: false,
+                    puntero: null,
+                    inicioX: 0,
+                    inicioY: 0,
+                    deltaX: 0,
+                    deltaY: 0,
+                    translateX: 0,
+                    translateY: 0,
+                    autoAjuste: true,
+                    raf: null
+                };
+
+                const ajustar = () => {
+                    if (!lienzo.isConnected || !grafico.isConnected) return;
+                    graph.panGraph?.(0, 0);
+                    graph.fit?.(24);
+                    estado.autoAjuste = true;
+                    estado.deltaX = 0;
+                    estado.deltaY = 0;
+                };
+
+                const programarAjuste = () => {
+                    if (estado.raf) cancelAnimationFrame(estado.raf);
+                    estado.raf = requestAnimationFrame(() => {
+                        estado.raf = requestAnimationFrame(() => {
+                            estado.raf = null;
+                            ajustar();
+                        });
+                    });
+                };
+
+                const zoom = (direccion) => {
+                    const escala = Number(graph.view?.scale || 1);
+                    if (direccion > 0 && escala >= 4) return;
+                    if (direccion < 0 && escala <= .12) return;
+                    estado.autoAjuste = false;
+                    graph.panGraph?.(0, 0);
+                    direccion > 0 ? graph.zoomIn?.() : graph.zoomOut?.();
+                };
+
+                lienzo.querySelector('[data-zoom="menos"]')?.addEventListener("click", () => zoom(-1));
+                lienzo.querySelector('[data-zoom="mas"]')?.addEventListener("click", () => zoom(1));
+                lienzo.querySelector("[data-ajustar]")?.addEventListener("click", programarAjuste);
+
+                const pantalla = lienzo.querySelector("[data-pantalla]");
+                pantalla?.addEventListener("click", async () => {
+                    try {
+                        if (document.fullscreenElement === lienzo) {
+                            await document.exitFullscreen();
+                        } else if (typeof lienzo.requestFullscreen === "function") {
+                            await lienzo.requestFullscreen();
+                        } else {
+                            lienzo.classList.toggle("fullscreen-fallback");
+                            programarAjuste();
+                        }
+                    } catch (error) {
+                        console.warn("PW Hub: fullscreen Draw.io no disponible.", error);
+                    }
+                });
+
+                lienzo.addEventListener("pointerdown", (evento) => {
+                    if (evento.button !== 0 || evento.target.closest(".drawio-controles")) return;
+                    const vista = graph.getView?.() || graph.view;
+                    estado.arrastrando = true;
+                    estado.autoAjuste = false;
+                    estado.puntero = evento.pointerId;
+                    estado.inicioX = evento.clientX;
+                    estado.inicioY = evento.clientY;
+                    estado.translateX = Number(vista.translate?.x || 0);
+                    estado.translateY = Number(vista.translate?.y || 0);
+                    estado.deltaX = 0;
+                    estado.deltaY = 0;
+                    lienzo.classList.add("arrastrando");
+                    lienzo.setPointerCapture?.(evento.pointerId);
+                    evento.preventDefault();
+                });
+
+                lienzo.addEventListener("pointermove", (evento) => {
+                    if (!estado.arrastrando || evento.pointerId !== estado.puntero) return;
+                    estado.deltaX = evento.clientX - estado.inicioX;
+                    estado.deltaY = evento.clientY - estado.inicioY;
+                    graph.panGraph?.(estado.deltaX, estado.deltaY);
+                });
+
+                const terminar = (evento) => {
+                    if (evento.pointerId !== estado.puntero) return;
+                    const vista = graph.getView?.() || graph.view;
+                    const escala = Number(vista.scale || 1) || 1;
+                    graph.panGraph?.(0, 0);
+                    vista.setTranslate?.(
+                        estado.translateX + estado.deltaX / escala,
+                        estado.translateY + estado.deltaY / escala
+                    );
+                    estado.arrastrando = false;
+                    estado.puntero = null;
+                    estado.deltaX = 0;
+                    estado.deltaY = 0;
+                    lienzo.classList.remove("arrastrando");
+                };
+
+                lienzo.addEventListener("pointerup", terminar);
+                lienzo.addEventListener("pointercancel", terminar);
+
+                /*
+                   Edge/Chrome convierten el gesto de pellizco del trackpad
+                   y Ctrl + rueda en eventos wheel con ctrlKey. Se captura
+                   solo dentro del lienzo para que el navegador no amplíe
+                   toda la página y el zoom siga siendo el nativo del grafo.
+                */
+                lienzo.addEventListener(
+                    "wheel",
+                    (evento) => {
+                        if (!evento.ctrlKey) return;
+
+                        evento.preventDefault();
+                        zoom(evento.deltaY < 0 ? 1 : -1);
+                    },
+                    { passive: false }
+                );
+
+                document.addEventListener("fullscreenchange", () => {
+                    if (!lienzo.isConnected) return;
+                    pantalla?.classList.toggle("activo", document.fullscreenElement === lienzo);
+                    programarAjuste();
+                });
+
+                if (typeof ResizeObserver === "function") {
+                    const observador = new ResizeObserver(() => {
+                        if (!lienzo.isConnected) {
+                            observador.disconnect();
+                            return;
+                        }
+                        if (!estado.arrastrando && estado.autoAjuste) programarAjuste();
+                    });
+                    observador.observe(escenario);
+                }
+
+                programarAjuste();
+            }
+
+            function crearVisorDrawio(grafico) {
+                return new Promise((resolver, rechazar) => {
+                    let terminado = false;
+                    const temporizador = setTimeout(() => {
+                        if (terminado) return;
+                        terminado = true;
+                        rechazar(new Error("El visor de Draw.io no terminó de crear el diagrama."));
+                    }, 5000);
+
+                    try {
+                        window.GraphViewer.createViewerForElement(grafico, (visor) => {
+                            if (terminado) return;
+                            terminado = true;
+                            clearTimeout(temporizador);
+                            resolver(visor);
+                        });
+                    } catch (error) {
+                        clearTimeout(temporizador);
+                        rechazar(error);
+                    }
+                });
+            }
+
+            function cargarVisorDrawio() {
+                if (window.GraphViewer?.createViewerForElement) return Promise.resolve();
+                if (promesaVisorDrawio) return promesaVisorDrawio;
+
+                promesaVisorDrawio = new Promise((resolver, rechazar) => {
+                    let terminado = false;
+                    const finalizar = (error = null) => {
+                        if (terminado) return;
+                        terminado = true;
+                        clearTimeout(temporizador);
+                        error ? rechazar(error) : resolver();
+                    };
+
+                    const verificar = () => {
+                        if (window.GraphViewer?.createViewerForElement) finalizar();
+                        else finalizar(new Error("El visor oficial no expuso GraphViewer."));
+                    };
+
+                    window.onDrawioViewerLoad = verificar;
+                    let script = document.querySelector("script[data-pw-drawio-viewer]");
+                    if (!script) {
+                        script = document.createElement("script");
+                        script.src = DRAWIO_VIEWER_URL;
+                        script.async = true;
+                        script.dataset.pwDrawioViewer = VERSION;
+                        document.head.appendChild(script);
+                    }
+                    script.addEventListener("load", verificar, { once: true });
+                    script.addEventListener("error", () => finalizar(new Error("No fue posible descargar el visor Draw.io.")), { once: true });
+                    const temporizador = setTimeout(() => finalizar(new Error("Draw.io excedió el tiempo de espera.")), 8000);
+                }).catch((error) => {
+                    promesaVisorDrawio = null;
+                    throw error;
+                });
+
+                return promesaVisorDrawio;
+            }
+
+            function validarFuenteDrawio(fuente) {
+                const documento = new DOMParser().parseFromString(fuente, "application/xml");
+                if (documento.querySelector("parsererror")) throw new Error("XML Draw.io no válido.");
+                const raiz = documento.documentElement?.tagName?.toLowerCase();
+                if (raiz !== "mxfile" && raiz !== "mxgraphmodel") {
+                    throw new Error("El XML no corresponde a Draw.io.");
+                }
+            }
+
+            async function cargarFuente(ruta) {
+                if (cacheFuente.has(ruta)) return cacheFuente.get(ruta);
+                const respuesta = await fetch(ruta, { cache: "no-cache" });
+                if (!respuesta.ok) throw new Error(`No fue posible cargar ${ruta}`);
+                const fuente = await respuesta.text();
+                cacheFuente.set(ruta, fuente);
+                return fuente;
+            }
+
+            function fuenteActualReset() {
+                // La caché por URL puede conservarse; cada recurso tiene su propia entrada.
+            }
+
+            function detectarProyecto(ruta) {
+                const rutaAlumno = extraerRutaAlumno(ruta);
+                const coincidencia = rutaAlumno.match(/^U([23])\/([^/]+)\/(.+)$/i);
+                if (!coincidencia) return null;
+                return {
+                    unidad: Number(coincidencia[1]),
+                    carpeta: coincidencia[2],
+                    raiz: `U${coincidencia[1]}/${coincidencia[2]}/`,
+                    rutaAlumno,
+                    principal: rutaAlumno
+                };
+            }
+
+            function extraerRutaAlumno(ruta) {
+                try {
+                    const url = new URL(ruta, window.location.href);
+                    const pathname = decodeURIComponent(url.pathname);
+                    const marca = `/${RAIZ_ALUMNO}/`;
+                    const indice = pathname.indexOf(marca);
+                    if (indice >= 0) return normalizarRutaRelativa(pathname.slice(indice + marca.length));
+                } catch {
+                    // Se intenta con la cadena tal cual.
+                }
+                return normalizarRutaRelativa(ruta);
+            }
+
+            function encontrarVisualDrawio(recurso) {
+                const ruta = recurso.rutaAlumno;
+                const punto = ruta.lastIndexOf(".");
+                const base = punto >= 0 ? ruta.slice(0, punto) : ruta;
+                const extensiones = ["png", "svg", "jpg", "jpeg", "webp"];
+                return recursosProyecto.find((candidato) =>
+                    extensiones.some((extension) =>
+                        candidato.rutaAlumno.toLowerCase() === `${base}.${extension}`.toLowerCase()
+                    )
+                ) || null;
+            }
+
+            function obtenerCategoriaRecurso(ruta, tipo) {
+                const minuscula = String(ruta).toLowerCase();
+                if (tipo === "html" || tipo === "markdown") return "Página";
+                if (["css", "js", "json", "txt", "texto", "xml"].includes(tipo)) return "Código";
+                if (tipo === "drawio" || minuscula.startsWith("diseno/") || minuscula.startsWith("diseño/")) return "Diseño";
+                if (esImagen(tipo)) return "Imágenes";
+                if (tipo === "pdf") return "Documentos";
+                return "Otros";
+            }
+
+            function compararRecursos(a, b, principal) {
+                if (a.rutaAlumno === principal) return -1;
+                if (b.rutaAlumno === principal) return 1;
+                const ga = GRUPOS.indexOf(a.categoria);
+                const gb = GRUPOS.indexOf(b.categoria);
+                if (ga !== gb) return ga - gb;
+                return a.relativa.localeCompare(b.relativa, "es", { numeric: true, sensitivity: "base" });
+            }
+
+            function corregirRutasMarkdown(contenedor, rutaDocumento) {
+                const base = new URL(".", new URL(rutaDocumento, window.location.href));
+                contenedor.querySelectorAll("img").forEach((imagen) => {
+                    const src = imagen.getAttribute("src");
+                    if (src && esRutaRelativa(src)) imagen.src = new URL(src, base).href;
+                });
+                contenedor.querySelectorAll("a").forEach((enlace) => {
+                    const href = enlace.getAttribute("href");
+                    if (href && esRutaRelativa(href)) enlace.href = new URL(href, base).href;
+                    enlace.target = "_blank";
+                    enlace.rel = "noopener noreferrer";
+                });
+            }
+
+            function mostrarEstadoPagina(mensaje) {
+                document.getElementById("contenedor-trabajo").innerHTML =
+                    `<div class="estado-pagina">${escaparHtml(mensaje)}</div>`;
+            }
+
+            function obtenerTipoDesdeRuta(ruta) {
+                const limpia = String(ruta || "").split(/[?#]/)[0];
+                const extension = limpia.includes(".") ? limpia.split(".").pop().toLowerCase() : "archivo";
+                return normalizarTipo(extension);
+            }
+
+            function normalizarTipo(tipo) {
+                const valor = String(tipo || "").toLowerCase();
+                if (valor === "md") return "markdown";
+                if (valor === "htm") return "html";
+                if (valor === "txt") return "texto";
+                return valor || "archivo";
+            }
+
+            function formatearTipo(tipo) {
+                const mapa = {
+                    html: "HTML",
+                    markdown: "Markdown",
+                    pdf: "PDF",
+                    texto: "Texto",
+                    css: "CSS",
+                    js: "JavaScript",
+                    json: "JSON",
+                    drawio: "Draw.io",
+                    xml: "XML"
+                };
+                return mapa[tipo] || etiquetaTipo(tipo);
+            }
+
+            function etiquetaTipo(tipo) {
+                const mapa = {
+                    html: "HTML", markdown: "MD", css: "CSS", js: "JS", json: "JSON",
+                    texto: "TXT", txt: "TXT", xml: "XML", drawio: "DRAWIO", png: "PNG",
+                    jpg: "JPG", jpeg: "JPEG", webp: "WEBP", svg: "SVG", gif: "GIF", pdf: "PDF"
+                };
+                return mapa[tipo] || String(tipo || "FILE").toUpperCase();
+            }
+
+            function esImagen(tipo) {
+                return ["png", "jpg", "jpeg", "gif", "webp", "svg"].includes(tipo);
+            }
+
+            function esRutaRelativa(ruta) {
+                return !/^(?:https?:|mailto:|data:|#)/i.test(ruta);
+            }
+
+            function normalizarRutaRelativa(ruta) {
+                let valor = String(ruta || "").replace(/\\/g, "/").split(/[?#]/)[0].trim();
+                try { valor = decodeURIComponent(valor); } catch { /* original */ }
+                while (valor.startsWith("../")) valor = valor.slice(3);
+                while (valor.startsWith("./")) valor = valor.slice(2);
+                return valor.replace(/^\/+/, "");
+            }
+
+            function limpiarNombreCarpeta(carpeta) {
+                return String(carpeta || "Proyecto")
+                    .replace(/^U\d+\.?\s*/i, "")
+                    .replace(/^A\d+\s*-\s*/i, "")
+                    .replace(/^Act\s*\d+\s*-\s*/i, "")
+                    .trim() || "Proyecto";
+            }
+
+            function escaparHtml(texto) {
+                const div = document.createElement("div");
+                div.textContent = String(texto ?? "");
+                return div.innerHTML;
+            }
+        })();
     </script>
 </body>
 </html>

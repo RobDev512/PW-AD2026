@@ -10,11 +10,12 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 
 # v1.2.1 - Proyectos por carpetas y visor de recursos
 
-**Estado:** Candidata en validación
-**Fecha del candidato:** 2026-10-21
-**Candidato:** 6
+**Estado:** Publicada · actual
+**Fecha de publicación:** 2026-10-21
+**Tipo:** Parche funcional
+**Cierre:** Candidato 9
 
-## Implementado hasta C6
+## Implementado
 
 - nueva capa `hub/js/proyectos.js` que reconoce actividades de U2 y U3 cuya página principal vive dentro de una carpeta;
 - nueva hoja `hub/css/proyectos.css` para el explorador de recursos sin alterar las superficies visuales estabilizadas en v1.2.0;
@@ -23,28 +24,36 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 - consulta separada de CSS, imágenes y otros recursos del proyecto;
 - scroll independiente para la lista de archivos y la superficie del visor en proyectos extensos;
 - Draw.io con tres modos: Diagrama interpretado desde el XML mediante el visor oficial de diagrams.net, PNG exportado y XML original;
-- lienzo Draw.io propio con zoom, ajuste, arrastre y fullscreen nativo sin alterar el tamaño del modal;
+- lienzo Draw.io propio con zoom, ajuste, arrastre y fullscreen sin alterar el tamaño del modal;
 - zoom y paneo Draw.io realizados mediante la API nativa de `viewer.graph`/mxGraph, eliminando el escalado CSS que podía volver borroso el texto;
-- cabecera de proyecto corregida para anchos medios: los botones ya no consumen el 100 % de una fila cuando el título debe apilarse;
-- soporte `.drawio` con render del XML real, exportación visual asociada y código fuente consultable por separado;
+- responsive del modal reconstruido con anchos flexibles, `min-width: 0`, columnas `minmax(...)` y adaptación basada en el espacio efectivo del explorador;
+- encabezado del proyecto resistente a ventanas medias al 100 % de zoom, sin títulos comprimidos letra por letra;
 - descubrimiento bajo demanda mediante el árbol público de GitHub con caché temporal en `localStorage`;
 - inventarios locales de respaldo para los proyectos actuales de U2 y U3 cuando la API no puede consultarse;
 - distintivo `Proyecto` y acción `Explorar archivos` en las tarjetas compatibles;
-- Service Worker actualizado a `pw-hub-offline-v50` en C6.
+- prioridad modal corregida para que Configuración y su panel no se superpongan al explorador de proyecto;
+- `Abrir trabajo` ampliado para conservar el contexto del proyecto y navegar sus recursos en una vista completa;
+- eliminación de la toolbar vacía de GraphViewer que reservaba una franja sobre el diagrama;
+- captura de `Ctrl + rueda` dentro del lienzo Draw.io para modificar el zoom del grafo sin ampliar la página del navegador;
+- visor ampliable para PNG, JPG, JPEG, GIF, WEBP y SVG con zoom, ajuste, arrastre y pantalla completa tanto en el Hub como en `vistas/trabajo.html`;
+- versión interna de los módulos consolidada como `1.2.1` después de cerrar C9;
+- Service Worker final actualizado a `pw-hub-offline-v51` para distribuir la publicación.
 
 ## Alcance
 
 El parche no modifica `unidades.json`, no altera los archivos de las actividades y no cambia la lógica principal de sincronización. Las actividades individuales siguen utilizando el visor normal. La detección avanzada de proyectos, metadatos opcionales y enlaces específicos a GitHub permanece reservada para v1.3.0.
 
-## Validación pendiente
+## Validación y publicación
 
-C6 debe validarse en escritorio y móvil con los proyectos actuales de U2, U3 A4, U3 A5 y U3 A6. Debe verificarse que las páginas HTML/PDF mantengan un único scroll, que el explorador permanezca lado a lado en una ventana media cuando haya espacio suficiente, que la cabecera no comprima el título al 100 % de zoom y que el modo Diagrama mantenga texto nítido al acercar/alejar. También deben probarse ajustar, arrastrar y entrar/salir de pantalla completa. PNG y XML deben seguir disponibles si el viewer externo falla.
+La versión fue validada iterativamente hasta C9. Se comprobó el proyecto U3 A6 con HTML, CSS, Draw.io, PNG e imágenes; el comportamiento a pantalla completa y media pantalla con Edge al 100 %; el scroll independiente de las dos columnas; el zoom y paneo nativos del grafo; la ausencia de la toolbar vacía del viewer; la prioridad correcta frente a Configuración; la vista completa del proyecto; y el nuevo zoom interactivo de imágenes.
+
+Con este cierre, **v1.2.1 sustituye a v1.2.0 como versión publicada actual**.
 
 ---
 
 # v1.2.0 - Navegación y búsqueda global
 
-**Estado:** Publicada · actual
+**Estado:** Publicada
 **Fecha de publicación:** 2026-10-18
 **Tipo:** Actualización funcional
 
@@ -67,32 +76,32 @@ C6 debe validarse en escritorio y móvil con los proyectos actuales de U2, U3 A4
 - Service Worker actualizado a `pw-hub-offline-v34` para distribuir el tercer candidato;
 - alineación móvil del botón flotante Buscar con el botón de Configuración mediante medición de posición real;
 - actualización de esa alineación ante scroll, resize y cambios del `visualViewport` para evitar desplazamientos al llegar al final de la página;
-- Service Worker actualizado a `pw-hub-offline-v35` para distribuir el cuarto candidato.
+- Service Worker actualizado a `pw-hub-offline-v35` para distribuir el cuarto candidato;
 - sexto candidato con estabilización de fondos y hover para eliminar las franjas persistentes en tarjetas, filtros y nodos repetidos;
 - retirada de `backdrop-filter` solo en superficies de contenido propensas al fallo de composición, manteniendo los efectos en navegación, búsqueda, configuración y modales;
 - perfil de rendimiento móvil con menos blur, animaciones y fondos complejos en pantallas pequeñas;
-- Service Worker actualizado a `pw-hub-offline-v37` para distribuir el sexto candidato.
+- Service Worker actualizado a `pw-hub-offline-v37` para distribuir el sexto candidato;
 - séptimo candidato con posicionamiento móvil de Buscar completamente resuelto por CSS, sin mediciones durante el scroll;
 - Buscar reutiliza la clase visual de Configuración para heredar tema, acento, material y detalles decorativos;
 - recuperación del feedback visual de tarjetas en escritorio mediante transición de borde y resplandor de acento, sin traslaciones ni promoción por `transform`;
-- Service Worker actualizado a `pw-hub-offline-v38` para distribuir el séptimo candidato.
+- Service Worker actualizado a `pw-hub-offline-v38` para distribuir el séptimo candidato;
 - octavo candidato con Buscar apilado sobre Configuración en móvil, centrado y coloreado por el acento actual;
 - Buscar conserva la misma clase visual de Configuración y vuelve a permitir sus reglas de material en móvil;
 - se retira el resplandor `box-shadow` agregado en C7 y se conserva una microinteracción segura basada solo en transición del borde;
-- Service Worker actualizado a `pw-hub-offline-v39` para distribuir el octavo candidato.
+- Service Worker actualizado a `pw-hub-offline-v39` para distribuir el octavo candidato;
 - noveno candidato con corrección de especificidad: los materiales alternativos ya no pueden reactivar blur/sombras sobre las superficies estabilizadas;
 - retirada del `transition` global del parche visual para no sustituir las animaciones Sutil/Dinámico;
 - Buscar móvil usa también `nav-configuracion`, la misma estructura interna de icono y exactamente el mismo eje X/tamaño que Configuración;
-- Service Worker actualizado a `pw-hub-offline-v40` para distribuir el noveno candidato.
+- Service Worker actualizado a `pw-hub-offline-v40` para distribuir el noveno candidato;
 - décimo candidato con `microinteracciones.css` como capa visual independiente y segura;
 - iluminación de borde ligada a `--acento-rgb` para Normal, Liquid Glass, Frosted Glass, Acrílico, Minimal, Neon Tech, Mate y Titanio, compatible con todas sus variantes de tema;
 - microanimaciones de etiquetas, números, iconos, filtros, botones, favoritos y controles del Roadmap sin transformar superficies grandes;
 - modo Dinámico ampliado con pulsos discretos en elementos pequeños solo fuera de móvil;
 - perfil móvil conservado sin animaciones continuas para no perder la mejora de fluidez;
-- Service Worker actualizado a `pw-hub-offline-v41` para distribuir el décimo candidato.
+- Service Worker actualizado a `pw-hub-offline-v41` para distribuir el décimo candidato;
 - undécimo candidato con corrección final del pie de Configuración: `Restablecer` permanece en una sola línea y conserva ancho automático;
 - bloqueo compartido del scroll de fondo mientras Configuración o la paleta de búsqueda están abiertas, manteniendo únicamente el desplazamiento interno de cada capa;
-- Service Worker actualizado a `pw-hub-offline-v42` para distribuir el undécimo candidato.
+- Service Worker actualizado a `pw-hub-offline-v42` para distribuir el undécimo candidato;
 - duodécimo candidato con búsqueda global sensible a los interruptores de Contenido visible;
 - secciones, unidades, Historial, Roadmap y Documentación desaparecen de la paleta cuando su vista está desactivada;
 - los trabajos siguen disponibles si está activa al menos una de sus dos superficies: Unidades o Todos los trabajos;
@@ -104,7 +113,7 @@ C6 debe validarse en escritorio y móvil con los proyectos actuales de U2, U3 A4
 
 La versión fue validada en escritorio y teléfono antes de publicarse. Se comprobaron la paleta global, los accesos responsive, los menús contenidos dentro del viewport, los estados compartibles por URL, el bloqueo del scroll de fondo en capas modales, la estabilidad visual de materiales alternativos, las microinteracciones, el perfil móvil de rendimiento y la coherencia de resultados con los interruptores de Contenido visible.
 
-C12 cerró la validación funcional: ocultar o mostrar secciones desde Configuración actualiza la paleta sin modificar el catálogo académico base. Con esta validación, v1.2.0 pasa a estado publicada y se convierte en la versión actual del Hub.
+C12 cerró la validación funcional: ocultar o mostrar secciones desde Configuración actualiza la paleta sin modificar el catálogo académico base. Con esta validación, v1.2.0 pasó a estado publicada.
 
 ---
 
@@ -135,7 +144,7 @@ Este parche reorganiza el Hub para reducir el desplazamiento vertical sin conver
 
 Durante las pruebas del candidato se detectó que el arranque podía quedar esperando indefinidamente o mostrar una vista incorrecta cuando navegación, personalización y sincronización competían durante la inicialización. La corrección final desacopló el router de `sincronizacion.js`, eliminó la sincronización duplicada de `hub.js` y se volvió a probar el proyecto mediante un origen local limpio.
 
-Con esta publicación, **v1.1.1 sustituye a v1.1.0 como versión actual**, mientras v1.1.0 permanece como actualización publicada anterior.
+Con esta publicación, **v1.1.1 sustituyó a v1.1.0 como versión actual**, mientras v1.1.0 permanece como actualización publicada anterior.
 
 ---
 
@@ -161,7 +170,7 @@ La primera actualización posterior a la base estable hace visible el estado de 
 
 ## Validación
 
-La actualización fue validada en servidor local antes de su publicación. Se comprobó el indicador de sincronización, la fecha de actualización y el ciclo de la insignia `NUEVO`. Con esta publicación, **v1.1.0 sustituye a v1.0.0 como versión actual**, mientras v1.0.0 permanece como base estable histórica.
+La actualización fue validada en servidor local antes de su publicación. Se comprobó el indicador de sincronización, la fecha de actualización y el ciclo de la insignia `NUEVO`. Con esta publicación, **v1.1.0 sustituyó a v1.0.0 como versión actual**, mientras v1.0.0 permanece como base estable histórica.
 
 ---
 

@@ -1,5 +1,5 @@
 /* =========================================================
-   PW HUB v1.2.1-c6 - PROYECTOS POR CARPETAS
+   PW HUB v1.2.1 - PROYECTOS POR CARPETAS
    ========================================================= */
 
 .pw-proyecto-layout {
@@ -686,5 +686,345 @@
     .pw-proyecto-archivo,
     .pw-proyecto-modo {
         transition: none;
+    }
+}
+
+/* =========================================================
+   C6 - NITIDEZ DRAW.IO Y RESPONSIVE POR ESPACIO DISPONIBLE
+   =========================================================
+
+   main ya usa viewer.graph con graph.zoomIn(), graph.zoomOut() y graph.fit().
+   Este bloque evita que el grafo quede dentro de un ancestro escalado por
+   CSS y elimina los puntos de compresión que podían convertir títulos en
+   columnas de letras al reducir la ventana.
+*/
+
+/*
+   El modal se centra sin transform. Además de estabilizar sus dimensiones,
+   esto evita mantener SVG/texto del diagrama dentro de una superficie
+   transformada/compositada mientras el grafo hace zoom nativo.
+*/
+.trabajos-visor.pw-proyecto-modal-activo.trabajos-visor-modal,
+.trabajos-visor.pw-proyecto-modal-activo.trabajos-visor-modal.visible {
+    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: min(1180px, calc(100vw - 32px));
+    max-width: calc(100vw - 24px);
+    height: min(820px, calc(100dvh - 24px));
+    max-height: calc(100dvh - 24px);
+    margin: auto;
+    transform: none !important;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo.trabajos-visor-modal {
+    transition:
+        opacity .18s ease,
+        visibility .18s ease;
+    container-name: pw-proyecto-modal;
+    container-type: inline-size;
+}
+
+/*
+   La cabecera puede envolver por necesidad real. El bloque de título tiene
+   permiso de encogerse, mientras las acciones pasan a otra línea antes de
+   estrangular el texto.
+*/
+.trabajos-visor.pw-proyecto-modal-activo
+.trabajos-visor-cabecera {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px 16px;
+    min-width: 0;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo
+.trabajos-visor-cabecera > :first-child {
+    flex: 1 1 360px;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo
+#trabajos-visor-meta {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo
+#trabajos-visor-titulo {
+    max-width: 100%;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo
+.trabajos-visor-acciones {
+    display: flex;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    margin-left: auto;
+}
+
+/* El explorador responde al ancho real del área de contenido del modal. */
+.trabajos-visor.pw-proyecto-modal-activo
+.trabajos-visor-contenido {
+    min-width: 0;
+    container-name: pw-proyecto-contenido;
+    container-type: inline-size;
+}
+
+.pw-proyecto-layout {
+    grid-template-columns: minmax(200px, 28%) minmax(0, 1fr);
+}
+
+/*
+   La toolbar no obliga a que nombre y modos compartan una sola fila.
+   Cuando el panel derecho se estrecha, los modos bajan completos antes de
+   comprimir el nombre del archivo.
+*/
+.pw-proyecto-toolbar {
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.pw-proyecto-recurso-actual {
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+.pw-proyecto-modos {
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* El lienzo queda aislado: zoom/pan del grafo no participa en el layout. */
+.pw-proyecto-drawio-render {
+    contain: layout paint;
+    isolation: isolate;
+}
+
+.pw-proyecto-drawio-escenario,
+.pw-proyecto-drawio-graph {
+    min-width: 0;
+    min-height: 0;
+    transform: none !important;
+}
+
+.pw-proyecto-drawio-graph svg {
+    shape-rendering: geometricPrecision;
+    text-rendering: geometricPrecision;
+}
+
+/*
+   560 px no depende del viewport: corresponde al mínimo útil de las dos
+   zonas (aprox. 200 px de archivos + 360 px de visor). Solo debajo de ese
+   espacio real se apila el explorador.
+*/
+@container pw-proyecto-contenido (max-width: 560px) {
+    .pw-proyecto-layout {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: minmax(130px, 32%) minmax(0, 1fr);
+    }
+
+    .pw-proyecto-archivos {
+        border-right: 0;
+        border-bottom: 1px solid var(--borde);
+    }
+
+    .pw-proyecto-toolbar {
+        align-items: flex-start;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .pw-proyecto-recurso-actual,
+    .pw-proyecto-modos {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .pw-proyecto-modos {
+        justify-content: flex-start;
+    }
+
+    .pw-proyecto-modo {
+        flex: 1 1 auto;
+    }
+}
+
+/* En anchos realmente móviles, la lista aprovecha mejor el espacio. */
+@container pw-proyecto-contenido (max-width: 430px) {
+    .pw-proyecto-grupo-lista {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pw-proyecto-drawio-aviso p {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@container pw-proyecto-modal (max-width: 520px) {
+    .trabajos-visor.pw-proyecto-modal-activo
+    .trabajos-visor-cabecera > :first-child,
+    .trabajos-visor.pw-proyecto-modal-activo
+    .trabajos-visor-acciones {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .trabajos-visor.pw-proyecto-modal-activo
+    .trabajos-visor-acciones {
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+}
+
+
+/* =========================================================
+   C7 - PRIORIDAD DEL VISOR SOBRE CONFIGURACIÓN
+   El visor es modal: navegación/configuración global queda detrás.
+   ========================================================= */
+
+body.visor-trabajo-abierto .trabajos-visor-backdrop {
+    z-index: 3990;
+}
+
+body.visor-trabajo-abierto
+.trabajos-visor.trabajos-visor-modal {
+    z-index: 4000;
+}
+
+/* =========================================================
+   C9 - VISOR AMPLIABLE PARA IMÁGENES
+   =========================================================
+   Mantiene el lienzo en el mismo espacio del proyecto. La imagen puede
+   ampliarse, alejarse y desplazarse sin alterar el tamaño del modal.
+*/
+
+.pw-proyecto-imagen-visor {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    background: #f5f6f8;
+}
+
+.pw-proyecto-imagen-escenario {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+    background:
+        linear-gradient(rgba(35, 55, 70, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35, 55, 70, .055) 1px, transparent 1px),
+        #f5f6f8;
+    background-size: 20px 20px;
+}
+
+.pw-proyecto-imagen-escenario.pw-proyecto-imagen-arrastrando {
+    cursor: grabbing;
+}
+
+.pw-proyecto-imagen-zoomable {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    max-width: none;
+    max-height: none;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.pw-proyecto-imagen-controles {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 12;
+    display: flex;
+    gap: 5px;
+    padding: 4px;
+    border: 1px solid rgba(25, 45, 60, .25);
+    border-radius: 9px;
+    background: rgba(10, 18, 24, .92);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
+}
+
+.pw-proyecto-imagen-controles button {
+    min-width: 34px;
+    height: 32px;
+    padding: 0 9px;
+    cursor: pointer;
+    border: 1px solid rgba(157, 176, 191, .28);
+    border-radius: 6px;
+    color: #dce8ef;
+    background: #111c25;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.pw-proyecto-imagen-controles button:hover,
+.pw-proyecto-imagen-controles button.activo {
+    color: #fff;
+    border-color: rgba(var(--acento-rgb), .72);
+    background: rgba(var(--acento-rgb), .12);
+}
+
+.pw-proyecto-imagen-controles button:disabled {
+    cursor: wait;
+    opacity: .55;
+}
+
+.pw-proyecto-imagen-visor:fullscreen,
+.pw-proyecto-imagen-visor.pw-proyecto-imagen-pantalla-fallback {
+    width: 100vw;
+    height: 100vh;
+    background: #f5f6f8;
+}
+
+.pw-proyecto-imagen-visor.pw-proyecto-imagen-pantalla-fallback {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+}
+
+@media (max-width: 520px) {
+    .pw-proyecto-imagen-controles {
+        top: 7px;
+        left: 7px;
+    }
+
+    .pw-proyecto-imagen-controles button {
+        min-width: 32px;
+        height: 30px;
+        padding-inline: 7px;
+        font-size: 9px;
     }
 }

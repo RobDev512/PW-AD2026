@@ -2,11 +2,7 @@
 
 ## Estado general
 
-**Versión publicada actual: v1.2.0 - Navegación y búsqueda global**
-
-**Parche en validación: v1.2.1 - Proyectos por carpetas y visor de recursos**
-
-**Candidato actual: C6** - usa zoom y paneo nativos de mxGraph para mantener nítido el diagrama Draw.io y corrige la cabecera del explorador en ventanas medias al 100 % de zoom.
+**Versión publicada actual: v1.2.1 - Proyectos por carpetas y visor de recursos**
 
 PW Hub terminó su etapa de construcción inicial. A partir de este punto el proyecto ya no utiliza fases: cualquier mejora futura se registra como una **actualización versionada**.
 
@@ -25,7 +21,6 @@ El proyecto utiliza un versionado simple inspirado en SemVer:
 Por convención de PW Hub, una serie principal llega como máximo a `.9`; después continúa con la siguiente versión mayor. No existe una fecha obligatoria para estas actualizaciones. Pueden implementarse, reordenarse, combinarse o descartarse según el tiempo disponible y las necesidades reales del portafolio.
 
 ---
-
 
 # v1.0.0 - Base estable
 
@@ -115,7 +110,7 @@ El Hub conserva su identidad visual, reduce recorridos verticales innecesarios y
 
 # v1.2.0 - Navegación y búsqueda global
 
-**Estado:** Publicada · actual
+**Estado:** Publicada
 
 ## Objetivo
 
@@ -129,7 +124,7 @@ Convertir la navegación y la búsqueda en un sistema rápido y compartible para
 - [x] diferenciar visualmente el tipo de cada resultado;
 - [x] reflejar filtros, búsquedas y selección de unidad en la URL;
 - [x] restaurar automáticamente el estado al abrir un enlace compartido;
-- [x] conservar compatibilidad con la navegación mediante hashes.
+- [x] conservar compatibilidad con la navegación mediante hashes;
 - [x] respetar los interruptores de Contenido visible al construir los resultados de la búsqueda global.
 
 ## Validación
@@ -140,7 +135,7 @@ Convertir la navegación y la búsqueda en un sistema rápido y compartible para
 - [x] validar las nuevas microinteracciones en modos Sutil y Dinámico, además del perfil ligero de móvil;
 - [x] validar C11 con `Restablecer` en una sola línea en móvil y escritorio;
 - [x] validar que Configuración y Búsqueda bloqueen el scroll de fondo sin impedir su desplazamiento interno;
-- [x] validar C12 ocultando y mostrando secciones desde Configuración y comprobando que la paleta se actualice en tiempo real;
+- [x] validar C12 ocultando y mostrando secciones desde Configuración y comprobando que la paleta se actualice en tiempo real.
 
 C9 quedó validado como base estable, C10 confirmó que las microinteracciones y bordes de acento pueden ampliarse sin reintroducir franjas ni degradar el perfil móvil, C11 cerró correctamente las capas modales y C12 confirmó la coherencia entre Configuración y Búsqueda. La paleta ofrece únicamente contenido habilitado por los interruptores visibles sin alterar el catálogo académico.
 
@@ -152,13 +147,13 @@ PW Hub dispone de una experiencia unificada para localizar contenido, ejecutar a
 
 # v1.2.1 - Proyectos por carpetas y visor de recursos
 
-**Estado:** En validación · Candidato 5
+**Estado:** Publicada · actual
 
 ## Objetivo
 
 Adaptar el Hub a la organización real de las actividades de U2 y U3, que ahora pueden vivir dentro de carpetas con página principal, imágenes, CSS y archivos de diseño.
 
-## En validación
+## Implementado
 
 - [x] reconocer como proyecto una actividad de U2/U3 cuya ruta principal está dentro de una carpeta;
 - [x] mantener una sola tarjeta académica por actividad;
@@ -168,15 +163,23 @@ Adaptar el Hub a la organización real de las actividades de U2 y U3, que ahora 
 - [x] interpretar el XML de archivos Draw.io mediante el visor oficial de diagrams.net;
 - [x] ofrecer modos separados Diagrama, PNG y XML cuando existe una exportación visual asociada;
 - [x] permitir consultar el XML original de Draw.io;
-- [x] mover y ampliar/reducir el diagrama dentro de un lienzo de tamaño estable;
+- [x] mover y ampliar/reducir el diagrama dentro de un lienzo de tamaño estable usando el grafo nativo;
 - [x] ofrecer pantalla completa propia sin apilar lightboxes externos;
 - [x] mantener el explorador lado a lado en anchos intermedios de escritorio;
 - [x] mantener scroll independiente en la lista de recursos y el panel de contenido;
 - [x] descubrir recursos bajo demanda y reutilizar un caché temporal;
 - [x] conservar un inventario de respaldo para los proyectos actuales;
-- [ ] validar el candidato en PC y móvil;
-- [ ] validar materiales alternativos sin reaparición de franjas;
-- [ ] publicar el parche tras la validación final.
+- [x] evitar que Configuración y su panel se superpongan sobre el modal del proyecto;
+- [x] ampliar `Abrir trabajo` para conservar el contexto y los recursos del proyecto en una vista completa;
+- [x] eliminar la toolbar vacía de GraphViewer que reservaba una franja sobre el diagrama;
+- [x] capturar `Ctrl + rueda` dentro del lienzo Draw.io sin cambiar el zoom del navegador;
+- [x] permitir zoom, ajuste, arrastre y pantalla completa en imágenes dentro del Hub y del visor completo;
+- [x] validar el parche en escritorio, media pantalla al 100 % y las vistas responsive revisadas durante los candidatos;
+- [x] publicar el parche tras la validación final de C9.
+
+## Validación
+
+C9 cerró la validación funcional. Se comprobó el explorador con el proyecto U3 A6, el modal en ventana media al 100 %, el zoom/pan nativo de Draw.io, la vista completa del proyecto, el orden de capas frente a Configuración y el visor ampliable de imágenes. Las superficies grandes conservan la estrategia de estabilidad visual adoptada en v1.2.0.
 
 ## Límite del parche
 
