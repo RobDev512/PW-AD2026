@@ -6,6 +6,8 @@ PW Hub es el portafolio académico de **Programación Web** de Roberto Carlos Ro
 
 **Versión publicada actual: v1.2.0 - Navegación y búsqueda global**
 
+**Parche en validación: v1.2.1-c6 - Proyectos por carpetas y visor de recursos**
+
 La etapa de construcción inicial ya terminó. El proyecto dejó de organizar su evolución futura mediante fases y ahora utiliza un esquema de **actualizaciones versionadas**.
 
 La incorporación normal de actividades de U1 a U5 sigue siendo contenido académico y no crea una nueva versión por sí sola.
@@ -67,6 +69,9 @@ PW Hub incluye:
 - tema oscuro integrado para la vista renderizada de archivos `.md`;
 - visor completo en `vistas/trabajo.html`;
 - modos **Diseño** y **Código**;
+- explorador de recursos para actividades organizadas por carpeta en U2 y U3;
+- vista separada de HTML renderizado, código fuente, CSS, imágenes y recursos de diseño;
+- visor Draw.io con diagrama interpretado desde el XML, PNG exportado y XML original;
 - navegación agrupada y responsive;
 - búsqueda global sensible a la configuración visible: solo indexa resultados habilitados por los interruptores del usuario;
 - barra móvil compacta;
@@ -124,7 +129,8 @@ hub/
 │   ├── personalizacion.js
 │   ├── roadmap.js
 │   ├── sincronizacion.js
-│   └── trabajos.js
+│   ├── trabajos.js
+│   └── proyectos.js
 ├── vistas/
 │   ├── trabajo.html
 │   └── offline.html
@@ -217,7 +223,7 @@ Los estados reconocidos son:
 - Planeada;
 - Visión futura.
 
-El roadmap conserva `v1.0.0` como base histórica, `v1.1.0` y `v1.1.1` como actualizaciones publicadas anteriores y marca `v1.2.0` como versión publicada actual. El Changelog conserva el detalle de cada versión; desde `v1.3.0` las versiones posteriores representan trabajo planeado o futuro.
+El roadmap conserva `v1.0.0` como base histórica, `v1.1.0` y `v1.1.1` como actualizaciones publicadas anteriores y marca `v1.2.0` como versión publicada actual. `v1.2.1` se mantiene en validación como parche de proyectos por carpeta; desde `v1.3.0` continúan las actualizaciones menores planeadas.
 
 ---
 
@@ -415,3 +421,24 @@ La paleta global filtra sus resultados según los interruptores de **Contenido v
 ### Publicación final de v1.2.0
 
 Tras validar C12 en escritorio y móvil, v1.2.0 queda publicada como versión actual. La publicación conserva la búsqueda global, navegación responsive, URLs compartibles, correcciones de composición para materiales alternativos, microinteracciones seguras, perfil móvil optimizado y bloqueo modal del scroll de fondo. El Service Worker final utiliza `pw-hub-offline-v45`.
+---
+
+## v1.2.1-c6 en validación: proyectos por carpetas y visor de recursos
+
+Este parche amplía la forma de presentar actividades compuestas por varios archivos sin cambiar el catálogo académico ni registrar los recursos internos como trabajos independientes.
+
+Las actividades de U2 y U3 cuya página principal está dentro de una carpeta propia se reconocen como **proyectos por carpeta**. Al abrir su vista previa, `js/proyectos.js` construye un explorador de recursos sobre el modal existente.
+
+El explorador permite:
+
+- alternar entre **Diseño** y **Código HTML** para páginas `.html`;
+- consultar archivos `.css`, `.js`, `.json`, `.txt`, XML y otros archivos textuales como código;
+- visualizar imágenes por separado;
+- mantener PDF y Markdown compatibles con el visor;
+- tratar `.drawio` como recurso de diseño con tres vistas independientes: diagrama interpretado desde el XML, exportación PNG asociada y código XML original;
+- descubrir recursos desde el árbol público de GitHub solo al abrir un proyecto y reutilizar un caché temporal para evitar consultas repetidas;
+- recurrir a un inventario local de los proyectos actuales cuando GitHub no está disponible.
+
+`css/proyectos.css` mantiene superficies opacas y evita blur, filtros y sombras complejas sobre paneles grandes para no reintroducir los artefactos de composición corregidos durante v1.2.0. En C6, el modal de proyecto conserva un alto estable, la lista de archivos y la superficie de vista se desplazan de forma independiente y las páginas HTML/PDF usan únicamente el scroll de su iframe. El explorador mantiene dos columnas en anchos intermedios y la cabecera respeta el apilado de `trabajos.css` cuando el ancho efectivo baja de 750 px, evitando títulos comprimidos.
+
+Los archivos `.drawio` incorporan tres modos cuando existe una exportación PNG asociada: **Diagrama**, que entrega el XML real al visor oficial `viewer-static.min.js` de diagrams.net; **PNG**, que muestra la exportación estática; y **XML**, que presenta el código fuente original. En C6 el visor se crea con `GraphViewer.createViewerForElement()` para conservar la instancia de `viewer.graph`. Los controles del Hub utilizan `zoomIn()`, `zoomOut()`, `fit()` y la traslación nativa de mxGraph; ya no se aplica `transform: scale()` sobre el diagrama completo, por lo que el texto conserva nitidez al acercarse. Si no está disponible la conexión con diagrams.net, PNG y XML continúan funcionando.

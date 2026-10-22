@@ -4,6 +4,10 @@
 
 **Versión publicada actual: v1.2.0 - Navegación y búsqueda global**
 
+**Parche en validación: v1.2.1 - Proyectos por carpetas y visor de recursos**
+
+**Candidato actual: C6** - usa zoom y paneo nativos de mxGraph para mantener nítido el diagrama Draw.io y corrige la cabecera del explorador en ventanas medias al 100 % de zoom.
+
 PW Hub terminó su etapa de construcción inicial. A partir de este punto el proyecto ya no utiliza fases: cualquier mejora futura se registra como una **actualización versionada**.
 
 El historial completo de la construcción original y de los ajustes incorporados antes de congelar la base estable se conserva en [`CHANGELOG.md`](CHANGELOG.md), dentro de la entrada **v1.0.0**.
@@ -143,6 +147,40 @@ C9 quedó validado como base estable, C10 confirmó que las microinteracciones y
 ## Resultado
 
 PW Hub dispone de una experiencia unificada para localizar contenido, ejecutar accesos rápidos y compartir vistas concretas del portafolio, con comportamiento consistente en escritorio y móvil.
+
+---
+
+# v1.2.1 - Proyectos por carpetas y visor de recursos
+
+**Estado:** En validación · Candidato 5
+
+## Objetivo
+
+Adaptar el Hub a la organización real de las actividades de U2 y U3, que ahora pueden vivir dentro de carpetas con página principal, imágenes, CSS y archivos de diseño.
+
+## En validación
+
+- [x] reconocer como proyecto una actividad de U2/U3 cuya ruta principal está dentro de una carpeta;
+- [x] mantener una sola tarjeta académica por actividad;
+- [x] explorar los archivos internos desde la vista previa;
+- [x] separar Diseño y Código HTML;
+- [x] visualizar imágenes y consultar CSS/otros archivos textuales;
+- [x] interpretar el XML de archivos Draw.io mediante el visor oficial de diagrams.net;
+- [x] ofrecer modos separados Diagrama, PNG y XML cuando existe una exportación visual asociada;
+- [x] permitir consultar el XML original de Draw.io;
+- [x] mover y ampliar/reducir el diagrama dentro de un lienzo de tamaño estable;
+- [x] ofrecer pantalla completa propia sin apilar lightboxes externos;
+- [x] mantener el explorador lado a lado en anchos intermedios de escritorio;
+- [x] mantener scroll independiente en la lista de recursos y el panel de contenido;
+- [x] descubrir recursos bajo demanda y reutilizar un caché temporal;
+- [x] conservar un inventario de respaldo para los proyectos actuales;
+- [ ] validar el candidato en PC y móvil;
+- [ ] validar materiales alternativos sin reaparición de franjas;
+- [ ] publicar el parche tras la validación final.
+
+## Límite del parche
+
+Este visor no sustituye la evolución planeada de v1.3.0. La siguiente versión menor conserva el objetivo de detectar proyectos de forma más inteligente, reconocer puntos de entrada y metadatos y conectarlos de manera más profunda con GitHub.
 
 ---
 

@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v45";
+    "pw-hub-offline-v50";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;
@@ -53,6 +53,7 @@ const ARCHIVOS_SHELL = [
     "hub/css/refinamiento-final.css",
     "hub/css/roadmap.css",
     "hub/css/trabajos.css",
+    "hub/css/proyectos.css?v=1.2.1-c6",
 
     "hub/js/actividad.js",
     "hub/js/combobox.js",
@@ -68,6 +69,7 @@ const ARCHIVOS_SHELL = [
     "hub/js/vistas-internas.js?v=1.1.1",
     "hub/js/busqueda-global.js?v=1.2.0",
     "hub/js/trabajos.js",
+    "hub/js/proyectos.js?v=1.2.1-c6",
 
     "hub/data/roadmap.json",
     "hub/data/unidades.json",

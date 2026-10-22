@@ -8,6 +8,40 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 
 ---
 
+# v1.2.1 - Proyectos por carpetas y visor de recursos
+
+**Estado:** Candidata en validación
+**Fecha del candidato:** 2026-10-21
+**Candidato:** 6
+
+## Implementado hasta C6
+
+- nueva capa `hub/js/proyectos.js` que reconoce actividades de U2 y U3 cuya página principal vive dentro de una carpeta;
+- nueva hoja `hub/css/proyectos.css` para el explorador de recursos sin alterar las superficies visuales estabilizadas en v1.2.0;
+- exploración de archivos dentro de la vista previa existente, sin convertir imágenes, CSS o diseños en tarjetas académicas independientes;
+- modos **Diseño** y **Código HTML** para páginas web;
+- consulta separada de CSS, imágenes y otros recursos del proyecto;
+- scroll independiente para la lista de archivos y la superficie del visor en proyectos extensos;
+- Draw.io con tres modos: Diagrama interpretado desde el XML mediante el visor oficial de diagrams.net, PNG exportado y XML original;
+- lienzo Draw.io propio con zoom, ajuste, arrastre y fullscreen nativo sin alterar el tamaño del modal;
+- zoom y paneo Draw.io realizados mediante la API nativa de `viewer.graph`/mxGraph, eliminando el escalado CSS que podía volver borroso el texto;
+- cabecera de proyecto corregida para anchos medios: los botones ya no consumen el 100 % de una fila cuando el título debe apilarse;
+- soporte `.drawio` con render del XML real, exportación visual asociada y código fuente consultable por separado;
+- descubrimiento bajo demanda mediante el árbol público de GitHub con caché temporal en `localStorage`;
+- inventarios locales de respaldo para los proyectos actuales de U2 y U3 cuando la API no puede consultarse;
+- distintivo `Proyecto` y acción `Explorar archivos` en las tarjetas compatibles;
+- Service Worker actualizado a `pw-hub-offline-v50` en C6.
+
+## Alcance
+
+El parche no modifica `unidades.json`, no altera los archivos de las actividades y no cambia la lógica principal de sincronización. Las actividades individuales siguen utilizando el visor normal. La detección avanzada de proyectos, metadatos opcionales y enlaces específicos a GitHub permanece reservada para v1.3.0.
+
+## Validación pendiente
+
+C6 debe validarse en escritorio y móvil con los proyectos actuales de U2, U3 A4, U3 A5 y U3 A6. Debe verificarse que las páginas HTML/PDF mantengan un único scroll, que el explorador permanezca lado a lado en una ventana media cuando haya espacio suficiente, que la cabecera no comprima el título al 100 % de zoom y que el modo Diagrama mantenga texto nítido al acercar/alejar. También deben probarse ajustar, arrastrar y entrar/salir de pantalla completa. PNG y XML deben seguir disponibles si el viewer externo falla.
+
+---
+
 # v1.2.0 - Navegación y búsqueda global
 
 **Estado:** Publicada · actual

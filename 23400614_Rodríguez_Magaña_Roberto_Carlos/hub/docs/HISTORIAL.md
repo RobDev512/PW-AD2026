@@ -1495,3 +1495,58 @@ Inicio permanece siempre disponible porque el Resumen académico es estructural.
 Después de validar el candidato 12, PW Hub v1.2.0 queda publicado como versión actual. La versión integra la paleta de búsqueda global con `Ctrl + K` / `Cmd + K`, acceso responsive mediante botón Buscar, navegación y filtros compartibles por URL, restauración de estado, resultados sensibles a los interruptores de Contenido visible y compatibilidad con el router interno de v1.1.1.
 
 El cierre conserva las correcciones de composición para materiales alternativos, microinteracciones y bordes ligados al color de acento, perfil móvil optimizado, botones flotantes de Buscar y Configuración, menús contenidos dentro del viewport, botón Restablecer estable y bloqueo del desplazamiento de fondo mientras Configuración o Búsqueda están abiertas. El Service Worker final avanza a `pw-hub-offline-v45`.
+
+---
+
+### v1.2.1 - Candidato 2: proyectos por carpetas y visor de recursos
+
+**Tipo:** Parche funcional en validación
+**Estado:** En validación
+**Unidad:** General / U2-U3
+**Fecha:** 2026-10-21
+**Precisión:** Día
+**Fuente:** Reorganización real del portafolio y actividades recientes
+
+Las actividades de U2 y U3 comenzaron a organizarse como carpetas de proyecto en lugar de archivos HTML aislados. El visor anterior seguía mostrando correctamente la página principal, pero no permitía recorrer de forma explícita los recursos que forman parte de la entrega.
+
+C2 añade una capa de exploración de proyectos sin alterar el catálogo ni duplicar archivos internos como trabajos académicos. Cuando una actividad compatible abre su vista previa, el Hub agrupa sus recursos y permite consultar por separado la página renderizada, el código HTML, CSS, imágenes y otros archivos.
+
+La actividad U3 A6 de Instagram se utiliza como caso más completo: además de `Perfil - U3A6.html`, incluye `css/styles.css`, imágenes de perfil y publicaciones, una exportación PNG del diseño y el archivo fuente `Perfil - U3A6.drawio`. Para Draw.io, el visor presenta la exportación visual asociada como **Diagrama** y conserva una vista **XML** del archivo original.
+
+Los recursos se descubren solo cuando el usuario abre un proyecto, mediante el árbol público de GitHub, y se cachean temporalmente. Si la consulta falla, existe un inventario local de respaldo para las carpetas actuales. Esta estrategia evita aumentar el número de tarjetas del portafolio y limita el consumo de la API. El Service Worker del candidato avanza a `pw-hub-offline-v46`.
+
+### v1.2.1 - Candidato 3: Draw.io interpretado y scroll interno
+
+**Fecha:** 21 de octubre de 2026
+
+Las pruebas visuales de C2 confirmaron que el explorador por carpetas funciona correctamente en U2 y U3, incluyendo HTML, código, imágenes, CSS y los recursos del proyecto de Instagram. En proyectos con muchos archivos se observó que la lista lateral y el contenido podían competir con el desplazamiento general del modal.
+
+C3 acota el explorador al alto disponible del visor y separa el desplazamiento: la lista de archivos usa su propio scroll vertical y la superficie de contenido maneja de forma independiente desplazamiento vertical y horizontal. Esto permite recorrer proyectos largos y código con líneas extensas sin hacer crecer el modal completo.
+
+El soporte Draw.io deja de utilizar la exportación PNG como sustituto del diagrama. Al seleccionar un `.drawio`, el modo **Diagrama** carga el XML real y lo entrega bajo demanda al visor oficial de diagrams.net (`viewer-static.min.js`). Cuando existe una imagen con el mismo nombre base, se conserva como modo **PNG**, mientras que **XML** muestra el código fuente completo. Si el visor externo no puede cargarse, los modos PNG y XML permanecen disponibles.
+
+El Service Worker del candidato avanza a `pw-hub-offline-v47`.
+
+### v1.2.1 - Candidato 4: scroll único en vistas HTML/PDF
+
+**Fecha:** 21 de octubre de 2026
+
+Las pruebas visuales de C3 mostraron que el scroll independiente del explorador funcionaba, pero las páginas renderizadas dentro de un `iframe` podían presentar dos barras verticales contiguas: una perteneciente a la superficie del Hub y otra al documento cargado.
+
+C4 hace que HTML y PDF utilicen únicamente el desplazamiento propio del `iframe`. Al cambiar a código, imágenes, Markdown, XML o Draw.io, la superficie del Hub recupera su desplazamiento normal. También se elimina el `min-height` fijo del iframe que provocaba desbordamiento cuando el alto disponible del modal era menor.
+
+Se actualizan los identificadores de recursos a `v1.2.1-c4` y el Service Worker avanza a `pw-hub-offline-v48`.
+
+### v1.2.1 - Candidato 5: lienzo Draw.io y responsive estable
+
+Las pruebas de C4 confirmaron el scroll único de los iframes, pero mostraron tres problemas adicionales: la etiqueta DRAWIO podía partirse en dos líneas, la barra incorporada por diagrams.net abría su lightbox por debajo del modal del Hub y, con el navegador al 100 %, el explorador podía apilar columnas demasiado pronto.
+
+C5 elimina los controles internos del viewer y mantiene la interpretación del XML con `viewer-static.min.js`, pero delega la interacción al Hub. El diagrama vive dentro de un lienzo fijo con acercar, alejar, ajustar, arrastre por puntero y pantalla completa mediante la Fullscreen API. La transformación se aplica al contenido visual y no cambia el tamaño del modal. El distintivo DRAWIO queda forzado a una sola línea.
+
+El breakpoint de apilado del explorador baja para conservar las dos columnas en anchos intermedios; el modal de proyecto utiliza un alto estable y contenido interno acotado. Los identificadores pasan a `v1.2.1-c5` y el Service Worker a `pw-hub-offline-v49`.
+
+### v1.2.1-c6 - Zoom nativo de Draw.io y cabecera responsive
+
+Las pruebas de C5 mostraron que el lienzo era más usable, pero el zoom aplicado con `transform: scale()` ampliaba el resultado ya renderizado y podía volver borroso el texto. Además, en una ventana media al 100 % de zoom se combinaban dos reglas responsive incompatibles: la cabecera se forzaba a fila mientras `trabajos.css` asignaba el 100 % de ancho al bloque de acciones, dejando casi sin espacio al título.
+
+C6 crea cada diagrama con `GraphViewer.createViewerForElement()` y conserva la instancia `viewer.graph`. Los botones de zoom llaman a `graph.zoomIn()`/`graph.zoomOut()`, **Ajustar** usa `graph.fit()` y el arrastre se realiza con el paneo/traslación nativos de mxGraph. El contenedor ya no escala el diagrama mediante CSS. La cabecera vuelve a apilarse de forma controlada por debajo de 750 px mientras el cuerpo del explorador conserva dos columnas hasta 520 px. Los identificadores pasan a `v1.2.1-c6` y el Service Worker a `pw-hub-offline-v50`.

@@ -1,0 +1,690 @@
+/* =========================================================
+   PW HUB v1.2.1-c6 - PROYECTOS POR CARPETAS
+   ========================================================= */
+
+.pw-proyecto-layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 285px) minmax(0, 1fr);
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--panel);
+}
+
+.pw-proyecto-archivos {
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    border-right: 1px solid var(--borde);
+    background: var(--panel);
+}
+
+.pw-proyecto-archivos-cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    display: grid;
+    gap: 7px;
+    padding: 16px;
+    border-bottom: 1px solid var(--borde);
+    background: var(--panel);
+}
+
+.pw-proyecto-archivos-cabecera > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.pw-proyecto-archivos-cabecera span,
+.pw-proyecto-recurso-actual > span {
+    color: var(--azul-claro);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+}
+
+.pw-proyecto-archivos-cabecera strong {
+    color: var(--texto-secundario);
+    font-size: 10px;
+}
+
+.pw-proyecto-archivos-cabecera code {
+    overflow: hidden;
+    color: var(--texto-secundario);
+    font-size: 9px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pw-proyecto-lista {
+    padding: 12px;
+}
+
+.pw-proyecto-grupo + .pw-proyecto-grupo {
+    margin-top: 15px;
+}
+
+.pw-proyecto-grupo h4 {
+    margin: 0 0 7px;
+    padding: 0 4px;
+    color: var(--texto-secundario);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.pw-proyecto-grupo-lista {
+    display: grid;
+    gap: 6px;
+}
+
+.pw-proyecto-archivo {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    min-height: 52px;
+    padding: 7px 9px;
+    cursor: pointer;
+    border: 1px solid var(--borde);
+    border-radius: 9px;
+    color: var(--texto);
+    background: var(--fondo-secundario, #0b1219);
+    font: inherit;
+    text-align: left;
+    transition:
+        border-color .18s ease,
+        background-color .18s ease;
+}
+
+.pw-proyecto-archivo:hover,
+.pw-proyecto-archivo.activo {
+    border-color: rgba(var(--acento-rgb), .72);
+    background: rgba(var(--acento-rgb), .07);
+}
+
+.pw-proyecto-archivo.activo {
+    box-shadow: inset 3px 0 0 var(--azul-claro);
+}
+
+.pw-proyecto-extension {
+    display: inline-grid;
+    place-items: center;
+    min-height: 27px;
+    padding: 0 5px;
+    border: 1px solid rgba(var(--acento-rgb), .33);
+    border-radius: 6px;
+    color: var(--azul-claro);
+    background: rgba(var(--acento-rgb), .035);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .18px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.pw-proyecto-archivo-texto {
+    min-width: 0;
+}
+
+.pw-proyecto-archivo-texto strong,
+.pw-proyecto-archivo-texto small {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pw-proyecto-archivo-texto strong {
+    font-size: 10px;
+}
+
+.pw-proyecto-archivo-texto small {
+    margin-top: 3px;
+    color: var(--texto-secundario);
+    font-size: 8px;
+}
+
+.pw-proyecto-panel {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+    background: var(--panel);
+}
+
+.pw-proyecto-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 68px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--borde);
+    background: var(--panel);
+}
+
+.pw-proyecto-recurso-actual {
+    min-width: 0;
+}
+
+.pw-proyecto-recurso-actual strong,
+.pw-proyecto-recurso-actual code {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pw-proyecto-recurso-actual strong {
+    margin-top: 2px;
+    color: var(--texto);
+    font-size: 12px;
+}
+
+.pw-proyecto-recurso-actual code {
+    margin-top: 3px;
+    color: var(--texto-secundario);
+    font-size: 9px;
+}
+
+.pw-proyecto-modos {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 6px;
+}
+
+.pw-proyecto-modo {
+    min-height: 34px;
+    padding: 6px 10px;
+    cursor: pointer;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    color: var(--texto-secundario);
+    background: var(--fondo-secundario, #0b1219);
+    font: inherit;
+    font-size: 9px;
+    font-weight: 800;
+    transition:
+        color .18s ease,
+        border-color .18s ease,
+        background-color .18s ease;
+}
+
+.pw-proyecto-modo:hover,
+.pw-proyecto-modo.activo {
+    color: var(--texto);
+    border-color: rgba(var(--acento-rgb), .72);
+}
+
+.pw-proyecto-modo.activo {
+    color: var(--azul-claro);
+    background: rgba(var(--acento-rgb), .09);
+}
+
+.pw-proyecto-superficie {
+    min-height: 0;
+    height: 100%;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    background: var(--panel);
+}
+
+/*
+   HTML y PDF ya administran su propio desplazamiento dentro del iframe.
+   En este modo desactivamos el scroll del contenedor exterior para evitar
+   dos barras verticales contiguas.
+*/
+.pw-proyecto-superficie.pw-proyecto-superficie-iframe {
+    overflow: hidden;
+    scrollbar-gutter: auto;
+}
+
+.pw-proyecto-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    border: 0;
+    background: white;
+}
+
+.pw-proyecto-imagen {
+    display: grid;
+    min-height: 100%;
+    place-items: center;
+    padding: 24px;
+    background: #f5f6f8;
+}
+
+.pw-proyecto-imagen img {
+    display: block;
+    max-width: 100%;
+    max-height: 72vh;
+    object-fit: contain;
+}
+
+.pw-proyecto-imagen-diagrama {
+    min-height: 520px;
+}
+
+.pw-proyecto-codigo {
+    width: max-content;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 22px;
+    overflow: visible;
+    color: #dce8ef;
+    background: #0b1219;
+    white-space: pre;
+    tab-size: 4;
+    font-family: Consolas, "Cascadia Code", "Courier New", monospace;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.pw-proyecto-markdown {
+    min-height: 100%;
+    padding: 26px;
+    color: var(--texto);
+    background: var(--panel);
+    line-height: 1.7;
+}
+
+.pw-proyecto-markdown img {
+    max-width: 100%;
+    height: auto;
+}
+
+.pw-proyecto-drawio {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    background: var(--panel);
+}
+
+.pw-proyecto-drawio-render {
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+    background:
+        linear-gradient(rgba(35, 55, 70, .07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35, 55, 70, .07) 1px, transparent 1px),
+        #f5f6f8;
+    background-size: 20px 20px;
+}
+
+.pw-proyecto-drawio-render.pw-proyecto-drawio-arrastrando {
+    cursor: grabbing;
+}
+
+.pw-proyecto-drawio-escenario {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+/*
+   El visor ocupa siempre el mismo lienzo. El zoom y el paneo se realizan
+   mediante la vista nativa de mxGraph, no con transformaciones CSS sobre
+   el resultado ya dibujado. Así el texto conserva nitidez al acercarse.
+*/
+.pw-proyecto-drawio-graph {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0;
+    min-height: 0;
+    max-width: none;
+    max-height: none;
+    overflow: hidden;
+    color-scheme: light dark;
+    background: #ffffff;
+    transform: none !important;
+}
+
+.pw-proyecto-drawio-graph > div {
+    max-width: none;
+}
+
+.pw-proyecto-drawio-controles {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 12;
+    display: flex;
+    gap: 5px;
+    padding: 4px;
+    border: 1px solid rgba(25, 45, 60, .25);
+    border-radius: 9px;
+    background: rgba(10, 18, 24, .92);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .18);
+}
+
+.pw-proyecto-drawio-controles button {
+    min-width: 34px;
+    height: 32px;
+    padding: 0 9px;
+    cursor: pointer;
+    border: 1px solid rgba(157, 176, 191, .28);
+    border-radius: 6px;
+    color: #dce8ef;
+    background: #111c25;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.pw-proyecto-drawio-controles button:hover,
+.pw-proyecto-drawio-controles button.activo {
+    color: #ffffff;
+    border-color: rgba(var(--acento-rgb), .72);
+    background: rgba(var(--acento-rgb), .12);
+}
+
+.pw-proyecto-drawio-controles button:disabled {
+    cursor: wait;
+    opacity: .55;
+}
+
+.pw-proyecto-drawio-render:fullscreen,
+.pw-proyecto-drawio-render.pw-proyecto-drawio-pantalla-fallback {
+    width: 100vw;
+    height: 100vh;
+    background:
+        linear-gradient(rgba(35, 55, 70, .07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35, 55, 70, .07) 1px, transparent 1px),
+        #f5f6f8;
+    background-size: 20px 20px;
+}
+
+.pw-proyecto-drawio-render.pw-proyecto-drawio-pantalla-fallback {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+}
+
+.pw-proyecto-drawio-error {
+    min-height: 100%;
+}
+
+.pw-proyecto-drawio-aviso {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--borde);
+    color: var(--texto-secundario);
+    background: var(--panel);
+    font-size: 9px;
+}
+
+.pw-proyecto-drawio-aviso span {
+    flex: 0 0 auto;
+    padding: 4px 7px;
+    border: 1px solid rgba(var(--acento-rgb), .42);
+    border-radius: 20px;
+    color: var(--azul-claro);
+    font-weight: 800;
+}
+
+.pw-proyecto-drawio-aviso p {
+    margin: 0;
+}
+
+.pw-proyecto-drawio-aviso code {
+    color: var(--texto);
+}
+
+.pw-proyecto-cargando,
+.pw-proyecto-error {
+    display: grid;
+    min-height: 320px;
+    place-items: center;
+    align-content: center;
+    gap: 10px;
+    padding: 28px;
+    color: var(--texto-secundario);
+    background: var(--panel);
+    text-align: center;
+}
+
+.pw-proyecto-cargando-interno {
+    min-height: 100%;
+}
+
+.pw-proyecto-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--borde);
+    border-top-color: var(--azul-claro);
+    border-radius: 50%;
+    animation: pw-proyecto-giro .8s linear infinite;
+}
+
+@keyframes pw-proyecto-giro {
+    to { transform: rotate(360deg); }
+}
+
+.pw-proyecto-error strong,
+.pw-proyecto-error span {
+    display: block;
+}
+
+.pw-proyecto-error strong {
+    color: var(--texto);
+    font-size: 13px;
+}
+
+.pw-proyecto-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 18px;
+    margin-left: 6px;
+    padding: 2px 6px;
+    border: 1px solid rgba(var(--acento-rgb), .42);
+    border-radius: 20px;
+    color: var(--azul-claro);
+    background: rgba(var(--acento-rgb), .045);
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: .65px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+
+/*
+   El explorador de proyecto usa un modal de alto estable. Así el zoom del
+   navegador no convierte el explorador en una página larga ni desplaza el
+   lienzo al cambiar de tamaño.
+*/
+.trabajos-visor.pw-proyecto-modal-activo.trabajos-visor-modal {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    height: min(820px, calc(100dvh - 24px));
+    max-height: calc(100dvh - 24px);
+    overflow: hidden;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo
+.trabajos-visor-cabecera {
+    margin-bottom: 14px;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo
+.trabajos-visor-contenido {
+    height: auto !important;
+    min-height: 0;
+    max-height: none !important;
+    overflow: hidden;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo
+.trabajos-visor-cabecera > div {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo
+.trabajos-visor-cabecera h3 {
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+.trabajos-visor.pw-proyecto-modal-activo
+.trabajos-visor-acciones {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+@media (max-width: 820px) and (min-width: 521px) {
+    .pw-proyecto-layout {
+        grid-template-columns: minmax(180px, 34%) minmax(0, 1fr);
+    }
+
+    .pw-proyecto-toolbar {
+        gap: 9px;
+        padding-inline: 10px;
+    }
+
+    .pw-proyecto-modo {
+        padding-inline: 8px;
+    }
+
+    .trabajos-visor.pw-proyecto-modal-activo
+    .trabajos-visor-acciones {
+        width: auto;
+        flex: 0 0 auto;
+    }
+}
+
+/*
+   trabajos.css apila la cabecera a 750 px. Respetamos ese patrón en vez
+   de volverla a forzar en fila: así los botones nunca consumen el 100% de
+   una fila dejando el título comprimido a unas pocas letras.
+*/
+@media (max-width: 750px) and (min-width: 521px) {
+    .trabajos-visor.pw-proyecto-modal-activo
+    .trabajos-visor-cabecera {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .trabajos-visor.pw-proyecto-modal-activo
+    .trabajos-visor-cabecera > div {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .pw-proyecto-layout {
+        grid-template-columns: 1fr;
+        height: 100%;
+        grid-template-rows: minmax(120px, 34vh) minmax(0, 1fr);
+    }
+
+    .pw-proyecto-archivos {
+        border-right: 0;
+        border-bottom: 1px solid var(--borde);
+    }
+
+    .pw-proyecto-archivos-cabecera {
+        padding: 11px 12px;
+    }
+
+    .pw-proyecto-lista {
+        padding: 9px;
+    }
+
+    .pw-proyecto-grupo + .pw-proyecto-grupo {
+        margin-top: 10px;
+    }
+
+    .pw-proyecto-grupo-lista {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pw-proyecto-archivo {
+        grid-template-columns: 50px minmax(0, 1fr);
+        min-height: 48px;
+        padding: 6px 7px;
+    }
+
+    .pw-proyecto-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        min-height: auto;
+        padding: 10px;
+    }
+
+    .pw-proyecto-modos {
+        width: 100%;
+    }
+
+    .pw-proyecto-modo {
+        flex: 1;
+    }
+
+
+    .pw-proyecto-drawio-controles {
+        top: 7px;
+        left: 7px;
+    }
+
+    .pw-proyecto-drawio-controles button {
+        min-width: 32px;
+        height: 30px;
+        padding-inline: 7px;
+        font-size: 9px;
+    }
+
+    .pw-proyecto-imagen {
+        padding: 14px;
+    }
+
+    .pw-proyecto-codigo {
+        padding: 16px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 430px) {
+    .pw-proyecto-grupo-lista {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pw-proyecto-spinner {
+        animation: none;
+    }
+
+    .pw-proyecto-archivo,
+    .pw-proyecto-modo {
+        transition: none;
+    }
+}

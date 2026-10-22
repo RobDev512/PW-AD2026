@@ -33,7 +33,9 @@ También incluye **PW Hub**, un portafolio web que organiza y presenta el avance
 
 **Versión publicada actual: v1.2.0 - Navegación y búsqueda global**
 
-**Próxima actualización planeada: v1.3.0 - Proyectos inteligentes y GitHub**
+**Actualización en validación: v1.2.1 - Proyectos por carpetas y visor de recursos**
+
+**Próxima actualización mayor planeada: v1.3.0 - Proyectos inteligentes y GitHub**
 
 v1.2.0 publica la búsqueda global, la navegación responsive refinada, los estados compartibles por URL y la integración de la paleta con los interruptores de **Contenido visible** de Configuración.
 
@@ -58,6 +60,8 @@ El mapa conserva `v1.0.0` como base estable histórica, `v1.1.0` y `v1.1.1` como
 El avance académico de U1-U5 y las versiones de PW Hub son independientes.
 
 v1.2.0 conserva la corrección estable de composición para materiales alternativos, añade microinteracciones seguras y bordes ligados al color de acento, mantiene un perfil móvil más ligero y hace que la búsqueda global solo ofrezca contenido disponible según la configuración visible del usuario.
+
+**v1.2.1-c6** está en validación como parche funcional amplio: las actividades de U2 y U3 guardadas por carpeta se presentan como proyectos navegables. El visor separa la página renderizada, el código HTML, hojas CSS, imágenes y otros recursos sin convertir cada archivo auxiliar en un trabajo independiente. Para archivos Draw.io se ofrecen tres vistas: diagrama interpretado directamente desde el XML mediante el visor oficial de diagrams.net, PNG exportado y XML original. C6 conserva el scroll independiente de la lista de archivos, mantiene un único scroll en páginas HTML/PDF y cambia el zoom/paneo del diagrama para utilizar la vista nativa de mxGraph en lugar de escalar el resultado con CSS, preservando la nitidez del texto. También corrige la cabecera del modal en ventanas medias para impedir que el título quede comprimido al 100 % de zoom.
 
 ---
 
@@ -109,6 +113,7 @@ El Hub incluye:
 - visor interno de Markdown;
 - renderizado Markdown con tema oscuro integrado en visor completo, Documentación, miniaturas y vistas previas;
 - visor completo con modos **Diseño** y **Código**;
+- explorador de recursos para proyectos organizados por carpeta, con HTML, CSS, imágenes, documentos y diseños Draw.io;
 - navegación responsive;
 - Configuración flotante;
 - perfiles visuales;
