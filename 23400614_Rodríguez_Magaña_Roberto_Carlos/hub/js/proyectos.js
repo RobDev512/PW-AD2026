@@ -1,6 +1,6 @@
 /*
     =========================================================
-    PW HUB v1.2.1 - PROYECTOS POR CARPETAS
+    PW HUB v1.2.2-c2 - PROYECTOS POR CARPETAS
     =========================================================
 
     Mantiene las actividades de U2 y U3 agrupadas como proyectos y
@@ -11,7 +11,7 @@
 (() => {
     "use strict";
 
-    const VERSION = "1.2.1";
+    const VERSION = "1.2.2-c2";
     const REPOSITORIO = "RobDev512/PW-AD2026";
     const RAMA = "main";
     const RAIZ_ALUMNO = "23400614_Rodríguez_Magaña_Roberto_Carlos";
@@ -706,6 +706,8 @@
             y: 0,
             arrastrando: false,
             puntero: null,
+            punteros: new Map(),
+            gestoPinza: null,
             inicioX: 0,
             inicioY: 0,
             baseX: 0,
@@ -736,12 +738,18 @@
             );
         };
 
+        const limitarEscala = (escala) => {
+            const minimo = Math.max(0.03, calcularAjuste() * 0.45);
+            return Math.min(6, Math.max(minimo, escala));
+        };
+
         const ajustar = () => {
             if (!visor.isConnected) return;
             estado.escala = Math.max(0.03, calcularAjuste());
             estado.x = 0;
             estado.y = 0;
             estado.autoAjuste = true;
+            estado.gestoPinza = null;
             aplicar();
         };
 
@@ -759,16 +767,83 @@
 
         const cambiarZoom = (direccion) => {
             const factor = direccion > 0 ? 1.22 : 1 / 1.22;
-            const minimo = Math.max(0.03, calcularAjuste() * 0.45);
-            const maximo = 6;
-            const nueva = Math.min(
-                maximo,
-                Math.max(minimo, estado.escala * factor)
-            );
+            const nueva = limitarEscala(estado.escala * factor);
             if (Math.abs(nueva - estado.escala) < 0.0001) return;
             estado.escala = nueva;
             estado.autoAjuste = false;
             aplicar();
+        };
+
+        const obtenerDosPunteros = () =>
+            Array.from(estado.punteros.values()).slice(0, 2);
+
+        const medirPinza = () => {
+            const [a, b] = obtenerDosPunteros();
+            if (!a || !b) return null;
+            return {
+                distancia: Math.max(1, Math.hypot(b.x - a.x, b.y - a.y)),
+                centroX: (a.x + b.x) / 2,
+                centroY: (a.y + b.y) / 2
+            };
+        };
+
+        const iniciarPinza = () => {
+            const medida = medirPinza();
+            if (!medida) return;
+
+            const rect = escenario.getBoundingClientRect();
+            const centroLocalX = medida.centroX - rect.left;
+            const centroLocalY = medida.centroY - rect.top;
+
+            estado.gestoPinza = {
+                distancia: medida.distancia,
+                escala: estado.escala,
+                centroX: centroLocalX,
+                centroY: centroLocalY,
+                imagenX: escenario.clientWidth / 2 + estado.x,
+                imagenY: escenario.clientHeight / 2 + estado.y
+            };
+            estado.arrastrando = false;
+            estado.puntero = null;
+            estado.autoAjuste = false;
+            escenario.classList.remove("pw-proyecto-imagen-arrastrando");
+        };
+
+        const actualizarPinza = () => {
+            const medida = medirPinza();
+            const base = estado.gestoPinza;
+            if (!medida || !base) return;
+
+            const rect = escenario.getBoundingClientRect();
+            const centroX = medida.centroX - rect.left;
+            const centroY = medida.centroY - rect.top;
+            const nuevaEscala = limitarEscala(
+                base.escala * (medida.distancia / base.distancia)
+            );
+            const relacion = nuevaEscala / base.escala;
+
+            const imagenX =
+                centroX - (base.centroX - base.imagenX) * relacion;
+            const imagenY =
+                centroY - (base.centroY - base.imagenY) * relacion;
+
+            estado.escala = nuevaEscala;
+            estado.x = imagenX - escenario.clientWidth / 2;
+            estado.y = imagenY - escenario.clientHeight / 2;
+            estado.autoAjuste = false;
+            aplicar();
+        };
+
+        const iniciarArrastreCon = (puntero) => {
+            if (!puntero) return;
+            estado.arrastrando = true;
+            estado.puntero = puntero.id;
+            estado.inicioX = puntero.x;
+            estado.inicioY = puntero.y;
+            estado.baseX = estado.x;
+            estado.baseY = estado.y;
+            estado.autoAjuste = false;
+            escenario.classList.add("pw-proyecto-imagen-arrastrando");
         };
 
         visor
@@ -809,41 +884,80 @@
         });
 
         escenario.addEventListener("pointerdown", (evento) => {
-            if (evento.button !== 0) return;
-            estado.arrastrando = true;
-            estado.puntero = evento.pointerId;
-            estado.inicioX = evento.clientX;
-            estado.inicioY = evento.clientY;
-            estado.baseX = estado.x;
-            estado.baseY = estado.y;
-            estado.autoAjuste = false;
-            escenario.classList.add("pw-proyecto-imagen-arrastrando");
+            if (evento.pointerType !== "touch" && evento.button !== 0) return;
+
+            estado.punteros.set(evento.pointerId, {
+                id: evento.pointerId,
+                x: evento.clientX,
+                y: evento.clientY
+            });
             escenario.setPointerCapture?.(evento.pointerId);
+
+            if (estado.punteros.size >= 2) {
+                iniciarPinza();
+            } else {
+                iniciarArrastreCon(estado.punteros.get(evento.pointerId));
+            }
+
             evento.preventDefault();
         });
 
         escenario.addEventListener("pointermove", (evento) => {
-            if (
-                !estado.arrastrando ||
-                evento.pointerId !== estado.puntero
-            ) {
+            if (!estado.punteros.has(evento.pointerId)) return;
+
+            estado.punteros.set(evento.pointerId, {
+                id: evento.pointerId,
+                x: evento.clientX,
+                y: evento.clientY
+            });
+
+            if (estado.punteros.size >= 2) {
+                if (!estado.gestoPinza) iniciarPinza();
+                actualizarPinza();
+                evento.preventDefault();
                 return;
             }
 
-            estado.x = estado.baseX + (evento.clientX - estado.inicioX);
-            estado.y = estado.baseY + (evento.clientY - estado.inicioY);
-            aplicar();
+            if (
+                estado.arrastrando &&
+                evento.pointerId === estado.puntero
+            ) {
+                estado.x = estado.baseX + (evento.clientX - estado.inicioX);
+                estado.y = estado.baseY + (evento.clientY - estado.inicioY);
+                aplicar();
+                evento.preventDefault();
+            }
         });
 
-        const terminarArrastre = (evento) => {
-            if (evento.pointerId !== estado.puntero) return;
+        const terminarPuntero = (evento) => {
+            if (!estado.punteros.has(evento.pointerId)) return;
+
+            estado.punteros.delete(evento.pointerId);
+            try {
+                escenario.releasePointerCapture?.(evento.pointerId);
+            } catch {
+                // El navegador puede liberar la captura automáticamente.
+            }
+
+            if (estado.punteros.size >= 2) {
+                iniciarPinza();
+                return;
+            }
+
+            estado.gestoPinza = null;
+
+            if (estado.punteros.size === 1) {
+                iniciarArrastreCon(Array.from(estado.punteros.values())[0]);
+                return;
+            }
+
             estado.arrastrando = false;
             estado.puntero = null;
             escenario.classList.remove("pw-proyecto-imagen-arrastrando");
         };
 
-        escenario.addEventListener("pointerup", terminarArrastre);
-        escenario.addEventListener("pointercancel", terminarArrastre);
+        escenario.addEventListener("pointerup", terminarPuntero);
+        escenario.addEventListener("pointercancel", terminarPuntero);
 
         visor.addEventListener(
             "wheel",
@@ -896,7 +1010,11 @@
                     observador.disconnect();
                     return;
                 }
-                if (!estado.arrastrando && estado.autoAjuste) {
+                if (
+                    !estado.arrastrando &&
+                    !estado.gestoPinza &&
+                    estado.autoAjuste
+                ) {
                     programarAjuste();
                 }
             });
@@ -1013,6 +1131,8 @@
         const estado = {
             arrastrando: false,
             puntero: null,
+            punteros: new Map(),
+            gestoPinza: null,
             inicioX: 0,
             inicioY: 0,
             deltaX: 0,
@@ -1024,10 +1144,26 @@
             ajusteProgramado: null
         };
 
-        const obtenerEscala = () => Number(graph.view?.scale || 1);
+        const obtenerVista = () => graph.getView?.() || graph.view;
+        const obtenerEscala = () => Number(obtenerVista()?.scale || 1);
+        const limitarEscala = (escala) => Math.min(4, Math.max(0.12, escala));
 
         const actualizarDatoZoom = () => {
             grafico.dataset.pwZoom = obtenerEscala().toFixed(3);
+        };
+
+        const aplicarEscalaYTraslacion = (escala, x, y) => {
+            const vista = obtenerVista();
+            graph.panGraph?.(0, 0);
+
+            if (typeof vista.scaleAndTranslate === "function") {
+                vista.scaleAndTranslate(escala, x, y);
+            } else {
+                vista.setScale?.(escala);
+                vista.setTranslate?.(x, y);
+            }
+
+            actualizarDatoZoom();
         };
 
         const ajustar = () => {
@@ -1037,6 +1173,7 @@
             estado.autoAjuste = true;
             estado.deltaX = 0;
             estado.deltaY = 0;
+            estado.gestoPinza = null;
             actualizarDatoZoom();
         };
 
@@ -1062,6 +1199,94 @@
             if (direccion > 0) graph.zoomIn?.();
             else graph.zoomOut?.();
             actualizarDatoZoom();
+        };
+
+        const consolidarArrastre = () => {
+            if (!estado.arrastrando) return;
+            const vista = obtenerVista();
+            const escala = Number(vista.scale || 1) || 1;
+
+            graph.panGraph?.(0, 0);
+            vista.setTranslate?.(
+                estado.translateX + estado.deltaX / escala,
+                estado.translateY + estado.deltaY / escala
+            );
+
+            estado.arrastrando = false;
+            estado.puntero = null;
+            estado.deltaX = 0;
+            estado.deltaY = 0;
+            lienzo.classList.remove("pw-proyecto-drawio-arrastrando");
+        };
+
+        const iniciarArrastreCon = (puntero) => {
+            if (!puntero) return;
+            const vista = obtenerVista();
+
+            estado.arrastrando = true;
+            estado.puntero = puntero.id;
+            estado.inicioX = puntero.x;
+            estado.inicioY = puntero.y;
+            estado.translateX = Number(vista.translate?.x || 0);
+            estado.translateY = Number(vista.translate?.y || 0);
+            estado.deltaX = 0;
+            estado.deltaY = 0;
+            estado.autoAjuste = false;
+            lienzo.classList.add("pw-proyecto-drawio-arrastrando");
+        };
+
+        const obtenerDosPunteros = () =>
+            Array.from(estado.punteros.values()).slice(0, 2);
+
+        const medirPinza = () => {
+            const [a, b] = obtenerDosPunteros();
+            if (!a || !b) return null;
+            return {
+                distancia: Math.max(1, Math.hypot(b.x - a.x, b.y - a.y)),
+                centroX: (a.x + b.x) / 2,
+                centroY: (a.y + b.y) / 2
+            };
+        };
+
+        const iniciarPinza = () => {
+            const medida = medirPinza();
+            if (!medida) return;
+
+            consolidarArrastre();
+
+            const vista = obtenerVista();
+            const escala = Number(vista.scale || 1) || 1;
+            const rect = escenario.getBoundingClientRect();
+            const centroX = medida.centroX - rect.left;
+            const centroY = medida.centroY - rect.top;
+            const translateX = Number(vista.translate?.x || 0);
+            const translateY = Number(vista.translate?.y || 0);
+
+            estado.gestoPinza = {
+                distancia: medida.distancia,
+                escala,
+                graficoX: centroX / escala - translateX,
+                graficoY: centroY / escala - translateY
+            };
+            estado.autoAjuste = false;
+        };
+
+        const actualizarPinza = () => {
+            const medida = medirPinza();
+            const base = estado.gestoPinza;
+            if (!medida || !base) return;
+
+            const rect = escenario.getBoundingClientRect();
+            const centroX = medida.centroX - rect.left;
+            const centroY = medida.centroY - rect.top;
+            const escala = limitarEscala(
+                base.escala * (medida.distancia / base.distancia)
+            );
+            const translateX = centroX / escala - base.graficoX;
+            const translateY = centroY / escala - base.graficoY;
+
+            aplicarEscalaYTraslacion(escala, translateX, translateY);
+            estado.autoAjuste = false;
         };
 
         lienzo
@@ -1105,62 +1330,91 @@
 
         lienzo.addEventListener("pointerdown", (evento) => {
             if (
-                evento.button !== 0 ||
-                evento.target.closest(".pw-proyecto-drawio-controles")
+                evento.target.closest(".pw-proyecto-drawio-controles") ||
+                (evento.pointerType !== "touch" && evento.button !== 0)
             ) {
                 return;
             }
 
-            const vista = graph.getView?.() || graph.view;
-            estado.arrastrando = true;
-            estado.autoAjuste = false;
-            estado.puntero = evento.pointerId;
-            estado.inicioX = evento.clientX;
-            estado.inicioY = evento.clientY;
-            estado.deltaX = 0;
-            estado.deltaY = 0;
-            estado.translateX = Number(vista.translate?.x || 0);
-            estado.translateY = Number(vista.translate?.y || 0);
-
-            lienzo.classList.add("pw-proyecto-drawio-arrastrando");
+            estado.punteros.set(evento.pointerId, {
+                id: evento.pointerId,
+                x: evento.clientX,
+                y: evento.clientY
+            });
             lienzo.setPointerCapture?.(evento.pointerId);
+
+            if (estado.punteros.size >= 2) {
+                iniciarPinza();
+            } else {
+                iniciarArrastreCon(estado.punteros.get(evento.pointerId));
+            }
+
             evento.preventDefault();
         });
 
         lienzo.addEventListener("pointermove", (evento) => {
-            if (
-                !estado.arrastrando ||
-                evento.pointerId !== estado.puntero
-            ) {
+            if (!estado.punteros.has(evento.pointerId)) return;
+
+            estado.punteros.set(evento.pointerId, {
+                id: evento.pointerId,
+                x: evento.clientX,
+                y: evento.clientY
+            });
+
+            if (estado.punteros.size >= 2) {
+                if (!estado.gestoPinza) iniciarPinza();
+                actualizarPinza();
+                evento.preventDefault();
                 return;
             }
 
-            estado.deltaX = evento.clientX - estado.inicioX;
-            estado.deltaY = evento.clientY - estado.inicioY;
-            graph.panGraph?.(estado.deltaX, estado.deltaY);
+            if (
+                estado.arrastrando &&
+                evento.pointerId === estado.puntero
+            ) {
+                estado.deltaX = evento.clientX - estado.inicioX;
+                estado.deltaY = evento.clientY - estado.inicioY;
+                graph.panGraph?.(estado.deltaX, estado.deltaY);
+                evento.preventDefault();
+            }
         });
 
-        const terminarArrastre = (evento) => {
-            if (evento.pointerId !== estado.puntero) return;
+        const terminarPuntero = (evento) => {
+            if (!estado.punteros.has(evento.pointerId)) return;
 
-            const vista = graph.getView?.() || graph.view;
-            const escala = Number(vista.scale || 1) || 1;
+            if (
+                estado.arrastrando &&
+                evento.pointerId === estado.puntero
+            ) {
+                consolidarArrastre();
+            }
 
-            graph.panGraph?.(0, 0);
-            vista.setTranslate?.(
-                estado.translateX + estado.deltaX / escala,
-                estado.translateY + estado.deltaY / escala
-            );
+            estado.punteros.delete(evento.pointerId);
+            try {
+                lienzo.releasePointerCapture?.(evento.pointerId);
+            } catch {
+                // El navegador puede liberar la captura automáticamente.
+            }
+
+            if (estado.punteros.size >= 2) {
+                iniciarPinza();
+                return;
+            }
+
+            estado.gestoPinza = null;
+
+            if (estado.punteros.size === 1) {
+                iniciarArrastreCon(Array.from(estado.punteros.values())[0]);
+                return;
+            }
 
             estado.arrastrando = false;
             estado.puntero = null;
-            estado.deltaX = 0;
-            estado.deltaY = 0;
             lienzo.classList.remove("pw-proyecto-drawio-arrastrando");
         };
 
-        lienzo.addEventListener("pointerup", terminarArrastre);
-        lienzo.addEventListener("pointercancel", terminarArrastre);
+        lienzo.addEventListener("pointerup", terminarPuntero);
+        lienzo.addEventListener("pointercancel", terminarPuntero);
 
         lienzo.addEventListener(
             "wheel",
@@ -1174,29 +1428,19 @@
 
         let observador = null;
 
-        const limpiarControladores = () => {
-            document.removeEventListener(
-                "fullscreenchange",
-                alCambiarPantalla
-            );
-            observador?.disconnect();
-            if (estado.ajusteProgramado) {
-                cancelAnimationFrame(estado.ajusteProgramado);
-                estado.ajusteProgramado = null;
-            }
-        };
-
         const alCambiarPantalla = () => {
             if (!lienzo.isConnected) {
-                limpiarControladores();
+                document.removeEventListener(
+                    "fullscreenchange",
+                    alCambiarPantalla
+                );
+                observador?.disconnect();
                 return;
             }
 
             const activo =
                 document.fullscreenElement === lienzo ||
-                lienzo.classList.contains(
-                    "pw-proyecto-drawio-pantalla-fallback"
-                );
+                lienzo.classList.contains("pw-proyecto-drawio-pantalla-fallback");
 
             botonPantalla?.classList.toggle("activo", activo);
             botonPantalla?.setAttribute(
@@ -1207,7 +1451,6 @@
                 "title",
                 activo ? "Salir de pantalla completa" : "Pantalla completa"
             );
-
             programarAjuste();
         };
 
@@ -1216,10 +1459,14 @@
         if (typeof ResizeObserver === "function") {
             observador = new ResizeObserver(() => {
                 if (!lienzo.isConnected) {
-                    limpiarControladores();
+                    observador.disconnect();
                     return;
                 }
-                if (!estado.arrastrando && estado.autoAjuste) {
+                if (
+                    !estado.arrastrando &&
+                    !estado.gestoPinza &&
+                    estado.autoAjuste
+                ) {
                     programarAjuste();
                 }
             });

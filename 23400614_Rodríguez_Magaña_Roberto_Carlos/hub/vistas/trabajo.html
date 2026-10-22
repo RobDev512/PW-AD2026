@@ -791,7 +791,7 @@
         (() => {
             "use strict";
 
-            const VERSION = "1.2.2-c1";
+            const VERSION = "1.2.2-c2";
             const REPOSITORIO = "RobDev512/PW-AD2026";
             const RAMA = "main";
             const RAIZ_ALUMNO = "23400614_Rodríguez_Magaña_Roberto_Carlos";
@@ -1254,21 +1254,25 @@
             }
 
             function configurarVisorImagen(visor, escenario, imagen) {
-                const anchoNatural = Math.max(1, imagen.naturalWidth || 1);
-                const altoNatural = Math.max(1, imagen.naturalHeight || 1);
                 const estado = {
                     escala: 1,
                     x: 0,
                     y: 0,
                     arrastrando: false,
                     puntero: null,
+                    punteros: new Map(),
+                    gestoPinza: null,
                     inicioX: 0,
                     inicioY: 0,
                     baseX: 0,
                     baseY: 0,
                     autoAjuste: true,
-                    raf: null
+                    pantallaPendiente: false,
+                    ajusteProgramado: null
                 };
+
+                const anchoNatural = Math.max(1, imagen.naturalWidth || 1);
+                const altoNatural = Math.max(1, imagen.naturalHeight || 1);
 
                 const aplicar = () => {
                     imagen.style.width = `${Math.max(1, anchoNatural * estado.escala)}px`;
@@ -1277,50 +1281,142 @@
                     imagen.style.top = `calc(50% + ${estado.y}px)`;
                 };
 
-                const escalaAjuste = () => {
+                const calcularAjuste = () => {
                     const margen = 40;
+                    const disponibleX = Math.max(1, escenario.clientWidth - margen);
+                    const disponibleY = Math.max(1, escenario.clientHeight - margen);
                     return Math.min(
-                        Math.max(1, escenario.clientWidth - margen) / anchoNatural,
-                        Math.max(1, escenario.clientHeight - margen) / altoNatural,
+                        disponibleX / anchoNatural,
+                        disponibleY / altoNatural,
                         1
                     );
                 };
 
+                const limitarEscala = (escala) => {
+                    const minimo = Math.max(0.03, calcularAjuste() * 0.45);
+                    return Math.min(6, Math.max(minimo, escala));
+                };
+
                 const ajustar = () => {
                     if (!visor.isConnected) return;
-                    estado.escala = Math.max(.03, escalaAjuste());
+                    estado.escala = Math.max(0.03, calcularAjuste());
                     estado.x = 0;
                     estado.y = 0;
                     estado.autoAjuste = true;
+                    estado.gestoPinza = null;
                     aplicar();
                 };
 
                 const programarAjuste = () => {
-                    if (estado.raf) cancelAnimationFrame(estado.raf);
-                    estado.raf = requestAnimationFrame(() => {
-                        estado.raf = requestAnimationFrame(() => {
-                            estado.raf = null;
+                    if (estado.ajusteProgramado) {
+                        cancelAnimationFrame(estado.ajusteProgramado);
+                    }
+                    estado.ajusteProgramado = requestAnimationFrame(() => {
+                        estado.ajusteProgramado = requestAnimationFrame(() => {
+                            estado.ajusteProgramado = null;
                             ajustar();
                         });
                     });
                 };
 
-                const zoom = (direccion) => {
+                const cambiarZoom = (direccion) => {
                     const factor = direccion > 0 ? 1.22 : 1 / 1.22;
-                    const minimo = Math.max(.03, escalaAjuste() * .45);
-                    const nueva = Math.min(6, Math.max(minimo, estado.escala * factor));
-                    if (Math.abs(nueva - estado.escala) < .0001) return;
+                    const nueva = limitarEscala(estado.escala * factor);
+                    if (Math.abs(nueva - estado.escala) < 0.0001) return;
                     estado.escala = nueva;
                     estado.autoAjuste = false;
                     aplicar();
                 };
 
-                visor.querySelector('[data-imagen-zoom="menos"]')?.addEventListener("click", () => zoom(-1));
-                visor.querySelector('[data-imagen-zoom="mas"]')?.addEventListener("click", () => zoom(1));
-                visor.querySelector("[data-imagen-ajustar]")?.addEventListener("click", programarAjuste);
+                const obtenerDosPunteros = () =>
+                    Array.from(estado.punteros.values()).slice(0, 2);
 
-                const pantalla = visor.querySelector("[data-imagen-pantalla]");
-                pantalla?.addEventListener("click", async () => {
+                const medirPinza = () => {
+                    const [a, b] = obtenerDosPunteros();
+                    if (!a || !b) return null;
+                    return {
+                        distancia: Math.max(1, Math.hypot(b.x - a.x, b.y - a.y)),
+                        centroX: (a.x + b.x) / 2,
+                        centroY: (a.y + b.y) / 2
+                    };
+                };
+
+                const iniciarPinza = () => {
+                    const medida = medirPinza();
+                    if (!medida) return;
+
+                    const rect = escenario.getBoundingClientRect();
+                    const centroLocalX = medida.centroX - rect.left;
+                    const centroLocalY = medida.centroY - rect.top;
+
+                    estado.gestoPinza = {
+                        distancia: medida.distancia,
+                        escala: estado.escala,
+                        centroX: centroLocalX,
+                        centroY: centroLocalY,
+                        imagenX: escenario.clientWidth / 2 + estado.x,
+                        imagenY: escenario.clientHeight / 2 + estado.y
+                    };
+                    estado.arrastrando = false;
+                    estado.puntero = null;
+                    estado.autoAjuste = false;
+                    escenario.classList.remove("arrastrando");
+                };
+
+                const actualizarPinza = () => {
+                    const medida = medirPinza();
+                    const base = estado.gestoPinza;
+                    if (!medida || !base) return;
+
+                    const rect = escenario.getBoundingClientRect();
+                    const centroX = medida.centroX - rect.left;
+                    const centroY = medida.centroY - rect.top;
+                    const nuevaEscala = limitarEscala(
+                        base.escala * (medida.distancia / base.distancia)
+                    );
+                    const relacion = nuevaEscala / base.escala;
+
+                    const imagenX =
+                        centroX - (base.centroX - base.imagenX) * relacion;
+                    const imagenY =
+                        centroY - (base.centroY - base.imagenY) * relacion;
+
+                    estado.escala = nuevaEscala;
+                    estado.x = imagenX - escenario.clientWidth / 2;
+                    estado.y = imagenY - escenario.clientHeight / 2;
+                    estado.autoAjuste = false;
+                    aplicar();
+                };
+
+                const iniciarArrastreCon = (puntero) => {
+                    if (!puntero) return;
+                    estado.arrastrando = true;
+                    estado.puntero = puntero.id;
+                    estado.inicioX = puntero.x;
+                    estado.inicioY = puntero.y;
+                    estado.baseX = estado.x;
+                    estado.baseY = estado.y;
+                    estado.autoAjuste = false;
+                    escenario.classList.add("arrastrando");
+                };
+
+                visor
+                    .querySelector('[data-imagen-zoom="menos"]')
+                    ?.addEventListener("click", () => cambiarZoom(-1));
+                visor
+                    .querySelector('[data-imagen-zoom="mas"]')
+                    ?.addEventListener("click", () => cambiarZoom(1));
+                visor
+                    .querySelector("[data-imagen-ajustar]")
+                    ?.addEventListener("click", programarAjuste);
+
+                const botonPantalla = visor.querySelector("[data-imagen-pantalla]");
+
+                botonPantalla?.addEventListener("click", async () => {
+                    if (estado.pantallaPendiente) return;
+                    estado.pantallaPendiente = true;
+                    botonPantalla.disabled = true;
+
                     try {
                         if (document.fullscreenElement === visor) {
                             await document.exitFullscreen();
@@ -1331,69 +1427,150 @@
                             programarAjuste();
                         }
                     } catch (error) {
-                        console.warn("PW Hub: fullscreen de imagen no disponible.", error);
+                        console.warn(
+                            "PW Hub: no fue posible cambiar el modo de pantalla completa de la imagen.",
+                            error
+                        );
+                    } finally {
+                        estado.pantallaPendiente = false;
+                        botonPantalla.disabled = false;
                     }
                 });
 
                 escenario.addEventListener("pointerdown", (evento) => {
-                    if (evento.button !== 0) return;
-                    estado.arrastrando = true;
-                    estado.autoAjuste = false;
-                    estado.puntero = evento.pointerId;
-                    estado.inicioX = evento.clientX;
-                    estado.inicioY = evento.clientY;
-                    estado.baseX = estado.x;
-                    estado.baseY = estado.y;
-                    escenario.classList.add("arrastrando");
+                    if (evento.pointerType !== "touch" && evento.button !== 0) return;
+
+                    estado.punteros.set(evento.pointerId, {
+                        id: evento.pointerId,
+                        x: evento.clientX,
+                        y: evento.clientY
+                    });
                     escenario.setPointerCapture?.(evento.pointerId);
+
+                    if (estado.punteros.size >= 2) {
+                        iniciarPinza();
+                    } else {
+                        iniciarArrastreCon(estado.punteros.get(evento.pointerId));
+                    }
+
                     evento.preventDefault();
                 });
 
                 escenario.addEventListener("pointermove", (evento) => {
-                    if (!estado.arrastrando || evento.pointerId !== estado.puntero) return;
-                    estado.x = estado.baseX + evento.clientX - estado.inicioX;
-                    estado.y = estado.baseY + evento.clientY - estado.inicioY;
-                    aplicar();
+                    if (!estado.punteros.has(evento.pointerId)) return;
+
+                    estado.punteros.set(evento.pointerId, {
+                        id: evento.pointerId,
+                        x: evento.clientX,
+                        y: evento.clientY
+                    });
+
+                    if (estado.punteros.size >= 2) {
+                        if (!estado.gestoPinza) iniciarPinza();
+                        actualizarPinza();
+                        evento.preventDefault();
+                        return;
+                    }
+
+                    if (
+                        estado.arrastrando &&
+                        evento.pointerId === estado.puntero
+                    ) {
+                        estado.x = estado.baseX + (evento.clientX - estado.inicioX);
+                        estado.y = estado.baseY + (evento.clientY - estado.inicioY);
+                        aplicar();
+                        evento.preventDefault();
+                    }
                 });
 
-                const terminar = (evento) => {
-                    if (evento.pointerId !== estado.puntero) return;
+                const terminarPuntero = (evento) => {
+                    if (!estado.punteros.has(evento.pointerId)) return;
+
+                    estado.punteros.delete(evento.pointerId);
+                    try {
+                        escenario.releasePointerCapture?.(evento.pointerId);
+                    } catch {
+                        // El navegador puede liberar la captura automáticamente.
+                    }
+
+                    if (estado.punteros.size >= 2) {
+                        iniciarPinza();
+                        return;
+                    }
+
+                    estado.gestoPinza = null;
+
+                    if (estado.punteros.size === 1) {
+                        iniciarArrastreCon(Array.from(estado.punteros.values())[0]);
+                        return;
+                    }
+
                     estado.arrastrando = false;
                     estado.puntero = null;
                     escenario.classList.remove("arrastrando");
                 };
 
-                escenario.addEventListener("pointerup", terminar);
-                escenario.addEventListener("pointercancel", terminar);
+                escenario.addEventListener("pointerup", terminarPuntero);
+                escenario.addEventListener("pointercancel", terminarPuntero);
 
                 visor.addEventListener(
                     "wheel",
                     (evento) => {
                         if (!evento.ctrlKey) return;
                         evento.preventDefault();
-                        zoom(evento.deltaY < 0 ? 1 : -1);
+                        cambiarZoom(evento.deltaY < 0 ? 1 : -1);
                     },
                     { passive: false }
                 );
 
                 escenario.addEventListener("dblclick", (evento) => {
                     evento.preventDefault();
-                    zoom(1);
+                    cambiarZoom(1);
                 });
 
-                document.addEventListener("fullscreenchange", () => {
-                    if (!visor.isConnected) return;
-                    pantalla?.classList.toggle("activo", document.fullscreenElement === visor);
+                let observador = null;
+
+                const alCambiarPantalla = () => {
+                    if (!visor.isConnected) {
+                        document.removeEventListener(
+                            "fullscreenchange",
+                            alCambiarPantalla
+                        );
+                        observador?.disconnect();
+                        return;
+                    }
+
+                    const activo =
+                        document.fullscreenElement === visor ||
+                        visor.classList.contains("fullscreen-fallback");
+
+                    botonPantalla?.classList.toggle("activo", activo);
+                    botonPantalla?.setAttribute(
+                        "aria-label",
+                        activo ? "Salir de pantalla completa" : "Pantalla completa"
+                    );
+                    botonPantalla?.setAttribute(
+                        "title",
+                        activo ? "Salir de pantalla completa" : "Pantalla completa"
+                    );
                     programarAjuste();
-                });
+                };
+
+                document.addEventListener("fullscreenchange", alCambiarPantalla);
 
                 if (typeof ResizeObserver === "function") {
-                    const observador = new ResizeObserver(() => {
+                    observador = new ResizeObserver(() => {
                         if (!visor.isConnected) {
                             observador.disconnect();
                             return;
                         }
-                        if (!estado.arrastrando && estado.autoAjuste) programarAjuste();
+                        if (
+                            !estado.arrastrando &&
+                            !estado.gestoPinza &&
+                            estado.autoAjuste
+                        ) {
+                            programarAjuste();
+                        }
                     });
                     observador.observe(escenario);
                 }
@@ -1484,21 +1661,50 @@
 
             function configurarLienzoDrawio(lienzo, escenario, grafico, visor) {
                 const graph = visor?.graph;
-                if (!graph || !graph.view) throw new Error("Draw.io no entregó un grafo utilizable.");
+                if (!graph || !graph.view) {
+                    throw new Error(
+                        "El visor de Draw.io no entregó un grafo utilizable."
+                    );
+                }
 
                 graph.useScrollbarsForPanning = false;
 
                 const estado = {
                     arrastrando: false,
                     puntero: null,
+                    punteros: new Map(),
+                    gestoPinza: null,
                     inicioX: 0,
                     inicioY: 0,
                     deltaX: 0,
                     deltaY: 0,
                     translateX: 0,
                     translateY: 0,
+                    pantallaPendiente: false,
                     autoAjuste: true,
-                    raf: null
+                    ajusteProgramado: null
+                };
+
+                const obtenerVista = () => graph.getView?.() || graph.view;
+                const obtenerEscala = () => Number(obtenerVista()?.scale || 1);
+                const limitarEscala = (escala) => Math.min(4, Math.max(0.12, escala));
+
+                const actualizarDatoZoom = () => {
+                    grafico.dataset.zoom = obtenerEscala().toFixed(3);
+                };
+
+                const aplicarEscalaYTraslacion = (escala, x, y) => {
+                    const vista = obtenerVista();
+                    graph.panGraph?.(0, 0);
+
+                    if (typeof vista.scaleAndTranslate === "function") {
+                        vista.scaleAndTranslate(escala, x, y);
+                    } else {
+                        vista.setScale?.(escala);
+                        vista.setTranslate?.(x, y);
+                    }
+
+                    actualizarDatoZoom();
                 };
 
                 const ajustar = () => {
@@ -1508,80 +1714,45 @@
                     estado.autoAjuste = true;
                     estado.deltaX = 0;
                     estado.deltaY = 0;
+                    estado.gestoPinza = null;
+                    actualizarDatoZoom();
                 };
 
                 const programarAjuste = () => {
-                    if (estado.raf) cancelAnimationFrame(estado.raf);
-                    estado.raf = requestAnimationFrame(() => {
-                        estado.raf = requestAnimationFrame(() => {
-                            estado.raf = null;
+                    if (estado.ajusteProgramado) {
+                        cancelAnimationFrame(estado.ajusteProgramado);
+                    }
+                    estado.ajusteProgramado = requestAnimationFrame(() => {
+                        estado.ajusteProgramado = requestAnimationFrame(() => {
+                            estado.ajusteProgramado = null;
                             ajustar();
                         });
                     });
                 };
 
-                const zoom = (direccion) => {
-                    const escala = Number(graph.view?.scale || 1);
+                const cambiarZoom = (direccion) => {
+                    const escala = obtenerEscala();
                     if (direccion > 0 && escala >= 4) return;
-                    if (direccion < 0 && escala <= .12) return;
+                    if (direccion < 0 && escala <= 0.12) return;
+
                     estado.autoAjuste = false;
                     graph.panGraph?.(0, 0);
-                    direccion > 0 ? graph.zoomIn?.() : graph.zoomOut?.();
+                    if (direccion > 0) graph.zoomIn?.();
+                    else graph.zoomOut?.();
+                    actualizarDatoZoom();
                 };
 
-                lienzo.querySelector('[data-zoom="menos"]')?.addEventListener("click", () => zoom(-1));
-                lienzo.querySelector('[data-zoom="mas"]')?.addEventListener("click", () => zoom(1));
-                lienzo.querySelector("[data-ajustar]")?.addEventListener("click", programarAjuste);
-
-                const pantalla = lienzo.querySelector("[data-pantalla]");
-                pantalla?.addEventListener("click", async () => {
-                    try {
-                        if (document.fullscreenElement === lienzo) {
-                            await document.exitFullscreen();
-                        } else if (typeof lienzo.requestFullscreen === "function") {
-                            await lienzo.requestFullscreen();
-                        } else {
-                            lienzo.classList.toggle("fullscreen-fallback");
-                            programarAjuste();
-                        }
-                    } catch (error) {
-                        console.warn("PW Hub: fullscreen Draw.io no disponible.", error);
-                    }
-                });
-
-                lienzo.addEventListener("pointerdown", (evento) => {
-                    if (evento.button !== 0 || evento.target.closest(".drawio-controles")) return;
-                    const vista = graph.getView?.() || graph.view;
-                    estado.arrastrando = true;
-                    estado.autoAjuste = false;
-                    estado.puntero = evento.pointerId;
-                    estado.inicioX = evento.clientX;
-                    estado.inicioY = evento.clientY;
-                    estado.translateX = Number(vista.translate?.x || 0);
-                    estado.translateY = Number(vista.translate?.y || 0);
-                    estado.deltaX = 0;
-                    estado.deltaY = 0;
-                    lienzo.classList.add("arrastrando");
-                    lienzo.setPointerCapture?.(evento.pointerId);
-                    evento.preventDefault();
-                });
-
-                lienzo.addEventListener("pointermove", (evento) => {
-                    if (!estado.arrastrando || evento.pointerId !== estado.puntero) return;
-                    estado.deltaX = evento.clientX - estado.inicioX;
-                    estado.deltaY = evento.clientY - estado.inicioY;
-                    graph.panGraph?.(estado.deltaX, estado.deltaY);
-                });
-
-                const terminar = (evento) => {
-                    if (evento.pointerId !== estado.puntero) return;
-                    const vista = graph.getView?.() || graph.view;
+                const consolidarArrastre = () => {
+                    if (!estado.arrastrando) return;
+                    const vista = obtenerVista();
                     const escala = Number(vista.scale || 1) || 1;
+
                     graph.panGraph?.(0, 0);
                     vista.setTranslate?.(
                         estado.translateX + estado.deltaX / escala,
                         estado.translateY + estado.deltaY / escala
                     );
+
                     estado.arrastrando = false;
                     estado.puntero = null;
                     estado.deltaX = 0;
@@ -1589,39 +1760,256 @@
                     lienzo.classList.remove("arrastrando");
                 };
 
-                lienzo.addEventListener("pointerup", terminar);
-                lienzo.addEventListener("pointercancel", terminar);
+                const iniciarArrastreCon = (puntero) => {
+                    if (!puntero) return;
+                    const vista = obtenerVista();
 
-                /*
-                   Edge/Chrome convierten el gesto de pellizco del trackpad
-                   y Ctrl + rueda en eventos wheel con ctrlKey. Se captura
-                   solo dentro del lienzo para que el navegador no amplíe
-                   toda la página y el zoom siga siendo el nativo del grafo.
-                */
+                    estado.arrastrando = true;
+                    estado.puntero = puntero.id;
+                    estado.inicioX = puntero.x;
+                    estado.inicioY = puntero.y;
+                    estado.translateX = Number(vista.translate?.x || 0);
+                    estado.translateY = Number(vista.translate?.y || 0);
+                    estado.deltaX = 0;
+                    estado.deltaY = 0;
+                    estado.autoAjuste = false;
+                    lienzo.classList.add("arrastrando");
+                };
+
+                const obtenerDosPunteros = () =>
+                    Array.from(estado.punteros.values()).slice(0, 2);
+
+                const medirPinza = () => {
+                    const [a, b] = obtenerDosPunteros();
+                    if (!a || !b) return null;
+                    return {
+                        distancia: Math.max(1, Math.hypot(b.x - a.x, b.y - a.y)),
+                        centroX: (a.x + b.x) / 2,
+                        centroY: (a.y + b.y) / 2
+                    };
+                };
+
+                const iniciarPinza = () => {
+                    const medida = medirPinza();
+                    if (!medida) return;
+
+                    consolidarArrastre();
+
+                    const vista = obtenerVista();
+                    const escala = Number(vista.scale || 1) || 1;
+                    const rect = escenario.getBoundingClientRect();
+                    const centroX = medida.centroX - rect.left;
+                    const centroY = medida.centroY - rect.top;
+                    const translateX = Number(vista.translate?.x || 0);
+                    const translateY = Number(vista.translate?.y || 0);
+
+                    estado.gestoPinza = {
+                        distancia: medida.distancia,
+                        escala,
+                        graficoX: centroX / escala - translateX,
+                        graficoY: centroY / escala - translateY
+                    };
+                    estado.autoAjuste = false;
+                };
+
+                const actualizarPinza = () => {
+                    const medida = medirPinza();
+                    const base = estado.gestoPinza;
+                    if (!medida || !base) return;
+
+                    const rect = escenario.getBoundingClientRect();
+                    const centroX = medida.centroX - rect.left;
+                    const centroY = medida.centroY - rect.top;
+                    const escala = limitarEscala(
+                        base.escala * (medida.distancia / base.distancia)
+                    );
+                    const translateX = centroX / escala - base.graficoX;
+                    const translateY = centroY / escala - base.graficoY;
+
+                    aplicarEscalaYTraslacion(escala, translateX, translateY);
+                    estado.autoAjuste = false;
+                };
+
+                lienzo
+                    .querySelector('[data-zoom="menos"]')
+                    ?.addEventListener("click", () => cambiarZoom(-1));
+                lienzo
+                    .querySelector('[data-zoom="mas"]')
+                    ?.addEventListener("click", () => cambiarZoom(1));
+                lienzo
+                    .querySelector("[data-ajustar]")
+                    ?.addEventListener("click", programarAjuste);
+
+                const botonPantalla = lienzo.querySelector("[data-pantalla]");
+
+                botonPantalla?.addEventListener("click", async () => {
+                    if (estado.pantallaPendiente) return;
+                    estado.pantallaPendiente = true;
+                    botonPantalla.disabled = true;
+
+                    try {
+                        if (document.fullscreenElement === lienzo) {
+                            await document.exitFullscreen();
+                        } else if (typeof lienzo.requestFullscreen === "function") {
+                            await lienzo.requestFullscreen();
+                        } else {
+                            lienzo.classList.toggle(
+                                "fullscreen-fallback"
+                            );
+                            programarAjuste();
+                        }
+                    } catch (error) {
+                        console.warn(
+                            "PW Hub: no fue posible cambiar el modo de pantalla completa.",
+                            error
+                        );
+                    } finally {
+                        estado.pantallaPendiente = false;
+                        botonPantalla.disabled = false;
+                    }
+                });
+
+                lienzo.addEventListener("pointerdown", (evento) => {
+                    if (
+                        evento.target.closest(".drawio-controles") ||
+                        (evento.pointerType !== "touch" && evento.button !== 0)
+                    ) {
+                        return;
+                    }
+
+                    estado.punteros.set(evento.pointerId, {
+                        id: evento.pointerId,
+                        x: evento.clientX,
+                        y: evento.clientY
+                    });
+                    lienzo.setPointerCapture?.(evento.pointerId);
+
+                    if (estado.punteros.size >= 2) {
+                        iniciarPinza();
+                    } else {
+                        iniciarArrastreCon(estado.punteros.get(evento.pointerId));
+                    }
+
+                    evento.preventDefault();
+                });
+
+                lienzo.addEventListener("pointermove", (evento) => {
+                    if (!estado.punteros.has(evento.pointerId)) return;
+
+                    estado.punteros.set(evento.pointerId, {
+                        id: evento.pointerId,
+                        x: evento.clientX,
+                        y: evento.clientY
+                    });
+
+                    if (estado.punteros.size >= 2) {
+                        if (!estado.gestoPinza) iniciarPinza();
+                        actualizarPinza();
+                        evento.preventDefault();
+                        return;
+                    }
+
+                    if (
+                        estado.arrastrando &&
+                        evento.pointerId === estado.puntero
+                    ) {
+                        estado.deltaX = evento.clientX - estado.inicioX;
+                        estado.deltaY = evento.clientY - estado.inicioY;
+                        graph.panGraph?.(estado.deltaX, estado.deltaY);
+                        evento.preventDefault();
+                    }
+                });
+
+                const terminarPuntero = (evento) => {
+                    if (!estado.punteros.has(evento.pointerId)) return;
+
+                    if (
+                        estado.arrastrando &&
+                        evento.pointerId === estado.puntero
+                    ) {
+                        consolidarArrastre();
+                    }
+
+                    estado.punteros.delete(evento.pointerId);
+                    try {
+                        lienzo.releasePointerCapture?.(evento.pointerId);
+                    } catch {
+                        // El navegador puede liberar la captura automáticamente.
+                    }
+
+                    if (estado.punteros.size >= 2) {
+                        iniciarPinza();
+                        return;
+                    }
+
+                    estado.gestoPinza = null;
+
+                    if (estado.punteros.size === 1) {
+                        iniciarArrastreCon(Array.from(estado.punteros.values())[0]);
+                        return;
+                    }
+
+                    estado.arrastrando = false;
+                    estado.puntero = null;
+                    lienzo.classList.remove("arrastrando");
+                };
+
+                lienzo.addEventListener("pointerup", terminarPuntero);
+                lienzo.addEventListener("pointercancel", terminarPuntero);
+
                 lienzo.addEventListener(
                     "wheel",
                     (evento) => {
                         if (!evento.ctrlKey) return;
-
                         evento.preventDefault();
-                        zoom(evento.deltaY < 0 ? 1 : -1);
+                        cambiarZoom(evento.deltaY < 0 ? 1 : -1);
                     },
                     { passive: false }
                 );
 
-                document.addEventListener("fullscreenchange", () => {
-                    if (!lienzo.isConnected) return;
-                    pantalla?.classList.toggle("activo", document.fullscreenElement === lienzo);
+                let observador = null;
+
+                const alCambiarPantalla = () => {
+                    if (!lienzo.isConnected) {
+                        document.removeEventListener(
+                            "fullscreenchange",
+                            alCambiarPantalla
+                        );
+                        observador?.disconnect();
+                        return;
+                    }
+
+                    const activo =
+                        document.fullscreenElement === lienzo ||
+                        lienzo.classList.contains("fullscreen-fallback");
+
+                    botonPantalla?.classList.toggle("activo", activo);
+                    botonPantalla?.setAttribute(
+                        "aria-label",
+                        activo ? "Salir de pantalla completa" : "Pantalla completa"
+                    );
+                    botonPantalla?.setAttribute(
+                        "title",
+                        activo ? "Salir de pantalla completa" : "Pantalla completa"
+                    );
                     programarAjuste();
-                });
+                };
+
+                document.addEventListener("fullscreenchange", alCambiarPantalla);
 
                 if (typeof ResizeObserver === "function") {
-                    const observador = new ResizeObserver(() => {
+                    observador = new ResizeObserver(() => {
                         if (!lienzo.isConnected) {
                             observador.disconnect();
                             return;
                         }
-                        if (!estado.arrastrando && estado.autoAjuste) programarAjuste();
+                        if (
+                            !estado.arrastrando &&
+                            !estado.gestoPinza &&
+                            estado.autoAjuste
+                        ) {
+                            programarAjuste();
+                        }
                     });
                     observador.observe(escenario);
                 }

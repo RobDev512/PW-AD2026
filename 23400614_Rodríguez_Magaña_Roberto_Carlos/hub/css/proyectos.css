@@ -1,5 +1,5 @@
 /* =========================================================
-   PW HUB v1.2.2-c1 - PROYECTOS POR CARPETAS
+   PW HUB v1.2.2-c3 - PROYECTOS POR CARPETAS
    ========================================================= */
 
 .pw-proyecto-layout {
@@ -1075,3 +1075,155 @@ body.visor-trabajo-abierto
         flex: none;
     }
 }
+
+/* =========================================================
+   v1.2.2 C3 - IDENTIDAD DE MATERIALES EN NAVEGACION MOVIL
+   =========================================================
+   El parche de rendimiento de v1.2.0 elimina blur en movil para evitar
+   repintados costosos. Estas reglas recuperan la identidad visual de cada
+   material sin reactivar backdrop-filter ni filtros sobre la barra fija.
+*/
+@media (max-width: 650px) {
+    html[data-estilo] body .navegacion-hub,
+    html[data-estilo] body .nav-desplegable-menu {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        filter: none !important;
+    }
+
+    /* Liquid Glass: rim especular + color bleed, pero con base estable. */
+    html[data-estilo="liquid"] body .navegacion-hub {
+        background: transparent !important;
+        border-top-color: rgba(255, 255, 255, .34) !important;
+        border-left-color: rgba(255, 255, 255, .17) !important;
+        border-right-color: rgba(255, 255, 255, .075) !important;
+        border-bottom-color: rgba(255, 255, 255, .055) !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .18),
+            0 12px 30px rgba(0, 0, 0, .28) !important;
+    }
+
+    html[data-estilo="liquid"] body .navegacion-hub::before {
+        background:
+            radial-gradient(
+                115% 180% at 10% -45%,
+                rgba(255, 255, 255, .18),
+                transparent 48%
+            ),
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, .105),
+                rgba(var(--acento-rgb), .045) 56%,
+                rgba(255, 255, 255, .025)
+            ),
+            rgba(9, 20, 29, .965) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    html[data-estilo="liquid"] body .nav-desplegable-menu {
+        background:
+            radial-gradient(
+                125% 100% at 5% 0%,
+                rgba(255, 255, 255, .09),
+                transparent 42%
+            ),
+            linear-gradient(
+                145deg,
+                rgba(18, 34, 47, .98),
+                rgba(8, 18, 28, .985)
+            ) !important;
+        border-top-color: rgba(255, 255, 255, .30) !important;
+        border-left-color: rgba(255, 255, 255, .14) !important;
+        border-right-color: rgba(255, 255, 255, .07) !important;
+        border-bottom-color: rgba(255, 255, 255, .05) !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .16),
+            0 16px 38px rgba(0, 0, 0, .34) !important;
+    }
+
+    /* Frosted Glass: vidrio lechoso y neutro sin desenfoque real. */
+    html[data-estilo="frosted"] body .navegacion-hub,
+    html[data-estilo="frosted"] body .nav-desplegable-menu {
+        border-color: rgba(255, 255, 255, .15) !important;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, .10),
+                rgba(255, 255, 255, .035)
+            ),
+            var(--panel) !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .14),
+            0 12px 28px rgba(0, 0, 0, .22) !important;
+    }
+
+    /* Acrilico: tinte del acento sobre una base oscura solida. */
+    html[data-estilo="acrylic"] body .navegacion-hub,
+    html[data-estilo="acrylic"] body .nav-desplegable-menu {
+        border-color: rgba(var(--acento-rgb), .24) !important;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(var(--acento-rgb), .11),
+                rgba(255, 255, 255, .018) 70%
+            ),
+            var(--panel) !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .07),
+            0 12px 28px rgba(0, 0, 0, .24) !important;
+    }
+
+    /* Minimal y Mate conservan superficies planas. */
+    html[data-estilo="minimal"] body .navegacion-hub,
+    html[data-estilo="minimal"] body .nav-desplegable-menu {
+        border-color: var(--borde) !important;
+        background: var(--panel) !important;
+        box-shadow: none !important;
+    }
+
+    html[data-estilo="matte"] body .navegacion-hub,
+    html[data-estilo="matte"] body .nav-desplegable-menu {
+        border-color: rgba(255, 255, 255, .075) !important;
+        background: var(--panel) !important;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, .18) !important;
+    }
+
+    /* Neon Tech recupera el halo cromatico sin filtros de composicion. */
+    html[data-estilo="neon"] body .navegacion-hub,
+    html[data-estilo="neon"] body .nav-desplegable-menu {
+        border-color: rgba(var(--acento-rgb), .48) !important;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(var(--acento-rgb), .09),
+                rgba(var(--acento-rgb), .018) 68%
+            ),
+            var(--panel) !important;
+        box-shadow:
+            inset 0 1px 0 rgba(var(--acento-rgb), .13),
+            0 0 18px rgba(var(--acento-rgb), .09) !important;
+    }
+
+    /* Titanio: contraste metalico mediante gradiente y bordes direccionales. */
+    html[data-estilo="titanium"] body .navegacion-hub,
+    html[data-estilo="titanium"] body .nav-desplegable-menu {
+        border-top-color: rgba(230, 241, 248, .24) !important;
+        border-left-color: rgba(190, 211, 224, .13) !important;
+        border-right-color: rgba(255, 255, 255, .045) !important;
+        border-bottom-color: rgba(0, 0, 0, .22) !important;
+        background:
+            linear-gradient(
+                155deg,
+                rgba(190, 210, 222, .12),
+                rgba(60, 76, 88, .055) 38%,
+                rgba(5, 10, 14, .18)
+            ),
+            var(--panel) !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .12),
+            inset 0 -1px 0 rgba(0, 0, 0, .20),
+            0 12px 28px rgba(0, 0, 0, .22) !important;
+    }
+}
+
