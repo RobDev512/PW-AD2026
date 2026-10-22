@@ -15,6 +15,7 @@ body {
     border-left: 1px solid #262626;
     border-right: 1px solid #262626;
     min-height: 100vh;
+    
 }
 
 .nav-container {
@@ -23,6 +24,7 @@ body {
     align-items: center;
     padding: 15px;
     font-size: 22px;
+    border-bottom: 1px solid #262626;
 }
 
 .nav-center {
@@ -70,8 +72,21 @@ body {
 }
 
 .add-story-btn svg {
-    width: 16px;
-    height: 16px;
+    width: 26px;
+    height: 26px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .profile-stats {
@@ -89,6 +104,15 @@ body {
 
 .stat-item strong {
     font-size: 16px;
+}
+
+.profile-bio {
+    padding: 0 15px 20px 15px;
+}
+
+.bio {
+   font-size: 14px;
+   margin-bottom: -15px;
 }
 
 .profile-info {
@@ -129,7 +153,7 @@ body {
     align-items: center;
 }
 
-.tabs-container {
+.profile-tabs {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -151,10 +175,11 @@ body {
     border-bottom: 1px solid white;
 }
 
-.posts-grid {
+.gallery {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 3px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 10px;
 }
 
 .post {
@@ -169,3 +194,20 @@ body {
     object-fit: cover;
     display: block;
 }
+
+.post:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #505050;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+svg:hover{
+    cursor: pointer;
+}
+

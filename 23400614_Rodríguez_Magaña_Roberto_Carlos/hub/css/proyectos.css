@@ -1,5 +1,5 @@
 /* =========================================================
-   PW HUB v1.2.1 - PROYECTOS POR CARPETAS
+   PW HUB v1.2.2-c1 - PROYECTOS POR CARPETAS
    ========================================================= */
 
 .pw-proyecto-layout {
@@ -1026,5 +1026,52 @@ body.visor-trabajo-abierto
         height: 30px;
         padding-inline: 7px;
         font-size: 9px;
+    }
+}
+
+
+/* =========================================================
+   v1.2.2 C1 - HOTFIX RESPONSIVE MOVIL
+   =========================================================
+   En movil la toolbar ya trabaja en una sola columna real. Se anula el
+   flex-basis: 100% heredado de la container query porque, con eje vertical,
+   ese porcentaje se aplicaba a la altura y estiraba los botones de modo.
+*/
+@media (max-width: 520px) {
+    .trabajos-visor.pw-proyecto-modal-activo
+    .pw-proyecto-toolbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        align-content: start;
+        gap: 8px;
+    }
+
+    .trabajos-visor.pw-proyecto-modal-activo
+    .pw-proyecto-recurso-actual,
+    .trabajos-visor.pw-proyecto-modal-activo
+    .pw-proyecto-modos {
+        width: 100%;
+        min-width: 0;
+        min-height: 0;
+        flex: none;
+        flex-basis: auto;
+    }
+
+    .trabajos-visor.pw-proyecto-modal-activo
+    .pw-proyecto-modos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+        align-items: stretch;
+        justify-content: stretch;
+    }
+
+    .trabajos-visor.pw-proyecto-modal-activo
+    .pw-proyecto-modo {
+        width: 100%;
+        min-width: 0;
+        min-height: 34px;
+        height: auto;
+        flex: none;
     }
 }
