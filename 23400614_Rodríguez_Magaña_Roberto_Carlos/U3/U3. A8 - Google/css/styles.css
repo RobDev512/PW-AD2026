@@ -1,0 +1,190 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #202124;
+}
+
+#google-logo {
+    font-family: "Product Sans", Arial, sans-serif;
+    font-weight: normal;
+    font-size: 80px;
+    text-align: center;
+}
+
+/* botones gmail, imagenes y acceder a la derecha arriba */
+.nav-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-top ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-top li {
+    list-style: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-top a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.GmaileImagenes {
+    color: #5f6368;
+}
+
+.GmaileImagenes:hover {
+    text-decoration: underline;
+}
+
+#google-logo span {
+    letter-spacing: -22px;
+}
+
+.btn-login {
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-login:hover {
+    background-color: #1765cc;
+}
+
+.g {
+    color: #4285f4;
+}
+
+.o1 {
+    color: #ea4335;
+}
+
+.o2 {
+    color: #fbbc05;
+}
+
+.g2 {
+    color: #4285f4;
+}
+
+.l {
+    color: #34a853;
+}
+
+.e {
+    color: #ea4335;
+}
+
+.main-content {
+    flex: 1;
+    padding-top: 60px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.search-input {
+    width: 60%;
+    max-width: 500px;
+    padding: 18px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+
+.search-input:hover {
+    box-shadow: 0 1px 8px rgba(32, 33, 36, 0.35);
+}
+
+.search-input:focus {
+    border-color: #4285f4;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.buttons .btn-search,
+.buttons .btn-lucky {
+    background: none;
+    border: none;
+    color: #5f6368;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.buttons .btn-search:hover,
+.buttons .btn-lucky:hover {
+    color: #202124;
+    text-decoration: underline;
+}
+
+/* pie de pagina */
+footer {
+    width: 100%;
+    background-color: #f2f2f2;
+    color: #202124;
+    font-size: 13px;
+}
+
+.country {
+    margin: 0;
+    padding: 12px 15px;
+    border-bottom: 1px solid #dadce0;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.footer-links ul {
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 12px 0;
+}
+
+.footer-links li {
+    list-style: none;
+}
+
+.footer-links a {
+    color: #202124;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
