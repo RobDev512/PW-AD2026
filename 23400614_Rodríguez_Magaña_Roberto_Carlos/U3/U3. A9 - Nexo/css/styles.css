@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    color: #193b70;
+}
+
+.contenedor {
+    display: flex;
+    min-height: 100vh;
+}
+
+.panel-login, .panel-institucional {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel-institucional {
+    padding: 50px;
+    color: white;
+    text-align: center;
+    background: url('../img/background.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.contenido-institucional img {
+    max-width: 340px;
+    margin-bottom: 35px;
+}
+
+.contenido-institucional h2 {
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.contenido-institucional p {
+    max-width: 460px;
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.panel-login {
+    padding: 30px;
+    background-color: #F8FAFC;
+}
+
+.tarjeta {
+    width: 100%;
+    max-width: 448px;
+    padding: 30px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+    display: block;
+    width: 115px;
+    height: auto;
+    margin: 0 auto 35px;
+}
+
+.bienvenida {
+    margin-bottom: 32px;
+}
+
+.bienvenida h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.bienvenida p {
+    color: #69758a;
+    font-size: 14px;
+}
+
+.campo {
+    margin-bottom: 24px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #193b70;
+}
+
+.input-contenedor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    border: 1px solid #e2e5eb;
+    border-radius: 13px;
+    background: #F9FAFB;
+}
+
+.input-contenedor img {
+    width: 20px;
+    height: 20px;
+    filter: invert(62%) sepia(92%) saturate(1812%) hue-rotate(346deg) brightness(102%) contrast(95%) grayscale(100%);
+}
+
+.input-contenedor input {
+    width: 100%;
+    padding: 14px 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font: inherit;
+    font-size: 15px;
+    color: #193b70;
+}
+
+.btn-ingresar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 14px;
+    background-color: #0D52A0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(71, 119, 168, 0.28);
+}
+
+.btn-ingresar img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.olvido {
+    display: block;
+    margin-top: 28px;
+    text-align: center;
+    color: #69758a;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.tarjeta hr {
+    border: none;
+    border-top: 1px solid #e2e5eb;
+    margin: 35px 0 28px;
+}
+
+.informacion {
+    text-align: center;
+    color: #69758a;
+    font-size: 13px;
+}
+
+.informacion a {
+    color: #13419D;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.reporte {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #98a2b3;
+}
+
+
+/* Extras */
+
+.input-contenedor input::placeholder {
+    color: #69758a;
+}
+
+.input-contenedor {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-contenedor:focus-within {
+    border-color: #0D52A0;
+    box-shadow: 0 0 0 2px rgba(13, 82, 160, 0.18);
+}
+
+.input-contenedor:focus-within img {
+    filter: invert(62%) sepia(92%) saturate(1812%) hue-rotate(346deg) brightness(102%) contrast(95%) grayscale(0%);
+}
+
+.input-contenedor img {
+    transition: filter 0.15s ease;
+}
+
+.btn-ingresar {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-ingresar img {
+    transition: transform 0.2s ease;
+}
+
+.btn-ingresar:hover {
+    background-color: #1B396A;
+    box-shadow: 0 12px 26px rgba(71, 119, 168, 0.45);
+}
+
+.btn-ingresar:hover img {
+    transform: translateX(4px);
+}
+
+.btn-ingresar:active {
+    background-color: #083B75;
+    box-shadow: 0 4px 10px rgba(27, 57, 106, 0.25);
+}
+
+.olvido {
+    transition: color 0.15s ease;
+}
+
+.olvido:hover {
+    color: #13419D;
+    text-decoration: underline;
+}
+
+.informacion a {
+    transition: color 0.15s ease;
+}
+
+.informacion a:hover {
+    color: #F98523;
+    text-decoration: underline;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+    .panel-institucional {
+        display: none;
+    }
+
+    .panel-login {
+        width: 100%;
+    }
+
+    .tarjeta {
+        max-width: 448px;
+    }
+}
