@@ -245,7 +245,6 @@ body {
 
 
 /* Responsive */
-
 @media (max-width: 1100px) {
     .panel-institucional {
         display: none;
