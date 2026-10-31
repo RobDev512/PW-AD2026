@@ -1,155 +1,647 @@
 {
-    "materia": "Programación Web",
-    "unidadActual": 3,
-    "unidades": [
+  "materia": "Programación Web",
+  "unidadActual": 3,
+  "unidades": [
+    {
+      "numero": 1,
+      "titulo": "Fundamentos Web, Git y GitHub",
+      "descripcion": "Fundamentos de la web y de las aplicaciones web, organización del trabajo y control de versiones mediante Git y GitHub.",
+      "estado": "completada",
+      "temas": [
+        "Fundamentos de la Web",
+        "Aplicaciones Web",
+        "Control de versiones",
+        "Git",
+        "GitHub",
+        "Repositorios y flujo de trabajo"
+      ],
+      "trabajos": [
         {
-            "numero": 1,
-            "titulo": "Introducción a las Aplicaciones Web",
-            "descripcion": "Fundamentos de aplicaciones web, arquitectura, tecnologías para el desarrollo web y uso de Git y GitHub para el control de versiones.",
-            "estado": "completada",
-            "temas": [
-                "Evolución de las aplicaciones web",
-                "Arquitectura de las aplicaciones web",
-                "Tecnologías para el desarrollo web",
-                "Planificación de aplicaciones web",
-                "Git y GitHub"
-            ],
-            "trabajos": [
-                {
-                    "nombre": "Perfil personal",
-                    "ruta": "../Perfil.md",
-                    "tipo": "markdown",
-                    "descripcion": "Documento de presentación personal creado durante las primeras prácticas con Git."
-                },
-                {
-                    "nombre": "Comandos de Git",
-                    "ruta": "../Comandos_Git.md",
-                    "tipo": "markdown",
-                    "descripcion": "Registro de comandos utilizados durante las prácticas de Git y GitHub."
-                },
-                {
-                    "nombre": "Catálogo de Películas",
-                    "ruta": "../U1/catalogo-peliculas/README.md",
-                    "tipo": "markdown",
-                    "descripcion": "Práctica de organización de archivos, ramas y control de versiones."
-                }
-            ]
+          "nombre": "Actividad 1 - Perfil personal",
+          "ruta": "../Perfil.md",
+          "tipo": "markdown",
+          "descripcion": "Documento de presentación personal creado durante las primeras prácticas de Git y GitHub."
         },
         {
-            "numero": 2,
-            "titulo": "HTML y CSS",
-            "descripcion": "Construcción de páginas web utilizando HTML, elementos semánticos, formularios, buenas prácticas y fundamentos de CSS.",
-            "estado": "completada",
-            "temas": [
-                "Estructura global de un documento Web",
-                "Texto, vínculos y listas",
-                "Tablas e imágenes",
-                "Formularios",
-                "Elementos semánticos",
-                "Buenas prácticas",
-                "Lenguajes de presentación",
-                "CSS"
-            ],
-            "trabajos": [
-                {
-                    "nombre": "Ejercicio 1 - Receta Pan Francés",
-                    "ruta": "../U2/U2 Act 1 - Ejercicio1/Ejercicio1 - U2 Act 1.html",
-                    "tipo": "html",
-                    "descripcion": "Página HTML para presentar una receta utilizando estructura, listas, imágenes y elementos semánticos."
-                },
-                {
-                    "nombre": "Ejercicio 2 - Tears for Fears",
-                    "ruta": "../U2/U2 Act 2 - Ejercicio2/Ejercicio2 - U2 Act 2.html",
-                    "tipo": "html",
-                    "descripcion": "Página dedicada al grupo Tears for Fears utilizando imágenes, enlaces, listas y organización semántica."
-                },
-                {
-                    "nombre": "Ejercicio 5 - CineMundo",
-                    "ruta": "../U2/U2 Act 5 - Ejercicio5/Ejercicio5 - U2 Act 5.html",
-                    "tipo": "html",
-                    "descripcion": "Sitio de una tienda de películas con navegación interna, tablas, formularios y elementos semánticos."
-                }
-            ]
+          "nombre": "Actividad 2 - Comandos de Git",
+          "ruta": "../Comandos_Git.md",
+          "tipo": "markdown",
+          "descripcion": "Registro de comandos y operaciones utilizados durante las prácticas de control de versiones con Git y GitHub."
         },
         {
-            "numero": 3,
-            "titulo": "Programación del lado del cliente",
-            "descripcion": "Desarrollo de aplicaciones web dinámicas mediante programación ejecutada en el cliente y utilización de frameworks.",
-            "estado": "actual",
-            "temas": [
-                "Introducción al lenguaje",
-                "Manejo de Frameworks",
-                "Estructuras de Control",
-                "Manipulación de objetos"
-            ],
-            "trabajos": [
-                {
-                    "nombre": "Ejercicio 0 - Modelo de caja CSS",
-                    "ruta": "../U3/Ej0CSS - U3A1.html",
-                    "tipo": "html",
-                    "descripcion": "Ejercicio de CSS para practicar dimensiones, padding, border y margin mediante una caja demostrativa."
-                },
-                {
-                    "nombre": "Ejemplo Flexbox",
-                    "ruta": "../U3/flex - U3A2.html",
-                    "tipo": "html",
-                    "descripcion": "Ejemplo de una barra de navegación construida con Flexbox, alineación y separación de elementos."
-                },
-                {
-                    "nombre": "Ejemplo CSS Grid",
-                    "ruta": "../U3/grid - U3A3.html",
-                    "tipo": "html",
-                    "descripcion": "Ejemplo de distribución de seis elementos mediante una cuadrícula de tres columnas con CSS Grid."
-                },
-                {
-                    "nombre": "Ejercicio 1 - Receta Pan Francés con CSS",
-                    "ruta": "../U3/U3. A4 - Ej1/Ej1 - U3A4.html",
-                    "tipo": "html",
-                    "descripcion": "Aplicación de estilos CSS a la receta de pan francés desarrollada previamente, incorporando colores, tipografía, bordes, espaciado y distribución visual."
-                },
-                {
-                    "nombre": "Ejercicio 2 - Tears for Fears con CSS",
-                    "ruta": "../U3/U3. A5 - Ej2/Ej2 - U3A5.html",
-                    "tipo": "html",
-                    "descripcion": "Aplicación de estilos CSS al ejercicio desarrollado previamente sobre Tears for Fears, utilizando colores, tipografía, bordes, espaciado y distribución visual."
-                },
-                {
-                    "nombre": "Perfil de Instagram",
-                    "ruta": "../U3/U3. A6 - Instagram/Perfil - U3A6.html",
-                    "tipo": "html",
-                    "descripcion": "Recreación de un perfil de Instagram utilizando HTML y CSS, con Flexbox para la distribución de elementos y Grid para las estadísticas y la galería de publicaciones."
-                }
-            ]
-        },
-        {
-            "numero": 4,
-            "titulo": "Programación del lado del servidor",
-            "descripcion": "Desarrollo de aplicaciones web dinámicas mediante programación del lado del servidor y conectividad con orígenes de datos.",
-            "estado": "pendiente",
-            "temas": [
-                "Introducción al lenguaje",
-                "Estructuras de Control",
-                "Tratamiento de Formularios",
-                "Manejo de objetos del servidor",
-                "Creación de clases",
-                "Acceso a datos"
-            ],
-            "trabajos": []
-        },
-        {
-            "numero": 5,
-            "titulo": "Cómputo en la nube y servicios",
-            "descripcion": "Uso de servicios y tecnologías de cómputo en la nube para lograr la interconectividad entre aplicaciones.",
-            "estado": "pendiente",
-            "temas": [
-                "Conceptos generales",
-                "Tipos de Servicios en la nube",
-                "Patrones de diseño",
-                "Estándares en servicios",
-                "Plataformas tecnológicas",
-                "Seguridad e interoperabilidad"
-            ],
-            "trabajos": []
+          "nombre": "Actividad 3 - Catálogo de películas",
+          "ruta": "../U1/catalogo-peliculas/README.md",
+          "tipo": "markdown",
+          "descripcion": "Práctica de organización de archivos y control de versiones mediante un catálogo dividido en README y archivos de categorías."
         }
-    ]
+      ],
+      "archivosUnidad": [
+        {
+          "nombre": "README.md",
+          "ruta": "../U1/README.md",
+          "tipo": "markdown",
+          "categoria": "documentacion",
+          "etiqueta": "Documentación de la unidad"
+        },
+        {
+          "nombre": "test.txt",
+          "ruta": "../U1/test.txt",
+          "tipo": "txt",
+          "categoria": "actividad-clase",
+          "etiqueta": "Actividad en clase 1"
+        },
+        {
+          "nombre": "test2.txt",
+          "ruta": "../U1/test2.txt",
+          "tipo": "txt",
+          "categoria": "actividad-clase",
+          "etiqueta": "Actividad en clase 2"
+        },
+        {
+          "nombre": "test3.txt",
+          "ruta": "../U1/test3.txt",
+          "tipo": "txt",
+          "categoria": "actividad-clase",
+          "etiqueta": "Actividad en clase 3"
+        },
+        {
+          "carpeta": "catalogo-peliculas",
+          "archivos": [
+            {
+              "nombre": "README.md",
+              "ruta": "../U1/catalogo-peliculas/README.md",
+              "tipo": "markdown"
+            },
+            {
+              "nombre": "ciencia-ficcion.txt",
+              "ruta": "../U1/catalogo-peliculas/ciencia-ficcion.txt",
+              "tipo": "txt"
+            },
+            {
+              "nombre": "comedia.txt",
+              "ruta": "../U1/catalogo-peliculas/comedia.txt",
+              "tipo": "txt"
+            }
+          ],
+          "categoria": "recursos-actividad",
+          "etiqueta": "Recursos de la Actividad 3"
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "titulo": "HTML",
+      "descripcion": "Construcción y organización del contenido de páginas web mediante HTML, elementos semánticos, listas, vínculos, tablas, imágenes y formularios.",
+      "estado": "completada",
+      "temas": [
+        "Estructura global de un documento HTML",
+        "Texto, vínculos y listas",
+        "Tablas e imágenes",
+        "Formularios",
+        "Elementos semánticos",
+        "Buenas prácticas de HTML"
+      ],
+      "trabajos": [
+        {
+          "nombre": "Actividad 1 - Receta Pan Francés",
+          "ruta": "../U2/U2 Act 1 - Ejercicio1/Ejercicio1 - U2 Act 1.html",
+          "tipo": "html",
+          "descripcion": "Página HTML de una receta utilizando estructura, listas, imágenes y elementos semánticos."
+        },
+        {
+          "nombre": "Actividad 2 - Tears for Fears",
+          "ruta": "../U2/U2 Act 2 - Ejercicio2/Ejercicio2 - U2 Act 2.html",
+          "tipo": "html",
+          "descripcion": "Página dedicada a Tears for Fears utilizando imágenes, enlaces, listas y organización semántica."
+        },
+        {
+          "nombre": "Actividad 5 - CineMundo",
+          "ruta": "../U2/U2 Act 5 - Ejercicio5/Ejercicio5 - U2 Act 5.html",
+          "tipo": "html",
+          "descripcion": "Sitio de una tienda de películas con navegación interna, tablas, formularios y elementos semánticos."
+        }
+      ],
+      "archivosUnidad": [
+        {
+          "nombre": "base.html",
+          "ruta": "../U2/base.html",
+          "tipo": "html"
+        },
+        {
+          "carpeta": "U2 Act 1 - Ejercicio1",
+          "archivos": [
+            {
+              "nombre": "Ejercicio1 - U2 Act 1.html",
+              "ruta": "../U2/U2 Act 1 - Ejercicio1/Ejercicio1 - U2 Act 1.html",
+              "tipo": "html"
+            },
+            {
+              "nombre": "pan-frances.png",
+              "ruta": "../U2/U2 Act 1 - Ejercicio1/pan-frances.png",
+              "tipo": "png"
+            }
+          ],
+          "etiqueta": "Recursos de la Actividad 1"
+        },
+        {
+          "carpeta": "U2 Act 2 - Ejercicio2",
+          "archivos": [
+            {
+              "nombre": "Ejercicio2 - U2 Act 2.html",
+              "ruta": "../U2/U2 Act 2 - Ejercicio2/Ejercicio2 - U2 Act 2.html",
+              "tipo": "html"
+            },
+            {
+              "nombre": "tears-for-fears.jpg",
+              "ruta": "../U2/U2 Act 2 - Ejercicio2/tears-for-fears.jpg",
+              "tipo": "jpg"
+            }
+          ],
+          "etiqueta": "Recursos de la Actividad 2"
+        },
+        {
+          "carpeta": "U2 Act 5 - Ejercicio5",
+          "archivos": [
+            {
+              "nombre": "Ejercicio5 - U2 Act 5.html",
+              "ruta": "../U2/U2 Act 5 - Ejercicio5/Ejercicio5 - U2 Act 5.html",
+              "tipo": "html"
+            },
+            {
+              "nombre": "Michael.jpg",
+              "ruta": "../U2/U2 Act 5 - Ejercicio5/Michael.jpg",
+              "tipo": "jpg"
+            }
+          ],
+          "etiqueta": "Recursos de la Actividad 5"
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "CSS",
+      "descripcion": "Diseño y presentación visual de páginas web con CSS, incluyendo modelo de caja, Flexbox, Grid y recreación de interfaces.",
+      "estado": "completada",
+      "temas": [
+        "Fundamentos de CSS",
+        "Selectores y propiedades",
+        "Modelo de caja",
+        "Flexbox",
+        "CSS Grid",
+        "Diseño de interfaces con HTML y CSS"
+      ],
+      "trabajos": [
+        {
+          "nombre": "Actividad 1 - Modelo de caja CSS",
+          "ruta": "../U3/Ej0CSS - U3A1.html",
+          "tipo": "html",
+          "descripcion": "Práctica del modelo de caja con dimensiones, padding, border y margin."
+        },
+        {
+          "nombre": "Actividad 2 - Flexbox",
+          "ruta": "../U3/flex - U3A2.html",
+          "tipo": "html",
+          "descripcion": "Barra de navegación construida con Flexbox para practicar alineación y distribución de elementos."
+        },
+        {
+          "nombre": "Actividad 3 - CSS Grid",
+          "ruta": "../U3/grid - U3A3.html",
+          "tipo": "html",
+          "descripcion": "Distribución de seis elementos mediante una cuadrícula construida con CSS Grid."
+        },
+        {
+          "nombre": "Actividad 4 - Receta Pan Francés con CSS",
+          "ruta": "../U3/U3. A4 - Ej1/Ej1 - U3A4.html",
+          "tipo": "html",
+          "descripcion": "Aplicación de estilos CSS a la receta desarrollada en U2, incorporando color, tipografía, bordes, espaciado y distribución visual."
+        },
+        {
+          "nombre": "Actividad 5 - Tears for Fears con CSS",
+          "ruta": "../U3/U3. A5 - Ej2/Ej2 - U3A5.html",
+          "tipo": "html",
+          "descripcion": "Aplicación de estilos CSS al ejercicio de Tears for Fears desarrollado en U2."
+        },
+        {
+          "nombre": "Actividad 6 - Perfil de Instagram",
+          "ruta": "../U3/U3. A6 - Instagram/Perfil - U3A6.html",
+          "tipo": "html",
+          "descripcion": "Recreación de un perfil de Instagram con HTML y CSS, usando Flexbox, Grid, imágenes y un diseño previo en Draw.io."
+        },
+        {
+          "nombre": "Actividad 7 - Netflix",
+          "ruta": "../U3/U3. A7 - Netflix/Netflix - U3A7.html",
+          "tipo": "html",
+          "descripcion": "Recreación de una portada de Netflix con hero, navegación, selector de idioma, formulario de correo e identidad visual propia del sitio."
+        },
+        {
+          "nombre": "Actividad 8 - Google",
+          "ruta": "../U3/U3. A8 - Google/Google - U3A8.html",
+          "tipo": "html",
+          "descripcion": "Recreación de la página principal de Google con barra superior, buscador y elementos visuales mediante HTML y CSS."
+        },
+        {
+          "nombre": "Actividad 9 - Nexo",
+          "ruta": "../U3/U3. A9 - Nexo/Nexo - U3A9.html",
+          "tipo": "html",
+          "descripcion": "Recreación de una interfaz de inicio de sesión de NEXO con HTML y CSS, recursos gráficos institucionales e iconos SVG."
+        },
+        {
+          "nombre": "Actividad 10 - Catálogo de Netflix",
+          "ruta": "../U3/U3. A10 - Netflix 2/Netflix2 - U3A10.html",
+          "tipo": "html",
+          "descripcion": "Catálogo de películas estilo Netflix con navegación, categorías, cuadrícula de seis pósters y efectos hover."
+        }
+      ],
+      "archivosUnidad": [
+        {
+          "nombre": "Ej0CSS - U3A1.html",
+          "ruta": "../U3/Ej0CSS - U3A1.html",
+          "tipo": "html",
+          "etiqueta": "Actividad 1"
+        },
+        {
+          "nombre": "flex - U3A2.html",
+          "ruta": "../U3/flex - U3A2.html",
+          "tipo": "html",
+          "etiqueta": "Actividad 2"
+        },
+        {
+          "nombre": "grid - U3A3.html",
+          "ruta": "../U3/grid - U3A3.html",
+          "tipo": "html",
+          "etiqueta": "Actividad 3"
+        },
+        {
+          "carpeta": "U3. A4 - Ej1",
+          "archivos": [
+            {
+              "nombre": "Ej1 - U3A4.html",
+              "ruta": "../U3/U3. A4 - Ej1/Ej1 - U3A4.html",
+              "tipo": "html"
+            },
+            {
+              "nombre": "pan-frances.png",
+              "ruta": "../U3/U3. A4 - Ej1/pan-frances.png",
+              "tipo": "png"
+            }
+          ],
+          "etiqueta": "Actividad 4"
+        },
+        {
+          "carpeta": "U3. A5 - Ej2",
+          "archivos": [
+            {
+              "nombre": "Ej2 - U3A5.html",
+              "ruta": "../U3/U3. A5 - Ej2/Ej2 - U3A5.html",
+              "tipo": "html"
+            },
+            {
+              "nombre": "tears-for-fears.jpg",
+              "ruta": "../U3/U3. A5 - Ej2/tears-for-fears.jpg",
+              "tipo": "jpg"
+            }
+          ],
+          "etiqueta": "Actividad 5"
+        },
+        {
+          "carpeta": "U3. A6 - Instagram",
+          "archivos": [
+            {
+              "nombre": "Perfil - U3A6.html",
+              "ruta": "../U3/U3. A6 - Instagram/Perfil - U3A6.html",
+              "tipo": "html"
+            },
+            {
+              "carpeta": "css",
+              "archivos": [
+                {
+                  "nombre": "styles.css",
+                  "ruta": "../U3/U3. A6 - Instagram/css/styles.css",
+                  "tipo": "css"
+                }
+              ]
+            },
+            {
+              "carpeta": "diseno",
+              "archivos": [
+                {
+                  "nombre": "Perfil - U3A6.drawio",
+                  "ruta": "../U3/U3. A6 - Instagram/diseno/Perfil - U3A6.drawio",
+                  "tipo": "drawio"
+                },
+                {
+                  "nombre": "Perfil - U3A6.png",
+                  "ruta": "../U3/U3. A6 - Instagram/diseno/Perfil - U3A6.png",
+                  "tipo": "png"
+                }
+              ]
+            },
+            {
+              "carpeta": "img",
+              "archivos": [
+                {
+                  "nombre": "instagram-logo.png",
+                  "ruta": "../U3/U3. A6 - Instagram/img/instagram-logo.png",
+                  "tipo": "png"
+                },
+                {
+                  "carpeta": "perfil",
+                  "archivos": [
+                    {
+                      "nombre": "foto.jpg",
+                      "ruta": "../U3/U3. A6 - Instagram/img/perfil/foto.jpg",
+                      "tipo": "jpg"
+                    }
+                  ]
+                },
+                {
+                  "carpeta": "publicaciones",
+                  "archivos": [
+                    {
+                      "nombre": "publicacion-01.png",
+                      "ruta": "../U3/U3. A6 - Instagram/img/publicaciones/publicacion-01.png",
+                      "tipo": "png"
+                    },
+                    {
+                      "nombre": "publicacion-02.png",
+                      "ruta": "../U3/U3. A6 - Instagram/img/publicaciones/publicacion-02.png",
+                      "tipo": "png"
+                    },
+                    {
+                      "nombre": "publicacion-03.png",
+                      "ruta": "../U3/U3. A6 - Instagram/img/publicaciones/publicacion-03.png",
+                      "tipo": "png"
+                    },
+                    {
+                      "nombre": "publicacion-04.png",
+                      "ruta": "../U3/U3. A6 - Instagram/img/publicaciones/publicacion-04.png",
+                      "tipo": "png"
+                    },
+                    {
+                      "nombre": "publicacion-05.png",
+                      "ruta": "../U3/U3. A6 - Instagram/img/publicaciones/publicacion-05.png",
+                      "tipo": "png"
+                    },
+                    {
+                      "nombre": "publicacion-06.png",
+                      "ruta": "../U3/U3. A6 - Instagram/img/publicaciones/publicacion-06.png",
+                      "tipo": "png"
+                    },
+                    {
+                      "nombre": "publicacion-07.png",
+                      "ruta": "../U3/U3. A6 - Instagram/img/publicaciones/publicacion-07.png",
+                      "tipo": "png"
+                    },
+                    {
+                      "nombre": "publicacion-08.png",
+                      "ruta": "../U3/U3. A6 - Instagram/img/publicaciones/publicacion-08.png",
+                      "tipo": "png"
+                    },
+                    {
+                      "nombre": "publicacion-09.png",
+                      "ruta": "../U3/U3. A6 - Instagram/img/publicaciones/publicacion-09.png",
+                      "tipo": "png"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "etiqueta": "Actividad 6"
+        },
+        {
+          "carpeta": "U3. A7 - Netflix",
+          "archivos": [
+            {
+              "nombre": "Netflix - U3A7.html",
+              "ruta": "../U3/U3. A7 - Netflix/Netflix - U3A7.html",
+              "tipo": "html"
+            },
+            {
+              "carpeta": "css",
+              "archivos": [
+                {
+                  "nombre": "styles.css",
+                  "ruta": "../U3/U3. A7 - Netflix/css/styles.css",
+                  "tipo": "css"
+                }
+              ]
+            },
+            {
+              "carpeta": "img",
+              "archivos": [
+                {
+                  "nombre": "hero-background.jpg",
+                  "ruta": "../U3/U3. A7 - Netflix/img/hero-background.jpg",
+                  "tipo": "jpg"
+                },
+                {
+                  "nombre": "netflix-logo.png",
+                  "ruta": "../U3/U3. A7 - Netflix/img/netflix-logo.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "netflix-logo2.png",
+                  "ruta": "../U3/U3. A7 - Netflix/img/netflix-logo2.png",
+                  "tipo": "png"
+                }
+              ]
+            }
+          ],
+          "etiqueta": "Actividad 7"
+        },
+        {
+          "carpeta": "U3. A8 - Google",
+          "archivos": [
+            {
+              "nombre": "Google - U3A8.html",
+              "ruta": "../U3/U3. A8 - Google/Google - U3A8.html",
+              "tipo": "html"
+            },
+            {
+              "carpeta": "css",
+              "archivos": [
+                {
+                  "nombre": "styles.css",
+                  "ruta": "../U3/U3. A8 - Google/css/styles.css",
+                  "tipo": "css"
+                }
+              ]
+            },
+            {
+              "carpeta": "img",
+              "archivos": [
+                {
+                  "nombre": "Google_icon.png",
+                  "ruta": "../U3/U3. A8 - Google/img/Google_icon.png",
+                  "tipo": "png"
+                }
+              ]
+            }
+          ],
+          "etiqueta": "Actividad 8"
+        },
+        {
+          "carpeta": "U3. A9 - Nexo",
+          "archivos": [
+            {
+              "nombre": "Nexo - U3A9.html",
+              "ruta": "../U3/U3. A9 - Nexo/Nexo - U3A9.html",
+              "tipo": "html"
+            },
+            {
+              "carpeta": "css",
+              "archivos": [
+                {
+                  "nombre": "styles.css",
+                  "ruta": "../U3/U3. A9 - Nexo/css/styles.css",
+                  "tipo": "css"
+                }
+              ]
+            },
+            {
+              "carpeta": "img",
+              "archivos": [
+                {
+                  "nombre": "LogoIttepic.png",
+                  "ruta": "../U3/U3. A9 - Nexo/img/LogoIttepic.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "background.jpg",
+                  "ruta": "../U3/U3. A9 - Nexo/img/background.jpg",
+                  "tipo": "jpg"
+                },
+                {
+                  "nombre": "logoNexo.png",
+                  "ruta": "../U3/U3. A9 - Nexo/img/logoNexo.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "logosTec.png",
+                  "ruta": "../U3/U3. A9 - Nexo/img/logosTec.png",
+                  "tipo": "png"
+                }
+              ]
+            },
+            {
+              "carpeta": "svg",
+              "archivos": [
+                {
+                  "nombre": "Contraseña.svg",
+                  "ruta": "../U3/U3. A9 - Nexo/svg/Contraseña.svg",
+                  "tipo": "svg"
+                },
+                {
+                  "nombre": "Correo.svg",
+                  "ruta": "../U3/U3. A9 - Nexo/svg/Correo.svg",
+                  "tipo": "svg"
+                },
+                {
+                  "nombre": "Ingresar.svg",
+                  "ruta": "../U3/U3. A9 - Nexo/svg/Ingresar.svg",
+                  "tipo": "svg"
+                }
+              ]
+            }
+          ],
+          "etiqueta": "Actividad 9"
+        },
+        {
+          "carpeta": "U3. A10 - Netflix 2",
+          "archivos": [
+            {
+              "nombre": "Netflix2 - U3A10.html",
+              "ruta": "../U3/U3. A10 - Netflix 2/Netflix2 - U3A10.html",
+              "tipo": "html"
+            },
+            {
+              "carpeta": "css",
+              "archivos": [
+                {
+                  "nombre": "styles.css",
+                  "ruta": "../U3/U3. A10 - Netflix 2/css/styles.css",
+                  "tipo": "css"
+                }
+              ]
+            },
+            {
+              "carpeta": "img",
+              "archivos": [
+                {
+                  "nombre": "Pelicula1.png",
+                  "ruta": "../U3/U3. A10 - Netflix 2/img/Pelicula1.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "Pelicula2.png",
+                  "ruta": "../U3/U3. A10 - Netflix 2/img/Pelicula2.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "Pelicula3.png",
+                  "ruta": "../U3/U3. A10 - Netflix 2/img/Pelicula3.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "Pelicula4.png",
+                  "ruta": "../U3/U3. A10 - Netflix 2/img/Pelicula4.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "Pelicula5.png",
+                  "ruta": "../U3/U3. A10 - Netflix 2/img/Pelicula5.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "Pelicula6.png",
+                  "ruta": "../U3/U3. A10 - Netflix 2/img/Pelicula6.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "netflix-logo.png",
+                  "ruta": "../U3/U3. A10 - Netflix 2/img/netflix-logo.png",
+                  "tipo": "png"
+                },
+                {
+                  "nombre": "netflix-logo2.png",
+                  "ruta": "../U3/U3. A10 - Netflix 2/img/netflix-logo2.png",
+                  "tipo": "png"
+                }
+              ]
+            }
+          ],
+          "etiqueta": "Actividad 10"
+        }
+      ]
+    },
+    {
+      "numero": 4,
+      "titulo": "JavaScript y JSON",
+      "descripcion": "Referencia provisional basada en cómo se ha impartido la materia en generaciones anteriores. Se ajustará cuando el profesor defina oficialmente el contenido de U4.",
+      "estado": "pendiente",
+      "temas": [
+        "JavaScript",
+        "JSON",
+        "Interacción dinámica en el navegador"
+      ],
+      "trabajos": [],
+      "archivosUnidad": [],
+      "archivosUnidadAutomaticos": true
+    },
+    {
+      "numero": 5,
+      "titulo": "Integración con base de datos",
+      "descripcion": "Referencia provisional basada en experiencias de generaciones anteriores. Se ajustará cuando el profesor defina oficialmente el contenido de U5.",
+      "estado": "pendiente",
+      "temas": [
+        "Persistencia de datos",
+        "Conexión con base de datos",
+        "Integración de la aplicación web"
+      ],
+      "trabajos": [],
+      "archivosUnidad": [],
+      "archivosUnidadAutomaticos": true
+    }
+  ]
 }

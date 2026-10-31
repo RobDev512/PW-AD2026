@@ -1,5 +1,6 @@
 /* =========================================================
-   PW HUB v1.2.2-c3 - PROYECTOS POR CARPETAS
+   PW HUB v1.2.2 - PROYECTOS POR CARPETAS
+   C11 - chips de extension indivisibles
    ========================================================= */
 
 .pw-proyecto-layout {
@@ -1227,3 +1228,533 @@ body.visor-trabajo-abierto
     }
 }
 
+
+
+/* =========================================================
+   v1.2.2 C8 - ARCHIVOS DE U1-U5 PLEGABLES
+   ========================================================= */
+.pw-unidad-archivos {
+    margin: 0 0 28px;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    background: rgba(5, 11, 16, .34);
+    overflow: hidden;
+}
+
+
+.pw-unidad-archivos.sin-archivos {
+    border-style: dashed;
+    background: rgba(5, 11, 16, .22);
+}
+
+.pw-unidad-archivos.sin-archivos .pw-unidad-archivos-toggle {
+    cursor: default;
+    opacity: .66;
+}
+
+.pw-unidad-archivos.sin-archivos .pw-unidad-archivos-toggle:hover,
+.pw-unidad-archivos.sin-archivos .pw-unidad-archivos-toggle:focus-visible {
+    background: transparent;
+}
+
+.pw-unidad-archivos.sin-archivos .pw-unidad-archivos-contador {
+    border-style: dashed;
+}
+
+.pw-unidad-archivos.sin-archivos .pw-unidad-archivos-chevron {
+    opacity: .42;
+}
+
+.pw-unidad-archivos-toggle {
+    width: 100%;
+    min-height: 76px;
+    padding: 16px 20px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.pw-unidad-archivos-toggle:hover,
+.pw-unidad-archivos-toggle:focus-visible {
+    background: rgba(53, 201, 243, .035);
+}
+
+.pw-unidad-archivos-toggle:focus-visible {
+    outline: 2px solid rgba(53, 201, 243, .58);
+    outline-offset: -2px;
+}
+
+.pw-unidad-archivos-cabecera-texto {
+    min-width: 0;
+    display: grid;
+    gap: 3px;
+}
+
+.pw-unidad-archivos-cabecera-texto > strong {
+    font-size: 16px;
+}
+
+.pw-unidad-archivos-etiqueta {
+    color: var(--azul-claro);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.pw-unidad-archivos-resumen {
+    color: var(--texto-secundario);
+    font-size: 9px;
+}
+
+.pw-unidad-archivos-cabecera-meta {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pw-unidad-archivos-contador {
+    padding: 5px 9px;
+    border: 1px solid rgba(53, 201, 243, .28);
+    border-radius: 999px;
+    color: var(--texto-secundario);
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.pw-unidad-archivos-chevron {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(53, 201, 243, .24);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--azul-claro);
+}
+
+.pw-unidad-archivos-chevron svg {
+    width: 15px;
+    height: 15px;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .18s ease;
+}
+
+.pw-unidad-archivos.abierto .pw-unidad-archivos-chevron svg {
+    transform: rotate(180deg);
+}
+
+.pw-unidad-archivos-desplegable {
+    padding: 0 20px 18px;
+    border-top: 1px solid rgba(37, 53, 67, .62);
+}
+
+.pw-unidad-arbol {
+    margin-top: 14px;
+    padding: 13px 14px;
+    border: 1px solid rgba(37, 53, 67, .82);
+    border-radius: 10px;
+    background: rgba(7, 13, 18, .52);
+}
+
+.pw-unidad-carpeta-raiz,
+.pw-unidad-carpeta-nombre {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 30px;
+    color: #dce7ef;
+    font-size: 11px;
+}
+
+.pw-unidad-carpeta-raiz-marca {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: rgba(53, 201, 243, .72);
+    box-shadow: 0 0 0 3px rgba(53, 201, 243, .08);
+}
+
+.pw-unidad-carpeta-nombre {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pw-unidad-carpeta-nombre::-webkit-details-marker {
+    display: none;
+}
+
+.pw-unidad-carpeta-chevron {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    display: grid;
+    place-items: center;
+    color: var(--azul-claro);
+}
+
+.pw-unidad-carpeta-chevron svg {
+    width: 13px;
+    height: 13px;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .16s ease;
+}
+
+.pw-unidad-carpeta[open] > .pw-unidad-carpeta-nombre .pw-unidad-carpeta-chevron svg {
+    transform: rotate(90deg);
+}
+
+.pw-unidad-carpeta-contexto {
+    margin-left: auto;
+    color: var(--texto-secundario);
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.pw-unidad-arbol-nivel {
+    margin-left: 8px;
+    padding-left: 16px;
+    border-left: 1px solid rgba(53, 201, 243, .16);
+}
+
+.pw-unidad-arbol-subnivel {
+    margin: 2px 0 4px 8px;
+}
+
+.pw-unidad-grupo {
+    margin: 7px 0 10px;
+}
+
+.pw-unidad-grupo-titulo {
+    margin: 0 0 3px 8px;
+    color: var(--texto-secundario);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.pw-unidad-grupo-clase .pw-unidad-grupo-titulo {
+    color: var(--azul-claro);
+}
+
+.pw-unidad-carpeta {
+    margin-top: 7px;
+    border-radius: 8px;
+}
+
+.pw-unidad-carpeta > .pw-unidad-carpeta-nombre {
+    padding: 3px 6px;
+    border-radius: 7px;
+    transition: background .16s ease;
+}
+
+.pw-unidad-carpeta > .pw-unidad-carpeta-nombre:hover,
+.pw-unidad-carpeta > .pw-unidad-carpeta-nombre:focus-visible {
+    background: rgba(53, 201, 243, .04);
+}
+
+.pw-unidad-carpeta > .pw-unidad-carpeta-nombre:focus-visible {
+    outline: 1px solid rgba(53, 201, 243, .35);
+    outline-offset: 1px;
+}
+
+.pw-unidad-archivo {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 9px;
+    min-height: 40px;
+    margin: 3px 0;
+    padding: 6px 8px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    color: var(--texto);
+    text-decoration: none;
+    transition: border-color .16s, background .16s;
+}
+
+.pw-unidad-archivo:hover,
+.pw-unidad-archivo:focus-visible {
+    border-color: rgba(53, 201, 243, .28);
+    background: rgba(53, 201, 243, .045);
+}
+
+.pw-unidad-archivo-tipo {
+    min-width: max-content;
+    padding: 3px 5px;
+    border: 1px solid rgba(53, 201, 243, .32);
+    border-radius: 6px;
+    color: var(--azul-claro);
+    font-size: 8px;
+    font-weight: 800;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
+}
+
+.pw-unidad-archivo-datos {
+    min-width: 0;
+    display: grid;
+    gap: 1px;
+}
+
+.pw-unidad-archivo-nombre {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+}
+
+.pw-unidad-archivo-etiqueta {
+    color: var(--texto-secundario);
+    font-size: 8px;
+}
+
+.pw-unidad-archivo-accion {
+    color: var(--texto-secundario);
+    font-size: 9px;
+}
+
+.pw-unidad-archivos-nota {
+    margin: 10px 2px 0;
+    color: var(--texto-secundario);
+    font-size: 9px;
+    line-height: 1.55;
+}
+
+@media (max-width: 650px) {
+    .pw-unidad-archivos-toggle {
+        min-height: 70px;
+        padding: 13px 14px;
+    }
+
+    .pw-unidad-archivos-desplegable {
+        padding: 0 14px 14px;
+    }
+
+    .pw-unidad-archivos-contador {
+        display: none;
+    }
+
+    .pw-unidad-arbol {
+        padding: 10px;
+    }
+
+    .pw-unidad-arbol-nivel {
+        margin-left: 4px;
+        padding-left: 10px;
+    }
+
+    .pw-unidad-carpeta-contexto {
+        display: none;
+    }
+
+    .pw-unidad-archivo {
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 7px;
+    }
+
+    .pw-unidad-archivo-accion {
+        display: none;
+    }
+}
+
+/* =========================================================
+   v1.2.2 C10 - SIDEBAR SUPERIOR + LIQUID GLASS MOVIL
+   ========================================================= */
+
+/* En escritorio ancho, Temas y Archivos comparten una columna lateral
+   independiente. Asi el panel de archivos queda inmediatamente debajo
+   de Temas y no depende de la altura de las tarjetas de trabajos. */
+@media (min-width: 901px) {
+    .unidad-contenido > .pw-unidad-lateral {
+        grid-column: 1;
+        grid-row: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        align-self: start;
+        min-width: 0;
+    }
+
+    .unidad-contenido > .unidad-trabajos {
+        grid-column: 2;
+        grid-row: 1;
+        min-width: 0;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos {
+        min-width: 0;
+        margin: 0;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivos-toggle {
+        min-height: 68px;
+        padding: 13px 12px;
+        gap: 8px;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivos-cabecera-texto {
+        gap: 2px;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivos-cabecera-texto > strong {
+        font-size: 14px;
+        line-height: 1.25;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivos-etiqueta,
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivos-resumen {
+        font-size: 8px;
+        line-height: 1.35;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivos-contador {
+        display: none;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivos-chevron {
+        width: 28px;
+        height: 28px;
+        flex: 0 0 28px;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivos-desplegable {
+        max-height: min(62vh, 620px);
+        overflow: auto;
+        padding: 0 10px 12px;
+        overscroll-behavior: contain;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-arbol {
+        padding: 9px 7px;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-arbol-nivel {
+        margin-left: 3px;
+        padding-left: 8px;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivo {
+        grid-template-columns: max-content minmax(0, 1fr);
+        gap: 6px;
+        padding: 5px 4px;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivo-accion,
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-carpeta-contexto {
+        display: none;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivo-nombre {
+        font-size: 10px;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivo-etiqueta,
+    .pw-unidad-lateral > .pw-unidad-archivos .pw-unidad-archivos-nota {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 900px) {
+    .unidad-contenido > .pw-unidad-lateral {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        min-width: 0;
+    }
+
+    .pw-unidad-lateral > .pw-unidad-archivos {
+        order: -1;
+        margin: 0;
+    }
+}
+
+/* Liquid Glass movil vuelve a comportarse como vidrio real. Solo se reactiva
+   el blur en esta unica barra fija y en sus menus, no en tarjetas repetidas. */
+@media (max-width: 650px) {
+    html[data-estilo="liquid"] body .navegacion-hub {
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, .105),
+                rgba(var(--acento-rgb), .055) 46%,
+                rgba(255, 255, 255, .025) 78%
+            ),
+            rgba(7, 16, 24, .46) !important;
+        border-top-color: rgba(255, 255, 255, .42) !important;
+        border-left-color: rgba(255, 255, 255, .22) !important;
+        border-right-color: rgba(255, 255, 255, .10) !important;
+        border-bottom-color: rgba(var(--acento-rgb), .14) !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .22),
+            inset 0 -1px 0 rgba(var(--acento-rgb), .055),
+            0 16px 42px rgba(0, 0, 0, .34) !important;
+        backdrop-filter: blur(22px) saturate(155%) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(155%) !important;
+    }
+
+    html[data-estilo="liquid"] body .navegacion-hub::before {
+        background:
+            radial-gradient(
+                120% 190% at 5% -65%,
+                rgba(255, 255, 255, .34),
+                transparent 48%
+            ),
+            radial-gradient(
+                90% 150% at 95% 120%,
+                rgba(var(--acento-rgb), .14),
+                transparent 58%
+            ),
+            linear-gradient(
+                110deg,
+                rgba(255, 255, 255, .10),
+                transparent 28%,
+                rgba(255, 255, 255, .025) 64%,
+                rgba(var(--acento-rgb), .06)
+            ) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+
+    html[data-estilo="liquid"] body .nav-desplegable-menu {
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, .095),
+                rgba(var(--acento-rgb), .04) 54%,
+                rgba(255, 255, 255, .025)
+            ),
+            rgba(8, 17, 25, .58) !important;
+        border-top-color: rgba(255, 255, 255, .34) !important;
+        border-left-color: rgba(255, 255, 255, .18) !important;
+        border-right-color: rgba(255, 255, 255, .08) !important;
+        border-bottom-color: rgba(var(--acento-rgb), .11) !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .18),
+            0 18px 46px rgba(0, 0, 0, .38) !important;
+        backdrop-filter: blur(24px) saturate(150%) !important;
+        -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+    }
+}

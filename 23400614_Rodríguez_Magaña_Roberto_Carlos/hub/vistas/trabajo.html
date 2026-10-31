@@ -791,7 +791,7 @@
         (() => {
             "use strict";
 
-            const VERSION = "1.2.2-c2";
+            const VERSION = "1.2.2";
             const REPOSITORIO = "RobDev512/PW-AD2026";
             const RAMA = "main";
             const RAIZ_ALUMNO = "23400614_Rodríguez_Magaña_Roberto_Carlos";
@@ -2102,7 +2102,7 @@
 
             function detectarProyecto(ruta) {
                 const rutaAlumno = extraerRutaAlumno(ruta);
-                const coincidencia = rutaAlumno.match(/^U([23])\/([^/]+)\/(.+)$/i);
+                const coincidencia = rutaAlumno.match(/^U([123])\/([^/]+)\/(.+)$/i);
                 if (!coincidencia) return null;
                 return {
                     unidad: Number(coincidencia[1]),

@@ -1,9 +1,9 @@
 /*
     =========================================================
-    PW HUB v1.2.2-c2 - PROYECTOS POR CARPETAS
+    PW HUB v1.2.2 - PROYECTOS POR CARPETAS
     =========================================================
 
-    Mantiene las actividades de U2 y U3 agrupadas como proyectos y
+    Mantiene las actividades de U1, U2 y U3 agrupadas como proyectos y
     permite explorar sus recursos sin convertir cada archivo interno
     en un trabajo independiente.
 */
@@ -11,7 +11,7 @@
 (() => {
     "use strict";
 
-    const VERSION = "1.2.2-c2";
+    const VERSION = "1.2.2";
     const REPOSITORIO = "RobDev512/PW-AD2026";
     const RAMA = "main";
     const RAIZ_ALUMNO = "23400614_Rodríguez_Magaña_Roberto_Carlos";
@@ -28,6 +28,11 @@
     let tokenProyecto = 0;
 
     const FALLBACKS = {
+        "U1/catalogo-peliculas/": [
+            "README.md",
+            "ciencia-ficcion.txt",
+            "comedia.txt"
+        ],
         "U2/U2 Act 1 - Ejercicio1/": [
             "Ejercicio1 - U2 Act 1.html",
             "pan-frances.png"
@@ -63,6 +68,41 @@
             "img/publicaciones/publicacion-07.png",
             "img/publicaciones/publicacion-08.png",
             "img/publicaciones/publicacion-09.png"
+        ],
+        "U3/U3. A7 - Netflix/": [
+            "Netflix - U3A7.html",
+            "css/styles.css",
+            "img/hero-background.jpg",
+            "img/netflix-logo.png",
+            "img/netflix-logo2.png"
+        ],
+        "U3/U3. A8 - Google/": [
+            "Google - U3A8.html",
+            "css/styles.css",
+            "img/Google_icon.png"
+        ],
+        "U3/U3. A9 - Nexo/": [
+            "Nexo - U3A9.html",
+            "css/styles.css",
+            "img/LogoIttepic.png",
+            "img/background.jpg",
+            "img/logoNexo.png",
+            "img/logosTec.png",
+            "svg/Contraseña.svg",
+            "svg/Correo.svg",
+            "svg/Ingresar.svg"
+        ],
+        "U3/U3. A10 - Netflix 2/": [
+            "Netflix2 - U3A10.html",
+            "css/styles.css",
+            "img/Pelicula1.png",
+            "img/Pelicula2.png",
+            "img/Pelicula3.png",
+            "img/Pelicula4.png",
+            "img/Pelicula5.png",
+            "img/Pelicula6.png",
+            "img/netflix-logo.png",
+            "img/netflix-logo2.png"
         ]
     };
 
@@ -145,7 +185,7 @@
         if (!trabajo?.ruta) return null;
 
         const ruta = normalizarRutaRelativa(trabajo.ruta);
-        const coincidencia = ruta.match(/^U([23])\/(.+)\/([^/]+)$/i);
+        const coincidencia = ruta.match(/^U([123])\/(.+)\/([^/]+)$/i);
         if (!coincidencia) return null;
 
         const unidad = Number(coincidencia[1]);
@@ -1753,6 +1793,387 @@
     function decorarTarjetasProyecto() {
         decorarTarjetasExplorador();
         decorarTarjetasUnidad();
+        decorarArchivosUnidad();
+    }
+
+
+    function decorarArchivosUnidad() {
+        let unidades = [];
+
+        try {
+            if (
+                typeof datosHub !== "undefined" &&
+                Array.isArray(datosHub?.unidades)
+            ) {
+                unidades = datosHub.unidades;
+            }
+        } catch {
+            unidades = [];
+        }
+
+        unidades.forEach((unidadDatos) => {
+            const archivos = Array.isArray(unidadDatos.archivosUnidad)
+                ? unidadDatos.archivosUnidad
+                : [];
+            const debeMostrar =
+                archivos.length > 0 ||
+                unidadDatos.archivosUnidadAutomaticos === true;
+
+            if (!debeMostrar) return;
+
+            const unidad = document.getElementById(`unidad${unidadDatos.numero}`);
+            if (
+                !unidad ||
+                unidad.querySelector("[data-pw-archivos-unidad]")
+            ) {
+                return;
+            }
+
+            const contenido = unidad.querySelector(".unidad-contenido");
+            if (!contenido) return;
+
+            const panel = crearPanelArchivosUnidad(unidadDatos, archivos);
+            const temas = contenido.querySelector(".unidad-temas");
+
+            if (temas) {
+                const lateral = document.createElement("div");
+                lateral.className = "pw-unidad-lateral";
+
+                temas.insertAdjacentElement("beforebegin", lateral);
+                lateral.appendChild(temas);
+                lateral.appendChild(panel);
+            } else {
+                contenido.insertBefore(panel, contenido.firstChild);
+            }
+
+            configurarToggleArchivosUnidad(panel);
+
+            if (
+                archivos.length === 0 &&
+                unidadDatos.archivosUnidadAutomaticos === true
+            ) {
+                actualizarArchivosUnidadAutomaticos(unidadDatos, panel);
+            }
+        });
+    }
+
+    function crearPanelArchivosUnidad(unidadDatos, archivos) {
+        const lista = Array.isArray(archivos) ? archivos : [];
+        const totalArchivos = contarArchivosUnidad(lista);
+        const sinArchivos = totalArchivos === 0;
+        const actividadesClase = contarCategoriaArchivosUnidad(
+            lista,
+            "actividad-clase"
+        );
+        const resumen = sinArchivos
+            ? `Se habilitará automáticamente cuando existan archivos en U${unidadDatos.numero}.`
+            : actividadesClase
+                ? `${actividadesClase} actividades en clase · ${totalArchivos} archivos`
+                : `${totalArchivos} archivos`;
+        const idContenido = `pw-u${unidadDatos.numero}-archivos-contenido`;
+        const nota = unidadDatos.numero === 1 && !sinArchivos
+            ? `
+                <p class="pw-unidad-archivos-nota">
+                    Los archivos test.txt, test2.txt y test3.txt corresponden a actividades realizadas en clase.
+                    Perfil personal, Comandos de Git y Catálogo de películas se mantienen como los tres trabajos principales de U1.
+                </p>
+            `
+            : "";
+        const panel = document.createElement("section");
+
+        panel.className = `pw-unidad-archivos${sinArchivos ? " sin-archivos" : ""}`;
+        panel.dataset.pwArchivosUnidad = "1";
+        panel.dataset.pwUnidad = String(unidadDatos.numero);
+        panel.innerHTML = `
+            <button
+                type="button"
+                class="pw-unidad-archivos-toggle"
+                aria-expanded="false"
+                ${sinArchivos ? 'aria-disabled="true" disabled' : `aria-controls="${idContenido}"`}
+                data-pw-toggle-archivos-unidad
+            >
+                <span class="pw-unidad-archivos-cabecera-texto">
+                    <span class="pw-unidad-archivos-etiqueta">
+                        ${sinArchivos ? "Estructura preparada" : "Estructura real"} de U${unidadDatos.numero}
+                    </span>
+                    <strong>Archivos de la unidad</strong>
+                    <span class="pw-unidad-archivos-resumen">${resumen}</span>
+                </span>
+
+                <span class="pw-unidad-archivos-cabecera-meta">
+                    <span class="pw-unidad-archivos-contador">
+                        ${sinArchivos ? "Sin archivos" : `${totalArchivos} archivos`}
+                    </span>
+                    <span class="pw-unidad-archivos-chevron" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M7 10l5 5 5-5"></path>
+                        </svg>
+                    </span>
+                </span>
+            </button>
+
+            ${sinArchivos ? "" : `
+                <div
+                    id="${idContenido}"
+                    class="pw-unidad-archivos-desplegable"
+                    data-pw-archivos-contenido
+                    hidden
+                >
+                    <div
+                        class="pw-unidad-arbol"
+                        role="tree"
+                        aria-label="Archivos de la Unidad ${unidadDatos.numero}"
+                    >
+                        <div class="pw-unidad-carpeta-raiz">
+                            <span class="pw-unidad-carpeta-raiz-marca" aria-hidden="true"></span>
+                            <strong>U${unidadDatos.numero}</strong>
+                        </div>
+
+                        <div class="pw-unidad-arbol-nivel">
+                            ${renderizarNodosUnidad(lista, true)}
+                        </div>
+                    </div>
+                    ${nota}
+                </div>
+            `}
+        `;
+
+        return panel;
+    }
+
+    function configurarToggleArchivosUnidad(panel) {
+        const toggle = panel?.querySelector("[data-pw-toggle-archivos-unidad]");
+        const desplegable = panel?.querySelector("[data-pw-archivos-contenido]");
+
+        if (!toggle || !desplegable || toggle.disabled) return;
+
+        toggle.addEventListener("click", () => {
+            const abierto = toggle.getAttribute("aria-expanded") === "true";
+            toggle.setAttribute("aria-expanded", String(!abierto));
+            desplegable.hidden = abierto;
+            panel.classList.toggle("abierto", !abierto);
+        });
+    }
+
+    async function actualizarArchivosUnidadAutomaticos(unidadDatos, panelActual) {
+        try {
+            const archivos = await consultarArchivosUnidadGitHub(unidadDatos.numero);
+            if (!archivos.length || !panelActual?.isConnected) return;
+
+            unidadDatos.archivosUnidad = archivos;
+            const panelNuevo = crearPanelArchivosUnidad(unidadDatos, archivos);
+            panelActual.replaceWith(panelNuevo);
+            configurarToggleArchivosUnidad(panelNuevo);
+        } catch (error) {
+            console.info(
+                `PW Hub: U${unidadDatos.numero} aún no tiene archivos disponibles o no fue posible consultar GitHub.`,
+                error
+            );
+        }
+    }
+
+    async function consultarArchivosUnidadGitHub(numeroUnidad) {
+        const datos = await obtenerArbolGitHub();
+        const prefijo = `${RAIZ_ALUMNO}/U${numeroUnidad}/`;
+        const rutas = datos.tree
+            .filter(
+                (elemento) =>
+                    elemento?.type === "blob" &&
+                    typeof elemento.path === "string" &&
+                    elemento.path.startsWith(prefijo)
+            )
+            .map((elemento) => elemento.path.slice(prefijo.length))
+            .filter(
+                (ruta) =>
+                    ruta &&
+                    !ruta.split("/").some((segmento) => segmento.startsWith("."))
+            );
+
+        return construirArbolArchivosUnidad(rutas, numeroUnidad);
+    }
+
+    function construirArbolArchivosUnidad(rutas, numeroUnidad) {
+        const raiz = [];
+        const ordenadas = [...rutas].sort((a, b) =>
+            a.localeCompare(b, "es", { numeric: true, sensitivity: "base" })
+        );
+
+        ordenadas.forEach((rutaRelativa) => {
+            const partes = rutaRelativa.split("/").filter(Boolean);
+            if (!partes.length) return;
+
+            let nivel = raiz;
+
+            partes.forEach((parte, indice) => {
+                const esArchivo = indice === partes.length - 1;
+
+                if (esArchivo) {
+                    nivel.push({
+                        nombre: parte,
+                        ruta: `../U${numeroUnidad}/${rutaRelativa}`,
+                        tipo: obtenerTipoDesdeRuta(rutaRelativa)
+                    });
+                    return;
+                }
+
+                let carpeta = nivel.find(
+                    (nodo) => nodo?.carpeta === parte && Array.isArray(nodo.archivos)
+                );
+
+                if (!carpeta) {
+                    carpeta = { carpeta: parte, archivos: [] };
+                    nivel.push(carpeta);
+                }
+
+                nivel = carpeta.archivos;
+            });
+        });
+
+        return raiz;
+    }
+
+    function contarArchivosUnidad(nodos) {
+        return (nodos || []).reduce((total, nodo) => {
+            if (Array.isArray(nodo?.archivos)) {
+                return total + contarArchivosUnidad(nodo.archivos);
+            }
+            return total + (nodo?.ruta ? 1 : 0);
+        }, 0);
+    }
+
+    function contarCategoriaArchivosUnidad(nodos, categoria) {
+        return (nodos || []).reduce((total, nodo) => {
+            const propio = nodo?.categoria === categoria && nodo?.ruta ? 1 : 0;
+            const hijos = Array.isArray(nodo?.archivos)
+                ? contarCategoriaArchivosUnidad(nodo.archivos, categoria)
+                : 0;
+            return total + propio + hijos;
+        }, 0);
+    }
+
+    function renderizarNodosUnidad(nodos, esRaiz = false) {
+        const lista = Array.isArray(nodos) ? nodos : [];
+        if (!lista.length) return "";
+
+        if (!esRaiz) {
+            return lista.map(renderizarNodoUnidad).join("");
+        }
+
+        const categorias = [
+            ["documentacion", "Documentación", "pw-unidad-grupo"],
+            ["actividad-clase", "Actividades en clase", "pw-unidad-grupo pw-unidad-grupo-clase"]
+        ];
+        const usados = new Set();
+        let html = "";
+
+        categorias.forEach(([categoria, titulo, clase]) => {
+            const elementos = lista.filter(
+                (nodo) => nodo?.categoria === categoria && !nodo?.carpeta
+            );
+            if (!elementos.length) return;
+
+            elementos.forEach((nodo) => usados.add(nodo));
+            html += `
+                <div class="${clase}">
+                    <p class="pw-unidad-grupo-titulo">${titulo}</p>
+                    ${elementos.map(renderizarNodoUnidad).join("")}
+                </div>
+            `;
+        });
+
+        html += lista
+            .filter((nodo) => !usados.has(nodo))
+            .map(renderizarNodoUnidad)
+            .join("");
+
+        return html;
+    }
+
+    function renderizarNodoUnidad(nodo) {
+        if (!nodo) return "";
+
+        if (nodo.carpeta && Array.isArray(nodo.archivos)) {
+            const contexto = nodo.etiqueta
+                ? `<span class="pw-unidad-carpeta-contexto">${escaparHtml(nodo.etiqueta)}</span>`
+                : "";
+
+            return `
+                <details class="pw-unidad-carpeta">
+                    <summary class="pw-unidad-carpeta-nombre">
+                        <span class="pw-unidad-carpeta-chevron" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" focusable="false">
+                                <path d="M9 7l5 5-5 5"></path>
+                            </svg>
+                        </span>
+                        <strong>${escaparHtml(nodo.carpeta)}</strong>
+                        ${contexto}
+                    </summary>
+                    <div class="pw-unidad-arbol-nivel pw-unidad-arbol-subnivel">
+                        ${renderizarNodosUnidad(nodo.archivos)}
+                    </div>
+                </details>
+            `;
+        }
+
+        if (nodo.ruta) {
+            return renderizarArchivoUnidad(nodo);
+        }
+
+        return "";
+    }
+
+    function renderizarArchivoUnidad(archivo) {
+        const tipoReal = String(
+            archivo.tipo || obtenerTipoDesdeRuta(archivo.ruta) || "archivo"
+        ).toLowerCase();
+        const tipos = {
+            markdown: "MD",
+            md: "MD",
+            txt: "TXT",
+            html: "HTML",
+            css: "CSS",
+            js: "JS",
+            json: "JSON",
+            drawio: "DRAWIO",
+            png: "PNG",
+            jpg: "JPG",
+            jpeg: "JPG",
+            gif: "GIF",
+            webp: "WEBP",
+            svg: "SVG",
+            pdf: "PDF",
+            xml: "XML"
+        };
+        const tipo = tipos[tipoReal] || tipoReal.toUpperCase().slice(0, 8);
+        const href = generarRutaVisorArchivoUnidad({
+            ...archivo,
+            tipo: tipoReal
+        });
+        const etiqueta = archivo.etiqueta
+            ? `<span class="pw-unidad-archivo-etiqueta">${escaparHtml(archivo.etiqueta)}</span>`
+            : "";
+
+        return `
+            <a class="pw-unidad-archivo" href="${href}" role="treeitem">
+                <span class="pw-unidad-archivo-tipo">${tipo}</span>
+                <span class="pw-unidad-archivo-datos">
+                    <span class="pw-unidad-archivo-nombre">${escaparHtml(archivo.nombre)}</span>
+                    ${etiqueta}
+                </span>
+                <span class="pw-unidad-archivo-accion">Abrir</span>
+            </a>
+        `;
+    }
+
+    function generarRutaVisorArchivoUnidad(archivo) {
+        const rutaAbsoluta = new URL(archivo.ruta, window.location.href).href;
+        const parametros = new URLSearchParams({
+            archivo: rutaAbsoluta,
+            tipo: archivo.tipo,
+            titulo: archivo.nombre
+        });
+
+        return `vistas/trabajo.html?${parametros.toString()}`;
     }
 
     function decorarTarjetasExplorador() {

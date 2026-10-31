@@ -4,7 +4,7 @@ PW Hub es el portafolio académico de **Programación Web** de Roberto Carlos Ro
 
 ## Estado actual
 
-**Versión publicada actual: v1.2.1 - Proyectos por carpetas y visor de recursos**
+**Versión publicada actual: v1.2.2 - Estabilidad móvil y organización académica**
 
 La etapa de construcción inicial ya terminó. El proyecto dejó de organizar su evolución futura mediante fases y ahora utiliza un esquema de **actualizaciones versionadas**.
 
@@ -40,7 +40,7 @@ Actualmente:
 
 - U1: completada;
 - U2: completada;
-- U3: actual;
+- U3: completada;
 - U4: pendiente;
 - U5: pendiente.
 
@@ -67,15 +67,17 @@ PW Hub incluye:
 - tema oscuro integrado para la vista renderizada de archivos `.md`;
 - visor completo en `vistas/trabajo.html`;
 - modos **Diseño** y **Código**;
-- explorador de recursos para actividades organizadas por carpeta en U2 y U3;
+- explorador de recursos para proyectos organizados por carpeta y árboles de archivos por unidad;
 - vista separada de HTML renderizado, código fuente, CSS, imágenes y recursos de diseño;
 - vista completa de proyectos desde `Abrir trabajo`, conservando acceso a sus recursos internos;
 - visor Draw.io con diagrama interpretado desde el XML, PNG exportado y XML original;
 - zoom y paneo nativos de Draw.io mediante `viewer.graph`/mxGraph;
 - controles de zoom, ajuste, arrastre y pantalla completa para imágenes en la vista previa y el visor completo;
+- gesto de pellizco con dos dedos para imágenes y Draw.io en pantallas táctiles, manteniendo el zoom dentro del visor;
 - navegación agrupada y responsive;
 - búsqueda global sensible a la configuración visible: solo indexa resultados habilitados por los interruptores del usuario;
 - barra móvil compacta;
+- materiales visuales preservados también en la navegación móvil mediante variantes ligeras sin blur pesado;
 - Configuración flotante;
 - perfiles de visualización;
 - materiales y paletas configurables;
@@ -225,7 +227,7 @@ Los estados reconocidos son:
 - Planeada;
 - Visión futura.
 
-El roadmap conserva `v1.0.0` como base histórica, `v1.1.0`, `v1.1.1` y `v1.2.0` como versiones publicadas anteriores y marca `v1.2.1` como versión publicada actual. Desde `v1.3.0` continúan las actualizaciones menores planeadas.
+El roadmap conserva `v1.0.0` como base histórica y las versiones `v1.1.0`, `v1.1.1`, `v1.2.0` y `v1.2.1` como publicaciones anteriores. `v1.2.2` es la versión publicada actual. Desde `v1.3.0` continúan las actualizaciones menores planeadas.
 
 ---
 
@@ -237,6 +239,7 @@ PW Hub utiliza un versionado simple inspirado en SemVer:
 v1.0.0  Base estable
 v1.1.0  Actualización funcional
 v1.1.1  Corrección puntual de v1.1.0
+v1.2.2  Hotfix móvil sobre v1.2.1
 v1.9.0  Última actualización menor de la serie v1
 v2.0.0  Siguiente salto mayor
 ```
@@ -409,3 +412,28 @@ El explorador permite:
 Los archivos `.drawio` se renderizan mediante `GraphViewer.createViewerForElement()` y conservan acceso a `viewer.graph`. Los controles del Hub utilizan `zoomIn()`, `zoomOut()`, `fit()` y la traslación nativa de mxGraph; no se aplica `transform: scale()` sobre el diagrama completo. El cierre de C9 también elimina la toolbar vacía de GraphViewer, evita que Configuración quede encima del modal y añade zoom interactivo a imágenes.
 
 La publicación final utiliza `pw-hub-offline-v51`.
+
+---
+
+## v1.2.2 publicada: estabilidad móvil y organización académica
+
+v1.2.2 cerró en C11. El parche comenzó como una corrección móvil del visor de proyectos y terminó consolidando también el catálogo académico y la representación responsive de los archivos de cada unidad después del cierre de U3.
+
+La versión incorpora:
+
+- distribución móvil estable del toolbar y del workspace completo;
+- apilado correcto entre explorador de archivos y recurso seleccionado;
+- pellizco con dos dedos para imágenes y Draw.io mediante mxGraph nativo;
+- continuidad entre zoom táctil, arrastre con un dedo y controles manuales;
+- navegación móvil sensible al material elegido; Liquid Glass recupera transparencia y `backdrop-filter` localizado únicamente en la barra y sus menús, sin aplicarlo a las superficies repetidas del contenido;
+- nombres consistentes para las diez actividades de U3 y estado académico de U3 como completada;
+- títulos del curso ajustados a U1 Fundamentos Web, Git y GitHub, U2 HTML y U3 CSS;
+- U4 JavaScript y JSON y U5 Integración con base de datos como referencias provisionales pendientes;
+- árboles plegables de archivos para U1–U3;
+- actividades de clase de U1 diferenciadas de los entregables principales;
+- paneles de archivos de U4/U5 visibles en estado vacío y preparados para habilitarse automáticamente al detectar contenido en GitHub;
+- colocación de **Archivos de la unidad** bajo **Temas de la unidad** en la columna lateral de escritorio, regresando al flujo vertical en anchos reducidos;
+- scroll interno para árboles extensos y chips de extensión indivisibles para conservar etiquetas como `HTML`, `PNG` o `JSON` en una sola línea;
+- chevrons SVG centrados y estructura plegable para carpetas internas.
+
+La publicación final utiliza `pw-hub-offline-v52` para invalidar la caché de v1.2.1 y redistribuir los recursos actualizados.

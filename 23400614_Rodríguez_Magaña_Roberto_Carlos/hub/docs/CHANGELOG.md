@@ -8,9 +8,52 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 
 ---
 
-# v1.2.1 - Proyectos por carpetas y visor de recursos
+# v1.2.2 - Estabilidad móvil y organización académica
 
 **Estado:** Publicada · actual
+**Fecha de publicación:** 2026-10-30
+**Tipo:** Parche de estabilidad, interacción y mantenimiento académico
+**Cierre:** Candidato 11
+
+## Implementado
+
+- corrección del toolbar de modos en la vista previa móvil, evitando crecimiento vertical desproporcionado;
+- corrección responsive de `Abrir trabajo`, apilando explorador y recurso en anchos reducidos sin alterar escritorio;
+- gesto de pellizco con dos dedos para PNG, JPG, JPEG, GIF, WEBP y SVG en la vista previa y en `vistas/trabajo.html`;
+- zoom táctil y paneo de Draw.io mediante la escala y traslación nativas de mxGraph;
+- conservación de controles `−`, `+`, `Ajustar`, arrastre y pantalla completa;
+- recuperación de la identidad de los materiales en navegación móvil; Liquid Glass vuelve a utilizar transparencia, reflejo y blur/saturación localizados en la barra y sus menús, sin reactivar composición pesada en las superficies repetidas;
+- nombres académicos uniformes para las actividades de U3 y registro base de sus 10 actividades;
+- actualización de títulos del curso a **U1 Fundamentos Web, Git y GitHub**, **U2 HTML** y **U3 CSS**;
+- U3 marcada como completada tras finalizar sus 10 actividades;
+- títulos provisionales para **U4 JavaScript y JSON** y **U5 Integración con base de datos**, ambas aún pendientes;
+- panel plegable **Archivos de la unidad** para U1, U2 y U3 con árbol real de archivos y carpetas;
+- reconocimiento de `test.txt`, `test2.txt` y `test3.txt` de U1 como actividades realizadas en clase sin convertirlas en entregables principales;
+- chevrons SVG centrados para unidades y carpetas internas;
+- paneles de archivos visibles pero deshabilitados en U4/U5 mientras están vacías;
+- reubicación de **Archivos de la unidad** a la columna lateral bajo **Temas de la unidad** en escritorio ancho, manteniendo el orden vertical responsive en ventanas estrechas;
+- scroll interno del árbol de archivos en unidades extensas para evitar alargar innecesariamente toda la tarjeta;
+- etiquetas de extensión (`HTML`, `CSS`, `PNG`, `JPG`, `JSON`, etc.) tratadas como chips indivisibles para impedir saltos de línea;
+- habilitación automática del árbol de U4/U5 cuando la sincronización detecte archivos reales en GitHub;
+- inventarios y fallbacks ampliados para proyectos de U3 A7–A10;
+- versión interna consolidada como `1.2.2`;
+- Service Worker actualizado a `pw-hub-offline-v52` para invalidar la caché anterior.
+
+## Alcance
+
+El parche mantiene intactos los archivos académicos publicados y concentra los cambios en la presentación del Hub, su catálogo base, la exploración de recursos y la experiencia responsive/táctil. La eliminación de archivos de `_Borradores` se realiza como limpieza intencional del repositorio y no forma parte de la lógica del Hub.
+
+## Validación y publicación
+
+La versión fue validada iterativamente hasta C11 en escritorio y teléfono. C8 consolidó el catálogo académico y los paneles automáticos de U4/U5; C9 recuperó el carácter real de Liquid Glass en navegación móvil y llevó el árbol de archivos a la columna lateral de escritorio; C10 alineó esa columna desde la parte superior; y C11 cerró la presentación de los chips de extensión sin saltos de línea. También se comprobaron el responsive del visor de proyectos, el pellizco y paneo de imágenes/Draw.io, la organización de las 10 actividades de U3 y los árboles plegables de U1–U3.
+
+Con este cierre, **v1.2.2 sustituye a v1.2.1 como versión publicada actual** y deja la base lista para continuar con v1.3.0.
+
+---
+
+# v1.2.1 - Proyectos por carpetas y visor de recursos
+
+**Estado:** Publicada
 **Fecha de publicación:** 2026-10-21
 **Tipo:** Parche funcional
 **Cierre:** Candidato 9

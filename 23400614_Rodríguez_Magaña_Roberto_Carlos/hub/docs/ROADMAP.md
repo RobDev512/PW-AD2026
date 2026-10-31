@@ -2,7 +2,7 @@
 
 ## Estado general
 
-**Versión publicada actual: v1.2.1 - Proyectos por carpetas y visor de recursos**
+**Versión publicada actual: v1.2.2 - Estabilidad móvil y organización académica**
 
 PW Hub terminó su etapa de construcción inicial. A partir de este punto el proyecto ya no utiliza fases: cualquier mejora futura se registra como una **actualización versionada**.
 
@@ -147,7 +147,7 @@ PW Hub dispone de una experiencia unificada para localizar contenido, ejecutar a
 
 # v1.2.1 - Proyectos por carpetas y visor de recursos
 
-**Estado:** Publicada · actual
+**Estado:** Publicada
 
 ## Objetivo
 
@@ -184,6 +184,43 @@ C9 cerró la validación funcional. Se comprobó el explorador con el proyecto U
 ## Límite del parche
 
 Este visor no sustituye la evolución planeada de v1.3.0. La siguiente versión menor conserva el objetivo de detectar proyectos de forma más inteligente, reconocer puntos de entrada y metadatos y conectarlos de manera más profunda con GitHub.
+
+---
+
+# v1.2.2 - Estabilidad móvil y organización académica
+
+**Estado:** Publicada · actual
+
+## Objetivo
+
+Cerrar los problemas responsive y táctiles detectados tras v1.2.1 y alinear el Hub con el estado académico real al terminar U3.
+
+## Implementado
+
+- [x] corregir la vista previa móvil y el layout de `Abrir trabajo`;
+- [x] permitir pellizco táctil en imágenes y Draw.io;
+- [x] conservar controles de zoom, ajuste, arrastre y fullscreen;
+- [x] recuperar la identidad de materiales en navegación móvil sin blur pesado;
+- [x] uniformar nombres de actividades y registrar las 10 actividades de U3;
+- [x] marcar U3 como completada;
+- [x] actualizar títulos de U1–U3 según el desarrollo real del curso;
+- [x] dejar U4 como **JavaScript y JSON** y U5 como **Integración con base de datos** con carácter provisional;
+- [x] mostrar árboles plegables de archivos en U1–U3;
+- [x] distinguir actividades de clase y entregables principales en U1;
+- [x] preparar U4/U5 con paneles deshabilitados que se habilitan automáticamente al detectar archivos;
+- [x] ubicar los archivos de la unidad en la columna lateral de escritorio y conservar el flujo vertical en anchos reducidos;
+- [x] recuperar Liquid Glass real en la navegación móvil mediante transparencia y blur localizado;
+- [x] impedir saltos de línea dentro de las etiquetas de extensión del árbol de archivos;
+- [x] sustituir caracteres de flecha por chevrons SVG centrados;
+- [x] publicar el cierre con Service Worker `pw-hub-offline-v52`.
+
+## Validación
+
+C11 cerró la validación funcional. Se comprobó el Hub en escritorio y teléfono, el zoom táctil, los materiales móviles, los nombres y estados académicos, los árboles de U1–U3, los paneles vacíos preparados para U4/U5, la ubicación lateral del árbol en escritorio y la presentación indivisible de las etiquetas de extensión.
+
+## Resultado
+
+PW Hub queda alineado con el cierre de U3, conserva una experiencia móvil estable y puede continuar creciendo en U4/U5 sin tener que rediseñar la representación de archivos por unidad.
 
 ---
 
