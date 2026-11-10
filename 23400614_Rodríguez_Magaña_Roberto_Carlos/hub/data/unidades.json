@@ -640,6 +640,12 @@
           "ruta": "../U4/U4. A2. Ejercicios.js",
           "tipo": "js",
           "descripcion": "Tres ejercicios con números aleatorios, tablas de multiplicar y conteo de números pares e impares utilizando consola y prompt()."
+        },
+        {
+          "nombre": "Actividad 3 - Ejercicios de JavaScript",
+          "ruta": "../U4/U4. A3. Ejercicios.js",
+          "tipo": "js",
+          "descripcion": "Actividad de la Unidad 4 con dos ejercicios de JavaScript realizados en clase."
         }
       ],
       "archivosUnidad": [
@@ -672,6 +678,12 @@
           "ruta": "../U4/U4. A2. Ejercicios.js",
           "tipo": "js",
           "etiqueta": "Actividad 2"
+        },
+        {
+          "nombre": "U4. A3. Ejercicios.js",
+          "ruta": "../U4/U4. A3. Ejercicios.js",
+          "tipo": "js",
+          "etiqueta": "Actividad 3"
         },
         {
           "nombre": "U4. Ejemplos.js",

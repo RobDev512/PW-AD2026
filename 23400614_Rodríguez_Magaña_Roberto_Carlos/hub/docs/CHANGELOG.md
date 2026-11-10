@@ -8,6 +8,13 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 
 ---
 
+## Mantenimiento académico U4 C10 (2026-11-10, sin cambio de versión)
+
+- Registro de `U4. A3. Ejercicios.js` como **Actividad 3** en el catálogo y el árbol de archivos de U4.
+- La Actividad 3 comprende **dos ejercicios de JavaScript**. Su descripción es intencionalmente general hasta revisar el código original.
+- Se conserva el criterio de una tarjeta por actividad y se mantiene `U4. Ejemplos.js` como material complementario, no como trabajo independiente.
+- El visor JS, el PPTX mediante OOXML, U1-U3 y la versión técnica **v1.2.2** no se modifican. La caché técnica se renueva a `v61`.
+
 ## Mantenimiento académico posterior a v1.2.2 (sin nueva versión)
 
 **Fecha del mantenimiento:** 2026-11-09

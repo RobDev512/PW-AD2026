@@ -22,10 +22,10 @@ Este directorio reúne las actividades, ejercicios y proyectos realizados durant
 | U1 | Fundamentos Web, Git y GitHub | ✓ Completada |
 | U2 | HTML | ✓ Completada |
 | U3 | CSS | ✓ Completada · 10 actividades |
-| U4 | Programación del lado del cliente | ▶ Actual · 2 actividades y ejemplos JavaScript |
+| U4 | Programación del lado del cliente | ▶ Actual · 3 actividades y ejemplos JavaScript |
 | U5 | Programación del lado del servidor | ⏳ Pendiente · sin actividades |
 
-El profesor confirmó los títulos de U4 y U5. U4 comenzó con una tarea de conceptos JavaScript (presentación PowerPoint, PDF y PNG), ejercicios en JavaScript y ejemplos de clase; U5 aún no tiene actividades.
+El profesor confirmó los títulos de U4 y U5. U4 comenzó con una tarea de conceptos JavaScript (presentación PowerPoint, PDF y PNG), las actividades 2 y 3 de ejercicios JavaScript y ejemplos de clase; U5 aún no tiene actividades.
 
 ---
 
@@ -62,7 +62,7 @@ v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles p
 └── README.md
 ```
 
-U4 contiene `U4/U4. A1. Tarea 1/` con un PDF principal, una lámina PNG y un PowerPoint editable, además de `U4. A2. Ejercicios.js` y `U4. Ejemplos.js`. La carpeta U5 se incorporará cuando comience esa unidad.
+U4 contiene `U4/U4. A1. Tarea 1/` con un PDF principal, una lámina PNG y un PowerPoint editable, además de `U4. A2. Ejercicios.js`, `U4. A3. Ejercicios.js` (dos ejercicios) y `U4. Ejemplos.js`. La carpeta U5 se incorporará cuando comience esa unidad.
 
 ---
 
@@ -74,7 +74,7 @@ U3 terminó con diez actividades. PW Hub conserva nombres editoriales consistent
 
 ## Inicio de Unidad 4
 
-La Unidad 4 corresponde a **Programación del lado del cliente**. El catálogo distingue las dos actividades (A1 y A2) del archivo complementario `U4. Ejemplos.js`. Los `.js` se pueden consultar en modo código original o abrir en el laboratorio JS para **editar una copia temporal, ejecutarla, consultar la consola, proporcionar entradas de `prompt()` y restaurar el original**. Los cambios de prueba no modifican los archivos del repositorio.
+La Unidad 4 corresponde a **Programación del lado del cliente**. El catálogo distingue las tres actividades (A1, A2 y A3) del archivo complementario `U4. Ejemplos.js`. Los `.js` se pueden consultar en modo código original o abrir en el laboratorio JS para **editar una copia temporal, ejecutarla, consultar la consola, proporcionar entradas de `prompt()` y restaurar el original**. Los cambios de prueba no modifican los archivos del repositorio.
 
 ---
 

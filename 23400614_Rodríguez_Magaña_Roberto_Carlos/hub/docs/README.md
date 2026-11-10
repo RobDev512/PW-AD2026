@@ -46,7 +46,7 @@ Actualmente:
 
 El estado académico y el versionado de PW Hub son independientes.
 
-**Inicio de U4 (mantenimiento académico, sin nueva versión):** el profesor confirmó U4 como Programación del lado del cliente y U5 como Programación del lado del servidor. El catálogo registra A1 (PDF, PNG y PowerPoint en su carpeta; PDF y diapositivas PPTX tienen vistas independientes), A2 (ejercicios JavaScript) y `U4. Ejemplos.js` como material de clase, no como tercera actividad. El visor completo añade ejecución aislada para JavaScript de U4 con consola, entradas para `prompt()` y controles Ejecutar/Detener; no requiere cambios de versión de PW Hub. La Tarea 1 dispone de visor PPTX con lectura directa OOXML de sus 69 elementos y vistas PDF/PNG independientes; si el PPTX no es compatible, no se disfraza automáticamente con un PDF. U4 continúa descubriendo nuevos archivos de GitHub.
+**Inicio de U4 (mantenimiento académico, sin nueva versión):** el profesor confirmó U4 como Programación del lado del cliente y U5 como Programación del lado del servidor. El catálogo registra A1 (PDF, PNG y PowerPoint en su carpeta; PDF y diapositivas PPTX tienen vistas independientes), A2 (tres ejercicios JavaScript), A3 (dos ejercicios JavaScript) y `U4. Ejemplos.js` como material complementario de clase, no como actividad independiente. El visor completo añade ejecución aislada para JavaScript de U4 con consola, entradas para `prompt()` y controles Ejecutar/Detener; no requiere cambios de versión de PW Hub. La Tarea 1 dispone de visor PPTX con lectura directa OOXML de sus 69 elementos y vistas PDF/PNG independientes; si el PPTX no es compatible, no se disfraza automáticamente con un PDF. U4 continúa descubriendo nuevos archivos de GitHub.
 
 ---
 
@@ -449,3 +449,7 @@ El laboratorio JavaScript ofrece código editable temporal, consola, respuestas 
 **Laboratorio JS de U4 (C4, en validación):** `prompt()` abre una pregunta interactiva cuando el programa la solicita; la pregunta y el campo de respuesta permanecen visibles al pie de la consola, sin listas precargadas. El Worker espera la respuesta, con pausa del temporizador de cómputo mientras el usuario escribe. Todos los modos del visor mantienen su desplazamiento dentro del área de visualización de la pantalla. La adaptación de `prompt()` está orientada a ejercicios de consola sencillos; no equivale a un IDE ni al entorno completo de Node.js.
 
 **Mantenimiento U4 C7 (en validación):** el visor de PowerPoint intenta reconstruir las imágenes principales incorporadas en el propio PPTX cuando el motor local dibuja casi en blanco; si tampoco puede, ofrece el PDF/PNG como vista alternativa claramente identificada; conserva Vista Office cuando el PPTX sea público y renombra la acción de descarga. Cancelar un `prompt()` ahora detiene el ejercicio en ejecución, evitando reintentos continuos. No modifica el número de versión pública.
+
+### Actividad 3 de U4 (mantenimiento académico C10)
+
+`U4. A3. Ejercicios.js` se añade como tercera actividad principal de Programación del lado del cliente. Contiene dos ejercicios; los temas concretos quedan pendientes de revisión del código. Se mantiene PW Hub v1.2.2 y el visor de JavaScript existente.

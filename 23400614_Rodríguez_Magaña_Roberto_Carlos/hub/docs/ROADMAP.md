@@ -10,7 +10,7 @@ El historial completo de la construcción original y de los ajustes incorporados
 
 Este roadmap muestra la versión estable actual y la evolución técnica futura del Hub. El avance normal de U1 a U5 sigue perteneciendo al contenido académico de Programación Web y no crea nuevas versiones por sí solo.
 
-**Actualización académica posterior a v1.2.2:** U4 es la unidad actual, titulada Programación del lado del cliente (inicio con JavaScript); U5 se confirmó como Programación del lado del servidor y sigue pendiente. U4 incluye dos actividades (A1 ahora con PDF, PNG y PowerPoint en una carpeta, cada uno con su visor correspondiente; el PPTX se interpreta por OOXML y no mediante una vista PDF exportada; A2 en JavaScript) y un archivo de ejemplos. El visor de archivos permite ejecutar los `.js` de U4 en una consola aislada con entradas para `prompt()`, como mantenimiento funcional de la versión existente, sin adelantar v1.3.0.
+**Actualización académica posterior a v1.2.2:** U4 es la unidad actual, titulada Programación del lado del cliente (inicio con JavaScript); U5 se confirmó como Programación del lado del servidor y sigue pendiente. U4 incluye tres actividades (A1 con PDF, PNG y PowerPoint en una carpeta, cada uno con su visor correspondiente; el PPTX se interpreta por OOXML y no mediante una vista PDF exportada; A2 y A3 en JavaScript, con tres y dos ejercicios respectivamente) y un archivo complementario de ejemplos. El visor de archivos permite ejecutar los `.js` de U4 en una consola aislada con entradas para `prompt()`, como mantenimiento funcional de la versión existente, sin adelantar v1.3.0.
 
 El proyecto utiliza un versionado simple inspirado en SemVer:
 
