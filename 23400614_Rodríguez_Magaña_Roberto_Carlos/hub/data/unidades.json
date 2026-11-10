@@ -630,8 +630,8 @@
       "trabajos": [
         {
           "nombre": "Actividad 1 - Tarea 1",
-          "ruta": "../U4/U4. A1. Tarea 1/U4. A1. Tarea 1.PNG",
-          "tipo": "png",
+          "ruta": "../U4/U4. A1. Tarea 1/U4. A1. Tarea 1.pdf",
+          "tipo": "pdf",
           "descripcion": "Tarea 1 de JavaScript: material de conceptos fundamentales, con presentación PowerPoint, PDF y lámina PNG.",
           "miniatura": "../U4/U4. A1. Tarea 1/U4. A1. Tarea 1.PNG"
         },

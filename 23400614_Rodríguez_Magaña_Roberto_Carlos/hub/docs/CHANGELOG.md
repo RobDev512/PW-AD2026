@@ -54,7 +54,15 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 - El Service Worker pasa a `pw-hub-offline-v56` para el recurso nuevo, sin alterar el número de versión publicado (**v1.2.2**).
 - El laboratorio JavaScript C4 permanece intacto. La versión técnica sigue siendo **v1.2.2**.
 
-## Corrección C8 — lector de objetos del PPTX original (en validación)
+## Corrección de catálogo y sidebar U4 — mantenimiento C9 (2026-11-09)
+
+- La Tarea 1 utiliza el PDF como ruta de trabajo principal y mantiene el PNG como miniatura; los formatos PDF, PNG y PPTX siguen reunidos en el mismo proyecto.
+- Se evita que el sincronizador incorpore automáticamente el PDF como una tercera tarjeta, dado que ya coincide con el trabajo registrado manualmente.
+- El encabezado **Archivos de la unidad** de U4 reserva espacio para la flecha y oculta el contador redundante en el lateral, impidiendo saltos de línea dentro de palabras en ventanas medias.
+- No se eliminan archivos académicos, no se modifican los visores ni el ejecutor JS, y U1–U3 permanecen intactas.
+- El Hub conserva su versión publicada **v1.2.2**. Se actualiza solo la caché técnica a `pw-hub-offline-v60`.
+
+## Corrección C8 — lector de objetos del PPTX original (publicada)
 
 - Con el archivo original `U4. A1. Tarea 1.pptx` se confirmó que la presentación consta de **una diapositiva con 69 elementos**, no de una única imagen; por ello, la recuperación de imágenes dominantes de C7 no podía funcionar.
 - Se incorpora `hub/js/visor-pptx-ooxml.js`: interpreta directamente el archivo PowerPoint en el navegador y dibuja sus formas, cuadros de texto, colores, relaciones e imágenes, sin utilizar PDF ni PNG como sustitutos.
