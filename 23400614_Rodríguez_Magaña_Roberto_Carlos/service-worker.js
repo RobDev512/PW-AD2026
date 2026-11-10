@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v52";
+    "pw-hub-offline-v59";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;
@@ -72,6 +72,8 @@ const ARCHIVOS_SHELL = [
     "hub/js/trabajos.js",
     "hub/js/proyectos.js?v=1.2.1-c6",
     "hub/js/proyectos.js?v=1.2.2",
+    "hub/js/visor-pptx.js",
+    "hub/js/visor-pptx-ooxml.js",
 
     "hub/data/roadmap.json",
     "hub/data/unidades.json",

@@ -103,6 +103,11 @@
             "img/Pelicula6.png",
             "img/netflix-logo.png",
             "img/netflix-logo2.png"
+        ],
+        "U4/U4. A1. Tarea 1/": [
+            "U4. A1. Tarea 1.pdf",
+            "U4. A1. Tarea 1.PNG",
+            "U4. A1. Tarea 1.pptx"
         ]
     };
 
@@ -122,6 +127,11 @@
             if (esProyectoCarpeta(trabajo)) {
                 return mostrarProyecto(trabajo);
             }
+            if (esScriptU4(trabajo)) {
+                return mostrarVistaPreviaScriptU4(trabajo);
+            }
+            const abrirNormal = document.getElementById("trabajos-visor-abrir");
+            if (abrirNormal) abrirNormal.textContent = "Abrir trabajo";
 
             document
                 .getElementById("trabajos-visor")
@@ -170,6 +180,12 @@
             trabajo = null;
         }
 
+        if (esScriptU4(trabajo)) {
+            evento.preventDefault();
+            evento.stopImmediatePropagation();
+            mostrarVistaPreviaScriptU4(trabajo);
+            return;
+        }
         if (!esProyectoCarpeta(trabajo)) return;
 
         evento.preventDefault();
@@ -185,7 +201,7 @@
         if (!trabajo?.ruta) return null;
 
         const ruta = normalizarRutaRelativa(trabajo.ruta);
-        const coincidencia = ruta.match(/^U([123])\/(.+)\/([^/]+)$/i);
+        const coincidencia = ruta.match(/^U([1234])\/(.+)\/([^/]+)$/i);
         if (!coincidencia) return null;
 
         const unidad = Number(coincidencia[1]);
@@ -231,6 +247,8 @@
         visor.classList.add("pw-proyecto-modal-activo");
         meta.textContent = `U${info.unidad} · Proyecto por carpeta`;
         titulo.textContent = trabajo.nombre || info.nombre;
+        // El enlace pudo quedar renombrado por la vista previa anterior de JS.
+        abrir.textContent = "Abrir trabajo";
         abrir.href = generarRutaVisorRecurso({
             ruta: trabajo.ruta,
             tipo: trabajo.tipo || obtenerTipoDesdeRuta(trabajo.ruta),
@@ -454,10 +472,15 @@
             </div>
         `;
 
-        const principal =
-            recursos.find(
-                (recurso) => recurso.rutaAlumno === info.principal
-            ) || recursos[0];
+        // En la tarea de U4, el PNG es la ruta del catálogo para mantener
+        // la tarjeta visible antes del push; al explorar se abre primero el PDF.
+        const principal = (
+            info.unidad === 4 && info.carpeta === "U4. A1. Tarea 1"
+                ? recursos.find((recurso) => recurso.tipo === "pdf")
+                : null
+        ) || recursos.find(
+            (recurso) => recurso.rutaAlumno === info.principal
+        ) || recursos[0];
 
         contenido
             .querySelectorAll("[data-pw-recurso]")
@@ -621,6 +644,7 @@
         const superficie = contenido.querySelector("#pw-proyecto-superficie");
         if (!superficie) return;
 
+        if (typeof superficie.pwPptxCleanup === "function") superficie.pwPptxCleanup();
         superficie.classList.remove("pw-proyecto-superficie-iframe");
         superficie.innerHTML = `
             <div class="pw-proyecto-cargando pw-proyecto-cargando-interno">
@@ -646,6 +670,10 @@
                 }
             } else if (esImagen(tipo)) {
                 renderizarImagen(recurso, superficie);
+            } else if (tipo === "pptx") {
+                await renderizarPresentacion(recurso, superficie, token);
+            } else if (tipo === "ppt") {
+                throw new Error("Para mostrar diapositivas se necesita un archivo PPTX.");
             } else if (tipo === "drawio") {
                 if (modo === "codigo") {
                     await renderizarCodigo(recurso, superficie, token);
@@ -678,6 +706,17 @@
                 </div>
             `;
         }
+    }
+
+    async function renderizarPresentacion(recurso, superficie, token) {
+        const modulo = await import(new URL("js/visor-pptx.js", document.baseURI).href);
+        if (token !== tokenProyecto || !superficie.isConnected) return;
+        await modulo.montarVisorPptx({
+            ruta: recurso.ruta,
+            nombre: recurso.nombre,
+            contenedor: superficie,
+            vigente: () => token === tokenProyecto && !document.getElementById("trabajos-visor")?.hidden
+        });
     }
 
     function renderizarIframe(recurso, superficie) {
@@ -1736,6 +1775,7 @@
         }
 
         if (recurso.tipo === "drawio") return "diagrama";
+        if (recurso.tipo === "pptx") return "presentacion";
         return "codigo";
     }
 
@@ -1793,9 +1833,92 @@
     function decorarTarjetasProyecto() {
         decorarTarjetasExplorador();
         decorarTarjetasUnidad();
+        decorarMiniaturasU4();
         decorarArchivosUnidad();
     }
 
+
+    function esScriptU4(trabajo) {
+        if (!trabajo?.ruta) return false;
+        return /^U4\/(?:[^/]+\/)*[^/]+\.js$/i.test(normalizarRutaRelativa(trabajo.ruta));
+    }
+
+    async function mostrarVistaPreviaScriptU4(trabajo) {
+        if (typeof vistaPreviaOriginal !== "function") return;
+        await vistaPreviaOriginal(trabajo);
+        const contenido = document.querySelector("#trabajos-visor-contenido .trabajos-visor-superficie");
+        const abrir = document.getElementById("trabajos-visor-abrir");
+        if (!contenido || !contenido.isConnected) return;
+        if (abrir) abrir.textContent = "Editor y consola";
+        const bloque = document.createElement("div");
+        bloque.className = "pw-js-previa-modal";
+        const meta = document.createElement("p");
+        meta.textContent = "Vista previa del código JavaScript · Para editarlo o ejecutarlo, abre Editor y consola.";
+        const pre = document.createElement("pre");
+        pre.textContent = "Cargando código...";
+        bloque.append(meta, pre);
+        contenido.replaceChildren(bloque);
+        try {
+            const ruta = new URL(trabajo.ruta, window.location.href);
+            if (ruta.origin !== window.location.origin) throw new Error("Ruta externa");
+            const respuesta = await fetch(ruta.href);
+            if (!respuesta.ok) throw new Error("Error HTTP " + respuesta.status);
+            const fuente = await respuesta.text();
+            if (bloque.isConnected) pre.textContent = fuente;
+        } catch (error) {
+            if (bloque.isConnected) pre.textContent = "No se pudo cargar el código. Usa Abrir trabajo.";
+            console.warn("PW Hub: vista previa JS no disponible", error);
+        }
+    }
+
+    function decorarMiniaturasU4() {
+        document.querySelectorAll("#unidad4 .unidad-trabajo").forEach((tarjeta) => {
+            const enlace = tarjeta.querySelector("[data-unidad-abrir-trabajo]");
+            const preview = tarjeta.querySelector(".unidad-trabajo-preview");
+            if (!enlace || !preview || preview.dataset.pwU4Miniatura) return;
+            let ruta;
+            try {
+                const params = new URL(enlace.href, window.location.href).searchParams;
+                ruta = new URL(params.get("archivo"), window.location.href);
+                if (ruta.origin !== window.location.origin) return;
+            } catch { return; }
+            const archivo = decodeURIComponent(ruta.pathname).toLowerCase();
+            const esTareaPresentacion = /\/u4\/u4\. a1\. tarea 1\/u4\. a1\. tarea 1\.pdf$/.test(archivo);
+            if (!esTareaPresentacion && !/\.(?:jpe?g|png|gif|webp|svg|js)$/.test(archivo)) return;
+            preview.dataset.pwU4Miniatura = "1";
+            if (esTareaPresentacion || /\.(?:jpe?g|png|gif|webp|svg)$/.test(archivo)) {
+                const img = document.createElement("img");
+                img.className = "pw-u4-mini-imagen";
+                img.alt = "Vista previa de la actividad";
+                img.loading = "lazy";
+                if (esTareaPresentacion) {
+                    const nombreBase = "U4. A1. Tarea 1";
+                    const rutaPNG = new URL(nombreBase + ".PNG", ruta.href);
+                    const rutaPng = new URL(nombreBase + ".png", ruta.href);
+                    img.src = rutaPNG.href;
+                    img.addEventListener("error", () => {
+                        if (img.src !== rutaPng.href) img.src = rutaPng.href;
+                    });
+                } else {
+                    img.src = ruta.href;
+                }
+                preview.replaceChildren(img);
+            } else {
+                const pre = document.createElement("pre");
+                pre.className = "pw-u4-mini-codigo";
+                pre.textContent = "// Cargando código JavaScript...";
+                preview.replaceChildren(pre);
+                fetch(ruta.href).then((respuesta) => {
+                    if (!respuesta.ok) throw new Error(String(respuesta.status));
+                    return respuesta.text();
+                }).then((fuente) => {
+                    if (pre.isConnected) pre.textContent = fuente.slice(0, 2200);
+                }).catch(() => {
+                    if (pre.isConnected) pre.textContent = "// Código disponible al abrir el trabajo";
+                });
+            }
+        });
+    }
 
     function decorarArchivosUnidad() {
         let unidades = [];
@@ -1848,10 +1971,9 @@
 
             configurarToggleArchivosUnidad(panel);
 
-            if (
-                archivos.length === 0 &&
-                unidadDatos.archivosUnidadAutomaticos === true
-            ) {
+            // El inventario base permite uso offline; online incorporamos
+            // nuevos archivos sin esperar a que la lista esté vacía.
+            if (unidadDatos.archivosUnidadAutomaticos === true) {
                 actualizarArchivosUnidadAutomaticos(unidadDatos, panel);
             }
         });
@@ -1868,7 +1990,7 @@
         const resumen = sinArchivos
             ? `Se habilitará automáticamente cuando existan archivos en U${unidadDatos.numero}.`
             : actividadesClase
-                ? `${actividadesClase} actividades en clase · ${totalArchivos} archivos`
+                ? `${actividadesClase} ${unidadDatos.numero === 1 ? "actividades" : "material"} de clase · ${totalArchivos} archivos`
                 : `${totalArchivos} archivos`;
         const idContenido = `pw-u${unidadDatos.numero}-archivos-contenido`;
         const nota = unidadDatos.numero === 1 && !sinArchivos
@@ -1957,8 +2079,70 @@
 
     async function actualizarArchivosUnidadAutomaticos(unidadDatos, panelActual) {
         try {
-            const archivos = await consultarArchivosUnidadGitHub(unidadDatos.numero);
-            if (!archivos.length || !panelActual?.isConnected) return;
+            const detectados = await consultarArchivosUnidadGitHub(unidadDatos.numero);
+            if (!detectados.length || !panelActual?.isConnected) return;
+
+            // Conservamos las etiquetas editoriales de las actividades ya
+            // registradas, pero el árbol online incluye archivos nuevos.
+            const originales = Array.isArray(unidadDatos.archivosUnidad)
+                ? unidadDatos.archivosUnidad : [];
+            const metadatos = new Map();
+            const registrar = (nodos) => (nodos || []).forEach((nodo) => {
+                if (nodo?.ruta) {
+                    metadatos.set(normalizarRutaRelativa(nodo.ruta), nodo);
+                }
+                if (Array.isArray(nodo?.archivos)) registrar(nodo.archivos);
+            });
+            registrar(originales);
+            const fusionar = (nodos) => nodos.map((nodo) => {
+                if (Array.isArray(nodo?.archivos)) {
+                    return { ...nodo, archivos: fusionar(nodo.archivos) };
+                }
+                const editorial = metadatos.get(normalizarRutaRelativa(nodo.ruta));
+                return editorial ? {
+                    ...nodo,
+                    etiqueta: editorial.etiqueta,
+                    categoria: editorial.categoria
+                } : nodo;
+            });
+            const rutas = (nodos) => (nodos || []).flatMap((nodo) =>
+                Array.isArray(nodo?.archivos) ? rutas(nodo.archivos) :
+                nodo?.ruta ? [normalizarRutaRelativa(nodo.ruta)] : []
+            ).sort();
+            const omitidos = new Set(
+                (unidadDatos.archivosUnidadExcluidos || []).map(normalizarRutaRelativa)
+            );
+            // El catálogo conserva los recursos recién añadidos mientras aún
+            // no están publicados. GitHub aporta el resto; evita el JPEG obsoleto.
+            const unidas = [...new Set([
+                ...rutas(originales),
+                ...rutas(detectados).filter((ruta) => !omitidos.has(ruta))
+            ])].sort();
+            const prefijo = `U${unidadDatos.numero}/`;
+            const arbol = construirArbolArchivosUnidad(
+                unidas.filter((ruta) => ruta.startsWith(prefijo))
+                    .map((ruta) => ruta.slice(prefijo.length)),
+                unidadDatos.numero
+            );
+            const etiquetasCarpeta = new Map();
+            const buscarCarpetas = (nodos, padre = "") => (nodos || []).forEach((nodo) => {
+                if (!nodo?.carpeta || !Array.isArray(nodo.archivos)) return;
+                const rutaCarpeta = `${padre}${nodo.carpeta}/`;
+                etiquetasCarpeta.set(rutaCarpeta, nodo.etiqueta);
+                buscarCarpetas(nodo.archivos, rutaCarpeta);
+            });
+            buscarCarpetas(originales);
+            const preservarEtiquetas = (nodos, padre = "") => (nodos || []).map((nodo) => {
+                if (!nodo?.carpeta || !Array.isArray(nodo.archivos)) return nodo;
+                const rutaCarpeta = `${padre}${nodo.carpeta}/`;
+                return {
+                    ...nodo,
+                    etiqueta: etiquetasCarpeta.get(rutaCarpeta) || nodo.etiqueta,
+                    archivos: preservarEtiquetas(nodo.archivos, rutaCarpeta)
+                };
+            });
+            const archivos = preservarEtiquetas(fusionar(arbol));
+            if (JSON.stringify(rutas(originales)) === JSON.stringify(rutas(archivos))) return;
 
             unidadDatos.archivosUnidad = archivos;
             const panelNuevo = crearPanelArchivosUnidad(unidadDatos, archivos);
@@ -2142,6 +2326,8 @@
             webp: "WEBP",
             svg: "SVG",
             pdf: "PDF",
+            pptx: "PPTX",
+            ppt: "PPT",
             xml: "XML"
         };
         const tipo = tipos[tipoReal] || tipoReal.toUpperCase().slice(0, 8);
@@ -2282,7 +2468,7 @@
         }
 
         if (esImagen(tipo)) return "Imágenes";
-        if (tipo === "pdf") return "Documentos";
+        if (["pdf", "pptx", "ppt"].includes(tipo)) return "Documentos";
         return "Otros";
     }
 
@@ -2325,7 +2511,9 @@
             webp: "WEBP",
             svg: "SVG",
             gif: "GIF",
-            pdf: "PDF"
+            pdf: "PDF",
+            pptx: "PPTX",
+            ppt: "PPT"
         };
 
         return mapa[tipo] || String(tipo || "FILE").toUpperCase();

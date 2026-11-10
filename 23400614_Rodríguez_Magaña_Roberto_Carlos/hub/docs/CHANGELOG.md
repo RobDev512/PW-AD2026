@@ -8,6 +8,79 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 
 ---
 
+## Mantenimiento académico posterior a v1.2.2 (sin nueva versión)
+
+**Fecha del mantenimiento:** 2026-11-09
+
+- U4 inicia oficialmente como **Programación del lado del cliente**, y queda marcada como unidad actual; U5 pasa a **Programación del lado del servidor**, todavía pendiente.
+- Registro de U4 A1 (JPEG) y A2 (ejercicios JS), con `U4. Ejemplos.js` como archivo complementario de clase.
+- Árbol de archivos U4 actualizado y preparado para incorporar automáticamente futuros archivos desde GitHub sin perder etiquetas editoriales.
+- Visor completo de archivos JS de U4 con modos Ejecutar/Código, consola aislada mediante iframe sandbox + Worker, entradas simuladas para `prompt()`, controles Detener/Limpiar y límite de ejecución; sin acceso al DOM del Hub.
+- Sin modificación de la versión publicada **v1.2.2**; actualización del identificador técnico de caché para distribuir los archivos nuevos.
+
+## Correcciones de mantenimiento C2 (2026-11-09)
+
+- Se actualiza el estado del curso a U4 actual y U5 pendiente, con los títulos definitivos del profesor.
+- Se reconocen las actividades U4 A1 (JPEG) y U4 A2 (JavaScript), y Ejemplos.js como material de clase.
+- Corrección C2 del laboratorio JavaScript en localhost y GitHub Pages; editor de código temporal, consola aislada, entradas de prompt(), detener y restaurar.
+- Miniaturas de U4 y vista previa de código JS para evitar los mensajes genéricos de vista previa no disponible.
+- La versión técnica permanece en v1.2.2; es mantenimiento y no una versión nueva.
+
+## Ajuste del laboratorio JS — mantenimiento C3 (2026-11-09)
+
+- El laboratorio JavaScript conserva su altura dentro de la ventana en el visor completo; editor y consola tienen desplazamiento interno independiente, también en pantallas angostas.
+- La salida adopta registros por bloques con separadores, hora y diferenciación entre mensajes normales, avisos y errores, siguiendo la referencia visual de JS Studio.
+- Las ejecuciones se agrupan por sesión, muestran su estado y duración y permanecen consultables hasta pulsar **Limpiar**; ejecutar de nuevo ya no borra la consola previa.
+- Se conservan el editor temporal, `Ctrl + Enter`, las entradas para `prompt()`, Detener, Restaurar y la ejecución aislada del candidato C2.
+- Son mejoras de mantenimiento: el versionado publicado permanece en **v1.2.2**; C3 utilizó la caché técnica `v54`.
+
+## Corrección del visor y de prompt() — mantenimiento C4 (2026-11-09, en validación)
+
+- Todos los modos del visor completo, incluido **Código original**, ocupan la altura disponible y desplazan el código largo dentro de su propia superficie, sin desplazar la página entera.
+- Cada llamada sencilla a `prompt()` de un ejercicio de consola muestra un formulario de entrada **cuando se ejecuta esa línea**. Se responde con Enter o Enviar; no se solicitan listas previas de números.
+- La pregunta permanece visible en un panel inferior de la consola; los registros anteriores conservan su propio scroll.
+- El programa continúa al recibir la respuesta; la cuenta de seis segundos de cómputo se suspende mientras el usuario escribe. **Detener** cancela la ejecución pendiente.
+- Se conserva el Worker dentro de un iframe aislado, el editor temporal y el agrupamiento de salidas por ejecución. La adaptación asíncrona de `prompt()` está orientada a scripts didácticos de consola, no a todas las construcciones avanzadas de JavaScript.
+- La versión publicada sigue siendo **v1.2.2**; C4 emplea la caché técnica `pw-hub-offline-v55` para diferenciar los recursos corregidos.
+
+---
+
+## Mantenimiento académico de U4 — Tarea 1 con PDF, PNG y PowerPoint (sin nueva versión)
+
+- La Actividad 1 se organiza en `U4/U4. A1. Tarea 1/` con `U4. A1. Tarea 1.pdf`, `U4. A1. Tarea 1.PNG` y `U4. A1. Tarea 1.pptx`.
+- La tarjeta utiliza el PNG como miniatura y abre el PDF como documento principal; **Explorar archivos** reúne los tres formatos. El PDF se muestra en el visor nativo y el PPTX se interpreta como diapositivas navegables dentro del Hub, con opción de vista Office en GitHub Pages para una fidelidad mayor.
+- El visor de proyectos reconoce ahora U4 en `localhost` y GitHub Pages. Mientras el cambio de carpeta aún no esté en remoto, el inventario local se conserva y se omite el JPEG anterior.
+- Se incorpora el módulo `hub/js/visor-pptx.js` (motor `pptx-browser` cargado bajo demanda): navega y muestra el archivo PPTX directamente en un canvas, tanto en localhost como en producción; cuando el archivo es público en GitHub Pages, ofrece además una vista opcional con Microsoft Office Online. No sustituye el PPTX por el PDF ni exige descargarlo. La representación local de fuentes/efectos puede diferir de PowerPoint.
+- El Service Worker pasa a `pw-hub-offline-v56` para el recurso nuevo, sin alterar el número de versión publicado (**v1.2.2**).
+- El laboratorio JavaScript C4 permanece intacto. La versión técnica sigue siendo **v1.2.2**.
+
+## Corrección C8 — lector de objetos del PPTX original (en validación)
+
+- Con el archivo original `U4. A1. Tarea 1.pptx` se confirmó que la presentación consta de **una diapositiva con 69 elementos**, no de una única imagen; por ello, la recuperación de imágenes dominantes de C7 no podía funcionar.
+- Se incorpora `hub/js/visor-pptx-ooxml.js`: interpreta directamente el archivo PowerPoint en el navegador y dibuja sus formas, cuadros de texto, colores, relaciones e imágenes, sin utilizar PDF ni PNG como sustitutos.
+- Se comprobó el contenido real de la diapositiva en Chromium, incluidos los siete bloques temáticos y la sintaxis coloreada; se mantiene el motor `pptx-browser` solo como alternativa para archivos no compatibles.
+- Si no puede interpretarse una presentación, se informa del fallo en vez de activar automáticamente el PDF exportado. PDF, PNG y PPTX siguen siendo recursos seleccionables por separado.
+- El formato `.pptx` no se modifica y la versión del Hub sigue siendo **v1.2.2**. Caché técnica `pw-hub-offline-v59` para distribuir el nuevo módulo.
+- Límite del intérprete OOXML: no reproduce animaciones, SmartArt avanzado, efectos 3D ni todas las funciones de Microsoft PowerPoint.
+
+## Corrección C7 — medios originales en diapositivas PPTX (en validación)
+
+- Si `pptx-browser` dibuja una diapositiva casi vacía, el visor analiza el paquete Office Open XML (`.pptx`) en el navegador y recupera imágenes incrustadas con ubicación y dimensiones de la propia diapositiva. Se usa únicamente cuando hay una imagen dominante, para evitar falsas reconstrucciones de presentaciones complejas.
+- Esta segunda vía **no emplea el PDF ni el PNG externo**: lee los bytes de la imagen desde el PPTX original. Si el motor externo falla al cargarse, se intenta igualmente esta recuperación local.
+- Cuando el archivo carezca de una imagen dominante o el navegador no pueda interpretar sus elementos, se mantiene explícitamente identificado el respaldo PDF/PNG; una vista reconstruida de medios no equivale a renderización exacta de todos los objetos ni animaciones.
+- Se restablece el texto del botón **Abrir trabajo** cuando se abre un proyecto tras utilizar el laboratorio JavaScript (antes podía heredar “Editor y consola”).
+- El botón Cancelar de `prompt()` conserva la corrección ya comprobada en C6. Sin nueva versión pública: **v1.2.2**, caché técnica `pw-hub-offline-v58`.
+
+## Corrección C6 — vista PPTX y cancelación de prompt() (en validación)
+
+- El visor PPTX cambia la acción engañosa **Abrir PPTX** por **Descargar PPTX**: los navegadores no abren el binario Office directamente en una pestaña.
+- Se detecta cuando `pptx-browser` entrega una diapositiva prácticamente en blanco. En ese caso, se intenta mostrar la **exportación PDF** de la misma presentación (todas sus páginas) o el PNG asociado, indicando expresamente que es una vista alternativa, no el renderizado original del PPTX.
+- Cuando el archivo sea público en GitHub Pages, la opción **Vista Office** sigue disponible para mostrar el PPTX original mediante Microsoft Office Online.
+- El botón **Cancelar** de `prompt()` detiene por completo la sesión de JavaScript y la marca como **Cancelada**, en lugar de enviar `null` al ejercicio y provocar un bucle de solicitudes inválidas.
+- C6 es mantenimiento de U4, sin cambio de la versión publicada v1.2.2. El identificador técnico de caché cambia a `pw-hub-offline-v57`.
+
+---
+
 # v1.2.2 - Estabilidad móvil y organización académica
 
 **Estado:** Publicada · actual

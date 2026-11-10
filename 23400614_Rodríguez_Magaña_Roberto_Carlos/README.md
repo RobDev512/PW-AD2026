@@ -22,10 +22,10 @@ Este directorio reúne las actividades, ejercicios y proyectos realizados durant
 | U1 | Fundamentos Web, Git y GitHub | ✓ Completada |
 | U2 | HTML | ✓ Completada |
 | U3 | CSS | ✓ Completada · 10 actividades |
-| U4 | JavaScript y JSON | ⏳ Pendiente · título provisional |
-| U5 | Integración con base de datos | ⏳ Pendiente · título provisional |
+| U4 | Programación del lado del cliente | ▶ Actual · 2 actividades y ejemplos JavaScript |
+| U5 | Programación del lado del servidor | ⏳ Pendiente · sin actividades |
 
-Los títulos de U4 y U5 se conservarán como referencia provisional hasta que el profesor confirme el contenido real de esas unidades.
+El profesor confirmó los títulos de U4 y U5. U4 comenzó con una tarea de conceptos JavaScript (presentación PowerPoint, PDF y PNG), ejercicios en JavaScript y ejemplos de clase; U5 aún no tiene actividades.
 
 ---
 
@@ -35,7 +35,7 @@ Los títulos de U4 y U5 se conservarán como referencia provisional hasta que el
 
 **Próxima actualización planeada: v1.3.0 - Proyectos inteligentes y GitHub**
 
-v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles para imágenes y Draw.io, materiales móviles, nombres académicos consistentes y árboles plegables de archivos por unidad. U4 y U5 ya muestran el componente de archivos en estado vacío y se habilitarán automáticamente cuando existan archivos reales en GitHub.
+v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles para imágenes y Draw.io, materiales móviles, nombres académicos consistentes y árboles plegables de archivos por unidad. El panel de U4 se habilita con los archivos publicados y sigue detectando otros nuevos desde GitHub; U5 permanece vacío hasta que comience. El visor de U4 permite ejecutar ejercicios JavaScript de consola de forma aislada, sin cambiar el número de versión técnica. La Tarea 1 permite explorar PDF, PNG y PPTX por separado; la diapositiva PowerPoint se reconstruye a partir de sus propios objetos OOXML.
 
 ---
 
@@ -46,6 +46,7 @@ v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles p
 ├── U1/
 ├── U2/
 ├── U3/
+├── U4/
 ├── hub/
 │   ├── assets/
 │   ├── css/
@@ -61,13 +62,19 @@ v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles p
 └── README.md
 ```
 
-Las carpetas U4 y U5 se incorporarán al repositorio cuando comiencen esas unidades. PW Hub está preparado para detectarlas automáticamente.
+U4 contiene `U4/U4. A1. Tarea 1/` con un PDF principal, una lámina PNG y un PowerPoint editable, además de `U4. A2. Ejercicios.js` y `U4. Ejemplos.js`. La carpeta U5 se incorporará cuando comience esa unidad.
 
 ---
 
 ## Unidad 3 cerrada
 
 U3 terminó con diez actividades. PW Hub conserva nombres editoriales consistentes y trata las actividades formadas por carpetas como un solo proyecto académico, permitiendo explorar HTML, CSS, imágenes, SVG, Draw.io y demás recursos sin convertirlos en trabajos independientes.
+
+---
+
+## Inicio de Unidad 4
+
+La Unidad 4 corresponde a **Programación del lado del cliente**. El catálogo distingue las dos actividades (A1 y A2) del archivo complementario `U4. Ejemplos.js`. Los `.js` se pueden consultar en modo código original o abrir en el laboratorio JS para **editar una copia temporal, ejecutarla, consultar la consola, proporcionar entradas de `prompt()` y restaurar el original**. Los cambios de prueba no modifican los archivos del repositorio.
 
 ---
 

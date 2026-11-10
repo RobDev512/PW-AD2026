@@ -1,6 +1,6 @@
 {
   "materia": "Programación Web",
-  "unidadActual": 3,
+  "unidadActual": 4,
   "unidades": [
     {
       "numero": 1,
@@ -617,27 +617,82 @@
     },
     {
       "numero": 4,
-      "titulo": "JavaScript y JSON",
-      "descripcion": "Referencia provisional basada en cómo se ha impartido la materia en generaciones anteriores. Se ajustará cuando el profesor defina oficialmente el contenido de U4.",
-      "estado": "pendiente",
+      "titulo": "Programación del lado del cliente",
+      "descripcion": "Inicio de la programación del lado del cliente con JavaScript: variables, constantes, condicionales, ciclos, arreglos, números aleatorios y uso de la consola y prompt().",
+      "estado": "actual",
       "temas": [
-        "JavaScript",
-        "JSON",
-        "Interacción dinámica en el navegador"
+        "Introducción a JavaScript",
+        "Variables, constantes y tipos de datos",
+        "Condicionales y operadores",
+        "Ciclos y arreglos",
+        "Números aleatorios y entrada de datos con prompt()"
       ],
-      "trabajos": [],
-      "archivosUnidad": [],
-      "archivosUnidadAutomaticos": true
+      "trabajos": [
+        {
+          "nombre": "Actividad 1 - Tarea 1",
+          "ruta": "../U4/U4. A1. Tarea 1/U4. A1. Tarea 1.PNG",
+          "tipo": "png",
+          "descripcion": "Tarea 1 de JavaScript: material de conceptos fundamentales, con presentación PowerPoint, PDF y lámina PNG.",
+          "miniatura": "../U4/U4. A1. Tarea 1/U4. A1. Tarea 1.PNG"
+        },
+        {
+          "nombre": "Actividad 2 - Ejercicios de JavaScript",
+          "ruta": "../U4/U4. A2. Ejercicios.js",
+          "tipo": "js",
+          "descripcion": "Tres ejercicios con números aleatorios, tablas de multiplicar y conteo de números pares e impares utilizando consola y prompt()."
+        }
+      ],
+      "archivosUnidad": [
+        {
+          "carpeta": "U4. A1. Tarea 1",
+          "etiqueta": "Actividad 1",
+          "archivos": [
+            {
+              "nombre": "U4. A1. Tarea 1.pdf",
+              "ruta": "../U4/U4. A1. Tarea 1/U4. A1. Tarea 1.pdf",
+              "tipo": "pdf",
+              "etiqueta": "Documento principal"
+            },
+            {
+              "nombre": "U4. A1. Tarea 1.PNG",
+              "ruta": "../U4/U4. A1. Tarea 1/U4. A1. Tarea 1.PNG",
+              "tipo": "png",
+              "etiqueta": "Lámina de la tarea"
+            },
+            {
+              "nombre": "U4. A1. Tarea 1.pptx",
+              "ruta": "../U4/U4. A1. Tarea 1/U4. A1. Tarea 1.pptx",
+              "tipo": "pptx",
+              "etiqueta": "Presentación editable"
+            }
+          ]
+        },
+        {
+          "nombre": "U4. A2. Ejercicios.js",
+          "ruta": "../U4/U4. A2. Ejercicios.js",
+          "tipo": "js",
+          "etiqueta": "Actividad 2"
+        },
+        {
+          "nombre": "U4. Ejemplos.js",
+          "ruta": "../U4/U4. Ejemplos.js",
+          "tipo": "js",
+          "etiqueta": "Ejemplos de clase",
+          "categoria": "actividad-clase"
+        }
+      ],
+      "archivosUnidadAutomaticos": true,
+      "archivosUnidadExcluidos": [
+        "../U4/U4. A1. Tarea 1.jpeg"
+      ]
     },
     {
       "numero": 5,
-      "titulo": "Integración con base de datos",
-      "descripcion": "Referencia provisional basada en experiencias de generaciones anteriores. Se ajustará cuando el profesor defina oficialmente el contenido de U5.",
+      "titulo": "Programación del lado del servidor",
+      "descripcion": "Unidad pendiente. El profesor confirmó su enfoque en programación del lado del servidor; las actividades y los temas específicos se registrarán cuando comiencen las clases.",
       "estado": "pendiente",
       "temas": [
-        "Persistencia de datos",
-        "Conexión con base de datos",
-        "Integración de la aplicación web"
+        "Contenido específico pendiente de la programación del profesor"
       ],
       "trabajos": [],
       "archivosUnidad": [],

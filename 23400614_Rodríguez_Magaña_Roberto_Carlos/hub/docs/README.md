@@ -41,10 +41,12 @@ Actualmente:
 - U1: completada;
 - U2: completada;
 - U3: completada;
-- U4: pendiente;
-- U5: pendiente.
+- U4: actual — Programación del lado del cliente (JavaScript);
+- U5: pendiente — Programación del lado del servidor.
 
 El estado académico y el versionado de PW Hub son independientes.
+
+**Inicio de U4 (mantenimiento académico, sin nueva versión):** el profesor confirmó U4 como Programación del lado del cliente y U5 como Programación del lado del servidor. El catálogo registra A1 (PDF, PNG y PowerPoint en su carpeta; PDF y diapositivas PPTX tienen vistas independientes), A2 (ejercicios JavaScript) y `U4. Ejemplos.js` como material de clase, no como tercera actividad. El visor completo añade ejecución aislada para JavaScript de U4 con consola, entradas para `prompt()` y controles Ejecutar/Detener; no requiere cambios de versión de PW Hub. La Tarea 1 dispone de visor PPTX con lectura directa OOXML de sus 69 elementos y vistas PDF/PNG independientes; si el PPTX no es compatible, no se disfraza automáticamente con un PDF. U4 continúa descubriendo nuevos archivos de GitHub.
 
 ---
 
@@ -428,7 +430,7 @@ La versión incorpora:
 - navegación móvil sensible al material elegido; Liquid Glass recupera transparencia y `backdrop-filter` localizado únicamente en la barra y sus menús, sin aplicarlo a las superficies repetidas del contenido;
 - nombres consistentes para las diez actividades de U3 y estado académico de U3 como completada;
 - títulos del curso ajustados a U1 Fundamentos Web, Git y GitHub, U2 HTML y U3 CSS;
-- U4 JavaScript y JSON y U5 Integración con base de datos como referencias provisionales pendientes;
+- U4 y U5 preparadas inicialmente con títulos provisionales; posteriormente confirmadas por el profesor como Programación del lado del cliente y Programación del lado del servidor;
 - árboles plegables de archivos para U1–U3;
 - actividades de clase de U1 diferenciadas de los entregables principales;
 - paneles de archivos de U4/U5 visibles en estado vacío y preparados para habilitarse automáticamente al detectar contenido en GitHub;
@@ -437,3 +439,13 @@ La versión incorpora:
 - chevrons SVG centrados y estructura plegable para carpetas internas.
 
 La publicación final utiliza `pw-hub-offline-v52` para invalidar la caché de v1.2.1 y redistribuir los recursos actualizados.
+
+### Ajuste del visor de U4 (mantenimiento C2)
+
+El laboratorio JavaScript ofrece código editable temporal, consola, respuestas para `prompt()` y ejecución aislada en un iframe con Worker; permite restaurar el original sin escribir sobre el repositorio. La previsualización de U4 reconoce el PNG de la Tarea 1 y código JS. La versión publicada se mantiene en **v1.2.2**.
+
+**Mantenimiento C3:** el laboratorio del visor completo se ajusta a la altura del viewport, con desplazamiento independiente para editor y consola. Cada mensaje `console.log` se presenta en una fila separada con hora; los resultados se agrupan por ejecución y se conservan hasta usar **Limpiar**. No cambia el número de versión.
+
+**Laboratorio JS de U4 (C4, en validación):** `prompt()` abre una pregunta interactiva cuando el programa la solicita; la pregunta y el campo de respuesta permanecen visibles al pie de la consola, sin listas precargadas. El Worker espera la respuesta, con pausa del temporizador de cómputo mientras el usuario escribe. Todos los modos del visor mantienen su desplazamiento dentro del área de visualización de la pantalla. La adaptación de `prompt()` está orientada a ejercicios de consola sencillos; no equivale a un IDE ni al entorno completo de Node.js.
+
+**Mantenimiento U4 C7 (en validación):** el visor de PowerPoint intenta reconstruir las imágenes principales incorporadas en el propio PPTX cuando el motor local dibuja casi en blanco; si tampoco puede, ofrece el PDF/PNG como vista alternativa claramente identificada; conserva Vista Office cuando el PPTX sea público y renombra la acción de descarga. Cancelar un `prompt()` ahora detiene el ejercicio en ejecución, evitando reintentos continuos. No modifica el número de versión pública.
