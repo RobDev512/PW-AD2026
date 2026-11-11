@@ -8,6 +8,14 @@ A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro media
 
 ---
 
+## Mantenimiento C11 — tarjetas automáticas por actividad (2026-11-11, sin nueva versión)
+
+- El catálogo ahora consulta el árbol público de `main` y detecta **archivos nuevos de U1 a U5**, incluidos `.js`, `.html`, `.pdf`, imágenes y otros formatos. Los archivos de proyectos se agrupan por carpeta y por patrones `Ux. Ay. Nombre`, para generar **una tarjeta por actividad**, no una tarjeta por recurso.
+- Los nombres se convierten en títulos legibles. Ejemplo: `U4. A4. Ejercicio.js` → **Actividad 4 - Ejercicio de JavaScript**. El nombre y el tipo de archivo permiten generar una descripción básica; el contenido específico no se inventa.
+- La información editorial de `unidades.json` conserva prioridad; se respetan ejemplos/documentos antiguos y se evitan duplicados del sincronizador previo. U4/U5 se ordenan por número de actividad, sin alterar la organización de U1-U3.
+- La detección de nuevos trabajos necesita conexión con la API pública de GitHub al cargar el Hub; si no hay acceso, se mantienen las tarjetas registradas en el catálogo local. Solo detecta archivos **ya subidos a GitHub**, no archivos que siguen en la computadora.
+- No se cambia la versión **v1.2.2**. La caché del Service Worker pasa a `pw-hub-offline-v62` para desplegar este mantenimiento.
+
 ## Mantenimiento académico U4 C10 (2026-11-10, sin cambio de versión)
 
 - Registro de `U4. A3. Ejercicios.js` como **Actividad 3** en el catálogo y el árbol de archivos de U4.

@@ -22,7 +22,7 @@ Este directorio reúne las actividades, ejercicios y proyectos realizados durant
 | U1 | Fundamentos Web, Git y GitHub | ✓ Completada |
 | U2 | HTML | ✓ Completada |
 | U3 | CSS | ✓ Completada · 10 actividades |
-| U4 | Programación del lado del cliente | ▶ Actual · 3 actividades y ejemplos JavaScript |
+| U4 | Programación del lado del cliente | ▶ Actual · actividades registradas y detección automática de nuevas entregas |
 | U5 | Programación del lado del servidor | ⏳ Pendiente · sin actividades |
 
 El profesor confirmó los títulos de U4 y U5. U4 comenzó con una tarea de conceptos JavaScript (presentación PowerPoint, PDF y PNG), las actividades 2 y 3 de ejercicios JavaScript y ejemplos de clase; U5 aún no tiene actividades.
@@ -74,14 +74,14 @@ U3 terminó con diez actividades. PW Hub conserva nombres editoriales consistent
 
 ## Inicio de Unidad 4
 
-La Unidad 4 corresponde a **Programación del lado del cliente**. El catálogo distingue las tres actividades (A1, A2 y A3) del archivo complementario `U4. Ejemplos.js`. Los `.js` se pueden consultar en modo código original o abrir en el laboratorio JS para **editar una copia temporal, ejecutarla, consultar la consola, proporcionar entradas de `prompt()` y restaurar el original**. Los cambios de prueba no modifican los archivos del repositorio.
+La Unidad 4 corresponde a **Programación del lado del cliente**. El catálogo conserva las actividades registradas (A1, A2 y A3) y distingue el archivo complementario `U4. Ejemplos.js`. Una entrega nueva como `U4. A4. Ejercicio.js` aparece automáticamente como **Actividad 4 - Ejercicio de JavaScript** cuando está publicada en GitHub, sin editar manualmente `unidades.json`. Los recursos internos de una misma actividad se agrupan para evitar tarjetas duplicadas. Los `.js` se pueden consultar en modo código original o abrir en el laboratorio JS para **editar una copia temporal, ejecutarla, consultar la consola, proporcionar entradas de `prompt()` y restaurar el original**. Los cambios de prueba no modifican los archivos del repositorio.
 
 ---
 
 ## Funciones principales de PW Hub
 
 - progreso académico U1–U5;
-- catálogo sincronizado con GitHub;
+- catálogo sincronizado con GitHub y creación automática de tarjetas para nuevos trabajos de U1–U5 (requiere conexión);
 - tarjetas, vistas previas y visor completo;
 - proyectos por carpeta y exploración de recursos;
 - árboles plegables de archivos por unidad;

@@ -13,7 +13,7 @@
 */
 
 const VERSION_CACHE =
-    "pw-hub-offline-v61";
+    "pw-hub-offline-v62";
 
 const CACHE_SHELL =
     `${VERSION_CACHE}-shell`;

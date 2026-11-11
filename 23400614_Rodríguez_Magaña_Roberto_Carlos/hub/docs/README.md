@@ -10,6 +10,9 @@ La etapa de construcción inicial ya terminó. El proyecto dejó de organizar su
 
 La incorporación normal de actividades de U1 a U5 sigue siendo contenido académico y no crea una nueva versión por sí sola.
 
+**Detección de trabajos:** la sincronización de GitHub añade automáticamente nuevas tarjetas en U1–U5 con títulos derivados de los nombres (`Ux. Ay. Ejercicio.js` → `Actividad y - Ejercicio de JavaScript`). Una carpeta con HTML, CSS, imágenes y otros archivos se considera un solo proyecto; el árbol de archivos sigue mostrando cada recurso por separado. Las actividades y descripciones editoriales ya registradas tienen prioridad. Para detectar novedades es necesario que los archivos estén publicados en la rama `main` y que la API pública de GitHub esté accesible; la versión sin conexión conserva el catálogo conocido. El nombre del archivo permite inferir su formato, no el contenido académico exacto.
+
+
 ## Documentos principales
 
 ### `README.md`

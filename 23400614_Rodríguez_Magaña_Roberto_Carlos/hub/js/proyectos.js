@@ -26,6 +26,10 @@
     let promesaArbolGitHub = null;
     let promesaVisorDrawio = null;
     let tokenProyecto = 0;
+    // Una lectura por render. El árbol se comparte con el explorador de archivos.
+    const cuadriculasAutoRevisadas = new WeakSet();
+    const archivosInicialesPorUnidad = new Map();
+
 
     const FALLBACKS = {
         "U1/catalogo-peliculas/": [
@@ -201,7 +205,7 @@
         if (!trabajo?.ruta) return null;
 
         const ruta = normalizarRutaRelativa(trabajo.ruta);
-        const coincidencia = ruta.match(/^U([1234])\/(.+)\/([^/]+)$/i);
+        const coincidencia = ruta.match(/^U([1-5])\/(.+)\/([^/]+)$/i);
         if (!coincidencia) return null;
 
         const unidad = Number(coincidencia[1]);
@@ -1835,8 +1839,316 @@
         decorarTarjetasUnidad();
         decorarMiniaturasU4();
         decorarArchivosUnidad();
+        prepararTarjetasAutomaticas();
     }
 
+
+    /*
+     * AUTOCATÁLOGO (mantenimiento académico, sin cambio de versión)
+     *
+     * El catálogo editorial sigue siendo prioritario. El árbol público de
+     * GitHub permite incorporar actividades futuras sin actualizar a mano
+     * unidades.json. Las carpetas/archivos con Ux.Ay se agrupan en una tarjeta;
+     * los recursos internos (CSS, imágenes, etc.) no crean tarjetas adicionales.
+     * Las rutas que ya eran documentación o ejemplos de clase conservan su
+     * clasificación anterior. Offline se utiliza el catálogo publicado.
+     */
+    function prepararTarjetasAutomaticas() {
+        let unidades;
+        try {
+            unidades = typeof datosHub !== "undefined" &&
+                Array.isArray(datosHub?.unidades) ? datosHub.unidades : null;
+        } catch { unidades = null; }
+        if (!unidades) return;
+
+        const pendientes = unidades.filter((unidad) => {
+            const cuadricula = document.querySelector(
+                `[data-unidad-trabajos="${unidad.numero}"]`
+            );
+            if (!cuadricula || cuadriculasAutoRevisadas.has(cuadricula)) return false;
+            cuadriculasAutoRevisadas.add(cuadricula);
+            if (!archivosInicialesPorUnidad.has(unidad.numero)) {
+                archivosInicialesPorUnidad.set(
+                    unidad.numero,
+                    new Set(aplanarRutasArchivos(unidad.archivosUnidad).map(
+                        (ruta) => normalizarRutaRelativa(ruta).toLowerCase()
+                    ))
+                );
+            }
+            return true;
+        });
+        if (!pendientes.length) return;
+
+        obtenerArbolGitHub().then(({ tree }) => {
+            if (!Array.isArray(tree)) return;
+            pendientes.forEach((unidad) => {
+                const cuadricula = document.querySelector(
+                    `[data-unidad-trabajos="${unidad.numero}"]`
+                );
+                if (!cuadricula || !document.getElementById(`unidad${unidad.numero}`)) return;
+                reconciliarTarjetasAutomaticas(unidad, cuadricula, tree);
+            });
+        }).catch((error) => {
+            // Sin Internet o con límite de la API, el catálogo editorial basta.
+            console.info("PW Hub: autocátalogo sin conexión con GitHub; se mantiene el catálogo local.", error);
+        });
+    }
+
+    function aplanarRutasArchivos(nodos) {
+        return (Array.isArray(nodos) ? nodos : []).flatMap((nodo) =>
+            Array.isArray(nodo?.archivos)
+                ? aplanarRutasArchivos(nodo.archivos)
+                : nodo?.ruta ? [nodo.ruta] : []
+        );
+    }
+
+    function claveGrupoAutomatica(numero, ruta) {
+        const rutaNormal = normalizarRutaRelativa(ruta);
+        const prefijo = `U${numero}/`;
+        if (!rutaNormal.toLowerCase().startsWith(prefijo.toLowerCase())) return null;
+        const partes = rutaNormal.slice(prefijo.length).split("/").filter(Boolean);
+        if (!partes.length) return null;
+        const inicial = partes[0];
+        const patron = new RegExp(
+            `^U${numero}[\\s._-]*A(?:CT(?:IVIDAD)?)?[\\s._-]*(\\d{1,3})(?=[\\s._-]|$)`,
+            "i"
+        );
+        const actividad = inicial.match(patron);
+        if (actividad) return `a:${numero}:${Number(actividad[1])}`;
+        if (partes.length > 1) return `carpeta:${numero}:${inicial.toLocaleLowerCase("es")}`;
+        return `archivo:${numero}:${inicial.toLocaleLowerCase("es")}`;
+    }
+
+    function tipoArchivoAutomatico(ruta) {
+        const ext = (String(ruta).split(".").pop() || "").toLowerCase();
+        return ({ md: "markdown", htm: "html", jpeg: "jpg" })[ext] || ext || "archivo";
+    }
+
+    function tituloArchivoAutomatico(numero, ruta) {
+        const normal = normalizarRutaRelativa(ruta);
+        const partes = normal.replace(new RegExp(`^U${numero}/`, "i"), "")
+            .split("/").filter(Boolean);
+        const primerNombre = partes[0] || "Trabajo";
+        const actividad = primerNombre.match(new RegExp(
+            `^U${numero}[\\s._-]*A(?:CT(?:IVIDAD)?)?[\\s._-]*(\\d{1,3})(?=[\\s._-]|$)`, "i"
+        ));
+        let base = primerNombre.replace(/\.[^.]+$/, "");
+        if (partes.length > 1) base = primerNombre;
+        if (actividad) base = base.slice(actividad[0].length);
+        base = base.replace(/^[\s._-]+/, "").replace(/[_-]+/g, " ").replace(/\s+/g, " ").trim();
+        base = base.replace(/([a-záéíóúñ])([A-ZÁÉÍÓÚÑ])/g, "$1 $2");
+        const tipo = tipoArchivoAutomatico(ruta);
+        const lenguaje = ({ js: "JavaScript", html: "HTML", css: "CSS", json: "JSON",
+            pdf: "PDF", pptx: "PowerPoint", markdown: "Markdown" })[tipo];
+        if (!base) base = lenguaje ? `Archivo ${lenguaje}` : "Trabajo";
+        if (/^ejercicios?$/i.test(base) && lenguaje) {
+            base += ` de ${lenguaje}`;
+        }
+        if (actividad) return `Actividad ${Number(actividad[1])} - ${base}`;
+        return base.charAt(0).toLocaleUpperCase("es") + base.slice(1);
+    }
+
+    function reconciliarTarjetasAutomaticas(unidad, cuadricula, tree) {
+        const numero = Number(unidad.numero);
+        const prefijo = `${RAIZ_ALUMNO}/U${numero}/`;
+        const excluidas = new Set(
+            (unidad.archivosUnidadExcluidos || []).map(
+                (ruta) => normalizarRutaRelativa(ruta).toLowerCase()
+            )
+        );
+        const archivos = tree.filter((elemento) => {
+            if (elemento?.type !== "blob" || !elemento.path?.startsWith(prefijo)) return false;
+            const fragmentos = elemento.path.slice(prefijo.length).split("/");
+            if (fragmentos.some((segmento) => segmentoEmpiezaOculto(segmento))) return false;
+            const ruta = `U${numero}/${fragmentos.join("/")}`;
+            return !excluidas.has(ruta.toLowerCase()) &&
+                !["readme.md", "license", "license.md"].includes(fragmentos.join("/").toLowerCase());
+        }).map((el) => `U${numero}/${el.path.slice(prefijo.length)}`);
+
+        // Sincronizacion.js puede haber creado tarjetas PDF/HTML a nivel de
+        // archivo. Conservamos la versión editorial de cada actividad.
+        const trabajos = Array.isArray(unidad.trabajos) ? unidad.trabajos : [];
+        const originales = [...cuadricula.querySelectorAll(":scope > .unidad-trabajo")];
+        const mejores = new Map();
+        trabajos.forEach((trabajo, indice) => {
+            const clave = claveGrupoAutomatica(numero, trabajo.ruta);
+            if (!clave) return;
+            const anterior = mejores.get(clave);
+            if (!anterior ||
+                (anterior.trabajo.automatico && !trabajo.automatico) ||
+                (anterior.trabajo.automatico && trabajo.automatico &&
+                    prioridadArchivoAutomatico(trabajo.ruta) <
+                    prioridadArchivoAutomatico(anterior.trabajo.ruta))) {
+                mejores.set(clave, { trabajo, indice });
+            }
+        });
+        const conservados = trabajos.filter((trabajo, indice) => {
+            const clave = claveGrupoAutomatica(numero, trabajo.ruta);
+            if (!clave) return true;
+            const principal = mejores.get(clave);
+            if (!principal || principal.indice === indice) return true;
+            originales[indice]?.remove();
+            return false;
+        });
+        // No alteramos los trabajos de otras unidades ni repetimos elementos.
+        if (conservados.length !== trabajos.length) unidad.trabajos = conservados;
+        // Los PDF/HTML descubiertos por sincronizacion.js ya tenían tarjeta,
+        // pero su nombre automático no respetaba «Ux. Ay. ...».
+        const tarjetasVisibles = [...cuadricula.querySelectorAll(":scope > .unidad-trabajo")];
+        conservados.forEach((trabajo, indice) => {
+            if (!trabajo.automatico) return;
+            const titulo = tituloArchivoAutomatico(numero, trabajo.ruta);
+            trabajo.nombre = titulo;
+            const h5 = tarjetasVisibles[indice]?.querySelector("h5");
+            if (h5) h5.textContent = titulo;
+        });
+
+        const presentes = new Set(
+            conservados.map((t) => claveGrupoAutomatica(numero, t.ruta)).filter(Boolean)
+        );
+        const grupos = new Map();
+        archivos.forEach((ruta) => {
+            const clave = claveGrupoAutomatica(numero, ruta);
+            if (!clave) return;
+            if (!grupos.has(clave)) grupos.set(clave, []);
+            grupos.get(clave).push(ruta);
+        });
+
+        const base = archivosInicialesPorUnidad.get(numero) || new Set();
+        for (const [clave, grupo] of grupos) {
+            if (presentes.has(clave)) continue;
+            // Elementos editoriales antiguos (README, test, ejemplos de clase)
+            // se siguen viendo en el árbol, sin convertirse en otra tarjeta.
+            const nuevos = grupo.filter((ruta) => !base.has(ruta.toLowerCase()));
+            if (!nuevos.length) continue;
+            // Si la carpeta ya existía como documentación/material de clase,
+            // añadir nuevos recursos no la convierte en un nuevo proyecto.
+            if (grupo.some((ruta) => base.has(ruta.toLowerCase()))) continue;
+            const principal = [...grupo].sort((a, b) =>
+                prioridadArchivoAutomatico(a) - prioridadArchivoAutomatico(b) ||
+                a.localeCompare(b, "es", { numeric: true })
+            )[0];
+            if (!principal) continue;
+            const tipo = tipoArchivoAutomatico(principal);
+            const trabajo = {
+                nombre: tituloArchivoAutomatico(numero, principal),
+                ruta: `../${principal}`,
+                tipo,
+                descripcion: grupo.length > 1
+                    ? `Trabajo detectado automáticamente en U${numero}, con ${grupo.length} archivos relacionados. Puedes consultar los recursos en Archivos de la unidad.`
+                    : `Archivo ${tipo.toUpperCase()} detectado automáticamente en la Unidad ${numero}.`,
+                automatico: true
+            };
+            unidad.trabajos.push(trabajo);
+            agregarTarjetaAutomatica(unidad, cuadricula, trabajo);
+            presentes.add(clave);
+        }
+        // El sincronizador anterior podía agregar PDF/HTML antes que JS.
+        // Conservamos la secuencia académica A1, A2, A3, A4... en U4/U5.
+        if (numero === 4 || numero === 5) ordenarTarjetasPorActividad(unidad, cuadricula);
+        // Las nuevas tarjetas se decoran mediante el observador ya existente.
+    }
+
+    function ordenarTarjetasPorActividad(unidad, cuadricula) {
+        const tarjetas = [...cuadricula.querySelectorAll(":scope > .unidad-trabajo")];
+        if (tarjetas.length !== unidad.trabajos.length) return;
+        const ordenados = unidad.trabajos.map((trabajo, indice) => {
+            const clave = claveGrupoAutomatica(unidad.numero, trabajo.ruta) || "";
+            const actividad = clave.match(/^a:\d+:(\d+)$/);
+            return { trabajo, tarjeta: tarjetas[indice], indice,
+                numero: actividad ? Number(actividad[1]) : Number.POSITIVE_INFINITY };
+        }).sort((a, b) => a.numero - b.numero || a.indice - b.indice);
+        if (ordenados.some((entrada, i) => entrada.indice !== i)) {
+            unidad.trabajos = ordenados.map((entrada) => entrada.trabajo);
+            // DocumentFragment evita múltiples repintados del catálogo.
+            const fragmento = document.createDocumentFragment();
+            ordenados.forEach(({ tarjeta }) => fragmento.appendChild(tarjeta));
+            cuadricula.appendChild(fragmento);
+        }
+    }
+
+    function segmentoEmpiezaOculto(segmento) {
+        return segmento.startsWith(".") || /^(?:node_modules|__macosx|dist|build)$/i.test(segmento);
+    }
+
+    function prioridadArchivoAutomatico(ruta) {
+        const tipo = tipoArchivoAutomatico(ruta);
+        const orden = ["html", "js", "pdf", "pptx", "markdown", "png", "jpg", "webp",
+            "svg", "drawio", "txt", "json", "css"];
+        const indice = orden.indexOf(tipo);
+        return indice === -1 ? 99 : indice;
+    }
+
+    function agregarTarjetaAutomatica(unidad, cuadricula, trabajo) {
+        const tarjeta = document.createElement("article");
+        tarjeta.className = "unidad-trabajo";
+        tarjeta.dataset.pwTarjetaAutomatica = "true";
+        const previa = document.createElement("div");
+        previa.className = "unidad-trabajo-preview";
+        previa.dataset.pwU4Miniatura = "1"; // Evita volver a crear la miniatura automática.
+        const tipo = tipoArchivoAutomatico(trabajo.ruta);
+        const urlArchivo = new URL(trabajo.ruta, window.location.href);
+        if (["png", "jpg", "gif", "svg", "webp", "avif"].includes(tipo)) {
+            const img = document.createElement("img");
+            img.src = urlArchivo.href;
+            img.alt = `Vista previa de ${trabajo.nombre}`;
+            img.loading = "lazy";
+            img.className = "pw-u4-mini-imagen";
+            previa.appendChild(img);
+        } else if (["html", "pdf"].includes(tipo)) {
+            const iframe = document.createElement("iframe");
+            iframe.src = urlArchivo.href;
+            iframe.title = `Vista previa de ${trabajo.nombre}`;
+            iframe.loading = "lazy";
+            previa.appendChild(iframe);
+        } else if (["js", "css", "json", "txt", "markdown", "xml"].includes(tipo)) {
+            const pre = document.createElement("pre");
+            pre.className = "pw-u4-mini-codigo";
+            pre.textContent = "// Cargando archivo...";
+            previa.appendChild(pre);
+            fetch(urlArchivo.href).then((r) => {
+                if (!r.ok) throw new Error(String(r.status));
+                return r.text();
+            }).then((s) => { if (pre.isConnected) pre.textContent = s.slice(0, 2200); })
+                .catch(() => { if (pre.isConnected) pre.textContent = "Vista previa no disponible"; });
+        } else {
+            const panel = document.createElement("div");
+            panel.className = "preview-markdown-mini";
+            panel.textContent = `${tipo.toUpperCase()} · Archivo disponible`;
+            previa.appendChild(panel);
+        }
+        const info = document.createElement("div");
+        info.className = "unidad-trabajo-info";
+        const etiq = document.createElement("p");
+        etiq.className = "unidad-trabajo-tipo";
+        etiq.textContent = tipo.toUpperCase();
+        const titulo = document.createElement("h5");
+        titulo.textContent = trabajo.nombre;
+        const descripcion = document.createElement("p");
+        descripcion.textContent = trabajo.descripcion;
+        const acciones = document.createElement("div");
+        acciones.className = "unidad-trabajo-acciones";
+        const boton = document.createElement("button");
+        boton.type = "button";
+        boton.className = "unidad-trabajo-vista-previa";
+        boton.setAttribute("data-unidad-vista-previa", "");
+        boton.textContent = "Vista previa";
+        const completo = { ...trabajo, unidad: unidad.numero, unidadTitulo: unidad.titulo,
+            unidadEstado: unidad.estado };
+        boton.addEventListener("click", () => {
+            window.mostrarVistaPreviaTrabajoHub?.(completo);
+        });
+        const abrir = document.createElement("a");
+        abrir.setAttribute("data-unidad-abrir-trabajo", "");
+        abrir.href = `vistas/trabajo.html?${new URLSearchParams({
+            archivo: urlArchivo.href, tipo: tipo, titulo: trabajo.nombre
+        })}`;
+        abrir.textContent = "Abrir trabajo";
+        acciones.append(boton, abrir);
+        info.append(etiq, titulo, descripcion, acciones);
+        tarjeta.append(previa, info);
+        cuadricula.appendChild(tarjeta);
+    }
 
     function esScriptU4(trabajo) {
         if (!trabajo?.ruta) return false;
