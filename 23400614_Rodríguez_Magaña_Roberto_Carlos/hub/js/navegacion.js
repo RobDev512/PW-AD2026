@@ -177,6 +177,13 @@ function configurarMenusDesplegables() {
             );
         }
     );
+
+    window.addEventListener("resize", () => {
+        const menuCurso = document.getElementById("menu-curso");
+        if (menuCurso && !menuCurso.hidden) {
+            ajustarAlturaMenuCurso(menuCurso);
+        }
+    }, { passive: true });
 }
 
 
@@ -218,9 +225,37 @@ function abrirDesplegable(
     menu.hidden =
         false;
 
+    // Ajustar el menú al espacio real debajo de la barra, sin manipular scrollTop.
+    ajustarAlturaMenuCurso(menu);
+
     sincronizarNavegacionMovil();
 }
 
+
+/* =========================================================
+   AJUSTAR ALTURA DEL MENÚ CURSO A LA VENTANA
+   ========================================================= */
+
+function ajustarAlturaMenuCurso(menu) {
+    if (!menu || menu.id !== "menu-curso") return;
+
+    // En móvil el panel inferior ya tiene su límite en navegacion.css.
+    if (window.matchMedia("(max-width: 650px)").matches) {
+        menu.style.removeProperty("--pw-menu-altura-disponible");
+        return;
+    }
+
+    const posicionSuperior = menu.getBoundingClientRect().top;
+    const alturaDisponible = Math.max(
+        110,
+        Math.floor(window.innerHeight - posicionSuperior - 12)
+    );
+
+    menu.style.setProperty(
+        "--pw-menu-altura-disponible",
+        `${alturaDisponible}px`
+    );
+}
 
 /* =========================================================
    CERRAR UN MENÚ

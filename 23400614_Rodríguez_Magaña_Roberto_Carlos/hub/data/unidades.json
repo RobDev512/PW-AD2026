@@ -701,14 +701,78 @@
     {
       "numero": 5,
       "titulo": "Programación del lado del servidor",
-      "descripcion": "Unidad pendiente. El profesor confirmó su enfoque en programación del lado del servidor; las actividades y los temas específicos se registrarán cuando comiencen las clases.",
+      "descripcion": "Unidad contemplada en el temario de Programación Web. Según lo comentado en clase, podría no desarrollarse en profundidad por falta de tiempo. No hay actividades registradas; el proyecto final de la materia tendrá su propio apartado dentro de Curso.",
       "estado": "pendiente",
       "temas": [
-        "Contenido específico pendiente de la programación del profesor"
+        "Programación del lado del servidor (contenido previsto; por confirmar)"
       ],
       "trabajos": [],
       "archivosUnidad": [],
       "archivosUnidadAutomaticos": true
     }
-  ]
+  ],
+  "proyectoFinal": {
+    "titulo": "Proyecto final de Programación Web",
+    "estado": "planeacion",
+    "descripcion": "Proyecto integrador de Programación Web. La temática y los entregables finales aún están por definir; la rúbrica compartida establece los criterios de evaluación.",
+    "orientacion": "Se mencionó una tienda en línea como ejemplo de temática; no se ha elegido aún el proyecto.",
+    "restriccion": "Se pidió evitar proyectos relacionados con bibliotecas.",
+    "nota": "Aunque se comentó que podría no haber tiempo para clases de backend, la rúbrica incluye API REST y CRUD; sus requisitos siguen vigentes salvo aclaración del profesor.",
+    "rubrica": {
+      "nombre": "Rúbrica de Evaluación – Proyecto Final de Programación Web",
+      "puntajeMaximo": 100,
+      "criterios": [
+        {
+          "nombre": "Pantallas del proyecto",
+          "puntos": 10,
+          "excelente": "Cinco o más pantallas funcionales, interconectadas y relacionadas directamente con la temática."
+        },
+        {
+          "nombre": "HTML",
+          "puntos": 15,
+          "excelente": "Etiquetas semánticas bien utilizadas, estructura ordenada, accesible y sin anidaciones innecesarias."
+        },
+        {
+          "nombre": "CSS (diseño)",
+          "puntos": 15,
+          "excelente": "Diseño atractivo y consistente en tipografías y colores, con interfaz agradable visualmente."
+        },
+        {
+          "nombre": "Navegación entre pantallas",
+          "puntos": 5,
+          "excelente": "Enlaces y botones funcionales, navegación intuitiva y regreso al inicio sin usar el botón Atrás del navegador."
+        },
+        {
+          "nombre": "JavaScript del lado del cliente",
+          "puntos": 10,
+          "excelente": "DOM, eventos, funciones, arreglos/objetos y peticiones asíncronas con fetch o axios a la API."
+        },
+        {
+          "nombre": "Formularios y validaciones",
+          "puntos": 10,
+          "excelente": "Validar datos vacíos o incorrectos y ofrecer retroalimentación clara y amigable."
+        },
+        {
+          "nombre": "API REST",
+          "puntos": 10,
+          "excelente": "Métodos GET, POST, PUT y DELETE, respuestas JSON y códigos HTTP adecuados (200, 400, 404, etc.)."
+        },
+        {
+          "nombre": "CRUD completo",
+          "puntos": 10,
+          "excelente": "Crear, consultar, actualizar y eliminar registros desde la interfaz web."
+        },
+        {
+          "nombre": "Video demo",
+          "puntos": 10,
+          "excelente": "Video de 12 a 15 minutos que demuestre el CRUD y explique brevemente la arquitectura; participa todo el equipo."
+        },
+        {
+          "nombre": "Colaboración y uso de GitHub",
+          "puntos": 5,
+          "excelente": "Repositorio con commits constantes, mensajes descriptivos y evidencia de colaboración del equipo."
+        }
+      ]
+    }
+  }
 }

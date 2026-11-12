@@ -23,9 +23,9 @@ Este directorio reúne las actividades, ejercicios y proyectos realizados durant
 | U2 | HTML | ✓ Completada |
 | U3 | CSS | ✓ Completada · 10 actividades |
 | U4 | Programación del lado del cliente | ▶ Actual · actividades registradas y detección automática de nuevas entregas |
-| U5 | Programación del lado del servidor | ⏳ Pendiente · sin actividades |
+| U5 | Programación del lado del servidor | ⏳ Pendiente · contenido por confirmar |
 
-El profesor confirmó los títulos de U4 y U5. U4 comenzó con una tarea de conceptos JavaScript (presentación PowerPoint, PDF y PNG), las actividades 2 y 3 de ejercicios JavaScript y ejemplos de clase; U5 aún no tiene actividades.
+U4 continúa como unidad actual. U5 permanece registrada como **Programación del lado del servidor**, pendiente de saber si se alcanzará a desarrollar su contenido en clase. El **Proyecto final de Programación Web se presenta en un apartado propio del curso**, aunque el calendario académico lo vincule al cierre del curso. La idea orientativa es una tienda en línea y se descartó una biblioteca; el tema concreto aún no está elegido. La rúbrica compartida contempla API REST y CRUD, independientemente de que se imparta o no backend.
 
 ---
 
@@ -62,7 +62,7 @@ v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles p
 └── README.md
 ```
 
-U4 contiene `U4/U4. A1. Tarea 1/` con un PDF principal, una lámina PNG y un PowerPoint editable, además de `U4. A2. Ejercicios.js`, `U4. A3. Ejercicios.js` (dos ejercicios) y `U4. Ejemplos.js`. La carpeta U5 se incorporará cuando comience esa unidad.
+U4 contiene `U4/U4. A1. Tarea 1/` con un PDF principal, una lámina PNG y un PowerPoint editable, además de `U4. A2. Ejercicios.js`, `U4. A3. Ejercicios.js` (dos ejercicios) y `U4. Ejemplos.js`. El proyecto final cuenta con un apartado **Proyecto final** en el curso y una rúbrica de 10 criterios (100 puntos), sin trabajos todavía. La estructura del código del proyecto se decidirá posteriormente en su propio espacio de trabajo.
 
 ---
 
@@ -80,7 +80,7 @@ La Unidad 4 corresponde a **Programación del lado del cliente**. El catálogo c
 
 ## Funciones principales de PW Hub
 
-- progreso académico U1–U5;
+- progreso académico U1–U5 y apartado independiente de proyecto final con rúbrica de evaluación;
 - catálogo sincronizado con GitHub y creación automática de tarjetas para nuevos trabajos de U1–U5 (requiere conexión);
 - tarjetas, vistas previas y visor completo;
 - proyectos por carpeta y exploración de recursos;

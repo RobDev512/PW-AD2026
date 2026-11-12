@@ -1868,3 +1868,195 @@ body.visor-trabajo-abierto
 #unidad4 .pw-unidad-lateral .pw-unidad-archivos-etiqueta {
     letter-spacing: .7px;
 }
+
+
+/* Proyecto final de la materia (apartado transversal, NO Unidad 5). */
+.pw-proyecto-final {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 42px 0 28px;
+    scroll-margin-top: 120px;
+    padding: clamp(20px, 4vw, 42px);
+    background: linear-gradient(135deg, rgba(17, 32, 44, .97), rgba(11, 18, 28, .98));
+    border: 1px solid rgba(70, 196, 229, .45);
+    border-radius: 20px;
+    color: var(--texto, #ebf2f6);
+    box-shadow: 0 15px 38px rgba(0, 0, 0, .13);
+}
+.pw-pf-encabezado { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+.pw-pf-cabecera-textos { min-width: 0; }
+.pw-pf-sobretitulo { color: #5cd4f5; font-size: 11px; font-weight: 800; letter-spacing: 1.25px; }
+.pw-pf-encabezado h2 { font-size: clamp(24px, 3vw, 34px); line-height: 1.15; margin: 12px 0 16px; }
+.pw-pf-estado { flex: 0 0 auto; border: 1px solid rgba(146, 177, 198, .4); border-radius: 30px; padding: 8px 13px; font-size: 10px; font-weight: 800; letter-spacing: .7px; color: #bacbd6; white-space: nowrap; }
+.pw-pf-descripcion { margin: 0 0 22px; max-width: 790px; color: #b9cbd7; line-height: 1.8; }
+.pw-pf-notas { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+.pw-pf-notas > div { min-width: 0; border: 1px solid rgba(118, 154, 175, .22); border-radius: 13px; background: rgba(4, 12, 21, .25); padding: 17px 18px; }
+.pw-pf-notas strong { font-size: 13px; color: #edf8ff; }
+.pw-pf-notas p { margin: 7px 0 0; color: #b5c7d3; font-size: 13px; line-height: 1.6; }
+.pw-pf-aclaracion { border-left: 3px solid #5cc7e9; padding: 11px 16px; margin: 21px 0; background: rgba(55, 156, 192, .07); color: #c3d7e1; font-size: 13px; line-height: 1.7; }
+.pw-pf-rubrica { border: 1px solid rgba(116, 166, 192, .32); border-radius: 14px; overflow: hidden; background: rgba(6, 13, 22, .47); }
+.pw-pf-rubrica > summary { display: flex; align-items: center; gap: 12px; list-style: none; padding: 18px; cursor: pointer; }
+.pw-pf-rubrica > summary::-webkit-details-marker, .pw-pf-criterio > summary::-webkit-details-marker { display: none; }
+.pw-pf-rubrica > summary:hover, .pw-pf-rubrica > summary:focus-visible { background: rgba(40, 117, 144, .13); }
+.pw-pf-rubrica-titulo { font-weight: 800; flex: 1; min-width: 0; }
+.pw-pf-rubrica-titulo small { display: block; font-size: 11px; font-weight: 450; margin-top: 4px; color: #9eb5c6; }
+.pw-pf-puntaje { color: #76dcf8; font-size: 12px; font-weight: 800; white-space: nowrap; }
+/* El chevron ocupa siempre la misma casilla; solo gira el SVG, nunca el contenedor. */
+.pw-pf-flecha {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+    color: #89dbf0;
+}
+.pw-pf-flecha svg {
+    display: block;
+    flex: none;
+    width: 18px;
+    height: 18px;
+    transform-origin: center center;
+    transition: transform .2s ease;
+}
+.pw-pf-rubrica[open] .pw-pf-flecha svg { transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) { .pw-pf-flecha svg { transition: none; } }
+.pw-pf-rubrica-contexto { margin: 0; padding: 4px 18px 14px; font-size: 12px; color: #a2bdcc; line-height: 1.6; }
+.pw-pf-criterios { display: grid; gap: 8px; padding: 0 16px 16px; }
+.pw-pf-criterio { border: 1px solid rgba(113, 160, 184, .19); background: rgba(19, 39, 51, .55); border-radius: 10px; overflow: hidden; }
+.pw-pf-criterio > summary { list-style: none; display: flex; justify-content: space-between; gap: 15px; padding: 13px 15px; cursor: pointer; font-size: 13px; line-height: 1.45; }
+.pw-pf-criterio > summary:focus-visible { outline: 2px solid #4dd1f7; outline-offset: -2px; }
+.pw-pf-criterio > summary:hover { background: rgba(56, 134, 170, .13); }
+.pw-pf-criterio > summary b { color: #70d2ef; margin-right: 5px; }
+.pw-pf-criterio > summary strong { font-size: 12px; white-space: nowrap; color: #8eddf0; }
+.pw-pf-criterio > p { margin: 0; padding: 0 15px 15px; color: #bfd2dc; font-size: 12px; line-height: 1.65; }
+@media (max-width: 650px) {
+    .pw-proyecto-final { width: 100%; padding: 19px; border-radius: 15px; margin-top: 26px; }
+    .pw-pf-encabezado { flex-direction: column; gap: 4px; }
+    .pw-pf-estado { align-self: flex-start; margin-bottom: 15px; }
+    .pw-pf-notas { grid-template-columns: 1fr; }
+    .pw-pf-rubrica > summary { gap: 8px; padding: 14px; }
+    .pw-pf-criterios { padding: 0 10px 10px; }
+}
+
+/* Proyecto final C5: etiqueta del menu sin desbordar la insignia de U5. */
+[data-pw-acceso-proyecto-final] .pw-pf-menu-insignia {
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: clip;
+    word-break: normal;
+    overflow-wrap: normal;
+}
+[data-pw-acceso-proyecto-final] .pw-pf-menu-nombre {
+    min-width: 0;
+    white-space: normal;
+}
+
+/* Acceso al proyecto por fuera de las cinco tarjetas U1–U5 en Progreso. */
+.pw-pf-progreso-acceso {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 18px;
+    padding: 15px 18px;
+    border: 1px solid rgba(75, 187, 215, .35);
+    border-radius: 14px;
+    background: rgba(16, 32, 43, .64);
+    color: var(--texto, #ecf6fc);
+    text-decoration: none;
+    transition: border-color .18s ease, background-color .18s ease;
+}
+.pw-pf-progreso-acceso:hover,
+.pw-pf-progreso-acceso:focus-visible {
+    border-color: rgba(95, 220, 245, .76);
+    background: rgba(30, 64, 78, .70);
+    outline-offset: 2px;
+}
+.pw-pf-progreso-icono {
+    display: grid;
+    place-items: center;
+    flex: 0 0 45px;
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgba(102, 211, 239, .77);
+    border-radius: 50%;
+    color: #83e0f8;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: .1px;
+}
+.pw-pf-progreso-cuerpo { display: grid; gap: 5px; flex: 1 1 auto; min-width: 0; }
+.pw-pf-progreso-cuerpo strong { font-size: 15px; line-height: 1.35; }
+.pw-pf-progreso-cuerpo small { color: #a9c3d0; font-size: 12px; line-height: 1.4; }
+.pw-pf-progreso-estado {
+    flex: 0 0 auto;
+    color: #a7c1cd;
+    border: 1px solid rgba(153, 180, 194, .35);
+    border-radius: 999px;
+    padding: 7px 10px;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .3px;
+    white-space: nowrap;
+}
+.pw-pf-progreso-acceso > svg { flex: 0 0 auto; color: #83d8ed; }
+@media (max-width: 560px) {
+    .pw-pf-progreso-acceso { gap: 11px; padding: 13px; flex-wrap: wrap; }
+    .pw-pf-progreso-icono { flex-basis: 38px; width: 38px; height: 38px; }
+    .pw-pf-progreso-cuerpo { flex-basis: calc(100% - 85px); }
+    .pw-pf-progreso-estado { margin-left: 50px; }
+    .pw-pf-progreso-acceso > svg { margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .pw-pf-progreso-acceso { transition: none; }
+}
+
+
+/* Proyecto final C6: estado activo independiente en el submenu de Curso. */
+.nav-desplegable-menu [data-pw-acceso-proyecto-final].pw-pf-menu-activo,
+.nav-desplegable-menu [data-pw-acceso-proyecto-final] .pw-pf-menu-activo {
+    background: rgba(46, 160, 200, .16) !important;
+    border-color: rgba(59, 189, 226, .48) !important;
+    color: var(--texto, #e9f5fa) !important;
+}
+.nav-desplegable-menu [data-pw-acceso-proyecto-final].pw-pf-menu-activo .pw-pf-menu-insignia,
+.nav-desplegable-menu [data-pw-acceso-proyecto-final] .pw-pf-menu-activo .pw-pf-menu-insignia {
+    border-color: rgba(85, 217, 240, .8);
+    color: #85e5fb;
+}
+/* Mantener el desplazamiento dentro del menu sin arrastrar la pagina. */
+.nav-desplegable-menu {
+    overscroll-behavior-y: contain;
+}
+
+
+/* PF C7: U5 no puede quedar iluminada al ver el proyecto final.
+ * Esta regla es una mascara visual del estado nativo del scrollspy,
+ * evitando reescribir sus clases en bucle. */
+.nav-desplegable-menu.pw-pf-seccion-activa [data-pw-pf-plantilla-u5] {
+    background: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+.nav-desplegable-menu.pw-pf-seccion-activa [data-pw-pf-plantilla-u5] :is(a, button, [role="menuitem"]) {
+    background: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+.nav-desplegable-menu.pw-pf-seccion-activa [data-pw-pf-plantilla-u5] :is([class*="insignia"], [class*="badge"], [class*="numero"], [class*="icono"]) {
+    background: rgba(8, 31, 44, .56) !important;
+    border-color: rgba(73, 168, 194, .34) !important;
+    color: #8dcbdc !important;
+}
+
+

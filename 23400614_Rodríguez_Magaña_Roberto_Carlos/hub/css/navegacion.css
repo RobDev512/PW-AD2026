@@ -949,3 +949,16 @@ html {
     }
 }
 
+
+/* C9: menú Curso con desplazamiento nativo y altura ajustada al viewport.
+   La altura se calcula una vez al abrir y al cambiar el tamaño de ventana. */
+@media (min-width: 651px) {
+    #menu-curso {
+        max-height: min(520px, var(--pw-menu-altura-disponible, 60dvh));
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+        scrollbar-gutter: stable;
+        overflow-anchor: none;
+    }
+}

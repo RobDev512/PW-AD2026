@@ -1839,7 +1839,283 @@
         decorarTarjetasUnidad();
         decorarMiniaturasU4();
         decorarArchivosUnidad();
+        decorarProyectoFinal();
+        decorarAccesoProyectoFinal();
+        decorarProyectoEnProgreso();
         prepararTarjetasAutomaticas();
+    }
+
+
+    /*
+     * Proyecto final transversal: NO es una unidad ni forma parte de
+     * unidad.trabajos. Se presenta fuera de las secciones U1–U5.
+     * La rúbrica proviene de datosHub.proyectoFinal, no de un trabajo ficticio.
+     */
+    function decorarProyectoFinal() {
+        if (document.getElementById("proyecto-final")) return;
+        const referencia = document.getElementById("unidad5") ||
+            document.getElementById("unidad4");
+        if (!referencia) return;
+        let proyecto = null;
+        try {
+            proyecto = typeof datosHub !== "undefined" ? datosHub?.proyectoFinal : null;
+        } catch { proyecto = null; }
+        if (!proyecto || !proyecto.rubrica) return;
+        const rubrica = proyecto.rubrica;
+        const criterios = Array.isArray(rubrica.criterios) ? rubrica.criterios : [];
+        const puntaje = criterios.reduce((suma, c) => suma + (Number(c.puntos) || 0), 0);
+        const escapar = (valor) => escaparHtml(String(valor ?? ""));
+        const seccion = document.createElement("section");
+        seccion.id = "proyecto-final";
+        seccion.className = "pw-proyecto-final";
+        seccion.setAttribute("aria-labelledby", "pw-proyecto-final-titulo");
+        seccion.innerHTML = `
+            <div class="pw-pf-encabezado">
+                <div class="pw-pf-cabecera-textos">
+                    <span class="pw-pf-sobretitulo">PROYECTO DE LA MATERIA</span>
+                    <h2 id="pw-proyecto-final-titulo">${escapar(proyecto.titulo)}</h2>
+                </div>
+                <span class="pw-pf-estado">EN PLANEACIÓN</span>
+            </div>
+            <p class="pw-pf-descripcion">${escapar(proyecto.descripcion)}</p>
+            <div class="pw-pf-notas">
+                <div><strong>Orientación temática</strong><p>${escapar(proyecto.orientacion)}</p></div>
+                <div><strong>Restricción comentada en clase</strong><p>${escapar(proyecto.restriccion)}</p></div>
+            </div>
+            <p class="pw-pf-aclaracion">${escapar(proyecto.nota)}</p>
+            <details class="pw-pf-rubrica">
+                <summary>
+                    <span class="pw-pf-rubrica-titulo">Rúbrica de evaluación <small>${criterios.length} criterios · selecciona para consultar</small></span>
+                    <span class="pw-pf-puntaje">${puntaje} / ${escapar(rubrica.puntajeMaximo)} pts</span>
+                    <span class="pw-pf-flecha" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m6 9 6 6 6-6"/></svg></span>
+                </summary>
+                <p class="pw-pf-rubrica-contexto">Se muestran los puntajes máximos y las condiciones del nivel «Excelente» de la rúbrica compartida. No significa que el proyecto ya esté realizado.</p>
+                <div class="pw-pf-criterios">
+                    ${criterios.map((criterio, indice) => `
+                        <details class="pw-pf-criterio">
+                            <summary><span><b>${indice + 1}.</b> ${escapar(criterio.nombre)}</span><strong>${Number(criterio.puntos) || 0} pts</strong></summary>
+                            <p>${escapar(criterio.excelente)}</p>
+                        </details>`).join("")}
+                </div>
+            </details>`;
+        referencia.insertAdjacentElement("afterend", seccion);
+    }
+
+
+    /*
+     * Acceso al proyecto en el mismo submenú de Curso.
+     * Reutiliza el item ya existente de U5 para mantener su estilo y
+     * comportamiento de navegación. No edita navegación histórica.
+     * Al activarse primero entra a Curso/U5 y luego baja al proyecto.
+     */
+    function decorarAccesoProyectoFinal() {
+        if (!document.getElementById("proyecto-final")) return;
+        if (document.querySelector("[data-pw-acceso-proyecto-final]")) return;
+
+        const candidatos = [...document.querySelectorAll("a, button, [role='menuitem']")];
+        const enMenu = (elemento) => Boolean(elemento.closest(
+            'nav, header, [role="menu"], [class*="submenu"], ' +
+            '[id*="submenu"], [class*="dropdown"], [id*="dropdown"], ' +
+            '[class*="desplegable"], [id*="menu-curso"]'
+        ));
+        const u5 = candidatos.find((elemento) => {
+            if (!enMenu(elemento) || elemento.closest("#unidad5")) return false;
+            const texto = (elemento.textContent || "").replace(/\s+/g, " ").trim();
+            const destino = [elemento.getAttribute("href"), elemento.getAttribute("data-unidad"),
+                elemento.getAttribute("data-target"), elemento.getAttribute("data-section")]
+                .filter(Boolean).join(" ");
+            return /\bunidad\s*5\b|^u\s*5\b/i.test(texto) ||
+                /unidad5|^5$/.test(destino.toLowerCase());
+        });
+        if (!u5) return;
+
+        const contenedor = u5.closest('li, .submenu-item, .dropdown-item, .menu-item') || u5;
+        // Un item no puede envolver otros enlaces de unidad.
+        const original = contenedor.querySelectorAll('a,button,[role="menuitem"]').length > 1
+            ? u5 : contenedor;
+        const duplicado = original.cloneNode(true);
+        const enlace = duplicado.matches('a,button,[role="menuitem"]')
+            ? duplicado : duplicado.querySelector('a,button,[role="menuitem"]');
+        if (!enlace) return;
+        duplicado.dataset.pwAccesoProyectoFinal = "1";
+        duplicado.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+        enlace.removeAttribute('id');
+        enlace.removeAttribute('onclick');
+        enlace.removeAttribute('aria-current');
+        enlace.setAttribute('aria-label', 'Ir al Proyecto final de Programación Web');
+        enlace.setAttribute('title', 'Proyecto final de Programación Web');
+        if (enlace.tagName === 'A') enlace.setAttribute('href', '#proyecto-final');
+        [duplicado, enlace].forEach(el => {
+            el.classList.remove('active', 'activo', 'selected', 'seleccionado', 'actual');
+            for (const data of ['unidad','target','section','seccion','destino','nav','ruta','route','hash']) {
+                el.removeAttribute('data-' + data);
+            }
+        });
+        // En el menu de Curso, «U5» se dibuja dentro de un circulo muy pequeno.
+        // Nunca se debe escribir «Proyecto final» dentro de esa insignia: se usa PF
+        // y el nombre completo va en el texto descriptivo del elemento clonado.
+        const walker = document.createTreeWalker(enlace, NodeFilter.SHOW_TEXT);
+        const textos = [];
+        while (walker.nextNode()) textos.push(walker.currentNode);
+        const visibles = textos.filter(n => n.textContent.trim());
+        const insignia = visibles.find(n => /\bunidad\s*5\b|^\s*u\s*5\s*$/i.test(n.textContent));
+        if (insignia && insignia.parentElement !== enlace) {
+            insignia.textContent = 'PF';
+            insignia.parentElement.classList.add('pw-pf-menu-insignia');
+        }
+        const nombre = visibles.find(n => n !== insignia);
+        if (nombre) {
+            nombre.textContent = 'Proyecto final';
+            visibles.filter(n => n !== insignia && n !== nombre)
+                .forEach(n => n.textContent = '');
+        } else if (insignia) {
+            // Variante de menu con una sola etiqueta: se agrega el titulo afuera
+            // del circulo sin alterar el elemento original de Unidad 5.
+            const nombreExtra = document.createElement('span');
+            nombreExtra.className = 'pw-pf-menu-nombre';
+            nombreExtra.textContent = 'Proyecto final';
+            enlace.appendChild(nombreExtra);
+        } else {
+            enlace.textContent = 'Proyecto final';
+        }
+
+        enlace.addEventListener('click', (evento) => {
+            evento.preventDefault();
+            evento.stopImmediatePropagation();
+            // Entra al mismo panel Curso que ya maneja la opcion Unidad 5.
+            enlace.dispatchEvent(new Event('pw-pf-navegar'));
+            u5.click();
+            const ir = () => document.getElementById('proyecto-final')?.scrollIntoView({
+                behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                block: 'start'
+            });
+            requestAnimationFrame(() => requestAnimationFrame(ir));
+            setTimeout(ir, 160);
+        }, true);
+
+        original.insertAdjacentElement('afterend', duplicado);
+        prepararEstadoYScrollProyectoFinal({ enlace, u5, original, duplicado });
+    }
+
+    /*
+     * La opcion PF se dibuja independientemente de la Unidad 5. El scrollspy
+     * antiguo puede seguir marcando U5 porque PF se situa justo despues.
+     * No usamos MutationObserver para desmarcar U5: observar y modificar
+     * las mismas clases provocaba un ciclo de actualizaciones en C6.
+     */
+    function prepararEstadoYScrollProyectoFinal({ enlace, u5, original, duplicado }) {
+        const proyecto = document.getElementById('proyecto-final');
+        if (!proyecto || !enlace) return;
+
+        const menu = enlace.closest('.nav-desplegable-menu') ||
+            enlace.closest('[role="menu"]');
+        const clases = ['active', 'activo', 'selected', 'seleccionado', 'actual',
+            'is-active', 'nav-activo'];
+        let hastaClick = 0;
+        let pendiente = false;
+
+        // Identificar la plantilla U5 sin cambiar sus rutas ni sus eventos.
+        for (const item of new Set([original, u5])) {
+            if (item) item.dataset.pwPfPlantillaU5 = '1';
+        }
+
+        const actualizarSeleccion = () => {
+            pendiente = false;
+            if (!enlace.isConnected || !proyecto.isConnected) return;
+            const rect = proyecto.getBoundingClientRect();
+            const limite = Math.max(110, Math.min(260, window.innerHeight * .38));
+            const activo = performance.now() < hastaClick ||
+                (rect.top <= limite && rect.bottom > 90);
+
+            duplicado.classList.toggle('pw-pf-menu-activo', activo);
+            if (enlace !== duplicado) enlace.classList.toggle('pw-pf-menu-activo', activo);
+            menu?.classList.toggle('pw-pf-seccion-activa', activo);
+            if (activo) {
+                enlace.setAttribute('aria-current', 'location');
+                // La limpieza se ejecuta al cambiar el scroll, NO al mutar
+                // clases. Las reglas CSS tambien neutralizan el estilo nativo
+                // en caso de que el scrollspy vuelva a marcar U5.
+                for (const item of new Set([original, u5])) {
+                    if (!item) continue;
+                    if (clases.some(c => item.classList.contains(c))) {
+                        item.classList.remove(...clases);
+                    }
+                    if (item.hasAttribute('aria-current')) item.removeAttribute('aria-current');
+                }
+            } else {
+                enlace.removeAttribute('aria-current');
+            }
+        };
+        const programarSeleccion = () => {
+            if (pendiente) return;
+            pendiente = true;
+            requestAnimationFrame(actualizarSeleccion);
+        };
+        window.addEventListener('scroll', programarSeleccion, { passive: true });
+        window.addEventListener('resize', programarSeleccion, { passive: true });
+        window.addEventListener('hashchange', programarSeleccion);
+        enlace.addEventListener('pw-pf-navegar', () => {
+            hastaClick = performance.now() + 900;
+            programarSeleccion();
+            setTimeout(programarSeleccion, 950);
+        });
+
+        // C9: el desplazamiento se gestiona únicamente por el navegador.
+        // La altura disponible se controla desde navegacion.js y navegacion.css.
+        // No interceptamos wheel ni scrollTop: hacerlo causaba saltos y parpadeos.
+        actualizarSeleccion();
+    }
+
+
+    /*
+     * El progreso del curso sigue midiendo únicamente U1–U5. El Proyecto final
+     * se muestra DESPUÉS de esas cinco tarjetas como acceso independiente,
+     * sin crear una unidad ficticia ni alterar el porcentaje académico.
+     */
+    function decorarProyectoEnProgreso() {
+        if (!document.getElementById('proyecto-final')) return;
+        if (document.querySelector('[data-pw-pf-progreso]')) return;
+
+        const titulo = [...document.querySelectorAll('h1,h2,h3,h4')]
+            .find(el => /avance en programaci[oó]n web/i.test(el.textContent.trim()));
+        if (!titulo) return;
+
+        // Elegir el contenedor mas pequeno que agrupe el encabezado y U1–U5.
+        // No dependemos de clases internas del panel, que pueden variar.
+        let contenedor = titulo.parentElement;
+        for (let nivel = 0; nivel < 6 && contenedor; nivel++, contenedor = contenedor.parentElement) {
+            const marcas = [...contenedor.querySelectorAll('span,div,strong')]
+                .filter(n => n.children.length === 0 && /^U[1-5]$/.test(n.textContent.trim()))
+                .map(n => n.textContent.trim());
+            if (new Set(marcas).size === 5) break;
+        }
+        if (!contenedor || contenedor === document.body || contenedor === document.documentElement) return;
+
+        const acceso = document.createElement('a');
+        acceso.className = 'pw-pf-progreso-acceso';
+        acceso.dataset.pwPfProgreso = '1';
+        acceso.href = '#proyecto-final';
+        acceso.setAttribute('aria-label', 'Ver Proyecto final de Programación Web');
+        acceso.innerHTML = `
+            <span class="pw-pf-progreso-icono" aria-hidden="true">PF</span>
+            <span class="pw-pf-progreso-cuerpo">
+                <strong>Proyecto final de Programación Web</strong>
+                <small>Proyecto de la materia · apartado separado del avance por unidades</small>
+            </span>
+            <span class="pw-pf-progreso-estado">En planeación</span>
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`;
+        acceso.addEventListener('click', (evento) => {
+            evento.preventDefault();
+            const opcion = document.querySelector(
+                '[data-pw-acceso-proyecto-final] a, ' +
+                '[data-pw-acceso-proyecto-final] button, ' +
+                'a[data-pw-acceso-proyecto-final], ' +
+                'button[data-pw-acceso-proyecto-final]'
+            );
+            if (opcion) opcion.click();
+            else document.getElementById('proyecto-final')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        contenedor.appendChild(acceso);
     }
 
 

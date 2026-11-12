@@ -1,10 +1,78 @@
 # Changelog de PW Hub
 
+### Mantenimiento de navegación C9 (sin cambio de versión)
+
+- Se elimina el control artificial del scroll de C6–C8 (`requestAnimationFrame`, interceptación de `wheel` y sobrescritura de `scrollTop`), que podía causar saltos y parpadeo en el submenú Curso.
+- El propio módulo de navegación limita la altura del menú Curso al espacio disponible en pantalla; el desplazamiento pasa a ser nativo, con soporte para rueda, teclado y arrastre de barra.
+- Se conserva el estado visual exclusivo de Proyecto final y el resto de la sección académica, sin cambiar la versión v1.2.2.
+
+
 Este documento registra la evolución de PW Hub por versiones.
 
 A partir de **v1.0.0**, el proyecto deja de organizar su desarrollo futuro mediante fases. El roadmap histórico de 16 fases se conserva aquí como parte del registro de la primera versión estable.
 
 > La palabra **fase** aparece en v1.0.0 únicamente porque así se documentó originalmente la construcción del Hub. Las versiones posteriores se registrarán como actualizaciones.
+
+---
+
+## Corrección persistente del scroll del submenú Curso (2026-11-12, candidato local C8; sin nueva versión)
+
+- Se confirmó en la grabación de Edge que la selección PF ya era exclusiva, pero el submenú continuaba desplazándose automáticamente al usarlo desde el inicio de la página.
+- El desplazamiento manual se mantiene mientras esté abierto el menú, con soporte para rueda, trackpad, teclado, táctil y arrastre de la barra; se libera al elegir una entrada o cerrar el desplegable.
+- Se evita liberar la protección solo por salir el puntero o cambiar el foco. También se admite un contenedor de scroll interno y se desactiva el anclaje automático durante el gesto.
+- U1–U5, Proyecto final, rúbrica, actividades y visores sin cambios. Versión **v1.2.2**, caché técnica `pw-hub-offline-v70`.
+
+---
+
+## Corrección de selección exclusiva y scroll de Curso (2026-11-12, candidato local C7; sin nueva versión)
+
+- La opción **PF · Proyecto final** se destaca de manera exclusiva respecto a U5 cuando el proyecto está visible. Se evita un ciclo de actualizaciones al eliminar el observador de clases que modificaba el mismo elemento.
+- Se conserva la posición indicada por la rueda/trackpad dentro del menú desplegable frente a reajustes automáticos del scrollspy; al usar teclado, tacto o al salir del menú se libera la protección para no afectar la navegación normal.
+- Sin modificaciones de las unidades, los trabajos académicos, la rúbrica ni los visores. Versión **v1.2.2**, caché técnica `pw-hub-offline-v69`.
+
+---
+
+## Corrección de navegación de Proyecto final (2026-11-12, candidato local C6; sin nueva versión)
+
+- La opción «PF · Proyecto final» del submenú de Curso se resalta al llegar a la sección del proyecto; deja de quedar marcada U5 mientras se visualiza el apartado independiente.
+- El submenú conserva el desplazamiento manual con rueda o trackpad sin que el seguimiento de la unidad activa lo reinicie constantemente. El resto del menú y sus enlaces mantienen su comportamiento.
+- Sin cambios en las actividades, rúbrica, visor JS/PPTX ni el total de cinco unidades. Versión **v1.2.2**, caché técnica `pw-hub-offline-v68`.
+
+---
+
+## Ajuste de Proyecto final en menú y progreso (2026-11-12, candidato local C5; sin nueva versión)
+
+- Se corrige la insignia de Proyecto final en el submenú de Curso: muestra «PF» y el texto «Proyecto final» fuera del círculo, conservando la entrada real de Unidad 5.
+- Se incorpora un enlace al Proyecto final al final de «Avance en Programación Web». Aparece como ficha independiente, sin contarse como una sexta unidad ni modificar el avance académico.
+- Se mantiene la rúbrica, el diseño aprobado, las actividades U1–U4 y el estado pendiente de U5. PW Hub continúa en **v1.2.2**, con caché técnica `pw-hub-offline-v67`.
+
+---
+
+## Ajuste visual — flecha de la rúbrica (2026-11-12, candidato local C4; sin nueva versión)
+
+- Se reemplaza el carácter tipográfico de la flecha por un chevron SVG, centrado en una casilla fija de 28 × 28 píxeles, para que no cambie de posición al expandir o cerrar la rúbrica.
+- La rotación sucede únicamente sobre el icono y respeta la preferencia de movimiento reducido del sistema.
+- Se preservan el submenú de Curso, los criterios de la rúbrica, la sección de Proyecto final y todo el catálogo académico. PW Hub sigue en **v1.2.2**; caché técnica **v66**.
+
+---
+
+## Ajuste académico — acceso y diseño de Proyecto final (2026-11-12, candidato local C3; sin nueva versión)
+
+- Se iguala el ancho de la ficha «Proyecto final» al de las tarjetas de unidad y se evita el margen lateral extra.
+- Se añade una entrada «Proyecto final» al submenú de Curso, reutilizando la navegación a U5 y desplazando después a la sección del proyecto.
+- La etiqueta visible queda solo como «Proyecto de la materia»; se elimina la expresión «Independiente de las unidades».
+- Se mantiene la rúbrica de 10 criterios y 100 puntos y el estado «En planeación». Cuando exista el proyecto se reemplazarán las notas de propuesta por su ficha real (descripción, demostración, repositorio y evidencias), sin perder la rúbrica.
+- U1–U5, el laboratorio de JavaScript, PowerPoint y la versión técnica v1.2.2 no cambian. Caché técnica v65.
+
+---
+
+## Ajuste académico — proyecto final transversal y rúbrica (2026-11-12, candidato local; sin nueva versión)
+
+- Se conserva U5 como «Programación del lado del servidor», pendiente y sin actividades; no se renombra como proyecto.
+- El «Proyecto final de Programación Web» se presenta **en un apartado independiente** de las unidades, sin entregables ficticios.
+- Se incorporan los 10 criterios y 100 puntos de la rúbrica compartida, con detalle de lo requerido para la evaluación «Excelente». La API REST y el CRUD completo siguen siendo criterios, aunque se haya comentado que podría no impartirse backend.
+- La tienda en línea es una sugerencia de temática, no un proyecto ya elegido; se evita la temática de biblioteca.
+- Se mantienen U4 actual, U1–U3 completas, tareas, visores y autocátalogo sin cambios. Versión técnica **v1.2.2**; caché técnica **v64**.
 
 ---
 

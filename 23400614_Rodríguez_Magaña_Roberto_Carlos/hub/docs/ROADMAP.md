@@ -10,7 +10,7 @@ El historial completo de la construcción original y de los ajustes incorporados
 
 Este roadmap muestra la versión estable actual y la evolución técnica futura del Hub. El avance normal de U1 a U5 sigue perteneciendo al contenido académico de Programación Web y no crea nuevas versiones por sí solo.
 
-**Actualización académica posterior a v1.2.2:** U4 es la unidad actual, titulada Programación del lado del cliente (inicio con JavaScript); U5 se confirmó como Programación del lado del servidor y sigue pendiente. U4 incluye tres actividades (A1 con PDF, PNG y PowerPoint en una carpeta, cada uno con su visor correspondiente; el PPTX se interpreta por OOXML y no mediante una vista PDF exportada; A2 y A3 en JavaScript, con tres y dos ejercicios respectivamente) y un archivo complementario de ejemplos. El visor de archivos permite ejecutar los `.js` de U4 en una consola aislada con entradas para `prompt()`, como mantenimiento funcional de la versión existente, sin adelantar v1.3.0.
+**Planificación académica actualizada (noviembre de 2026):** U4 continúa activa. U5 conserva su lugar en el programa como Programación del lado del servidor, aunque podría no impartirse por falta de tiempo. El **Proyecto final de Programación Web es una sección propia dentro de Curso**; tiene una rúbrica de 10 criterios y 100 puntos, con API REST y CRUD entre sus criterios. Se sugirió una tienda en línea como temática orientativa y se descartó biblioteca. La idea, la arquitectura y el calendario están por definir. Este ajuste no altera la versión técnica de PW Hub (v1.2.2).
 
 El proyecto utiliza un versionado simple inspirado en SemVer:
 

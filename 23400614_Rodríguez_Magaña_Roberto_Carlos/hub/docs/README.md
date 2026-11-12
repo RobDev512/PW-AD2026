@@ -45,11 +45,14 @@ Actualmente:
 - U2: completada;
 - U3: completada;
 - U4: actual — Programación del lado del cliente (JavaScript);
-- U5: pendiente — Programación del lado del servidor.
+- U5: pendiente — Programación del lado del servidor (el contenido efectivo aún debe confirmarse).
+- Proyecto final: **apartado «Proyecto final» dentro de Curso, separado de las unidades**, en planeación y con rúbrica registrada.
 
 El estado académico y el versionado de PW Hub son independientes.
 
-**Inicio de U4 (mantenimiento académico, sin nueva versión):** el profesor confirmó U4 como Programación del lado del cliente y U5 como Programación del lado del servidor. El catálogo registra A1 (PDF, PNG y PowerPoint en su carpeta; PDF y diapositivas PPTX tienen vistas independientes), A2 (tres ejercicios JavaScript), A3 (dos ejercicios JavaScript) y `U4. Ejemplos.js` como material complementario de clase, no como actividad independiente. El visor completo añade ejecución aislada para JavaScript de U4 con consola, entradas para `prompt()` y controles Ejecutar/Detener; no requiere cambios de versión de PW Hub. La Tarea 1 dispone de visor PPTX con lectura directa OOXML de sus 69 elementos y vistas PDF/PNG independientes; si el PPTX no es compatible, no se disfraza automáticamente con un PDF. U4 continúa descubriendo nuevos archivos de GitHub.
+**Planificación del proyecto (noviembre de 2026):** según lo comentado en clase, podría no alcanzarse a impartir backend. U5 conserva su título académico y estado pendiente. El proyecto final **no es U5**: se muestra como apartado propio después de las unidades. La rúbrica compartida contiene 10 criterios, 100 puntos, e incluye API REST y CRUD. Se sugirió una tienda en línea y se descartaron bibliotecas; la temática elegida y la planificación definitiva siguen pendientes. U4 continúa actual.
+
+**Inicio de U4 (contexto histórico, sin nueva versión):** inicialmente el profesor indicó U4 como Programación del lado del cliente y U5 como Programación del lado del servidor. El catálogo registra A1 (PDF, PNG y PowerPoint en su carpeta; PDF y diapositivas PPTX tienen vistas independientes), A2 (tres ejercicios JavaScript), A3 (dos ejercicios JavaScript) y `U4. Ejemplos.js` como material complementario de clase, no como actividad independiente. El visor completo añade ejecución aislada para JavaScript de U4 con consola, entradas para `prompt()` y controles Ejecutar/Detener; no requiere cambios de versión de PW Hub. La Tarea 1 dispone de visor PPTX con lectura directa OOXML de sus 69 elementos y vistas PDF/PNG independientes; si el PPTX no es compatible, no se disfraza automáticamente con un PDF. U4 continúa descubriendo nuevos archivos de GitHub.
 
 ---
 
@@ -326,7 +329,7 @@ La versión v1.1.1 reorganiza la navegación sin dividir PW Hub en múltiples p�
 La estructura prevista es:
 
 - `Inicio`: Resumen académico fijo;
-- `Curso`: Progreso general y U1-U5 juntos;
+- `Curso`: Progreso general, U1-U5 y un apartado separado de proyecto final;
 - `Explorar`: una herramienta extensa por vista;
 - `Documentación`: centro documental y visor Markdown.
 
