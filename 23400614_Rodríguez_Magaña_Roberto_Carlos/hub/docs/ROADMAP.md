@@ -10,7 +10,7 @@ El historial completo de la construcción original y de los ajustes incorporados
 
 Este roadmap muestra la versión estable actual y la evolución técnica futura del Hub. El avance normal de U1 a U5 sigue perteneciendo al contenido académico de Programación Web y no crea nuevas versiones por sí solo.
 
-**Planificación académica actualizada (noviembre de 2026):** U4 continúa activa. U5 conserva su lugar en el programa como Programación del lado del servidor, aunque podría no impartirse por falta de tiempo. El **Proyecto final de Programación Web es una sección propia dentro de Curso**; tiene una rúbrica de 10 criterios y 100 puntos, con API REST y CRUD entre sus criterios. Se sugirió una tienda en línea como temática orientativa y se descartó biblioteca. La idea, la arquitectura y el calendario están por definir. Este ajuste no altera la versión técnica de PW Hub (v1.2.2).
+**Planificación académica actualizada (noviembre de 2026):** U4 se marca como completada en el portafolio tras registrar sus actividades; el examen pendiente no forma parte del repositorio, como tampoco los exámenes de U1–U3. No se marca ninguna otra unidad como activa. U5 conserva su lugar en el programa como Programación del lado del servidor, aunque podría no impartirse por falta de tiempo. El **Proyecto final de Programación Web es una sección propia dentro de Curso**; tiene una rúbrica de 10 criterios y 100 puntos, con API REST y CRUD entre sus criterios. Se sugirió una tienda en línea como temática orientativa y se descartó biblioteca. La idea, la arquitectura y el calendario están por definir. Este ajuste no altera la versión técnica de PW Hub (v1.2.2).
 
 El proyecto utiliza un versionado simple inspirado en SemVer:
 

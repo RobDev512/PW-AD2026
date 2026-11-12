@@ -1,5 +1,11 @@
 # Changelog de PW Hub
 
+## Cierre académico de U4 en el portafolio (2026-11-12; sin nueva versión)
+
+- U4 — Programación del lado del cliente cambia de `actual` a `completada` en el catálogo, tras registrar las actividades realizadas en la unidad.
+- El examen de U4 sigue pendiente y, como los exámenes de U1–U3, no se publica en el repositorio; el estado describe el cierre de las actividades en el portafolio, no una calificación final.
+- U5 continúa pendiente y el Proyecto final permanece como apartado independiente en planeación. No se cambia la versión técnica **v1.2.2**; la caché pasa a `pw-hub-offline-v72`.
+
 ### Mantenimiento de navegación C9 (sin cambio de versión)
 
 - Se elimina el control artificial del scroll de C6–C8 (`requestAnimationFrame`, interceptación de `wheel` y sobrescritura de `scrollTop`), que podía causar saltos y parpadeo en el submenú Curso.

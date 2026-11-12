@@ -619,7 +619,7 @@
       "numero": 4,
       "titulo": "Programación del lado del cliente",
       "descripcion": "Inicio de la programación del lado del cliente con JavaScript: variables, constantes, condicionales, ciclos, arreglos, números aleatorios y uso de la consola y prompt().",
-      "estado": "actual",
+      "estado": "completada",
       "temas": [
         "Introducción a JavaScript",
         "Variables, constantes y tipos de datos",

@@ -22,10 +22,10 @@ Este directorio reúne las actividades, ejercicios y proyectos realizados durant
 | U1 | Fundamentos Web, Git y GitHub | ✓ Completada |
 | U2 | HTML | ✓ Completada |
 | U3 | CSS | ✓ Completada · 10 actividades |
-| U4 | Programación del lado del cliente | ▶ Actual · actividades registradas y detección automática de nuevas entregas |
+| U4 | Programación del lado del cliente | ✓ Completada · actividades publicadas y detección automática de nuevos archivos |
 | U5 | Programación del lado del servidor | ⏳ Pendiente · contenido por confirmar |
 
-U4 continúa como unidad actual. U5 permanece registrada como **Programación del lado del servidor**, pendiente de saber si se alcanzará a desarrollar su contenido en clase. El **Proyecto final de Programación Web se presenta en un apartado propio del curso**, aunque el calendario académico lo vincule al cierre del curso. La idea orientativa es una tienda en línea y se descartó una biblioteca; el tema concreto aún no está elegido. La rúbrica compartida contempla API REST y CRUD, independientemente de que se imparta o no backend.
+U4 está **completada para efectos del portafolio**: sus actividades de JavaScript ya quedaron registradas. El examen de U4 aún está pendiente, pero, como los de U1–U3, no se sube al repositorio. No se ha iniciado otra unidad. U5 permanece registrada como **Programación del lado del servidor**, pendiente de saber si se alcanzará a desarrollar su contenido en clase. El **Proyecto final de Programación Web se presenta en un apartado propio del curso**, aunque el calendario académico lo vincule al cierre del curso. La idea orientativa es una tienda en línea y se descartó una biblioteca; el tema concreto aún no está elegido. La rúbrica compartida contempla API REST y CRUD, independientemente de que se imparta o no backend.
 
 ---
 
@@ -72,7 +72,7 @@ U3 terminó con diez actividades. PW Hub conserva nombres editoriales consistent
 
 ---
 
-## Inicio de Unidad 4
+## Unidad 4 — Programación del lado del cliente
 
 La Unidad 4 corresponde a **Programación del lado del cliente**. El catálogo conserva las actividades registradas (A1, A2 y A3) y distingue el archivo complementario `U4. Ejemplos.js`. Una entrega nueva como `U4. A4. Ejercicio.js` aparece automáticamente como **Actividad 4 - Ejercicio de JavaScript** cuando está publicada en GitHub, sin editar manualmente `unidades.json`. Los recursos internos de una misma actividad se agrupan para evitar tarjetas duplicadas. Los `.js` se pueden consultar en modo código original o abrir en el laboratorio JS para **editar una copia temporal, ejecutarla, consultar la consola, proporcionar entradas de `prompt()` y restaurar el original**. Los cambios de prueba no modifican los archivos del repositorio.
 
