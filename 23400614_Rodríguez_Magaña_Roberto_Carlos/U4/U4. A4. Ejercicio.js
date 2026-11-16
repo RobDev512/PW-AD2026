@@ -23,48 +23,66 @@
  */
 
 // Ejercicio:
-    let totalAlumnos = parseInt(prompt("¿Cuántos alumnos desea registrar?"));
-    let alumnosAprobados = 0;
-    let alumnosReprobados = 0;
-    let nombre = '';
-    let calificaciones = [];
-    let promedio = 0;
-    let resultado = '';
-    let cal = 0;
+let totalAlumnos = 0;
+let alumnosAprobados = 0;
+let alumnosReprobados = 0;
+let nombre = "";
+let calificaciones = [];
+let calificacion = 0;
+let suma = 0;
+let promedio = 0;
+let resultado = "";
 
-    for (let i = 0; i < totalAlumnos; i++) {
-        nombre = prompt(`Ingrese el nombre del alumno ${i + 1}:`);
-        
-        calificaciones = [];
-        
-        for (let j = 0; j < 3; j++) {
-            cal = parseFloat(prompt(`Ingrese la calificación ${j + 1} de ${nombre} (0-100):`));
-            
-            while (cal < 0 || cal > 100 || isNaN(cal)) {
-                cal = parseFloat(prompt(`Calificación inválida. Ingrese nuevamente la calificación ${j + 1} de ${nombre} (0-100):`));
-            }
-            
-            calificaciones.push(cal);
-        }
-        
-        promedio = calificaciones.reduce((a, b) => a + b, 0) / 3;
-        resultado = promedio >= 70 ? "APROBADO" : "REPROBADO";
+// Solicitar cantidad de alumnos
+totalAlumnos = Number(prompt("¿Cuántos alumnos desea registrar?"));
 
-        if (resultado === "APROBADO") {
-            alumnosAprobados++;
-        } 
-        else {
-            alumnosReprobados++;
+while (!Number.isInteger(totalAlumnos) || totalAlumnos <= 0) {
+    totalAlumnos = Number(prompt("Cantidad inválida. Ingrese nuevamente el número de alumnos:"));
+}
+
+// Registrar alumnos
+for (let i = 0; i < totalAlumnos; i++) {
+    nombre = prompt(`Ingrese el nombre del alumno ${i + 1}:`);
+
+    calificaciones = [];
+    suma = 0;
+
+    // Solicitar las tres calificaciones
+    for (let j = 0; j < 3; j++) {
+        calificacion = Number(prompt(`Ingrese la calificación ${j + 1} de ${nombre}:`));
+
+        while (isNaN(calificacion) || calificacion < 0 || calificacion > 100) {
+            calificacion = Number(prompt("Calificación inválida. Ingrese un valor entre 0 y 100:"));
         }
 
-        console.log(`Alumno: ${nombre}`);
-        console.log(`Calificaciones: ${calificaciones.join(", ")}`);
-        console.log(`Promedio: ${promedio.toFixed(2)}`);
-        console.log(`Resultado: ${resultado}`);
-        console.log('');
-        console.log("-----------------------------");
+        calificaciones.push(calificacion);
+        suma += calificacion;
     }
-    
-    console.log(`Total de alumnos registrados: ${totalAlumnos}`);
-    console.log(`Cantidad de alumnos aprobados: ${alumnosAprobados}`);
-    console.log(`Cantidad de alumnos reprobados: ${alumnosReprobados}`);
+
+    // Calcular promedio
+    promedio = suma / 3;
+
+    // Determinar resultado
+    if (promedio >= 70) {
+        resultado = "APROBADO";
+        alumnosAprobados++;
+    }
+    else {
+        resultado = "REPROBADO";
+        alumnosReprobados++;
+    }
+
+    // Mostrar información del alumno
+    console.log(`-------- Alumno ${i + 1} --------`);
+    console.log(`Nombre: ${nombre}`);
+    console.log(`Calificaciones: ${calificaciones.join(", ")}`);
+    console.log(`Promedio: ${promedio.toFixed(2)}`);
+    console.log(`Resultado: ${resultado}`);
+    console.log("");
+}
+
+// Resumen final
+console.log("======== RESUMEN FINAL ========");
+console.log(`Total de alumnos registrados: ${totalAlumnos}`);
+console.log(`Alumnos aprobados: ${alumnosAprobados}`);
+console.log(`Alumnos reprobados: ${alumnosReprobados}`);
