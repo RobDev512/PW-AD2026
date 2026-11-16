@@ -22,7 +22,7 @@
  *    • Si el promedio es menor a 70, el alumno está REPROBADO.
  */
 
-// Ejercicio:
+/// Ejercicio:
 let totalAlumnos = 0;
 let alumnosAprobados = 0;
 let alumnosReprobados = 0;
@@ -42,17 +42,17 @@ while (!Number.isInteger(totalAlumnos) || totalAlumnos <= 0) {
 
 // Registrar alumnos
 for (let i = 0; i < totalAlumnos; i++) {
-    nombre = prompt(`Ingrese el nombre del alumno ${i + 1}:`);
+    nombre = prompt("Ingrese el nombre del alumno " + (i + 1) + ":");
 
     calificaciones = [];
     suma = 0;
 
     // Solicitar las tres calificaciones
     for (let j = 0; j < 3; j++) {
-        calificacion = Number(prompt(`Ingrese la calificación ${j + 1} de ${nombre}:`));
+        calificacion = parseFloat(prompt("Ingrese la calificación " + (j + 1) + " de " + nombre + ":"));
 
         while (isNaN(calificacion) || calificacion < 0 || calificacion > 100) {
-            calificacion = Number(prompt("Calificación inválida. Ingrese un valor entre 0 y 100:"));
+            calificacion = parseFloat(prompt("Calificación inválida. Ingrese nuevamente la calificación " + (j + 1) + " de " + nombre + " (0-100):"));
         }
 
         calificaciones.push(calificacion);
@@ -73,16 +73,16 @@ for (let i = 0; i < totalAlumnos; i++) {
     }
 
     // Mostrar información del alumno
-    console.log(`-------- Alumno ${i + 1} --------`);
-    console.log(`Nombre: ${nombre}`);
-    console.log(`Calificaciones: ${calificaciones.join(", ")}`);
-    console.log(`Promedio: ${promedio.toFixed(2)}`);
-    console.log(`Resultado: ${resultado}`);
+    console.log("-------- Alumno " + (i + 1) + " --------");
+    console.log("Nombre: " + nombre);
+    console.log("Calificaciones: " + calificaciones.join(", "));
+    console.log("Promedio: " + promedio.toFixed(2));
+    console.log("Resultado: " + resultado);
     console.log("");
 }
 
 // Resumen final
 console.log("======== RESUMEN FINAL ========");
-console.log(`Total de alumnos registrados: ${totalAlumnos}`);
-console.log(`Alumnos aprobados: ${alumnosAprobados}`);
-console.log(`Alumnos reprobados: ${alumnosReprobados}`);
+console.log("Total de alumnos registrados: " + totalAlumnos);
+console.log("Alumnos aprobados: " + alumnosAprobados);
+console.log("Alumnos reprobados: " + alumnosReprobados);
