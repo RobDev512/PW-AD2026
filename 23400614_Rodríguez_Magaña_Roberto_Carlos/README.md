@@ -23,9 +23,9 @@ Este directorio reúne las actividades, ejercicios y proyectos realizados durant
 | U2 | HTML | ✓ Completada |
 | U3 | CSS | ✓ Completada · 10 actividades |
 | U4 | Programación del lado del cliente | ✓ Completada · actividades publicadas y detección automática de nuevos archivos |
-| U5 | Programación del lado del servidor | ⏳ Pendiente · contenido por confirmar |
+| U5 | Programación del lado del servidor | ▶ Unidad actual · práctica inicial Node.js/Express |
 
-U4 está **completada para efectos del portafolio**: sus actividades de JavaScript ya quedaron registradas. El examen de U4 aún está pendiente, pero, como los de U1–U3, no se sube al repositorio. No se ha iniciado otra unidad. U5 permanece registrada como **Programación del lado del servidor**, pendiente de saber si se alcanzará a desarrollar su contenido en clase. El **Proyecto final de Programación Web se presenta en un apartado propio del curso**, aunque el calendario académico lo vincule al cierre del curso. La idea orientativa es una tienda en línea y se descartó una biblioteca; el tema concreto aún no está elegido. La rúbrica compartida contempla API REST y CRUD, independientemente de que se imparta o no backend.
+U4 está **completada para efectos del portafolio**: sus actividades de JavaScript ya quedaron registradas. Sus exámenes, como los de U1–U3, se gestionan fuera del repositorio. **U5 ya comenzó** con `U5/proyectoBase`, una práctica inicial de Node.js y Express. El **Proyecto final CinePass** se desarrolla en un [repositorio propio](https://github.com/RobDev512/CinePass) y se muestra en un apartado separado de U1–U5. Conserva su rúbrica de 100 puntos; la API REST completa y el CRUD siguen pendientes.
 
 ---
 
@@ -35,7 +35,7 @@ U4 está **completada para efectos del portafolio**: sus actividades de JavaScri
 
 **Próxima actualización planeada: v1.3.0 - Proyectos inteligentes y GitHub**
 
-v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles para imágenes y Draw.io, materiales móviles, nombres académicos consistentes y árboles plegables de archivos por unidad. El panel de U4 se habilita con los archivos publicados y sigue detectando otros nuevos desde GitHub; U5 permanece vacío hasta que comience. El visor de U4 permite ejecutar ejercicios JavaScript de consola de forma aislada, sin cambiar el número de versión técnica. La Tarea 1 permite explorar PDF, PNG y PPTX por separado; la diapositiva PowerPoint se reconstruye a partir de sus propios objetos OOXML.
+v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles para imágenes y Draw.io, materiales móviles, nombres académicos consistentes y árboles plegables de archivos por unidad. El panel de U4 registra sus actividades y sigue detectando archivos nuevos desde GitHub; U5 ya muestra su práctica `proyectoBase` con los archivos Node.js/Express publicados. El visor de U4 permite ejecutar ejercicios JavaScript de consola de forma aislada, sin cambiar el número de versión técnica. La Tarea 1 permite explorar PDF, PNG y PPTX por separado; la diapositiva PowerPoint se reconstruye a partir de sus propios objetos OOXML.
 
 ---
 
@@ -47,6 +47,8 @@ v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles p
 ├── U2/
 ├── U3/
 ├── U4/
+├── U5/
+│   └── proyectoBase/
 ├── hub/
 │   ├── assets/
 │   ├── css/
@@ -62,7 +64,7 @@ v1.2.2 consolida el responsive móvil del visor de proyectos, gestos táctiles p
 └── README.md
 ```
 
-U4 contiene `U4/U4. A1. Tarea 1/` con un PDF principal, una lámina PNG y un PowerPoint editable, además de `U4. A2. Ejercicios.js`, `U4. A3. Ejercicios.js` (dos ejercicios) y `U4. Ejemplos.js`. El proyecto final cuenta con un apartado **Proyecto final** en el curso y una rúbrica de 10 criterios (100 puntos), sin trabajos todavía. La estructura del código del proyecto se decidirá posteriormente en su propio espacio de trabajo.
+U4 contiene `U4/U4. A1. Tarea 1/` con un PDF principal, una lámina PNG y un PowerPoint editable, además de `U4. A2. Ejercicios.js`, `U4. A3. Ejercicios.js` (dos ejercicios) y `U4. Ejemplos.js`. El proyecto final **CinePass** tiene una sección propia en el Hub con rúbrica de 10 criterios (100 puntos). Su código permanece por ahora fuera de este repositorio, en [RobDev512/CinePass](https://github.com/RobDev512/CinePass), y su [vista previa pública](https://robdev512.github.io/CinePass/) muestra solo el frontend estático.
 
 ---
 
@@ -75,6 +77,22 @@ U3 terminó con diez actividades. PW Hub conserva nombres editoriales consistent
 ## Unidad 4 — Programación del lado del cliente
 
 La Unidad 4 corresponde a **Programación del lado del cliente**. El catálogo conserva las actividades registradas (A1, A2 y A3) y distingue el archivo complementario `U4. Ejemplos.js`. Una entrega nueva como `U4. A4. Ejercicio.js` aparece automáticamente como **Actividad 4 - Ejercicio de JavaScript** cuando está publicada en GitHub, sin editar manualmente `unidades.json`. Los recursos internos de una misma actividad se agrupan para evitar tarjetas duplicadas. Los `.js` se pueden consultar en modo código original o abrir en el laboratorio JS para **editar una copia temporal, ejecutarla, consultar la consola, proporcionar entradas de `prompt()` y restaurar el original**. Los cambios de prueba no modifican los archivos del repositorio.
+
+---
+
+## Unidad 5 — Programación del lado del servidor
+
+La primera práctica es `U5/proyectoBase`: contiene `index.js`, `package.json` y `package-lock.json`. Inicia un servidor Express en el puerto 3000, sin rutas HTTP definidas. Es código de servidor para Node.js, no un ejercicio ejecutable en el laboratorio JavaScript del navegador.
+
+## Proyecto final — CinePass
+
+**En desarrollo · v0.2.0 — Primera proyección.** Ya tiene Inicio y Cartelera V2 con búsqueda/filtros y un servidor Express de prueba (`/api/salud`). Faltan los módulos de reservas, asientos y boletos, persistencia de datos, API REST completa y CRUD.
+
+- [Repositorio de CinePass](https://github.com/RobDev512/CinePass)
+- [Vista previa estática](https://robdev512.github.io/CinePass/)
+- [Roadmap de CinePass](https://robdev512.github.io/CinePass/roadmap.html)
+
+CinePass se desarrolla en una carpeta/repo independiente y se integrará al portafolio más adelante. No se mueve ni se duplica en esta actualización.
 
 ---
 

@@ -1865,6 +1865,16 @@
         const criterios = Array.isArray(rubrica.criterios) ? rubrica.criterios : [];
         const puntaje = criterios.reduce((suma, c) => suma + (Number(c.puntos) || 0), 0);
         const escapar = (valor) => escaparHtml(String(valor ?? ""));
+        const enDesarrollo = proyecto.estado === "desarrollo";
+        const etiquetaEstado = enDesarrollo ? "EN DESARROLLO" : "EN PLANEACIÓN";
+        const version = [proyecto.version, proyecto.etapa].filter(Boolean).join(" · ");
+        const enlaces = (Array.isArray(proyecto.enlaces) ? proyecto.enlaces : [])
+            .filter((item) => /^https:\/\/[^\s"'<>]+$/i.test(String(item?.url || "")))
+            .map((item) => `<a class="pw-pf-enlace" href="${escapar(item.url)}" target="_blank" rel="noopener noreferrer">
+                <strong>${escapar(item.nombre)}</strong>
+                ${item.detalle ? `<small>${escapar(item.detalle)}</small>` : ""}
+                <span aria-hidden="true">↗</span>
+            </a>`).join("");
         const seccion = document.createElement("section");
         seccion.id = "proyecto-final";
         seccion.className = "pw-proyecto-final";
@@ -1874,15 +1884,18 @@
                 <div class="pw-pf-cabecera-textos">
                     <span class="pw-pf-sobretitulo">PROYECTO DE LA MATERIA</span>
                     <h2 id="pw-proyecto-final-titulo">${escapar(proyecto.titulo)}</h2>
+                    ${version ? `<p class="pw-pf-etapa">${escapar(version)} · Proyecto final de Programación Web</p>` : ""}
                 </div>
-                <span class="pw-pf-estado">EN PLANEACIÓN</span>
+                <span class="pw-pf-estado" data-estado="${enDesarrollo ? "desarrollo" : "planeacion"}">${etiquetaEstado}</span>
             </div>
             <p class="pw-pf-descripcion">${escapar(proyecto.descripcion)}</p>
             <div class="pw-pf-notas">
-                <div><strong>Orientación temática</strong><p>${escapar(proyecto.orientacion)}</p></div>
-                <div><strong>Restricción comentada en clase</strong><p>${escapar(proyecto.restriccion)}</p></div>
+                <div><strong>Ya disponible</strong><p>${escapar(proyecto.avances)}</p></div>
+                <div><strong>Pendiente de implementar</strong><p>${escapar(proyecto.pendientes)}</p></div>
             </div>
+            ${enlaces ? `<div class="pw-pf-enlaces" aria-label="Enlaces del proyecto">${enlaces}</div>` : ""}
             <p class="pw-pf-aclaracion">${escapar(proyecto.nota)}</p>
+            ${proyecto.ubicacion ? `<p class="pw-pf-ubicacion">${escapar(proyecto.ubicacion)}</p>` : ""}
             <details class="pw-pf-rubrica">
                 <summary>
                     <span class="pw-pf-rubrica-titulo">Rúbrica de evaluación <small>${criterios.length} criterios · selecciona para consultar</small></span>
@@ -2075,6 +2088,10 @@
     function decorarProyectoEnProgreso() {
         if (!document.getElementById('proyecto-final')) return;
         if (document.querySelector('[data-pw-pf-progreso]')) return;
+        const proyecto = typeof datosHub !== 'undefined' ? datosHub?.proyectoFinal : null;
+        const escapar = (valor) => escaparHtml(String(valor ?? ''));
+        const nombreProyecto = proyecto?.titulo || 'Proyecto final de Programación Web';
+        const estadoProyecto = proyecto?.estado === 'desarrollo' ? 'En desarrollo' : 'En planeación';
 
         const titulo = [...document.querySelectorAll('h1,h2,h3,h4')]
             .find(el => /avance en programaci[oó]n web/i.test(el.textContent.trim()));
@@ -2099,10 +2116,10 @@
         acceso.innerHTML = `
             <span class="pw-pf-progreso-icono" aria-hidden="true">PF</span>
             <span class="pw-pf-progreso-cuerpo">
-                <strong>Proyecto final de Programación Web</strong>
-                <small>Proyecto de la materia · apartado separado del avance por unidades</small>
+                <strong>${escapar(nombreProyecto)} · Proyecto final</strong>
+                <small>Proyecto de Programación Web · apartado separado del avance por unidades</small>
             </span>
-            <span class="pw-pf-progreso-estado">En planeación</span>
+            <span class="pw-pf-progreso-estado">${escapar(estadoProyecto)}</span>
             <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`;
         acceso.addEventListener('click', (evento) => {
             evento.preventDefault();

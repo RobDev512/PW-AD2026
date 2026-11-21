@@ -45,12 +45,14 @@ Actualmente:
 - U2: completada;
 - U3: completada;
 - U4: completada en el portafolio — Programación del lado del cliente (JavaScript);
-- U5: pendiente — Programación del lado del servidor (el contenido efectivo aún debe confirmarse).
-- Proyecto final: **apartado «Proyecto final» dentro de Curso, separado de las unidades**, en planeación y con rúbrica registrada.
+- U5: **actual** — Programación del lado del servidor; práctica inicial `proyectoBase` con Node.js/Express.
+- Proyecto final: **CinePass**, en desarrollo (v0.2.0), apartado independiente de U1–U5 con enlaces al repositorio externo, vista previa y rúbrica de 100 puntos.
 
 El estado académico y el versionado de PW Hub son independientes.
 
-**Planificación del proyecto (noviembre de 2026):** según lo comentado en clase, podría no alcanzarse a impartir backend. U5 conserva su título académico y estado pendiente. El proyecto final **no es U5**: se muestra como apartado propio después de las unidades. La rúbrica compartida contiene 10 criterios, 100 puntos, e incluye API REST y CRUD. Se sugirió una tienda en línea y se descartaron bibliotecas; la temática elegida y la planificación definitiva siguen pendientes. U4 está completada en el portafolio; el examen sigue pendiente y no se almacena en GitHub, igual que los exámenes de U1–U3. Ninguna otra unidad se marca como activa.
+**Situación académica (21 de noviembre de 2026):** U4 permanece completada para efectos del portafolio. U5 comenzó con un servidor básico Express en `U5/proyectoBase`, por lo que pasa a ser la unidad actual. El proyecto final **CinePass no es U5**: se desarrolla en [otro repositorio](https://github.com/RobDev512/CinePass) y ocupa una sección separada. Está publicado como prototipo v0.2.0 (Inicio y Cartelera V2), pero no tiene todavía reservas reales, persistencia ni CRUD completo. La rúbrica compartida mantiene 10 criterios y 100 puntos, incluidos API REST y CRUD. Los exámenes se gestionan fuera del portafolio.
+
+**U5 y CinePass:** la unidad de servidor contiene `index.js`, `package.json` y `package-lock.json`; el ejercicio corre con Node.js, no desde el laboratorio JavaScript del navegador. CinePass tiene [vista previa estática](https://robdev512.github.io/CinePass/), [código](https://github.com/RobDev512/CinePass) y [roadmap](https://robdev512.github.io/CinePass/roadmap.html). Permanece fuera de la carpeta académica hasta su futura integración.
 
 **Inicio de U4 (contexto histórico, sin nueva versión):** inicialmente el profesor indicó U4 como Programación del lado del cliente y U5 como Programación del lado del servidor. El catálogo registra A1 (PDF, PNG y PowerPoint en su carpeta; PDF y diapositivas PPTX tienen vistas independientes), A2 (tres ejercicios JavaScript), A3 (dos ejercicios JavaScript) y `U4. Ejemplos.js` como material complementario de clase, no como actividad independiente. El visor completo añade ejecución aislada para JavaScript de U4 con consola, entradas para `prompt()` y controles Ejecutar/Detener; no requiere cambios de versión de PW Hub. La Tarea 1 dispone de visor PPTX con lectura directa OOXML de sus 69 elementos y vistas PDF/PNG independientes; si el PPTX no es compatible, no se disfraza automáticamente con un PDF. U4 continúa descubriendo nuevos archivos de GitHub.
 

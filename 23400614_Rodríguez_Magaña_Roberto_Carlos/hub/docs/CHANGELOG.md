@@ -1,5 +1,13 @@
 # Changelog de PW Hub
 
+## Inicio de U5 y proyecto final CinePass (2026-11-21; sin nueva versión)
+
+- La Unidad 5 — Programación del lado del servidor pasa de `pendiente` a `actual`; `unidadActual` se establece en 5. Se registra la práctica `U5/proyectoBase` con servidor mínimo Express, `index.js`, `package.json` y `package-lock.json`.
+- El apartado independiente «Proyecto final» muestra el nombre real **CinePass**, en desarrollo (v0.2.0 — Primera proyección), con avances y pendientes diferenciados.
+- Se enlazan el repositorio externo de CinePass, la vista previa estática en GitHub Pages, su roadmap y la demostración conceptual. Se aclara que no hay todavía API REST completa, persistencia, reservas funcionales ni CRUD.
+- Se conserva íntegra la rúbrica de 10 criterios / 100 puntos, la navegación PF independiente y la detección automática de trabajos de U1–U5. No se copian ni mueven los archivos de CinePass al repositorio académico.
+- Mantenimiento de contenido dentro de **PW Hub v1.2.2**. Caché técnica `pw-hub-offline-v73`.
+
 ## Cierre académico de U4 en el portafolio (2026-11-12; sin nueva versión)
 
 - U4 — Programación del lado del cliente cambia de `actual` a `completada` en el catálogo, tras registrar las actividades realizadas en la unidad.

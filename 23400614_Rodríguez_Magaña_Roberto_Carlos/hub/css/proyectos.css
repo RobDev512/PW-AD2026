@@ -1890,11 +1890,20 @@ body.visor-trabajo-abierto
 .pw-pf-sobretitulo { color: #5cd4f5; font-size: 11px; font-weight: 800; letter-spacing: 1.25px; }
 .pw-pf-encabezado h2 { font-size: clamp(24px, 3vw, 34px); line-height: 1.15; margin: 12px 0 16px; }
 .pw-pf-estado { flex: 0 0 auto; border: 1px solid rgba(146, 177, 198, .4); border-radius: 30px; padding: 8px 13px; font-size: 10px; font-weight: 800; letter-spacing: .7px; color: #bacbd6; white-space: nowrap; }
+.pw-pf-estado[data-estado="desarrollo"] { color: #7edbea; border-color: rgba(84, 211, 233, .55); background: rgba(54, 155, 190, .12); }
+.pw-pf-etapa { margin: -7px 0 17px; color: #83d6ed; font-size: 12px; font-weight: 700; letter-spacing: .2px; }
 .pw-pf-descripcion { margin: 0 0 22px; max-width: 790px; color: #b9cbd7; line-height: 1.8; }
 .pw-pf-notas { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
 .pw-pf-notas > div { min-width: 0; border: 1px solid rgba(118, 154, 175, .22); border-radius: 13px; background: rgba(4, 12, 21, .25); padding: 17px 18px; }
 .pw-pf-notas strong { font-size: 13px; color: #edf8ff; }
 .pw-pf-notas p { margin: 7px 0 0; color: #b5c7d3; font-size: 13px; line-height: 1.6; }
+.pw-pf-enlaces { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+.pw-pf-enlace { display: grid; position: relative; gap: 4px; min-width: 0; padding: 14px 36px 14px 16px; border: 1px solid rgba(94, 177, 206, .36); border-radius: 12px; background: rgba(23, 56, 75, .32); color: #dff6ff; text-decoration: none; transition: border-color .16s ease, background-color .16s ease; }
+.pw-pf-enlace strong { font-size: 13px; }
+.pw-pf-enlace small { color: #9fbac8; font-size: 11px; }
+.pw-pf-enlace span { position: absolute; top: 14px; right: 16px; color: #86d3e7; }
+.pw-pf-enlace:hover, .pw-pf-enlace:focus-visible { border-color: #6ad4ee; background: rgba(36, 96, 124, .36); outline-offset: 3px; }
+.pw-pf-ubicacion { font-size: 12px; color: #95b8c8; margin: 12px 0 21px; line-height: 1.65; }
 .pw-pf-aclaracion { border-left: 3px solid #5cc7e9; padding: 11px 16px; margin: 21px 0; background: rgba(55, 156, 192, .07); color: #c3d7e1; font-size: 13px; line-height: 1.7; }
 .pw-pf-rubrica { border: 1px solid rgba(116, 166, 192, .32); border-radius: 14px; overflow: hidden; background: rgba(6, 13, 22, .47); }
 .pw-pf-rubrica > summary { display: flex; align-items: center; gap: 12px; list-style: none; padding: 18px; cursor: pointer; }
@@ -1939,7 +1948,7 @@ body.visor-trabajo-abierto
     .pw-proyecto-final { width: 100%; padding: 19px; border-radius: 15px; margin-top: 26px; }
     .pw-pf-encabezado { flex-direction: column; gap: 4px; }
     .pw-pf-estado { align-self: flex-start; margin-bottom: 15px; }
-    .pw-pf-notas { grid-template-columns: 1fr; }
+    .pw-pf-notas, .pw-pf-enlaces { grid-template-columns: 1fr; }
     .pw-pf-rubrica > summary { gap: 8px; padding: 14px; }
     .pw-pf-criterios { padding: 0 10px 10px; }
 }

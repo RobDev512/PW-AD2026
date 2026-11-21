@@ -1,6 +1,6 @@
 {
   "materia": "Programación Web",
-  "unidadActual": 4,
+  "unidadActual": 5,
   "unidades": [
     {
       "numero": 1,
@@ -701,23 +701,55 @@
     {
       "numero": 5,
       "titulo": "Programación del lado del servidor",
-      "descripcion": "Unidad contemplada en el temario de Programación Web. Según lo comentado en clase, podría no desarrollarse en profundidad por falta de tiempo. No hay actividades registradas; el proyecto final de la materia tendrá su propio apartado dentro de Curso.",
-      "estado": "pendiente",
+      "descripcion": "Inicio de la programación del lado del servidor con Node.js y Express. La práctica proyectoBase crea un servidor HTTP mínimo en el puerto 3000, todavía sin rutas de aplicación.",
+      "estado": "actual",
       "temas": [
-        "Programación del lado del servidor (contenido previsto; por confirmar)"
+        "Introducción a Node.js y npm",
+        "Creación de servidores con Express",
+        "Dependencias y ejecución local de un servidor"
       ],
-      "trabajos": [],
-      "archivosUnidad": [],
+      "trabajos": [
+        {
+          "nombre": "Práctica inicial - Proyecto base con Express",
+          "ruta": "../U5/proyectoBase/index.js",
+          "tipo": "js",
+          "descripcion": "Primer servidor con Node.js y Express: inicializa una aplicación y escucha en el puerto 3000. Aún no implementa rutas ni API REST. Para ejecutarlo se necesita Node.js; el navegador solo puede mostrar su código."
+        }
+      ],
+      "archivosUnidad": [
+        {
+          "carpeta": "proyectoBase",
+          "etiqueta": "Práctica inicial de Node.js y Express",
+          "archivos": [
+            {
+              "nombre": "index.js",
+              "ruta": "../U5/proyectoBase/index.js",
+              "tipo": "js",
+              "etiqueta": "Código del servidor"
+            },
+            {
+              "nombre": "package.json",
+              "ruta": "../U5/proyectoBase/package.json",
+              "tipo": "json",
+              "etiqueta": "Dependencias del proyecto"
+            },
+            {
+              "nombre": "package-lock.json",
+              "ruta": "../U5/proyectoBase/package-lock.json",
+              "tipo": "json",
+              "etiqueta": "Bloqueo de dependencias"
+            }
+          ]
+        }
+      ],
       "archivosUnidadAutomaticos": true
     }
   ],
   "proyectoFinal": {
-    "titulo": "Proyecto final de Programación Web",
-    "estado": "planeacion",
-    "descripcion": "Proyecto integrador de Programación Web. La temática y los entregables finales aún están por definir; la rúbrica compartida establece los criterios de evaluación.",
-    "orientacion": "Se mencionó una tienda en línea como ejemplo de temática; no se ha elegido aún el proyecto.",
-    "restriccion": "Se pidió evitar proyectos relacionados con bibliotecas.",
-    "nota": "Aunque se comentó que podría no haber tiempo para clases de backend, la rúbrica incluye API REST y CRUD; sus requisitos siguen vigentes salvo aclaración del profesor.",
+    "titulo": "CinePass",
+    "estado": "desarrollo",
+    "descripcion": "CinePass es una aplicación web de cine en desarrollo. Permite explorar una cartelera y está orientada a incorporar funciones, selección de asientos, reservaciones y boletos digitales.",
+    "nota": "La vista previa de GitHub Pages es solo el frontend estático: no ejecuta Express ni demuestra reservaciones funcionales. La demostración conceptual muestra el objetivo del proyecto, no su implementación terminada.",
     "rubrica": {
       "nombre": "Rúbrica de Evaluación – Proyecto Final de Programación Web",
       "puntajeMaximo": 100,
@@ -773,6 +805,33 @@
           "excelente": "Repositorio con commits constantes, mensajes descriptivos y evidencia de colaboración del equipo."
         }
       ]
-    }
+    },
+    "version": "v0.2.0",
+    "etapa": "Primera proyección",
+    "avances": "Inicio y Cartelera V2, seis películas ficticias, búsqueda por título, filtro por género, diseño adaptable y servidor Express con la ruta de prueba /api/salud.",
+    "pendientes": "Detalle de películas, funciones, selección de asientos, reservas, boletos digitales, administración, base de datos, API REST completa y CRUD.",
+    "ubicacion": "Por ahora, CinePass se desarrolla en su propio repositorio de GitHub. Se integrará a la estructura académica del portafolio más adelante, sin duplicarlo todavía.",
+    "enlaces": [
+      {
+        "nombre": "Vista previa pública",
+        "url": "https://robdev512.github.io/CinePass/",
+        "detalle": "Frontend estático"
+      },
+      {
+        "nombre": "Código en GitHub",
+        "url": "https://github.com/RobDev512/CinePass",
+        "detalle": "Repositorio del equipo"
+      },
+      {
+        "nombre": "Roadmap del proyecto",
+        "url": "https://robdev512.github.io/CinePass/roadmap.html",
+        "detalle": "Etapas y pendientes"
+      },
+      {
+        "nombre": "Demo conceptual",
+        "url": "https://robdev512.github.io/CinePass/demo.html",
+        "detalle": "Diseño esperado"
+      }
+    ]
   }
 }
